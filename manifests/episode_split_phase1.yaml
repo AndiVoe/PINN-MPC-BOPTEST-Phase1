@@ -1,0 +1,136 @@
+version: 1
+study_id: pinn_vs_whitebox_mpc
+phase: phase1_singlezone
+
+defaults:
+  control_interval_s: 900
+  episode_length_days: 7
+  warmup_period_s: 604800
+  start_time_s: 0
+  control_policy:
+    mode: random_heating_setpoint
+    seed_base: 20260311
+    setpoint_min_degC: 19.0
+    setpoint_max_degC: 24.0
+
+case_mappings:
+  singlezone_commercial_hydronic:
+    zone_temp_candidates:
+      - reaTZon_y
+      - TRooAir_y
+      - zon_reaTRooAir_y
+    outdoor_temp_candidates:
+      - weaSta_reaWeaTDryBul_y
+      - TDryBul_y
+      - TDryBul
+    solar_candidates:
+      - weaSta_reaWeaHGloHor_y
+      - HGloHor_y
+      - HGloHor
+    control_value_candidates:
+      - oveTZonSet_u
+      - dh_oveTSupSetHea_u
+      - oveValRad_u
+      - oveTSupSetAir_u
+    control_activate_candidates:
+      - oveTZonSet_activate
+      - dh_oveTSupSetHea_activate
+      - oveValRad_activate
+      - oveTSupSetAir_activate
+
+episodes:
+  - id: tr_std_01
+    split: train
+    weather_class: standard
+    start_time_s: 0
+  - id: tr_std_02
+    split: train
+    weather_class: standard
+    start_time_s: 2419200
+  - id: tr_std_03
+    split: train
+    weather_class: standard
+    start_time_s: 4838400
+  - id: tr_std_04
+    split: train
+    weather_class: standard
+    start_time_s: 7257600
+  - id: tr_std_05
+    split: train
+    weather_class: standard
+    start_time_s: 9676800
+  - id: tr_std_06
+    split: train
+    weather_class: standard
+    start_time_s: 12096000
+  - id: tr_std_07
+    split: train
+    weather_class: standard
+    start_time_s: 14515200
+  - id: tr_std_08
+    split: train
+    weather_class: standard
+    start_time_s: 16934400
+  - id: tr_ext_01
+    split: train
+    weather_class: extreme
+    scenario:
+      time_period: peak_heat_day
+  - id: tr_ext_02
+    split: train
+    weather_class: extreme
+    scenario:
+      time_period: peak_heat_day
+      electricity_price: highly_dynamic
+  - id: tr_ext_03
+    split: train
+    weather_class: extreme
+    scenario:
+      time_period: peak_heat_day
+      electricity_price: dynamic
+  - id: tr_ext_04
+    split: train
+    weather_class: extreme
+    scenario:
+      time_period: peak_heat_day
+      electricity_price: highly_dynamic
+
+  - id: val_std_01
+    split: val
+    weather_class: standard
+    start_time_s: 19353600
+  - id: val_std_02
+    split: val
+    weather_class: standard
+    start_time_s: 21772800
+  - id: val_ext_01
+    split: val
+    weather_class: extreme
+    scenario:
+      time_period: peak_heat_day
+  - id: val_ext_02
+    split: val
+    weather_class: extreme
+    scenario:
+      time_period: peak_heat_day
+      electricity_price: highly_dynamic
+
+  - id: te_std_01
+    split: test
+    weather_class: standard
+    start_time_s: 24192000
+  - id: te_std_02
+    split: test
+    weather_class: standard
+    start_time_s: 26611200
+  - id: te_ext_01
+    split: test
+    weather_class: extreme
+    scenario:
+      time_period: peak_heat_day
+  - id: te_ext_02
+    split: test
+    weather_class: extreme
+    scenario:
+      time_period: peak_heat_day
+      electricity_price: highly_dynamic

@@ -1,0 +1,142 @@
+[
+  {
+    "dataset_id": "tr_std_01",
+    "split": "train",
+    "weather_class": "standard",
+    "path": "datasets/phase1_singlezone/json/tr_std_01.json",
+    "n_records": 672
+  },
+  {
+    "dataset_id": "tr_std_02",
+    "split": "train",
+    "weather_class": "standard",
+    "path": "datasets/phase1_singlezone/json/tr_std_02.json",
+    "n_records": 672
+  },
+  {
+    "dataset_id": "tr_std_03",
+    "split": "train",
+    "weather_class": "standard",
+    "path": "datasets/phase1_singlezone/json/tr_std_03.json",
+    "n_records": 672
+  },
+  {
+    "dataset_id": "tr_std_04",
+    "split": "train",
+    "weather_class": "standard",
+    "path": "datasets/phase1_singlezone/json/tr_std_04.json",
+    "n_records": 672
+  },
+  {
+    "dataset_id": "tr_std_05",
+    "split": "train",
+    "weather_class": "standard",
+    "path": "datasets/phase1_singlezone/json/tr_std_05.json",
+    "n_records": 672
+  },
+  {
+    "dataset_id": "tr_std_06",
+    "split": "train",
+    "weather_class": "standard",
+    "path": "datasets/phase1_singlezone/json/tr_std_06.json",
+    "n_records": 672
+  },
+  {
+    "dataset_id": "tr_std_07",
+    "split": "train",
+    "weather_class": "standard",
+    "path": "datasets/phase1_singlezone/json/tr_std_07.json",
+    "n_records": 672
+  },
+  {
+    "dataset_id": "tr_std_08",
+    "split": "train",
+    "weather_class": "standard",
+    "path": "datasets/phase1_singlezone/json/tr_std_08.json",
+    "n_records": 672
+  },
+  {
+    "dataset_id": "tr_ext_01",
+    "split": "train",
+    "weather_class": "extreme",
+    "path": "datasets/phase1_singlezone/json/tr_ext_01.json",
+    "n_records": 672
+  },
+  {
+    "dataset_id": "tr_ext_04",
+    "split": "train",
+    "weather_class": "extreme",
+    "path": "datasets/phase1_singlezone/json/tr_ext_04.json",
+    "n_records": 672
+  },
+  {
+    "dataset_id": "val_std_01",
+    "split": "val",
+    "weather_class": "standard",
+    "path": "datasets/phase1_singlezone/json/val_std_01.json",
+    "n_records": 672
+  },
+  {
+    "dataset_id": "val_std_02",
+    "split": "val",
+    "weather_class": "standard",
+    "path": "datasets/phase1_singlezone/json/val_std_02.json",
+    "n_records": 672
+  },
+  {
+    "dataset_id": "val_ext_01",
+    "split": "val",
+    "weather_class": "extreme",
+    "path": "datasets/phase1_singlezone/json/val_ext_01.json",
+    "n_records": 672
+  },
+  {
+    "dataset_id": "val_ext_02",
+    "split": "val",
+    "weather_class": "extreme",
+    "path": "datasets/phase1_singlezone/json/val_ext_02.json",
+    "n_records": 672
+  },
+  {
+    "dataset_id": "te_std_01",
+    "split": "test",
+    "weather_class": "standard",
+    "path": "datasets/phase1_singlezone/json/te_std_01.json",
+    "n_records": 672
+  },
+  {
+    "dataset_id": "te_std_02",
+    "split": "test",
+    "weather_class": "standard",
+    "path": "datasets/phase1_singlezone/json/te_std_02.json",
+    "n_records": 672
+  },
+  {
+    "dataset_id": "te_ext_01",
+    "split": "test",
+    "weather_class": "extreme",
+    "path": "datasets/phase1_singlezone/json/te_ext_01.json",
+    "n_records": 672
+  },
+  {
+    "dataset_id": "te_ext_02",
+    "split": "test",
+    "weather_class": "extreme",
+    "path": "datasets/phase1_singlezone/json/te_ext_02.json",
+    "n_records": 672
+  },
+  {
+    "dataset_id": "tr_ext_02",
+    "split": "train",
+    "weather_class": "extreme",
+    "path": "datasets/phase1_singlezone/json/tr_ext_02.json",
+    "n_records": 672
+  },
+  {
+    "dataset_id": "tr_ext_03",
+    "split": "train",
+    "weather_class": "extreme",
+    "path": "datasets/phase1_singlezone/json/tr_ext_03.json",
+    "n_records": 672
+  }
+]

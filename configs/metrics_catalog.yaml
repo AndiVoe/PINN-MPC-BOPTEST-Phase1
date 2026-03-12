@@ -1,0 +1,59 @@
+version: 1
+
+comfort:
+  degree_hours:
+    id: comfort_degree_hours
+    formula: >-
+      Sum over time of positive deviations outside [T_low, T_high] multiplied by
+      step duration in hours.
+    unit: K_h
+  occupied_degree_hours:
+    id: occupied_comfort_degree_hours
+    formula: Same as degree_hours, only where occupied == 1.
+    unit: K_h
+
+energy:
+  total_energy:
+    id: total_energy
+    formula: Sum of power_W * dt_h
+    unit: Wh
+  total_energy_kwh:
+    id: total_energy_kwh
+    formula: total_energy / 1000
+    unit: kWh
+
+power:
+  peak_power:
+    id: peak_power
+    formula: max(power_W)
+    unit: W
+  p95_power:
+    id: p95_power
+    formula: percentile(power_W, 95)
+    unit: W
+
+control_quality:
+  move_l1:
+    id: control_move_l1
+    formula: Sum(abs(u[k] - u[k-1]))
+    unit: actuator_unit
+
+optimization_runtime:
+  mpc_solve_time_mean_ms:
+    id: mpc_solve_time_mean_ms
+    formula: mean(solve_time_ms)
+    unit: ms
+  mpc_solve_time_p95_ms:
+    id: mpc_solve_time_p95_ms
+    formula: percentile(solve_time_ms, 95)
+    unit: ms
+  feasibility_rate:
+    id: mpc_feasibility_rate
+    formula: feasible_steps / total_steps
+    unit: ratio
+
+simulation_runtime:
+  episode_wall_time_s:
+    id: episode_wall_time_s
+    formula: wall_clock_end - wall_clock_start
+    unit: s

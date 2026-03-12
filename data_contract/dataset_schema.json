@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local/pinn-vs-eplus/dataset-schema.json",
+  "title": "PINN vs Whitebox Dataset Schema",
+  "type": "object",
+  "required": [
+    "dataset_id",
+    "split",
+    "case_name",
+    "control_interval_s",
+    "horizon_s",
+    "records"
+  ],
+  "properties": {
+    "dataset_id": {
+      "type": "string"
+    },
+    "split": {
+      "type": "string",
+      "enum": ["train", "val", "test"]
+    },
+    "case_name": {
+      "type": "string"
+    },
+    "weather_class": {
+      "type": "string",
+      "enum": ["standard", "extreme"]
+    },
+    "control_interval_s": {
+      "type": "number",
+      "minimum": 1
+    },
+    "horizon_s": {
+      "type": "number",
+      "minimum": 1
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "time_s",
+          "T_zone_degC",
+          "T_outdoor_degC",
+          "H_global_Wm2",
+          "u_heating"
+        ],
+        "properties": {
+          "time_s": { "type": "number" },
+          "T_zone_degC": { "type": "number" },
+          "T_outdoor_degC": { "type": "number" },
+          "H_global_Wm2": { "type": "number" },
+          "u_heating": { "type": "number" },
+          "power_W": { "type": "number" },
+          "energy_Wh_step": { "type": "number" },
+          "occupied": { "type": "integer", "enum": [0, 1] }
+        },
+        "additionalProperties": true
+      }
+    },
+    "meta": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": false
+}

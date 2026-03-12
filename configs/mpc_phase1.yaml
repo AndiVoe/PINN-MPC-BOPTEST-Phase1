@@ -1,0 +1,29 @@
+# WP4 MPC configuration for phase 1 (singlezone_commercial_hydronic)
+# Consistent with manifests/phase1_singlezone.yaml objective definitions.
+
+mpc:
+  # Rolling horizon (horizon_s / control_interval_s = 24 steps = 6 h lookahead)
+  horizon_s: 21600
+
+  # Heating setpoint bounds sent to oveTZonSet_u (values in degrees C;
+  # script converts to Kelvin before sending to BOPTEST).
+  u_min_degC: 18.0
+  u_max_degC: 26.0
+
+  # Comfort temperature bounds (degrees C)
+  comfort_bounds_degC:
+    occupied:   [21.0, 24.0]   # 08:00 – 18:00
+    unoccupied: [15.0, 30.0]   # outside occupied hours
+
+  # Objective weights (must be identical for both predictors to ensure fair comparison)
+  objective_weights:
+    comfort: 100.0             # (penalty per K²·step outside bounds)
+    energy: 0.0001             # (penalty per degC of setpoint, proxy for heating demand)
+    control_smoothness: 0.1   # (penalty per |Δu| between consecutive steps)
+
+  # SLSQP solver settings
+  solver_maxiter: 100
+  solver_ftol: 1.0e-4
+
+  # Repeat runs for confidence intervals (used by benchmark_campaign.py)
+  repeat_runs: 3

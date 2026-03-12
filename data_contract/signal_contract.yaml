@@ -1,0 +1,88 @@
+version: 1
+study:
+  name: pinn_vs_whitebox_mpc
+  date: 2026-03-11
+  phase: phase1_singlezone
+
+primary_case:
+  boptest_case: singlezone_commercial_hydronic
+  rationale: >-
+    Lowest complexity for first rigorous comparison; easier diagnosis of
+    modeling, control, and data issues.
+
+phase2_case:
+  boptest_case: multizone_office_simple_hydronic
+  rationale: >-
+    Added realism and multi-zone coupling after pipeline validation.
+
+clock:
+  control_interval_s: 900
+  prediction_horizon_s: 21600
+  warmup_period_s: 604800
+
+temperature_units:
+  canonical: degC
+  source_may_be_kelvin: true
+
+weather_sources:
+  source_of_truth: boptest
+  include_standard_weather: true
+  include_extreme_weather: true
+
+variables:
+  states:
+    - id: T_zone
+      description: Zone air or operative temperature
+      unit: degC
+      required: true
+      priority_signals:
+        - reaTZon_y
+        - structure_reaTZonNz_y
+        - structure_reaTZonSz_y
+  controls:
+    - id: u_heating
+      description: Main heating actuator/setpoint command
+      unit: as_defined_by_case
+      required: true
+      notes: >-
+        Final mapping resolved per selected testcase input dictionary.
+  disturbances:
+    - id: T_outdoor
+      description: Outdoor dry bulb temperature
+      unit: degC
+      required: true
+      priority_signals:
+        - weaSta_reaWeaTDryBul_y
+        - TDryBul_y
+        - TDryBul
+    - id: H_global
+      description: Global horizontal irradiance
+      unit: W_per_m2
+      required: true
+      priority_signals:
+        - weaSta_reaWeaHGloHor_y
+        - HGloHor_y
+        - HGloHor
+
+kpis:
+  mandatory:
+    - comfort_degree_hours
+    - total_energy
+  additional:
+    - peak_power
+    - p95_power
+    - mpc_solve_time_mean_ms
+    - mpc_solve_time_p95_ms
+    - mpc_feasibility_rate
+    - control_move_l1
+
+fairness_constraints:
+  enforce_same_horizon: true
+  enforce_same_weights: true
+  enforce_same_bounds: true
+  enforce_same_forecast_stream: true
+  enforce_same_step_and_warmup: true
+
+notes:
+  - Treat BOPTEST plant behavior as evaluation authority.
+  - Document any mismatch between IDF-based model and BOPTEST FMU behavior.

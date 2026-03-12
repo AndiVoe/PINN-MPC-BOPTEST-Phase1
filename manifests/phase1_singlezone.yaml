@@ -1,0 +1,53 @@
+study_id: pinn_vs_whitebox_mpc
+phase: phase1_singlezone
+
+cases:
+  primary: singlezone_commercial_hydronic
+  fallback: bestest_air
+
+models:
+  whitebox:
+    type: boptest_plant_reference
+    idf_reference_path: C:/Users/AVoelser/.gemini/antigravity/scratch/phd-energy-model/data/results/bestest_naive.idf
+  surrogate:
+    type: pinn
+    status: planned
+
+mpc:
+  solver: casadi_ipopt
+  control_interval_s: 900
+  horizon_s: 21600
+  comfort_bounds_degC:
+    occupied: [21.0, 24.0]
+    unoccupied: [15.0, 30.0]
+  objective_weights:
+    comfort: 100.0
+    energy: 0.0001
+    control_smoothness: 0.1
+
+episodes:
+  train:
+    standard: 8
+    extreme: 4
+  val:
+    standard: 2
+    extreme: 2
+  test:
+    standard: 2
+    extreme: 2
+
+runtime_benchmark:
+  repeat_runs: 3
+  collect:
+    - mpc_solve_time_ms
+    - episode_wall_time_s
+    - simulator_step_time_ms
+
+constraints:
+  same_forecast_for_all_models: true
+  same_initial_conditions: true
+  same_warmup_period: true
+
+notes:
+  - Docker usage minimized; prefer direct testcase mode where possible.
+  - API mode used for final confirmation benchmarks when connection is stable.
