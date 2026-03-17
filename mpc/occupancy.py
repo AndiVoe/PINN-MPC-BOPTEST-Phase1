@@ -1,8 +1,8 @@
-"""Occupancy schedule and comfort bound helpers."""
+﻿"""Occupancy schedule and comfort bound helpers."""
 
 from __future__ import annotations
 
-# Occupied hours: 08:00 – 18:00, applied every day (simplified commercial schedule).
+# Occupied hours: 08:00 ÔÇô 18:00, applied every day (simplified commercial schedule).
 _OCC_START_H = 8
 _OCC_END_H = 18
 

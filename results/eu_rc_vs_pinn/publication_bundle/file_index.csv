@@ -1,0 +1,12 @@
+relative_path,size_bytes,sha256,modified_utc
+configs/eu_rc_vs_pinn_campaign.yaml,2237,303f20679954c14779891a6b5d7bfa724cf86f8579b392776fd5afd6125e3314,2026-03-16T08:02:31.891428+00:00
+execution_plan_eu_rc_vs_pinn.md,1545,8efd84b4605d7179d7bf221e43f3296f499d01f1000234ab5976930dff421ee6,2026-03-16T08:02:44.606642+00:00
+results/eu_rc_vs_pinn/README_results_layout.md,1156,a58b3d5e6f658ac10e6104af37eeaee4066ebd132b5d2ece22ac795ddfcd0584,2026-03-16T08:07:42.821780+00:00
+results/eu_rc_vs_pinn/runtime_discovery/discovery_failure.json,952,e2e11f6e3ff060828a2e06e4309931efe4ca5d7c53d3786c922bcad428b5d9e7,2026-03-16T08:17:12.755161+00:00
+results/eu_rc_vs_pinn/runtime_discovery/eu_testcases_resolved_mapping.json,1668,0f02502cf6ffe67cec74359f30b876214cf46eaa0ed5f2d71be5cd04a2315522,2026-03-16T08:35:22.609694+00:00
+results/eu_rc_vs_pinn/runtime_discovery/testcases_runtime_snapshot.json,1017,8330669e0839ca20bda2c424592399e0ed3211d7e06a7a7bc18a57408ff01b17,2026-03-16T08:35:22.606786+00:00
+results/eu_rc_vs_pinn/runtime_discovery/testcases_runtime_table.csv,557,1e2abf274640cdf357a197bb6b2c0df0f94f9eb719c7721028abe8c294912734,2026-03-16T08:35:22.608379+00:00
+results/mpc_phase1/benchmark_summary.csv,724,a164cf1d3643184cdbb7f1b1eb8a6eb19f779e34be305f569ea074233733a248,2026-03-12T14:25:10.387234+00:00
+results/mpc_phase1/discomfort_comparison.csv,1538,ec1fca3ad388c48034e34085587b99be9996bcce600b0b20e8cc7a1db62da625,2026-03-13T12:48:06.123777+00:00
+results/mpc_phase1/discomfort_parity_report.csv,880,a4f08fb617ad26a30d3e39224013ad0d94d0b1ca1bcedd0e3cd126fe47c0adc7,2026-03-16T08:35:23.087568+00:00
+WORKFLOW_IDF_TO_BOPTEST_MPC_RESULTS.md,5945,786607805c6fa042906c2cc4c3d306482550f54f85f5dfce6ec1a134dab8a66c,2026-03-16T07:46:27.261137+00:00

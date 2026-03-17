@@ -1,0 +1,31 @@
+case,predictor,episode_id,status,issue_count,issues,file
+bestest_hydronic,rc,te_std_01,PASS,0,,C:/Users/AVoelser/OneDrive - Scientific Network South Tyrol/3_PhD/Simulation/PINN/results/eu_rc_vs_pinn/raw/bestest_hydronic/rc/te_std_01.json
+bestest_hydronic,rc,te_std_02,PASS,0,,C:/Users/AVoelser/OneDrive - Scientific Network South Tyrol/3_PhD/Simulation/PINN/results/eu_rc_vs_pinn/raw/bestest_hydronic/rc/te_std_02.json
+bestest_hydronic,rc,te_std_03,PASS,0,,C:/Users/AVoelser/OneDrive - Scientific Network South Tyrol/3_PhD/Simulation/PINN/results/eu_rc_vs_pinn/raw/bestest_hydronic/rc/te_std_03.json
+bestest_hydronic,pinn,te_std_01,PASS,0,,C:/Users/AVoelser/OneDrive - Scientific Network South Tyrol/3_PhD/Simulation/PINN/results/eu_rc_vs_pinn/raw/bestest_hydronic/pinn/te_std_01.json
+bestest_hydronic,pinn,te_std_02,PASS,0,,C:/Users/AVoelser/OneDrive - Scientific Network South Tyrol/3_PhD/Simulation/PINN/results/eu_rc_vs_pinn/raw/bestest_hydronic/pinn/te_std_02.json
+bestest_hydronic,pinn,te_std_03,PASS,0,,C:/Users/AVoelser/OneDrive - Scientific Network South Tyrol/3_PhD/Simulation/PINN/results/eu_rc_vs_pinn/raw/bestest_hydronic/pinn/te_std_03.json
+bestest_hydronic_heat_pump,rc,te_std_01,PASS,0,,C:/Users/AVoelser/OneDrive - Scientific Network South Tyrol/3_PhD/Simulation/PINN/results/eu_rc_vs_pinn/raw/bestest_hydronic_heat_pump/rc/te_std_01.json
+bestest_hydronic_heat_pump,rc,te_std_02,PASS,0,,C:/Users/AVoelser/OneDrive - Scientific Network South Tyrol/3_PhD/Simulation/PINN/results/eu_rc_vs_pinn/raw/bestest_hydronic_heat_pump/rc/te_std_02.json
+bestest_hydronic_heat_pump,rc,te_std_03,PASS,0,,C:/Users/AVoelser/OneDrive - Scientific Network South Tyrol/3_PhD/Simulation/PINN/results/eu_rc_vs_pinn/raw/bestest_hydronic_heat_pump/rc/te_std_03.json
+bestest_hydronic_heat_pump,pinn,te_std_01,PASS,0,,C:/Users/AVoelser/OneDrive - Scientific Network South Tyrol/3_PhD/Simulation/PINN/results/eu_rc_vs_pinn/raw/bestest_hydronic_heat_pump/pinn/te_std_01.json
+bestest_hydronic_heat_pump,pinn,te_std_02,PASS,0,,C:/Users/AVoelser/OneDrive - Scientific Network South Tyrol/3_PhD/Simulation/PINN/results/eu_rc_vs_pinn/raw/bestest_hydronic_heat_pump/pinn/te_std_02.json
+bestest_hydronic_heat_pump,pinn,te_std_03,PASS,0,,C:/Users/AVoelser/OneDrive - Scientific Network South Tyrol/3_PhD/Simulation/PINN/results/eu_rc_vs_pinn/raw/bestest_hydronic_heat_pump/pinn/te_std_03.json
+multizone_residential_hydronic,rc,te_std_01,PASS,0,,C:/Users/AVoelser/OneDrive - Scientific Network South Tyrol/3_PhD/Simulation/PINN/results/eu_rc_vs_pinn/raw/multizone_residential_hydronic/rc/te_std_01.json
+multizone_residential_hydronic,rc,te_std_02,PASS,0,,C:/Users/AVoelser/OneDrive - Scientific Network South Tyrol/3_PhD/Simulation/PINN/results/eu_rc_vs_pinn/raw/multizone_residential_hydronic/rc/te_std_02.json
+multizone_residential_hydronic,rc,te_std_03,PASS,0,,C:/Users/AVoelser/OneDrive - Scientific Network South Tyrol/3_PhD/Simulation/PINN/results/eu_rc_vs_pinn/raw/multizone_residential_hydronic/rc/te_std_03.json
+multizone_residential_hydronic,pinn,te_std_01,PASS,0,,C:/Users/AVoelser/OneDrive - Scientific Network South Tyrol/3_PhD/Simulation/PINN/results/eu_rc_vs_pinn/raw/multizone_residential_hydronic/pinn/te_std_01.json
+multizone_residential_hydronic,pinn,te_std_02,PASS,0,,C:/Users/AVoelser/OneDrive - Scientific Network South Tyrol/3_PhD/Simulation/PINN/results/eu_rc_vs_pinn/raw/multizone_residential_hydronic/pinn/te_std_02.json
+multizone_residential_hydronic,pinn,te_std_03,PASS,0,,C:/Users/AVoelser/OneDrive - Scientific Network South Tyrol/3_PhD/Simulation/PINN/results/eu_rc_vs_pinn/raw/multizone_residential_hydronic/pinn/te_std_03.json
+singlezone_commercial_hydronic,rc,te_std_01,WARN,2,"out_of_range_power_w:[-200.0,120000.0] | very_high_power_peak_gt_50kW",C:/Users/AVoelser/OneDrive - Scientific Network South Tyrol/3_PhD/Simulation/PINN/results/eu_rc_vs_pinn/raw/singlezone_commercial_hydronic/rc/te_std_01.json
+singlezone_commercial_hydronic,rc,te_std_02,WARN,1,very_high_power_peak_gt_50kW,C:/Users/AVoelser/OneDrive - Scientific Network South Tyrol/3_PhD/Simulation/PINN/results/eu_rc_vs_pinn/raw/singlezone_commercial_hydronic/rc/te_std_02.json
+singlezone_commercial_hydronic,rc,te_std_03,PASS,0,,C:/Users/AVoelser/OneDrive - Scientific Network South Tyrol/3_PhD/Simulation/PINN/results/eu_rc_vs_pinn/raw/singlezone_commercial_hydronic/rc/te_std_03.json
+singlezone_commercial_hydronic,pinn,te_std_01,WARN,2,"out_of_range_power_w:[-200.0,120000.0] | very_high_power_peak_gt_50kW",C:/Users/AVoelser/OneDrive - Scientific Network South Tyrol/3_PhD/Simulation/PINN/results/eu_rc_vs_pinn/raw/singlezone_commercial_hydronic/pinn/te_std_01.json
+singlezone_commercial_hydronic,pinn,te_std_02,PASS,0,,C:/Users/AVoelser/OneDrive - Scientific Network South Tyrol/3_PhD/Simulation/PINN/results/eu_rc_vs_pinn/raw/singlezone_commercial_hydronic/pinn/te_std_02.json
+singlezone_commercial_hydronic,pinn,te_std_03,PASS,0,,C:/Users/AVoelser/OneDrive - Scientific Network South Tyrol/3_PhD/Simulation/PINN/results/eu_rc_vs_pinn/raw/singlezone_commercial_hydronic/pinn/te_std_03.json
+twozone_apartment_hydronic,rc,te_std_01,PASS,0,,C:/Users/AVoelser/OneDrive - Scientific Network South Tyrol/3_PhD/Simulation/PINN/results/eu_rc_vs_pinn/raw/twozone_apartment_hydronic/rc/te_std_01.json
+twozone_apartment_hydronic,rc,te_std_02,PASS,0,,C:/Users/AVoelser/OneDrive - Scientific Network South Tyrol/3_PhD/Simulation/PINN/results/eu_rc_vs_pinn/raw/twozone_apartment_hydronic/rc/te_std_02.json
+twozone_apartment_hydronic,rc,te_std_03,PASS,0,,C:/Users/AVoelser/OneDrive - Scientific Network South Tyrol/3_PhD/Simulation/PINN/results/eu_rc_vs_pinn/raw/twozone_apartment_hydronic/rc/te_std_03.json
+twozone_apartment_hydronic,pinn,te_std_01,PASS,0,,C:/Users/AVoelser/OneDrive - Scientific Network South Tyrol/3_PhD/Simulation/PINN/results/eu_rc_vs_pinn/raw/twozone_apartment_hydronic/pinn/te_std_01.json
+twozone_apartment_hydronic,pinn,te_std_02,PASS,0,,C:/Users/AVoelser/OneDrive - Scientific Network South Tyrol/3_PhD/Simulation/PINN/results/eu_rc_vs_pinn/raw/twozone_apartment_hydronic/pinn/te_std_02.json
+twozone_apartment_hydronic,pinn,te_std_03,PASS,0,,C:/Users/AVoelser/OneDrive - Scientific Network South Tyrol/3_PhD/Simulation/PINN/results/eu_rc_vs_pinn/raw/twozone_apartment_hydronic/pinn/te_std_03.json

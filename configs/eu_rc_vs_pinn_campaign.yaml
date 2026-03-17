@@ -1,0 +1,75 @@
+campaign_id: eu_rc_vs_pinn_v1
+scope:
+  region: europe_only
+  include_under_development: false
+  notes:
+    - Compare pure RC models against PINN only.
+    - Do not include hybrid RC-neural models in this benchmark.
+
+# API ids should be confirmed from /testcases at runtime.
+# The expected ids below follow common BOPTEST naming conventions.
+testcases:
+  - display_name: BESTEST Hydronic
+    expected_api_id: bestest_hydronic
+    location: Brussels, Belgium
+    category: hydronic_heavy
+    rc_candidates: [R3C2, R4C3, R5C3]
+
+  - display_name: BESTEST Hydronic Heat Pump
+    expected_api_id: bestest_hydronic_heat_pump
+    location: Brussels, Belgium
+    category: hydronic_heavy
+    rc_candidates: [R3C2, R4C3, R5C3]
+
+  - display_name: Single Zone Commercial Hydronic
+    expected_api_id: singlezone_commercial_hydronic
+    location: Copenhagen, Denmark
+    category: hydronic_heavy
+    rc_candidates: [R3C2, R4C3, R5C3]
+
+  - display_name: Two Zone Apartment Hydronic
+    expected_api_id: twozone_apartment_hydronic
+    location: Milan, Italy
+    category: hydronic_heavy
+    rc_candidates: [R3C2, R4C3, R5C3]
+
+  - display_name: Multizone Residential Hydronic
+    expected_api_id: multizone_residential_hydronic
+    location: Copenhagen, Denmark
+    category: hydronic_heavy
+    rc_candidates: [R3C2, R4C3, R5C3]
+
+models:
+  pinn:
+    per_testcase_model: true
+    train_split_strategy: testcase_local
+  rc:
+    compare_all_candidates_to_pinn: true
+    include_hybrid_rc_neural: false
+
+evaluation:
+  stage_1:
+    description: Fast screen with short horizon
+    episode_days: 7
+    rc_selection_rule: "Select best RC per testcase on multi-objective score"
+  stage_2:
+    description: Deep evaluation on selected finalists
+    episode_days: 30
+    run_on:
+      - best_rc_per_testcase
+      - pinn_per_testcase
+
+selection_score:
+  # Lower is better. Weights sum to 1.0.
+  metric_weights:
+    cost_tot: 0.45
+    tdis_tot: 0.35
+    idis_tot: 0.10
+    solve_time_ms: 0.10
+
+reporting:
+  outputs:
+    - results/eu_rc_vs_pinn/summary_stage1.csv
+    - results/eu_rc_vs_pinn/summary_stage2.csv
+    - results/eu_rc_vs_pinn/model_selection.csv
+  discomfort_parity_check: true

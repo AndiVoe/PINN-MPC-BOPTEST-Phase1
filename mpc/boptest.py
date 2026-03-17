@@ -1,4 +1,4 @@
-"""Minimal BOPTEST HTTP client for WP4 MPC experiments."""
+﻿"""Minimal BOPTEST HTTP client for WP4 MPC experiments."""
 
 from __future__ import annotations
 

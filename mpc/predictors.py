@@ -1,4 +1,4 @@
-"""
+﻿"""
 Interior-model predictors for rolling-horizon MPC.
 
 Two concrete implementations:
@@ -12,8 +12,8 @@ Both expose the same interface used by MPCSolver:
         comfort_bounds_seq, w_comfort, w_energy, w_smooth
     )
 
-    obj  : float – total weighted cost
-    grad : np.ndarray shape (N,) – d_obj/d_u, or None → solver uses FD
+    obj  : float ÔÇô total weighted cost
+    grad : np.ndarray shape (N,) ÔÇô d_obj/d_u, or None ÔåÆ solver uses FD
 """
 
 from __future__ import annotations
@@ -169,7 +169,7 @@ class RCPredictor(PredictorBase):
             cost += w_energy * u
             u_prv = u_prev if i == 0 else float(u_np[i - 1])
             cost += w_smooth * abs(u - u_prv)
-        return cost, None  # None → solver uses finite differences
+        return cost, None  # None ÔåÆ solver uses finite differences
 
 
 # ---------------------------------------------------------------------------

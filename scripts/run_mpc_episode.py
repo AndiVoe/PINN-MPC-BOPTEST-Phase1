@@ -1,6 +1,6 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
-WP4 – MPC episode runner.
+WP4 - MPC episode runner.
 
 Runs one rolling-horizon MPC experiment for a given episode definition,
 using either the RC whitebox predictor or the trained PINN surrogate as
@@ -25,7 +25,7 @@ from typing import Any
 import yaml
 
 # ---------------------------------------------------------------------------
-# Path setup – makes sibling packages importable when run as a script.
+# Path setup - makes sibling packages importable when run as a script.
 # ---------------------------------------------------------------------------
 ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
@@ -115,7 +115,7 @@ def run_mpc_episode(
     client.set_scenario(scenario)
 
     print(f"  Initializing episode '{episode['id']}' "
-          f"(start={start_time_s}s, warmup={warmup_s}s, steps={n_steps}) …", flush=True)
+          f"(start={start_time_s}s, warmup={warmup_s}s, steps={n_steps}) ...", flush=True)
     init_payload = client.initialize(start_time_s=start_time_s, warmup_period_s=warmup_s)
     client.set_step(step_s)
 
@@ -226,7 +226,7 @@ def run_mpc_episode(
             time_s=t_s,
         )
 
-        # Apply setpoint to plant (convert degC → K for oveTZonSet_u).
+        # Apply setpoint to plant (convert degC -> K for oveTZonSet_u).
         u_cmd = u_opt + 273.15 if ("Set" in u_val_name or "TSet" in u_val_name or "ZonSet" in u_val_name) else u_opt
         control_cmd: dict[str, float] = {u_val_name: u_cmd}
         if u_act_name:
@@ -255,7 +255,7 @@ def run_mpc_episode(
         if (step_idx + 1) % 96 == 0 or step_idx == n_steps - 1:
             print(
                 f"  step {step_idx + 1:4d}/{n_steps}  t_s={t_s:8d}  "
-                f"T_zone={t_zone:.2f}°C  u={u_opt:.2f}°C  "
+                f"T_zone={t_zone:.2f} degC  u={u_opt:.2f} degC  "
                 f"solve={solve_info['solve_time_ms']:.1f}ms  "
                 f"{'OK' if solve_info['success'] else 'WARN:infeasible'}",
                 flush=True,
@@ -345,11 +345,11 @@ def main() -> None:
     # ------------------------------------------------------------------ predictor
     ckpt_path = ROOT / args.checkpoint
     if args.predictor == "pinn":
-        print("Loading PINN predictor …", flush=True)
+        print("Loading PINN predictor ...", flush=True)
         predictor = PINNPredictor(ckpt_path)
         predictor_name = "pinn"
     else:
-        print("Loading RC predictor from checkpoint …", flush=True)
+        print("Loading RC predictor from checkpoint ...", flush=True)
         predictor = RCPredictor.from_checkpoint(ckpt_path)
         predictor_name = "rc"
         print(
@@ -385,65 +385,75 @@ def main() -> None:
 
     # ------------------------------------------------------------------ connect
     boptest_url = _resolve_boptest_url(args.url)
-    print(f"Connecting to BOPTEST at {boptest_url} …", flush=True)
+    print(f"Connecting to BOPTEST at {boptest_url} ...", flush=True)
     client = BoptestClient(boptest_url)
 
     if args.reuse_testid:
-        print(f"Attaching to testid {args.reuse_testid} …", flush=True)
+        print(f"Attaching to testid {args.reuse_testid} ...", flush=True)
         client.attach_testid(args.reuse_testid)
+        owns_test_session = False
     else:
-        print(f"Selecting test case '{args.case}' …", flush=True)
+        owns_test_session = True
+        print(f"Selecting test case '{args.case}' ...", flush=True)
         testid = client.select_test_case(args.case)
         print(f"  testid={testid}", flush=True)
-        print("Waiting for Running state …", flush=True)
+        print("Waiting for Running state ...", flush=True)
         try:
             client.wait_running(timeout_s=args.startup_timeout_s)
         except TimeoutError:
             if not args.recover_from_queued:
                 raise
-            print("Startup timeout in Queued state. Attempting one-time recovery …", flush=True)
+            print("Startup timeout in Queued state. Attempting one-time recovery ...", flush=True)
             try:
                 stopped = client.stop()
                 print(f"  stop({testid}) -> {stopped}", flush=True)
             except Exception as exc:
                 print(f"  Warning: stop failed: {exc}", flush=True)
 
-            print(f"Re-selecting test case '{args.case}' after cleanup …", flush=True)
+            print(f"Re-selecting test case '{args.case}' after cleanup ...", flush=True)
             testid = client.select_test_case(args.case)
             print(f"  retry testid={testid}", flush=True)
-            print("Waiting for Running state (retry) …", flush=True)
+            print("Waiting for Running state (retry) ...", flush=True)
             client.wait_running(timeout_s=args.startup_timeout_s)
 
     # ------------------------------------------------------------------ run
     output_dir = ROOT / args.output_dir / predictor_name
     _ensure_dir(output_dir)
 
-    for episode in target_episodes:
-        ep_id = episode["id"]
-        out_path = output_dir / f"{ep_id}.json"
-        print(f"\n{'='*60}", flush=True)
-        print(f"Episode {ep_id} | predictor={predictor_name}", flush=True)
-        print(f"{'='*60}", flush=True)
+    try:
+        for episode in target_episodes:
+            ep_id = episode["id"]
+            out_path = output_dir / f"{ep_id}.json"
+            print(f"\n{'='*60}", flush=True)
+            print(f"Episode {ep_id} | predictor={predictor_name}", flush=True)
+            print(f"{'='*60}", flush=True)
 
-        try:
-            result = run_mpc_episode(
-                client=client,
-                case_name=args.case,
-                case_mappings=case_mappings,
-                episode=episode,
-                defaults=defaults,
-                solver=solver,
-                predictor_name=predictor_name,
-            )
-            with out_path.open("w", encoding="utf-8") as f:
-                json.dump(result, f, indent=2)
-            print(f"  Saved → {out_path}", flush=True)
-            print("  Challenge KPIs:", json.dumps(result["challenge_kpis"], indent=4), flush=True)
-            print("  Diagnostic KPIs:", json.dumps(result["diagnostic_kpis"], indent=4), flush=True)
-        except Exception as exc:
-            print(f"  ERROR running episode {ep_id}: {exc}", flush=True)
-            import traceback
-            traceback.print_exc()
+            try:
+                result = run_mpc_episode(
+                    client=client,
+                    case_name=args.case,
+                    case_mappings=case_mappings,
+                    episode=episode,
+                    defaults=defaults,
+                    solver=solver,
+                    predictor_name=predictor_name,
+                )
+                with out_path.open("w", encoding="utf-8") as f:
+                    json.dump(result, f, indent=2)
+                print(f"  Saved -> {out_path}", flush=True)
+                print("  Challenge KPIs:", json.dumps(result["challenge_kpis"], indent=4), flush=True)
+                print("  Diagnostic KPIs:", json.dumps(result["diagnostic_kpis"], indent=4), flush=True)
+            except Exception as exc:
+                print(f"  ERROR running episode {ep_id}: {exc}", flush=True)
+                import traceback
+                traceback.print_exc()
+    finally:
+        if owns_test_session:
+            try:
+                stopped = client.stop()
+                print(f"Stopped MPC test session: {stopped}", flush=True)
+            except Exception as exc:
+                print(f"Warning: failed to stop MPC test session: {exc}", flush=True)
 
     print("\nAll done.", flush=True)
 

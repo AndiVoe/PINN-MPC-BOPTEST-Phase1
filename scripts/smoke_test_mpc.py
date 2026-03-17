@@ -1,4 +1,4 @@
-"""Quick smoke test for WP4 MPC modules. Run from PINN root."""
+﻿"""Quick smoke test for WP4 MPC modules. Run from PINN root."""
 import sys
 sys.path.insert(0, ".")
 

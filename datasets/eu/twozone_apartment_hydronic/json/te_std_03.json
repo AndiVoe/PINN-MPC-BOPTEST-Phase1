@@ -1,0 +1,6066 @@
+{
+  "dataset_id": "te_std_03",
+  "split": "test",
+  "case_name": "twozone_apartment_hydronic",
+  "weather_class": "standard",
+  "control_interval_s": 900,
+  "horizon_s": 900,
+  "records": [
+    {
+      "time_s": 14515200,
+      "T_zone_degC": 23.734511008430445,
+      "T_outdoor_degC": 19.25712756849316,
+      "H_global_Wm2": 0.0,
+      "u_heating": 19.30635065147999,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14516100,
+      "T_zone_degC": 23.730283278583443,
+      "T_outdoor_degC": 19.119006849315042,
+      "H_global_Wm2": 0.0,
+      "u_heating": 23.965356031854245,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14517000,
+      "T_zone_degC": 23.702947274205314,
+      "T_outdoor_degC": 18.97138270547947,
+      "H_global_Wm2": 0.0,
+      "u_heating": 19.122051792817647,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14517900,
+      "T_zone_degC": 23.66805990202488,
+      "T_outdoor_degC": 18.80000000000001,
+      "H_global_Wm2": 0.0,
+      "u_heating": 23.861200537608035,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14518800,
+      "T_zone_degC": 23.62729865008157,
+      "T_outdoor_degC": 18.595804794520575,
+      "H_global_Wm2": 0.0,
+      "u_heating": 19.358800090711053,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14519700,
+      "T_zone_degC": 23.58137448608494,
+      "T_outdoor_degC": 18.368493150684913,
+      "H_global_Wm2": 0.0,
+      "u_heating": 23.99442420174408,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14520600,
+      "T_zone_degC": 23.532141468788836,
+      "T_outdoor_degC": 18.131934931506862,
+      "H_global_Wm2": 0.0,
+      "u_heating": 20.713426369206314,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14521500,
+      "T_zone_degC": 23.481787182333505,
+      "T_outdoor_degC": 17.899999999999977,
+      "H_global_Wm2": 0.0,
+      "u_heating": 21.966409891636005,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14522400,
+      "T_zone_degC": 23.431924151228827,
+      "T_outdoor_degC": 17.67500000000001,
+      "H_global_Wm2": 0.0,
+      "u_heating": 19.08946432533765,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14523300,
+      "T_zone_degC": 23.382147290872922,
+      "T_outdoor_degC": 17.44999999999999,
+      "H_global_Wm2": 0.0,
+      "u_heating": 23.439837329538154,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14524200,
+      "T_zone_degC": 23.33221792145565,
+      "T_outdoor_degC": 17.225000000000023,
+      "H_global_Wm2": 0.0,
+      "u_heating": 22.64392967494142,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14525100,
+      "T_zone_degC": 23.282050315791082,
+      "T_outdoor_degC": 17.0,
+      "H_global_Wm2": 0.0,
+      "u_heating": 22.79518941963246,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14526000,
+      "T_zone_degC": 23.231580587048143,
+      "T_outdoor_degC": 16.774999999999977,
+      "H_global_Wm2": 0.0,
+      "u_heating": 22.051904938140744,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14526900,
+      "T_zone_degC": 23.180816654738862,
+      "T_outdoor_degC": 16.55000000000001,
+      "H_global_Wm2": 0.0,
+      "u_heating": 20.69225624978623,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14527800,
+      "T_zone_degC": 23.129748898810988,
+      "T_outdoor_degC": 16.32499999999999,
+      "H_global_Wm2": 0.0,
+      "u_heating": 22.583502470743188,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14528700,
+      "T_zone_degC": 23.078370852759463,
+      "T_outdoor_degC": 16.100000000000023,
+      "H_global_Wm2": 0.0,
+      "u_heating": 23.000349224150426,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14529600,
+      "T_zone_degC": 23.026724056118837,
+      "T_outdoor_degC": 15.875,
+      "H_global_Wm2": 0.0,
+      "u_heating": 21.677921113919684,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14530500,
+      "T_zone_degC": 22.974893897991365,
+      "T_outdoor_degC": 15.649999999999977,
+      "H_global_Wm2": 0.0,
+      "u_heating": 22.10849142203093,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14531400,
+      "T_zone_degC": 22.922960473237538,
+      "T_outdoor_degC": 15.425000000000011,
+      "H_global_Wm2": 0.0,
+      "u_heating": 20.606403148876154,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14532300,
+      "T_zone_degC": 22.870925784768758,
+      "T_outdoor_degC": 15.199999999999989,
+      "H_global_Wm2": 0.0,
+      "u_heating": 23.00634423446656,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14533200,
+      "T_zone_degC": 22.818595388773588,
+      "T_outdoor_degC": 14.975000000000023,
+      "H_global_Wm2": 0.0,
+      "u_heating": 21.607705963997752,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14534100,
+      "T_zone_degC": 22.76555180520336,
+      "T_outdoor_degC": 14.75,
+      "H_global_Wm2": 0.0,
+      "u_heating": 19.929016771879134,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14535000,
+      "T_zone_degC": 22.712852015804174,
+      "T_outdoor_degC": 14.524999999999977,
+      "H_global_Wm2": 4.0375000000000005,
+      "u_heating": 19.573585224338004,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14535900,
+      "T_zone_degC": 22.667217108394254,
+      "T_outdoor_degC": 14.300000000000011,
+      "H_global_Wm2": 15.516666666666666,
+      "u_heating": 19.44251091927556,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14536800,
+      "T_zone_degC": 22.64847464904824,
+      "T_outdoor_degC": 14.307031250000023,
+      "H_global_Wm2": 33.487500000000004,
+      "u_heating": 22.922202684570422,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14537700,
+      "T_zone_degC": 22.68804032909935,
+      "T_outdoor_degC": 14.652083333333337,
+      "H_global_Wm2": 57.0,
+      "u_heating": 23.14523191622308,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14538600,
+      "T_zone_degC": 22.77991370141399,
+      "T_outdoor_degC": 15.146093749999977,
+      "H_global_Wm2": 84.57165178571428,
+      "u_heating": 21.731497282836735,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14539500,
+      "T_zone_degC": 22.905509674963753,
+      "T_outdoor_degC": 15.600000000000023,
+      "H_global_Wm2": 115.47440476190475,
+      "u_heating": 19.66752437553198,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14540400,
+      "T_zone_degC": 23.055589961260125,
+      "T_outdoor_degC": 15.963281250000023,
+      "H_global_Wm2": 149.88995535714284,
+      "u_heating": 20.72320880108978,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14541300,
+      "T_zone_degC": 23.22258126173074,
+      "T_outdoor_degC": 16.322916666666686,
+      "H_global_Wm2": 188.0,
+      "u_heating": 20.71199976873921,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14542200,
+      "T_zone_degC": 23.397447924500284,
+      "T_outdoor_degC": 16.69609374999999,
+      "H_global_Wm2": 228.64335160488247,
+      "u_heating": 22.78820584109128,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14543100,
+      "T_zone_degC": 23.589509012130407,
+      "T_outdoor_degC": 17.100000000000023,
+      "H_global_Wm2": 270.03108047016275,
+      "u_heating": 19.92732457470247,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14544000,
+      "T_zone_degC": 23.70541761585622,
+      "T_outdoor_degC": 17.524999999999977,
+      "H_global_Wm2": 311.4032691003616,
+      "u_heating": 21.08951427927412,
+      "power_W": 9.712684020362772e-17,
+      "energy_Wh_step": 2.428171005090693e-17
+    },
+    {
+      "time_s": 14544900,
+      "T_zone_degC": 23.89721305081258,
+      "T_outdoor_degC": 17.94999999999999,
+      "H_global_Wm2": 352.0,
+      "u_heating": 23.534893360902984,
+      "power_W": 9.712456493993007e-17,
+      "energy_Wh_step": 2.4281141234982518e-17
+    },
+    {
+      "time_s": 14545800,
+      "T_zone_degC": 24.114573236442823,
+      "T_outdoor_degC": 18.375,
+      "H_global_Wm2": 391.65574317642404,
+      "u_heating": 23.82350284849561,
+      "power_W": 9.712883775863187e-17,
+      "energy_Wh_step": 2.4282209439657967e-17
+    },
+    {
+      "time_s": 14546700,
+      "T_zone_degC": 24.337651730826565,
+      "T_outdoor_degC": 18.80000000000001,
+      "H_global_Wm2": 430.6262856012658,
+      "u_heating": 20.994614114904007,
+      "power_W": 9.712769542130979e-17,
+      "energy_Wh_step": 2.4281923855327447e-17
+    },
+    {
+      "time_s": 14547600,
+      "T_zone_degC": 24.578571292250615,
+      "T_outdoor_degC": 19.225000000000023,
+      "H_global_Wm2": 468.7836852254747,
+      "u_heating": 19.234711239869082,
+      "power_W": 9.711501685086687e-17,
+      "energy_Wh_step": 2.4278754212716717e-17
+    },
+    {
+      "time_s": 14548500,
+      "T_zone_degC": 24.81219646778061,
+      "T_outdoor_degC": 19.649999999999977,
+      "H_global_Wm2": 506.0,
+      "u_heating": 23.25514783927845,
+      "power_W": 9.712705903104274e-17,
+      "energy_Wh_step": 2.4281764757760685e-17
+    },
+    {
+      "time_s": 14549400,
+      "T_zone_degC": 25.033871069883958,
+      "T_outdoor_degC": 20.07499999999999,
+      "H_global_Wm2": 537.5553915334302,
+      "u_heating": 19.69264974841181,
+      "power_W": 9.712465016655638e-17,
+      "energy_Wh_step": 2.4281162541639096e-17
+    },
+    {
+      "time_s": 14550300,
+      "T_zone_degC": 25.23976846754806,
+      "T_outdoor_degC": 20.5,
+      "H_global_Wm2": 562.4445857558139,
+      "u_heating": 19.229019556402044,
+      "power_W": 9.712647325974593e-17,
+      "energy_Wh_step": 2.4281618314936482e-17
+    },
+    {
+      "time_s": 14551200,
+      "T_zone_degC": 25.429673187208152,
+      "T_outdoor_degC": 20.900781250000023,
+      "H_global_Wm2": 586.1114871002907,
+      "u_heating": 23.77208373651792,
+      "power_W": 9.712175381504806e-17,
+      "energy_Wh_step": 2.4280438453762015e-17
+    },
+    {
+      "time_s": 14552100,
+      "T_zone_degC": 25.601010716487167,
+      "T_outdoor_degC": 21.26875000000001,
+      "H_global_Wm2": 614.0,
+      "u_heating": 23.4432320476703,
+      "power_W": 9.712657895575394e-17,
+      "energy_Wh_step": 2.4281644738938486e-17
+    },
+    {
+      "time_s": 14553000,
+      "T_zone_degC": 25.763388801990004,
+      "T_outdoor_degC": 21.627343750000023,
+      "H_global_Wm2": 651.0936322879136,
+      "u_heating": 22.504048149822214,
+      "power_W": 9.713075284718353e-17,
+      "energy_Wh_step": 2.4282688211795882e-17
+    },
+    {
+      "time_s": 14553900,
+      "T_zone_degC": 25.924659944592122,
+      "T_outdoor_degC": 22.0,
+      "H_global_Wm2": 694.6023992793973,
+      "u_heating": 21.97744144378604,
+      "power_W": 9.712903590055517e-17,
+      "energy_Wh_step": 2.4282258975138792e-17
+    },
+    {
+      "time_s": 14554800,
+      "T_zone_degC": 26.082794138533814,
+      "T_outdoor_degC": 22.39531249999999,
+      "H_global_Wm2": 738.3099666311824,
+      "u_heating": 20.959391074481037,
+      "power_W": 9.712795620513771e-17,
+      "energy_Wh_step": 2.4281989051284428e-17
+    },
+    {
+      "time_s": 14555700,
+      "T_zone_degC": 26.229268261704703,
+      "T_outdoor_degC": 22.80000000000001,
+      "H_global_Wm2": 776.0,
+      "u_heating": 20.54391003276506,
+      "power_W": 9.713098344853058e-17,
+      "energy_Wh_step": 2.4282745862132644e-17
+    },
+    {
+      "time_s": 14556600,
+      "T_zone_degC": 26.355232074653713,
+      "T_outdoor_degC": 23.204687499999977,
+      "H_global_Wm2": 805.1779861863489,
+      "u_heating": 21.728205476490174,
+      "power_W": 9.712686035293384e-17,
+      "energy_Wh_step": 2.428171508823346e-17
+    },
+    {
+      "time_s": 14557500,
+      "T_zone_degC": 26.458979753531537,
+      "T_outdoor_degC": 23.600000000000023,
+      "H_global_Wm2": 827.7821415673528,
+      "u_heating": 20.67516165295741,
+      "power_W": 9.726155243228862e-17,
+      "energy_Wh_step": 2.4315388108072156e-17
+    },
+    {
+      "time_s": 14558400,
+      "T_zone_degC": 26.540880273858534,
+      "T_outdoor_degC": 23.974609375,
+      "H_global_Wm2": 844.2452261646804,
+      "u_heating": 20.23869413552415,
+      "power_W": 9.714123802380682e-17,
+      "energy_Wh_step": 2.4285309505951705e-17
+    },
+    {
+      "time_s": 14559300,
+      "T_zone_degC": 26.59876236573865,
+      "T_outdoor_degC": 24.328125,
+      "H_global_Wm2": 855.0,
+      "u_heating": 22.155607633259955,
+      "power_W": 9.706964939519282e-17,
+      "energy_Wh_step": 2.4267412348798206e-17
+    },
+    {
+      "time_s": 14560200,
+      "T_zone_degC": 26.638464853889502,
+      "T_outdoor_degC": 24.667578124999977,
+      "H_global_Wm2": 860.8934044471154,
+      "u_heating": 19.805825958382687,
+      "power_W": 9.712544851887824e-17,
+      "energy_Wh_step": 2.428136212971956e-17
+    },
+    {
+      "time_s": 14561100,
+      "T_zone_degC": 26.666073667592173,
+      "T_outdoor_degC": 25.0,
+      "H_global_Wm2": 861.9208733974359,
+      "u_heating": 20.258711981225012,
+      "power_W": 9.716617656771971e-17,
+      "energy_Wh_step": 2.429154414192993e-17
+    },
+    {
+      "time_s": 14562000,
+      "T_zone_degC": 26.685682333412558,
+      "T_outdoor_degC": 25.323515625000027,
+      "H_global_Wm2": 857.2379056490385,
+      "u_heating": 21.53138494396495,
+      "power_W": 9.704612676923687e-17,
+      "energy_Wh_step": 2.4261531692309216e-17
+    },
+    {
+      "time_s": 14562900,
+      "T_zone_degC": 26.703043039112856,
+      "T_outdoor_degC": 25.623125000000016,
+      "H_global_Wm2": 846.0,
+      "u_heating": 22.82623710362731,
+      "power_W": 9.7037182891599e-17,
+      "energy_Wh_step": 2.425929572289975e-17
+    },
+    {
+      "time_s": 14563800,
+      "T_zone_degC": 26.722873473936204,
+      "T_outdoor_degC": 25.886171875000002,
+      "H_global_Wm2": 826.8583456503378,
+      "u_heating": 23.469032705574634,
+      "power_W": 9.704803683620923e-17,
+      "energy_Wh_step": 2.426200920905231e-17
+    },
+    {
+      "time_s": 14564700,
+      "T_zone_degC": 26.747643151856153,
+      "T_outdoor_degC": 26.100000000000023,
+      "H_global_Wm2": 802.9191300675676,
+      "u_heating": 23.832524968626423,
+      "power_W": 9.704691484188072e-17,
+      "energy_Wh_step": 2.426172871047018e-17
+    },
+    {
+      "time_s": 14565600,
+      "T_zone_degC": 26.778055986528727,
+      "T_outdoor_degC": 26.26678571428573,
+      "H_global_Wm2": 780.0203494510135,
+      "u_heating": 21.95379458808474,
+      "power_W": 9.713268701131326e-17,
+      "energy_Wh_step": 2.4283171752828316e-17
+    },
+    {
+      "time_s": 14566500,
+      "T_zone_degC": 26.809487274936373,
+      "T_outdoor_degC": 26.401428571428596,
+      "H_global_Wm2": 764.0,
+      "u_heating": 20.27442565910972,
+      "power_W": 9.715317916876685e-17,
+      "energy_Wh_step": 2.4288294792191713e-17
+    },
+    {
+      "time_s": 14567400,
+      "T_zone_degC": 26.837775960218437,
+      "T_outdoor_degC": 26.510357142857174,
+      "H_global_Wm2": 753.4152655562539,
+      "u_heating": 20.548973647775753,
+      "power_W": 9.713005768819268e-17,
+      "energy_Wh_step": 2.428251442204817e-17
+    },
+    {
+      "time_s": 14568300,
+      "T_zone_degC": 26.86150191403584,
+      "T_outdoor_degC": 26.600000000000023,
+      "H_global_Wm2": 742.9091766184789,
+      "u_heating": 21.67239309147456,
+      "power_W": 9.712798985914931e-17,
+      "energy_Wh_step": 2.4281997464787327e-17
+    },
+    {
+      "time_s": 14569200,
+      "T_zone_degC": 26.881135881961654,
+      "T_outdoor_degC": 26.68005952380952,
+      "H_global_Wm2": 732.4484993714644,
+      "u_heating": 23.23265500866153,
+      "power_W": 9.712948426752308e-17,
+      "energy_Wh_step": 2.428237106688077e-17
+    },
+    {
+      "time_s": 14570100,
+      "T_zone_degC": 26.897812767619996,
+      "T_outdoor_degC": 26.756349206349228,
+      "H_global_Wm2": 722.0,
+      "u_heating": 19.872416258477,
+      "power_W": 9.712533535847271e-17,
+      "energy_Wh_step": 2.4281333839618177e-17
+    },
+    {
+      "time_s": 14571000,
+      "T_zone_degC": 26.91214462399654,
+      "T_outdoor_degC": 26.829464285714266,
+      "H_global_Wm2": 711.765746124031,
+      "u_heating": 20.584492349378756,
+      "power_W": 9.712510033497968e-17,
+      "energy_Wh_step": 2.428127508374492e-17
+    },
+    {
+      "time_s": 14571900,
+      "T_zone_degC": 26.924084304924236,
+      "T_outdoor_degC": 26.899999999999977,
+      "H_global_Wm2": 701.7454780361757,
+      "u_heating": 23.943686657061946,
+      "power_W": 9.71269440961798e-17,
+      "energy_Wh_step": 2.428173602404495e-17
+    },
+    {
+      "time_s": 14572800,
+      "T_zone_degC": 26.933679686033315,
+      "T_outdoor_degC": 26.969140625000023,
+      "H_global_Wm2": 691.6024709302326,
+      "u_heating": 20.95706715313368,
+      "power_W": 9.713173617864077e-17,
+      "energy_Wh_step": 2.4282934044660193e-17
+    },
+    {
+      "time_s": 14573700,
+      "T_zone_degC": 26.940787501028467,
+      "T_outdoor_degC": 27.031597222222217,
+      "H_global_Wm2": 681.0,
+      "u_heating": 20.53298899198417,
+      "power_W": 9.712560277095367e-17,
+      "energy_Wh_step": 2.4281400692738417e-17
+    },
+    {
+      "time_s": 14574600,
+      "T_zone_degC": 26.945002479042955,
+      "T_outdoor_degC": 27.078255208333303,
+      "H_global_Wm2": 648.361481741573,
+      "u_heating": 21.44832288168208,
+      "power_W": 9.712752029935113e-17,
+      "energy_Wh_step": 2.4281880074837783e-17
+    },
+    {
+      "time_s": 14575500,
+      "T_zone_degC": 26.94601639492845,
+      "T_outdoor_degC": 27.100000000000023,
+      "H_global_Wm2": 586.9083957553058,
+      "u_heating": 21.178152871688614,
+      "power_W": 9.712622229784212e-17,
+      "energy_Wh_step": 2.428155557446053e-17
+    },
+    {
+      "time_s": 14576400,
+      "T_zone_degC": 26.93967016831556,
+      "T_outdoor_degC": 27.057776988636363,
+      "H_global_Wm2": 518.5011118913858,
+      "u_heating": 19.233745893578526,
+      "power_W": 9.712711366407805e-17,
+      "energy_Wh_step": 2.4281778416019512e-17
+    },
+    {
+      "time_s": 14577300,
+      "T_zone_degC": 26.92082673899995,
+      "T_outdoor_degC": 26.93948863636365,
+      "H_global_Wm2": 465.0,
+      "u_heating": 22.800821891277103,
+      "power_W": 9.712930997519998e-17,
+      "energy_Wh_step": 2.4282327493799994e-17
+    },
+    {
+      "time_s": 14578200,
+      "T_zone_degC": 26.88732073137379,
+      "T_outdoor_degC": 26.776455965909122,
+      "H_global_Wm2": 426.2649865934627,
+      "u_heating": 19.693310306326804,
+      "power_W": 9.71334489972673e-17,
+      "energy_Wh_step": 2.4283362249316825e-17
+    },
+    {
+      "time_s": 14579100,
+      "T_zone_degC": 26.843817146313427,
+      "T_outdoor_degC": 26.600000000000023,
+      "H_global_Wm2": 387.63453353762344,
+      "u_heating": 19.055749310090444,
+      "power_W": 9.712886651215748e-17,
+      "energy_Wh_step": 2.428221662803937e-17
+    },
+    {
+      "time_s": 14580000,
+      "T_zone_degC": 26.79476706042641,
+      "T_outdoor_degC": 26.429403409090924,
+      "H_global_Wm2": 349.1868137129724,
+      "u_heating": 21.676369124522125,
+      "power_W": 9.71334567493971e-17,
+      "energy_Wh_step": 2.4283364187349276e-17
+    },
+    {
+      "time_s": 14580900,
+      "T_zone_degC": 26.741526510627637,
+      "T_outdoor_degC": 26.251136363636363,
+      "H_global_Wm2": 311.0,
+      "u_heating": 19.082532821551936,
+      "power_W": 9.713039608323618e-17,
+      "energy_Wh_step": 2.4282599020809044e-17
+    },
+    {
+      "time_s": 14581800,
+      "T_zone_degC": 26.683484058544707,
+      "T_outdoor_degC": 26.047301136363615,
+      "H_global_Wm2": 273.0190460947503,
+      "u_heating": 21.041839834453473,
+      "power_W": 9.712668891487988e-17,
+      "energy_Wh_step": 2.428167222871997e-17
+    },
+    {
+      "time_s": 14582700,
+      "T_zone_degC": 26.61849963903211,
+      "T_outdoor_degC": 25.80000000000001,
+      "H_global_Wm2": 235.16442594963723,
+      "u_heating": 21.725918958886016,
+      "power_W": 9.712798777814686e-17,
+      "energy_Wh_step": 2.4281996944536716e-17
+    },
+    {
+      "time_s": 14583600,
+      "T_zone_degC": 26.545205228080135,
+      "T_outdoor_degC": 25.51640624999999,
+      "H_global_Wm2": 197.47759282970551,
+      "u_heating": 23.809644470695332,
+      "power_W": 9.712204339089801e-17,
+      "energy_Wh_step": 2.4280510847724502e-17
+    },
+    {
+      "time_s": 14584500,
+      "T_zone_degC": 26.463047932038137,
+      "T_outdoor_degC": 25.21875,
+      "H_global_Wm2": 160.0,
+      "u_heating": 21.428200690405653,
+      "power_W": 9.712577124817915e-17,
+      "energy_Wh_step": 2.4281442812044787e-17
+    },
+    {
+      "time_s": 14585400,
+      "T_zone_degC": 26.374135405915297,
+      "T_outdoor_degC": 24.911718749999977,
+      "H_global_Wm2": 125.09579161717292,
+      "u_heating": 23.752915507579395,
+      "power_W": 9.713181376903672e-17,
+      "energy_Wh_step": 2.428295344225918e-17
+    },
+    {
+      "time_s": 14586300,
+      "T_zone_degC": 26.27920607023708,
+      "T_outdoor_degC": 24.600000000000023,
+      "H_global_Wm2": 94.78126590870525,
+      "u_heating": 21.66231097817006,
+      "power_W": 9.712827253886558e-17,
+      "energy_Wh_step": 2.4282068134716394e-17
+    },
+    {
+      "time_s": 14587200,
+      "T_zone_degC": 26.260881233056864,
+      "T_outdoor_degC": 24.27265625000001,
+      "H_global_Wm2": 68.57610724588497,
+      "u_heating": 20.38328859913392,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14588100,
+      "T_zone_degC": 26.20486059718229,
+      "T_outdoor_degC": 23.931249999999977,
+      "H_global_Wm2": 46.0,
+      "u_heating": 22.027829976450427,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14589000,
+      "T_zone_degC": 26.119601677782327,
+      "T_outdoor_degC": 23.599218749999977,
+      "H_global_Wm2": 27.044051204819276,
+      "u_heating": 20.539812732727377,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14589900,
+      "T_zone_degC": 26.030295395539554,
+      "T_outdoor_degC": 23.30000000000001,
+      "H_global_Wm2": 12.53915662650602,
+      "u_heating": 21.24153008025024,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14590800,
+      "T_zone_degC": 25.944107689724376,
+      "T_outdoor_degC": 23.043124999999975,
+      "H_global_Wm2": 3.2646837349397515,
+      "u_heating": 21.08723097054448,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14591700,
+      "T_zone_degC": 25.862509799619602,
+      "T_outdoor_degC": 22.814999999999998,
+      "H_global_Wm2": 0.0,
+      "u_heating": 21.037747024817797,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14592600,
+      "T_zone_degC": 25.785380291414242,
+      "T_outdoor_degC": 22.604375000000005,
+      "H_global_Wm2": 0.0,
+      "u_heating": 19.617425613745237,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14593500,
+      "T_zone_degC": 25.710818179489365,
+      "T_outdoor_degC": 22.399999999999977,
+      "H_global_Wm2": 0.0,
+      "u_heating": 21.57910444032627,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14594400,
+      "T_zone_degC": 25.639487368810364,
+      "T_outdoor_degC": 22.199531250000007,
+      "H_global_Wm2": 0.0,
+      "u_heating": 23.31558659444348,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14595300,
+      "T_zone_degC": 25.57159278662192,
+      "T_outdoor_degC": 22.003750000000025,
+      "H_global_Wm2": 0.0,
+      "u_heating": 19.187126587305997,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14596200,
+      "T_zone_degC": 25.505999413510438,
+      "T_outdoor_degC": 21.806093750000002,
+      "H_global_Wm2": 0.0,
+      "u_heating": 20.773206092832257,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14597100,
+      "T_zone_degC": 25.44080341413354,
+      "T_outdoor_degC": 21.600000000000023,
+      "H_global_Wm2": 0.0,
+      "u_heating": 20.280307257157975,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14598000,
+      "T_zone_degC": 25.37411624008621,
+      "T_outdoor_degC": 21.38109374999999,
+      "H_global_Wm2": 0.0,
+      "u_heating": 22.595660585929167,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14598900,
+      "T_zone_degC": 25.305243109326568,
+      "T_outdoor_degC": 21.153750000000002,
+      "H_global_Wm2": 0.0,
+      "u_heating": 23.37016293413269,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14599800,
+      "T_zone_degC": 25.235819545355014,
+      "T_outdoor_degC": 20.924531249999973,
+      "H_global_Wm2": 0.0,
+      "u_heating": 20.929027115352568,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14600700,
+      "T_zone_degC": 25.167404243407645,
+      "T_outdoor_degC": 20.69999999999999,
+      "H_global_Wm2": 0.0,
+      "u_heating": 20.149769921613103,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14601600,
+      "T_zone_degC": 25.100960849583203,
+      "T_outdoor_degC": 20.479375000000005,
+      "H_global_Wm2": 0.0,
+      "u_heating": 20.52568493324008,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14602500,
+      "T_zone_degC": 25.03637801050985,
+      "T_outdoor_degC": 20.264999999999986,
+      "H_global_Wm2": 0.0,
+      "u_heating": 19.112460484765645,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14603400,
+      "T_zone_degC": 24.974517204584345,
+      "T_outdoor_degC": 20.06812500000001,
+      "H_global_Wm2": 0.0,
+      "u_heating": 20.641953113182595,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14604300,
+      "T_zone_degC": 24.916747815443728,
+      "T_outdoor_degC": 19.899999999999977,
+      "H_global_Wm2": 0.0,
+      "u_heating": 23.901100584182746,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14605200,
+      "T_zone_degC": 24.86496756897816,
+      "T_outdoor_degC": 19.77562499999999,
+      "H_global_Wm2": 0.0,
+      "u_heating": 20.529291980993943,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14606100,
+      "T_zone_degC": 24.819907129998285,
+      "T_outdoor_degC": 19.685000000000002,
+      "H_global_Wm2": 0.0,
+      "u_heating": 22.742275730073334,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14607000,
+      "T_zone_degC": 24.77885371158436,
+      "T_outdoor_degC": 19.601875000000007,
+      "H_global_Wm2": 0.0,
+      "u_heating": 23.11439068707678,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14607900,
+      "T_zone_degC": 24.73798813262937,
+      "T_outdoor_degC": 19.5,
+      "H_global_Wm2": 0.0,
+      "u_heating": 23.38928111782915,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14608800,
+      "T_zone_degC": 24.69447746117862,
+      "T_outdoor_degC": 19.375468749999982,
+      "H_global_Wm2": 0.0,
+      "u_heating": 19.91793537366971,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14609700,
+      "T_zone_degC": 24.64957662340555,
+      "T_outdoor_degC": 19.246249999999975,
+      "H_global_Wm2": 0.0,
+      "u_heating": 22.809576274652496,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14610600,
+      "T_zone_degC": 24.604606387106458,
+      "T_outdoor_degC": 19.11890625000001,
+      "H_global_Wm2": 0.0,
+      "u_heating": 20.098900779018436,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14611500,
+      "T_zone_degC": 24.560681825409574,
+      "T_outdoor_degC": 19.0,
+      "H_global_Wm2": 0.0,
+      "u_heating": 19.428087684900596,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14612400,
+      "T_zone_degC": 24.519122717328912,
+      "T_outdoor_degC": 18.89765625000001,
+      "H_global_Wm2": 0.0,
+      "u_heating": 20.96123462135279,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14613300,
+      "T_zone_degC": 24.480554288631026,
+      "T_outdoor_degC": 18.806249999999977,
+      "H_global_Wm2": 0.0,
+      "u_heating": 22.99046553345128,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14614200,
+      "T_zone_degC": 24.443296708294156,
+      "T_outdoor_degC": 18.71171874999999,
+      "H_global_Wm2": 0.0,
+      "u_heating": 23.918167445177588,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14615100,
+      "T_zone_degC": 24.404950768011076,
+      "T_outdoor_degC": 18.600000000000023,
+      "H_global_Wm2": 0.0,
+      "u_heating": 21.527842879971757,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14616000,
+      "T_zone_degC": 24.364188792571213,
+      "T_outdoor_degC": 18.475000000000023,
+      "H_global_Wm2": 0.0,
+      "u_heating": 23.812530248682904,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14616900,
+      "T_zone_degC": 24.322662065854388,
+      "T_outdoor_degC": 18.350000000000023,
+      "H_global_Wm2": 0.0,
+      "u_heating": 19.259153045102302,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14617800,
+      "T_zone_degC": 24.281053172627708,
+      "T_outdoor_degC": 18.225000000000023,
+      "H_global_Wm2": 0.0,
+      "u_heating": 23.3176205581221,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14618700,
+      "T_zone_degC": 24.239490964329548,
+      "T_outdoor_degC": 18.100000000000023,
+      "H_global_Wm2": 0.0,
+      "u_heating": 19.122803992612372,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14619600,
+      "T_zone_degC": 24.19797171600652,
+      "T_outdoor_degC": 17.975000000000023,
+      "H_global_Wm2": 0.0,
+      "u_heating": 21.97281346905303,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14620500,
+      "T_zone_degC": 24.156426336819322,
+      "T_outdoor_degC": 17.850000000000023,
+      "H_global_Wm2": 0.0,
+      "u_heating": 21.83428404306514,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14621400,
+      "T_zone_degC": 24.117245129263267,
+      "T_outdoor_degC": 17.725000000000023,
+      "H_global_Wm2": 6.170400943396227,
+      "u_heating": 23.664706240763824,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14622300,
+      "T_zone_degC": 24.094764166530695,
+      "T_outdoor_degC": 17.600000000000023,
+      "H_global_Wm2": 22.287735849056606,
+      "u_heating": 21.353388605824136,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14623200,
+      "T_zone_degC": 24.113735403324142,
+      "T_outdoor_degC": 17.717527173913027,
+      "H_global_Wm2": 44.76120283018869,
+      "u_heating": 19.83197801087497,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14624100,
+      "T_zone_degC": 24.201538721067777,
+      "T_outdoor_degC": 18.171739130434787,
+      "H_global_Wm2": 70.0,
+      "u_heating": 23.017181392346238,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14625000,
+      "T_zone_degC": 24.33349670110647,
+      "T_outdoor_degC": 18.740081521739114,
+      "H_global_Wm2": 96.14175769612712,
+      "u_heating": 20.560938098935225,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14625900,
+      "T_zone_degC": 24.48452893227318,
+      "T_outdoor_degC": 19.19999999999999,
+      "H_global_Wm2": 124.12015888778551,
+      "u_heating": 23.18495287010763,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14626800,
+      "T_zone_degC": 24.62895382647747,
+      "T_outdoor_degC": 19.519293478260863,
+      "H_global_Wm2": 154.53848063555114,
+      "u_heating": 21.571600441498482,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14627700,
+      "T_zone_degC": 24.77401046187032,
+      "T_outdoor_degC": 19.828260869565213,
+      "H_global_Wm2": 188.0,
+      "u_heating": 23.484016236224743,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14628600,
+      "T_zone_degC": 24.92804596771407,
+      "T_outdoor_degC": 20.14809782608694,
+      "H_global_Wm2": 225.29111842105263,
+      "u_heating": 21.073270980777234,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14629500,
+      "T_zone_degC": 25.10450289654284,
+      "T_outdoor_degC": 20.5,
+      "H_global_Wm2": 265.0921052631579,
+      "u_heating": 23.892522168792116,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14630400,
+      "T_zone_degC": 25.193712195151363,
+      "T_outdoor_degC": 20.875,
+      "H_global_Wm2": 304.84703947368416,
+      "u_heating": 22.29382239827282,
+      "power_W": 9.712689567260315e-17,
+      "energy_Wh_step": 2.4281723918150788e-17
+    },
+    {
+      "time_s": 14631300,
+      "T_zone_degC": 25.366902028414415,
+      "T_outdoor_degC": 21.25,
+      "H_global_Wm2": 342.0,
+      "u_heating": 19.620185661027275,
+      "power_W": 9.712684739122342e-17,
+      "energy_Wh_step": 2.4281711847805854e-17
+    },
+    {
+      "time_s": 14632200,
+      "T_zone_degC": 25.568912923401058,
+      "T_outdoor_degC": 21.625,
+      "H_global_Wm2": 375.8658088235294,
+      "u_heating": 22.440448008693625,
+      "power_W": 9.712686813948322e-17,
+      "energy_Wh_step": 2.4281717034870806e-17
+    },
+    {
+      "time_s": 14633100,
+      "T_zone_degC": 25.772679420868315,
+      "T_outdoor_degC": 22.0,
+      "H_global_Wm2": 407.80882352941177,
+      "u_heating": 22.2677444342521,
+      "power_W": 9.712694320643305e-17,
+      "energy_Wh_step": 2.4281735801608262e-17
+    },
+    {
+      "time_s": 14634000,
+      "T_zone_degC": 25.969813832015348,
+      "T_outdoor_degC": 22.375,
+      "H_global_Wm2": 438.34742647058823,
+      "u_heating": 19.806307174039873,
+      "power_W": 9.712686626164717e-17,
+      "energy_Wh_step": 2.4281716565411793e-17
+    },
+    {
+      "time_s": 14634900,
+      "T_zone_degC": 26.151234143747672,
+      "T_outdoor_degC": 22.75,
+      "H_global_Wm2": 468.0,
+      "u_heating": 19.661597219223236,
+      "power_W": 9.712686780520815e-17,
+      "energy_Wh_step": 2.4281716951302037e-17
+    },
+    {
+      "time_s": 14635800,
+      "T_zone_degC": 26.322603546933806,
+      "T_outdoor_degC": 23.125,
+      "H_global_Wm2": 493.5457186907021,
+      "u_heating": 23.12861968563312,
+      "power_W": 9.712690323514128e-17,
+      "energy_Wh_step": 2.428172580878532e-17
+    },
+    {
+      "time_s": 14636700,
+      "T_zone_degC": 26.484262909424103,
+      "T_outdoor_degC": 23.5,
+      "H_global_Wm2": 514.2395635673624,
+      "u_heating": 19.6741602704562,
+      "power_W": 9.712687263005815e-17,
+      "energy_Wh_step": 2.4281718157514538e-17
+    },
+    {
+      "time_s": 14637600,
+      "T_zone_degC": 26.633782583790378,
+      "T_outdoor_degC": 23.84937500000001,
+      "H_global_Wm2": 534.3136266603416,
+      "u_heating": 20.17939619603425,
+      "power_W": 9.712688972971637e-17,
+      "energy_Wh_step": 2.428172243242909e-17
+    },
+    {
+      "time_s": 14638500,
+      "T_zone_degC": 26.769841111230164,
+      "T_outdoor_degC": 24.16500000000002,
+      "H_global_Wm2": 558.0,
+      "u_heating": 21.90319033604616,
+      "power_W": 9.71268690622296e-17,
+      "energy_Wh_step": 2.42817172655574e-17
+    },
+    {
+      "time_s": 14639400,
+      "T_zone_degC": 26.900292255395527,
+      "T_outdoor_degC": 24.473124999999982,
+      "H_global_Wm2": 598.3523441771459,
+      "u_heating": 19.48459003920576,
+      "power_W": 9.712697308391505e-17,
+      "energy_Wh_step": 2.4281743270978764e-17
+    },
+    {
+      "time_s": 14640300,
+      "T_zone_degC": 27.04191424357964,
+      "T_outdoor_degC": 24.80000000000001,
+      "H_global_Wm2": 653.7863586659377,
+      "u_heating": 20.179962901221927,
+      "power_W": 9.71272475628353e-17,
+      "energy_Wh_step": 2.4281811890708825e-17
+    },
+    {
+      "time_s": 14641200,
+      "T_zone_degC": 27.20649069513223,
+      "T_outdoor_degC": 25.163749999999993,
+      "H_global_Wm2": 706.5771938217605,
+      "u_heating": 19.73598116305785,
+      "power_W": 9.71268908945042e-17,
+      "energy_Wh_step": 2.428172272362605e-17
+    },
+    {
+      "time_s": 14642100,
+      "T_zone_degC": 27.360744428832106,
+      "T_outdoor_degC": 25.55000000000001,
+      "H_global_Wm2": 739.0,
+      "u_heating": 21.361296662019015,
+      "power_W": 9.712686376300283e-17,
+      "energy_Wh_step": 2.4281715940750707e-17
+    },
+    {
+      "time_s": 14643000,
+      "T_zone_degC": 27.482809876356953,
+      "T_outdoor_degC": 25.936249999999973,
+      "H_global_Wm2": 752.6371156258876,
+      "u_heating": 21.614347366999283,
+      "power_W": 9.712686792796122e-17,
+      "energy_Wh_step": 2.4281716981990304e-17
+    },
+    {
+      "time_s": 14643900,
+      "T_zone_degC": 27.575449845905894,
+      "T_outdoor_degC": 26.30000000000001,
+      "H_global_Wm2": 761.6184665277909,
+      "u_heating": 19.04039961325968,
+      "power_W": 9.712682198605894e-17,
+      "energy_Wh_step": 2.4281705496514734e-17
+    },
+    {
+      "time_s": 14644800,
+      "T_zone_degC": 27.645998002157967,
+      "T_outdoor_degC": 26.635859374999995,
+      "H_global_Wm2": 767.0405841657987,
+      "u_heating": 23.62707635631493,
+      "power_W": 9.712687250683177e-17,
+      "energy_Wh_step": 2.428171812670794e-17
+    },
+    {
+      "time_s": 14645700,
+      "T_zone_degC": 27.69933491890481,
+      "T_outdoor_degC": 26.950625000000002,
+      "H_global_Wm2": 770.0,
+      "u_heating": 21.836310905751553,
+      "power_W": 9.712686325999987e-17,
+      "energy_Wh_step": 2.4281715814999968e-17
+    },
+    {
+      "time_s": 14646600,
+      "T_zone_degC": 27.73817440204175,
+      "T_outdoor_degC": 27.240078125000025,
+      "H_global_Wm2": 771.3720691202042,
+      "u_heating": 19.970996193250407,
+      "power_W": 9.71268635486851e-17,
+      "energy_Wh_step": 2.4281715887171275e-17
+    },
+    {
+      "time_s": 14647500,
+      "T_zone_degC": 27.765203526376126,
+      "T_outdoor_degC": 27.5,
+      "H_global_Wm2": 771.8986089015502,
+      "u_heating": 22.550890080516275,
+      "power_W": 9.712690722725078e-17,
+      "energy_Wh_step": 2.4281726806812694e-17
+    },
+    {
+      "time_s": 14648400,
+      "T_zone_degC": 27.782608873120296,
+      "T_outdoor_degC": 27.73755580357141,
+      "H_global_Wm2": 772.4758442321211,
+      "u_heating": 22.26386913386598,
+      "power_W": 9.712683574189355e-17,
+      "energy_Wh_step": 2.4281708935473387e-17
+    },
+    {
+      "time_s": 14649300,
+      "T_zone_degC": 27.795508596584398,
+      "T_outdoor_degC": 27.964732142857144,
+      "H_global_Wm2": 774.0,
+      "u_heating": 22.269274036898324,
+      "power_W": 9.712686900979244e-17,
+      "energy_Wh_step": 2.428171725244811e-17
+    },
+    {
+      "time_s": 14650200,
+      "T_zone_degC": 27.811945837589292,
+      "T_outdoor_degC": 28.1845424107143,
+      "H_global_Wm2": 780.9319496529163,
+      "u_heating": 22.36505389065546,
+      "power_W": 9.712686176212972e-17,
+      "energy_Wh_step": 2.428171544053243e-17
+    },
+    {
+      "time_s": 14651100,
+      "T_zone_degC": 27.83638668726917,
+      "T_outdoor_degC": 28.399999999999977,
+      "H_global_Wm2": 792.9388414585494,
+      "u_heating": 21.336745881196375,
+      "power_W": 9.71268537267105e-17,
+      "energy_Wh_step": 2.4281713431677624e-17
+    },
+    {
+      "time_s": 14652000,
+      "T_zone_degC": 27.871901637010637,
+      "T_outdoor_degC": 28.6142857142857,
+      "H_global_Wm2": 803.7263125349078,
+      "u_heating": 23.07404442195248,
+      "power_W": 9.712686814374307e-17,
+      "energy_Wh_step": 2.4281717035935768e-17
+    },
+    {
+      "time_s": 14652900,
+      "T_zone_degC": 27.91370870717202,
+      "T_outdoor_degC": 28.82380952380953,
+      "H_global_Wm2": 807.0,
+      "u_heating": 19.595436361246662,
+      "power_W": 9.71268672761286e-17,
+      "energy_Wh_step": 2.428171681903215e-17
+    },
+    {
+      "time_s": 14653800,
+      "T_zone_degC": 27.95726952172373,
+      "T_outdoor_degC": 29.021428571428544,
+      "H_global_Wm2": 794.4576512572028,
+      "u_heating": 22.015677211536122,
+      "power_W": 9.712685979176344e-17,
+      "energy_Wh_step": 2.428171494794086e-17
+    },
+    {
+      "time_s": 14654700,
+      "T_zone_degC": 27.997738903588527,
+      "T_outdoor_degC": 29.19999999999999,
+      "H_global_Wm2": 768.5517286537454,
+      "u_heating": 23.342680571728785,
+      "power_W": 9.712686571971235e-17,
+      "energy_Wh_step": 2.4281716429928088e-17
+    },
+    {
+      "time_s": 14655600,
+      "T_zone_degC": 28.031940955761286,
+      "T_outdoor_degC": 29.342187500000023,
+      "H_global_Wm2": 739.1199417234154,
+      "u_heating": 21.652452491714968,
+      "power_W": 9.712686787220453e-17,
+      "energy_Wh_step": 2.4281716968051132e-17
+    },
+    {
+      "time_s": 14656500,
+      "T_zone_degC": 28.058076794698593,
+      "T_outdoor_degC": 29.445833333333326,
+      "H_global_Wm2": 716.0,
+      "u_heating": 19.378529865483188,
+      "power_W": 9.712686869463304e-17,
+      "energy_Wh_step": 2.428171717365826e-17
+    },
+    {
+      "time_s": 14657400,
+      "T_zone_degC": 28.07786067327993,
+      "T_outdoor_degC": 29.52656250000001,
+      "H_global_Wm2": 709.3179347826087,
+      "u_heating": 20.041221207460236,
+      "power_W": 9.712687041272792e-17,
+      "energy_Wh_step": 2.428171760318198e-17
+    },
+    {
+      "time_s": 14658300,
+      "T_zone_degC": 28.09243608437197,
+      "T_outdoor_degC": 29.600000000000023,
+      "H_global_Wm2": 711.7826086956521,
+      "u_heating": 23.2539569197545,
+      "power_W": 9.712687142023582e-17,
+      "energy_Wh_step": 2.4281717855058956e-17
+    },
+    {
+      "time_s": 14659200,
+      "T_zone_degC": 28.102533675911843,
+      "T_outdoor_degC": 29.66874999999999,
+      "H_global_Wm2": 707.1059782608695,
+      "u_heating": 23.148195313803114,
+      "power_W": 9.712686452733332e-17,
+      "energy_Wh_step": 2.428171613183333e-17
+    },
+    {
+      "time_s": 14660100,
+      "T_zone_degC": 28.107658334663995,
+      "T_outdoor_degC": 29.725000000000023,
+      "H_global_Wm2": 679.0,
+      "u_heating": 23.928638445596842,
+      "power_W": 9.71268695933665e-17,
+      "energy_Wh_step": 2.4281717398341624e-17
+    },
+    {
+      "time_s": 14661000,
+      "T_zone_degC": 28.109036347290214,
+      "T_outdoor_degC": 29.76875000000001,
+      "H_global_Wm2": 632.7362012987013,
+      "u_heating": 19.750855970514866,
+      "power_W": 9.712687488576489e-17,
+      "energy_Wh_step": 2.4281718721441222e-17
+    },
+    {
+      "time_s": 14661900,
+      "T_zone_degC": 28.10754797018916,
+      "T_outdoor_degC": 29.80000000000001,
+      "H_global_Wm2": 585.1298701298701,
+      "u_heating": 22.743283252654376,
+      "power_W": 9.712686823237948e-17,
+      "energy_Wh_step": 2.428171705809487e-17
+    },
+    {
+      "time_s": 14662800,
+      "T_zone_degC": 28.102855928645,
+      "T_outdoor_degC": 29.808258928571433,
+      "H_global_Wm2": 537.2086038961039,
+      "u_heating": 21.62345291158851,
+      "power_W": 9.712687593510766e-17,
+      "energy_Wh_step": 2.4281718983776916e-17
+    },
+    {
+      "time_s": 14663700,
+      "T_zone_degC": 28.091940217094134,
+      "T_outdoor_degC": 29.780357142857156,
+      "H_global_Wm2": 490.0,
+      "u_heating": 20.3505267358403,
+      "power_W": 9.712686926988304e-17,
+      "energy_Wh_step": 2.428171731747076e-17
+    },
+    {
+      "time_s": 14664600,
+      "T_zone_degC": 28.07442398294205,
+      "T_outdoor_degC": 29.712276785714266,
+      "H_global_Wm2": 443.497149608569,
+      "u_heating": 19.1696293303478,
+      "power_W": 9.712686676713031e-17,
+      "energy_Wh_step": 2.4281716691782577e-17
+    },
+    {
+      "time_s": 14665500,
+      "T_zone_degC": 28.04904452678778,
+      "T_outdoor_degC": 29.600000000000023,
+      "H_global_Wm2": 397.0021392159243,
+      "u_heating": 21.621755010792825,
+      "power_W": 9.712694103262269e-17,
+      "energy_Wh_step": 2.4281735258155673e-17
+    },
+    {
+      "time_s": 14666400,
+      "T_zone_degC": 28.014101818327845,
+      "T_outdoor_degC": 29.446707589285722,
+      "H_global_Wm2": 350.5060592153174,
+      "u_heating": 22.65673343414976,
+      "power_W": 9.712687911580746e-17,
+      "energy_Wh_step": 2.4281719778951864e-17
+    },
+    {
+      "time_s": 14667300,
+      "T_zone_degC": 27.971515280318215,
+      "T_outdoor_degC": 29.26026785714288,
+      "H_global_Wm2": 304.0,
+      "u_heating": 21.28027900755121,
+      "power_W": 9.712686914497796e-17,
+      "energy_Wh_step": 2.428171728624449e-17
+    },
+    {
+      "time_s": 14668200,
+      "T_zone_degC": 27.919001907729694,
+      "T_outdoor_degC": 29.04369419642859,
+      "H_global_Wm2": 257.09280893042575,
+      "u_heating": 22.504651981313096,
+      "power_W": 9.712686354978319e-17,
+      "energy_Wh_step": 2.4281715887445798e-17
+    },
+    {
+      "time_s": 14669100,
+      "T_zone_degC": 27.85623732515637,
+      "T_outdoor_degC": 28.80000000000001,
+      "H_global_Wm2": 209.76150917272412,
+      "u_heating": 22.03776482621488,
+      "power_W": 9.712687017011217e-17,
+      "energy_Wh_step": 2.4281717542528042e-17
+    },
+    {
+      "time_s": 14670000,
+      "T_zone_degC": 27.784887651181748,
+      "T_outdoor_degC": 28.5390625,
+      "H_global_Wm2": 162.54945482866043,
+      "u_heating": 22.41833407260944,
+      "power_W": 9.712686824407987e-17,
+      "energy_Wh_step": 2.4281717061019967e-17
+    },
+    {
+      "time_s": 14670900,
+      "T_zone_degC": 27.707133151086452,
+      "T_outdoor_degC": 28.26875000000001,
+      "H_global_Wm2": 116.0,
+      "u_heating": 22.294253466137516,
+      "power_W": 9.712687644176462e-17,
+      "energy_Wh_step": 2.4281719110441156e-17
+    },
+    {
+      "time_s": 14671800,
+      "T_zone_degC": 27.624318808573378,
+      "T_outdoor_degC": 27.98906249999999,
+      "H_global_Wm2": 79.05269607843138,
+      "u_heating": 23.71572665827364,
+      "power_W": 9.712686651552154e-17,
+      "energy_Wh_step": 2.4281716628880386e-17
+    },
+    {
+      "time_s": 14672700,
+      "T_zone_degC": 27.537413405064854,
+      "T_outdoor_degC": 27.69999999999999,
+      "H_global_Wm2": 56.51089324618736,
+      "u_heating": 23.5299838663423,
+      "power_W": 9.712686350435112e-17,
+      "energy_Wh_step": 2.428171587608778e-17
+    },
+    {
+      "time_s": 14673600,
+      "T_zone_degC": 27.543420489165044,
+      "T_outdoor_degC": 27.376953125,
+      "H_global_Wm2": 42.71364379084969,
+      "u_heating": 22.988845613651325,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14674500,
+      "T_zone_degC": 27.49703556040106,
+      "T_outdoor_degC": 27.023958333333326,
+      "H_global_Wm2": 32.0,
+      "u_heating": 23.393924485696367,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14675400,
+      "T_zone_degC": 27.415366883447803,
+      "T_outdoor_degC": 26.683984375000023,
+      "H_global_Wm2": 20.779411764705884,
+      "u_heating": 23.149694551367674,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14676300,
+      "T_zone_degC": 27.330123499756382,
+      "T_outdoor_degC": 26.399999999999977,
+      "H_global_Wm2": 10.470588235294116,
+      "u_heating": 22.15484063736109,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14677200,
+      "T_zone_degC": 27.253171643283792,
+      "T_outdoor_degC": 26.18046874999999,
+      "H_global_Wm2": 2.926470588235297,
+      "u_heating": 21.892222440065012,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14678100,
+      "T_zone_degC": 27.18464577447446,
+      "T_outdoor_degC": 25.989583333333314,
+      "H_global_Wm2": 0.0,
+      "u_heating": 23.64996247248979,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14679000,
+      "T_zone_degC": 27.121904030038934,
+      "T_outdoor_degC": 25.80390625000001,
+      "H_global_Wm2": 0.0,
+      "u_heating": 22.541918529492243,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14679900,
+      "T_zone_degC": 27.060487193607628,
+      "T_outdoor_degC": 25.600000000000023,
+      "H_global_Wm2": 0.0,
+      "u_heating": 22.116424653943813,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14680800,
+      "T_zone_degC": 26.996525072904547,
+      "T_outdoor_degC": 25.375,
+      "H_global_Wm2": 0.0,
+      "u_heating": 19.6290669346508,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14681700,
+      "T_zone_degC": 26.931124980870948,
+      "T_outdoor_degC": 25.145833333333314,
+      "H_global_Wm2": 0.0,
+      "u_heating": 21.71529878352257,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14682600,
+      "T_zone_degC": 26.865721617785084,
+      "T_outdoor_degC": 24.91874999999999,
+      "H_global_Wm2": 0.0,
+      "u_heating": 20.045356931806808,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14683500,
+      "T_zone_degC": 26.801313807474003,
+      "T_outdoor_degC": 24.69999999999999,
+      "H_global_Wm2": 0.0,
+      "u_heating": 19.786351199666722,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14684400,
+      "T_zone_degC": 26.738872143754463,
+      "T_outdoor_degC": 24.494531250000023,
+      "H_global_Wm2": 0.0,
+      "u_heating": 23.939959563527584,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14685300,
+      "T_zone_degC": 26.678768750254847,
+      "T_outdoor_degC": 24.29791666666665,
+      "H_global_Wm2": 0.0,
+      "u_heating": 22.449854339658494,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14686200,
+      "T_zone_degC": 26.619961208925588,
+      "T_outdoor_degC": 24.10234374999999,
+      "H_global_Wm2": 0.0,
+      "u_heating": 22.74209017092216,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14687100,
+      "T_zone_degC": 26.560666427251306,
+      "T_outdoor_degC": 23.899999999999977,
+      "H_global_Wm2": 0.0,
+      "u_heating": 22.073049988683305,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14688000,
+      "T_zone_degC": 26.49814084344149,
+      "T_outdoor_degC": 23.67500000000001,
+      "H_global_Wm2": 0.0,
+      "u_heating": 22.31408055542986,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14688900,
+      "T_zone_degC": 26.429358241892317,
+      "T_outdoor_degC": 23.433333333333337,
+      "H_global_Wm2": 0.0,
+      "u_heating": 20.491927603933824,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14689800,
+      "T_zone_degC": 26.35813678487915,
+      "T_outdoor_degC": 23.19999999999999,
+      "H_global_Wm2": 0.0,
+      "u_heating": 20.186532160426637,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14690700,
+      "T_zone_degC": 26.290934181206183,
+      "T_outdoor_degC": 23.0,
+      "H_global_Wm2": 0.0,
+      "u_heating": 19.287573316092303,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14691600,
+      "T_zone_degC": 26.23037864775972,
+      "T_outdoor_degC": 22.82499999999999,
+      "H_global_Wm2": 0.0,
+      "u_heating": 19.13352587993068,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14692500,
+      "T_zone_degC": 26.172659444381907,
+      "T_outdoor_degC": 22.649999999999977,
+      "H_global_Wm2": 0.0,
+      "u_heating": 22.017781784111428,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14693400,
+      "T_zone_degC": 26.115742504362515,
+      "T_outdoor_degC": 22.475000000000023,
+      "H_global_Wm2": 0.0,
+      "u_heating": 23.153714226551113,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14694300,
+      "T_zone_degC": 26.05965204928009,
+      "T_outdoor_degC": 22.30000000000001,
+      "H_global_Wm2": 0.0,
+      "u_heating": 22.043030546350224,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14695200,
+      "T_zone_degC": 26.00437189954522,
+      "T_outdoor_degC": 22.127343750000023,
+      "H_global_Wm2": 0.0,
+      "u_heating": 22.430677388443716,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14696100,
+      "T_zone_degC": 25.950013397080966,
+      "T_outdoor_degC": 21.95625000000001,
+      "H_global_Wm2": 0.0,
+      "u_heating": 20.39366601533092,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14697000,
+      "T_zone_degC": 25.8960450606275,
+      "T_outdoor_degC": 21.78203124999999,
+      "H_global_Wm2": 0.0,
+      "u_heating": 19.79608578138029,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14697900,
+      "T_zone_degC": 25.841681906267013,
+      "T_outdoor_degC": 21.600000000000023,
+      "H_global_Wm2": 0.0,
+      "u_heating": 22.849480266311737,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14698800,
+      "T_zone_degC": 25.786171211539795,
+      "T_outdoor_degC": 21.40703124999999,
+      "H_global_Wm2": 0.0,
+      "u_heating": 20.708093478912232,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14699700,
+      "T_zone_degC": 25.72941594528271,
+      "T_outdoor_degC": 21.20625000000001,
+      "H_global_Wm2": 0.0,
+      "u_heating": 21.017018131577448,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14700600,
+      "T_zone_degC": 25.671981430278436,
+      "T_outdoor_degC": 21.002343750000023,
+      "H_global_Wm2": 0.0,
+      "u_heating": 19.830670987902995,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14701500,
+      "T_zone_degC": 25.61462908266418,
+      "T_outdoor_degC": 20.80000000000001,
+      "H_global_Wm2": 0.0,
+      "u_heating": 20.44229087739319,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14702400,
+      "T_zone_degC": 25.557925835470144,
+      "T_outdoor_degC": 20.600000000000023,
+      "H_global_Wm2": 0.0,
+      "u_heating": 21.137171235481205,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14703300,
+      "T_zone_degC": 25.501705708971315,
+      "T_outdoor_degC": 20.399999999999977,
+      "H_global_Wm2": 0.0,
+      "u_heating": 23.048943541768203,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14704200,
+      "T_zone_degC": 25.4458230272582,
+      "T_outdoor_degC": 20.19999999999999,
+      "H_global_Wm2": 0.0,
+      "u_heating": 19.586280443803123,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14705100,
+      "T_zone_degC": 25.39018589888633,
+      "T_outdoor_degC": 20.0,
+      "H_global_Wm2": 0.0,
+      "u_heating": 21.249715976819836,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14706000,
+      "T_zone_degC": 25.3348442276058,
+      "T_outdoor_degC": 19.80223214285712,
+      "H_global_Wm2": 0.0,
+      "u_heating": 22.51670807151143,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14706900,
+      "T_zone_degC": 25.28051918053984,
+      "T_outdoor_degC": 19.6142857142857,
+      "H_global_Wm2": 0.0,
+      "u_heating": 22.13131214014293,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14707800,
+      "T_zone_degC": 25.228649736555496,
+      "T_outdoor_degC": 19.444196428571445,
+      "H_global_Wm2": 2.9743303571428577,
+      "u_heating": 20.936375422327497,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14708700,
+      "T_zone_degC": 25.182384653208203,
+      "T_outdoor_degC": 19.30000000000001,
+      "H_global_Wm2": 10.098214285714288,
+      "u_heating": 21.663516751736548,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14709600,
+      "T_zone_degC": 25.15148642448895,
+      "T_outdoor_degC": 19.309200310558992,
+      "H_global_Wm2": 18.672991071428577,
+      "u_heating": 23.802331619727095,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14710500,
+      "T_zone_degC": 25.150861741713243,
+      "T_outdoor_degC": 19.50310559006209,
+      "H_global_Wm2": 26.0,
+      "u_heating": 21.750935330352426,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14711400,
+      "T_zone_degC": 25.169037369225975,
+      "T_outdoor_degC": 19.745458074534156,
+      "H_global_Wm2": 29.855754157579064,
+      "u_heating": 21.386723678389767,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14712300,
+      "T_zone_degC": 25.18526270856796,
+      "T_outdoor_degC": 19.899999999999977,
+      "H_global_Wm2": 31.395106324972737,
+      "u_heating": 20.37000251190861,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14713200,
+      "T_zone_degC": 25.183941547274117,
+      "T_outdoor_degC": 19.919106657608722,
+      "H_global_Wm2": 32.986905329880045,
+      "u_heating": 21.241912526795968,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14714100,
+      "T_zone_degC": 25.172652897995192,
+      "T_outdoor_degC": 19.885733695652164,
+      "H_global_Wm2": 37.0,
+      "u_heating": 21.25544766637198,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14715000,
+      "T_zone_degC": 25.165581039323,
+      "T_outdoor_degC": 19.85949388586954,
+      "H_global_Wm2": 51.59456788440567,
+      "u_heating": 20.57678829818604,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14715900,
+      "T_zone_degC": 25.175098220249822,
+      "T_outdoor_degC": 19.899999999999977,
+      "H_global_Wm2": 80.32215557978918,
+      "u_heating": 22.061499558230473,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14716800,
+      "T_zone_degC": 25.09737052515044,
+      "T_outdoor_degC": 20.028627232142867,
+      "H_global_Wm2": 118.6386654852781,
+      "u_heating": 20.700884623392692,
+      "power_W": 9.712694377219778e-17,
+      "energy_Wh_step": 2.4281735943049444e-17
+    },
+    {
+      "time_s": 14717700,
+      "T_zone_degC": 25.118313042171792,
+      "T_outdoor_degC": 20.23258928571431,
+      "H_global_Wm2": 162.0,
+      "u_heating": 20.25178256187078,
+      "power_W": 9.712686303362835e-17,
+      "energy_Wh_step": 2.4281715758407087e-17
+    },
+    {
+      "time_s": 14718600,
+      "T_zone_degC": 25.188576130088222,
+      "T_outdoor_degC": 20.52025669642859,
+      "H_global_Wm2": 216.12735754414126,
+      "u_heating": 21.64243634565609,
+      "power_W": 9.712647831270926e-17,
+      "energy_Wh_step": 2.4281619578177315e-17
+    },
+    {
+      "time_s": 14719500,
+      "T_zone_degC": 25.312494337916064,
+      "T_outdoor_degC": 20.899999999999977,
+      "H_global_Wm2": 282.05390583199573,
+      "u_heating": 20.065863203778665,
+      "power_W": 9.71268284131233e-17,
+      "energy_Wh_step": 2.4281707103280826e-17
+    },
+    {
+      "time_s": 14720400,
+      "T_zone_degC": 25.487878488343085,
+      "T_outdoor_degC": 21.37232142857141,
+      "H_global_Wm2": 348.20350120385234,
+      "u_heating": 20.493983603929372,
+      "power_W": 9.712683930958957e-17,
+      "energy_Wh_step": 2.4281709827397392e-17
+    },
+    {
+      "time_s": 14721300,
+      "T_zone_degC": 25.715151632721415,
+      "T_outdoor_degC": 21.89761904761906,
+      "H_global_Wm2": 403.0,
+      "u_heating": 19.48780621197339,
+      "power_W": 9.712686690625382e-17,
+      "energy_Wh_step": 2.4281716726563454e-17
+    },
+    {
+      "time_s": 14722200,
+      "T_zone_degC": 25.953315383204995,
+      "T_outdoor_degC": 22.424107142857167,
+      "H_global_Wm2": 438.06669798363254,
+      "u_heating": 23.010943670910727,
+      "power_W": 9.712702920276672e-17,
+      "energy_Wh_step": 2.428175730069168e-17
+    },
+    {
+      "time_s": 14723100,
+      "T_zone_degC": 26.172348972003704,
+      "T_outdoor_degC": 22.899999999999977,
+      "H_global_Wm2": 459.8332920012972,
+      "u_heating": 22.78317869360059,
+      "power_W": 9.712651214345725e-17,
+      "energy_Wh_step": 2.4281628035864314e-17
+    },
+    {
+      "time_s": 14724000,
+      "T_zone_degC": 26.362670336391034,
+      "T_outdoor_degC": 23.313235294117646,
+      "H_global_Wm2": 478.93324001831326,
+      "u_heating": 22.32896850960189,
+      "power_W": 9.712671248070472e-17,
+      "energy_Wh_step": 2.428167812017618e-17
+    },
+    {
+      "time_s": 14724900,
+      "T_zone_degC": 26.53747697171042,
+      "T_outdoor_degC": 23.701960784313712,
+      "H_global_Wm2": 506.0,
+      "u_heating": 21.550916580218733,
+      "power_W": 9.712687749555027e-17,
+      "energy_Wh_step": 2.4281719373887566e-17
+    },
+    {
+      "time_s": 14725800,
+      "T_zone_degC": 26.72072131847341,
+      "T_outdoor_degC": 24.089705882352916,
+      "H_global_Wm2": 572.8250016925849,
+      "u_heating": 23.212331665859747,
+      "power_W": 9.71250377630628e-17,
+      "energy_Wh_step": 2.42812594407657e-17
+    },
+    {
+      "time_s": 14726700,
+      "T_zone_degC": 26.94200531237425,
+      "T_outdoor_degC": 24.5,
+      "H_global_Wm2": 670.7720192277646,
+      "u_heating": 20.426894353795003,
+      "power_W": 9.712731162138896e-17,
+      "energy_Wh_step": 2.428182790534724e-17
+    },
+    {
+      "time_s": 14727600,
+      "T_zone_degC": 27.18643666828808,
+      "T_outdoor_degC": 24.99466911764705,
+      "H_global_Wm2": 749.8330271490621,
+      "u_heating": 22.609987923097833,
+      "power_W": 9.71416831625161e-17,
+      "energy_Wh_step": 2.4285420790629024e-17
+    },
+    {
+      "time_s": 14728500,
+      "T_zone_degC": 27.419019306285577,
+      "T_outdoor_degC": 25.56470588235294,
+      "H_global_Wm2": 760.0,
+      "u_heating": 20.78181133735415,
+      "power_W": 9.716249982521736e-17,
+      "energy_Wh_step": 2.429062495630434e-17
+    },
+    {
+      "time_s": 14729400,
+      "T_zone_degC": 27.59687105268671,
+      "T_outdoor_degC": 26.127389705882365,
+      "H_global_Wm2": 714.986181269499,
+      "u_heating": 21.263151567383204,
+      "power_W": 9.712620696132589e-17,
+      "energy_Wh_step": 2.4281551740331473e-17
+    },
+    {
+      "time_s": 14730300,
+      "T_zone_degC": 27.710045541919328,
+      "T_outdoor_degC": 26.600000000000023,
+      "H_global_Wm2": 664.495869888398,
+      "u_heating": 19.726071312690433,
+      "power_W": 9.712313429163024e-17,
+      "energy_Wh_step": 2.428078357290756e-17
+    },
+    {
+      "time_s": 14731200,
+      "T_zone_degC": 27.775596877766816,
+      "T_outdoor_degC": 26.944999999999993,
+      "H_global_Wm2": 612.507623563098,
+      "u_heating": 23.46636928525721,
+      "power_W": 9.713407177210436e-17,
+      "energy_Wh_step": 2.428351794302609e-17
+    },
+    {
+      "time_s": 14732100,
+      "T_zone_degC": 27.815228685192608,
+      "T_outdoor_degC": 27.186666666666667,
+      "H_global_Wm2": 563.0,
+      "u_heating": 21.053831529843,
+      "power_W": 9.712215016293754e-17,
+      "energy_Wh_step": 2.4280537540734385e-17
+    },
+    {
+      "time_s": 14733000,
+      "T_zone_degC": 27.83761267500364,
+      "T_outdoor_degC": 27.33499999999998,
+      "H_global_Wm2": 512.364530941261,
+      "u_heating": 19.974567040996398,
+      "power_W": 9.71268660882871e-17,
+      "energy_Wh_step": 2.4281716522071775e-17
+    },
+    {
+      "time_s": 14733900,
+      "T_zone_degC": 27.842618995834982,
+      "T_outdoor_degC": 27.399999999999977,
+      "H_global_Wm2": 459.49654212322616,
+      "u_heating": 20.424852334296563,
+      "power_W": 9.712721965994787e-17,
+      "energy_Wh_step": 2.4281804914986967e-17
+    },
+    {
+      "time_s": 14734800,
+      "T_zone_degC": 27.833736452477694,
+      "T_outdoor_degC": 27.423333333333346,
+      "H_global_Wm2": 412.1302822435782,
+      "u_heating": 20.611339477032278,
+      "power_W": 9.71266248778779e-17,
+      "energy_Wh_step": 2.4281656219469475e-17
+    },
+    {
+      "time_s": 14735700,
+      "T_zone_degC": 27.82139578175679,
+      "T_outdoor_degC": 27.43555555555554,
+      "H_global_Wm2": 378.0,
+      "u_heating": 21.61759520292291,
+      "power_W": 9.712701480962085e-17,
+      "energy_Wh_step": 2.4281753702405213e-17
+    },
+    {
+      "time_s": 14736600,
+      "T_zone_degC": 27.811447188205534,
+      "T_outdoor_degC": 27.430000000000007,
+      "H_global_Wm2": 358.3285690789474,
+      "u_heating": 20.40777880396988,
+      "power_W": 9.712671248284411e-17,
+      "energy_Wh_step": 2.4281678120711028e-17
+    },
+    {
+      "time_s": 14737500,
+      "T_zone_degC": 27.805322815295256,
+      "T_outdoor_degC": 27.399999999999977,
+      "H_global_Wm2": 346.3103947368421,
+      "u_heating": 21.26464210425099,
+      "power_W": 9.712679249813538e-17,
+      "energy_Wh_step": 2.4281698124533844e-17
+    },
+    {
+      "time_s": 14738400,
+      "T_zone_degC": 27.796671410250553,
+      "T_outdoor_degC": 27.355000000000018,
+      "H_global_Wm2": 337.6370230263158,
+      "u_heating": 21.45162472050923,
+      "power_W": 9.712691377058062e-17,
+      "energy_Wh_step": 2.4281728442645154e-17
+    },
+    {
+      "time_s": 14739300,
+      "T_zone_degC": 27.786493544424843,
+      "T_outdoor_degC": 27.3077777777778,
+      "H_global_Wm2": 328.0,
+      "u_heating": 21.3789814241458,
+      "power_W": 9.712672782931261e-17,
+      "energy_Wh_step": 2.4281681957328152e-17
+    },
+    {
+      "time_s": 14740200,
+      "T_zone_degC": 27.77469951964781,
+      "T_outdoor_degC": 27.25666666666666,
+      "H_global_Wm2": 315.5799495967742,
+      "u_heating": 19.88572575947952,
+      "power_W": 9.712697788957365e-17,
+      "energy_Wh_step": 2.4281744472393412e-17
+    },
+    {
+      "time_s": 14741100,
+      "T_zone_degC": 27.76055970754595,
+      "T_outdoor_degC": 27.19999999999999,
+      "H_global_Wm2": 302.85153225806454,
+      "u_heating": 19.498717622442125,
+      "power_W": 9.71268933091885e-17,
+      "energy_Wh_step": 2.4281723327297125e-17
+    },
+    {
+      "time_s": 14742000,
+      "T_zone_degC": 27.743183982867265,
+      "T_outdoor_degC": 27.126406250000002,
+      "H_global_Wm2": 291.94734879032256,
+      "u_heating": 21.89919100016501,
+      "power_W": 9.712685235475516e-17,
+      "energy_Wh_step": 2.428171308868879e-17
+    },
+    {
+      "time_s": 14742900,
+      "T_zone_degC": 27.72205382900478,
+      "T_outdoor_degC": 27.038749999999993,
+      "H_global_Wm2": 285.0,
+      "u_heating": 21.853909669890097,
+      "power_W": 9.712686090792589e-17,
+      "energy_Wh_step": 2.4281715226981472e-17
+    },
+    {
+      "time_s": 14743800,
+      "T_zone_degC": 27.700873402840273,
+      "T_outdoor_degC": 26.956718749999993,
+      "H_global_Wm2": 291.0280378622198,
+      "u_heating": 21.46564159012943,
+      "power_W": 9.712719656776774e-17,
+      "energy_Wh_step": 2.4281799141941935e-17
+    },
+    {
+      "time_s": 14744700,
+      "T_zone_degC": 27.688114161812848,
+      "T_outdoor_degC": 26.899999999999977,
+      "H_global_Wm2": 311.33283214871517,
+      "u_heating": 22.373293565698216,
+      "power_W": 9.712682948540615e-17,
+      "energy_Wh_step": 2.4281707371351538e-17
+    },
+    {
+      "time_s": 14745600,
+      "T_zone_degC": 27.687587267539243,
+      "T_outdoor_degC": 26.876093749999995,
+      "H_global_Wm2": 336.4712103608529,
+      "u_heating": 23.31291685775188,
+      "power_W": 9.712703094890718e-17,
+      "energy_Wh_step": 2.4281757737226795e-17
+    },
+    {
+      "time_s": 14746500,
+      "T_zone_degC": 27.69447345200308,
+      "T_outdoor_degC": 26.873749999999973,
+      "H_global_Wm2": 357.0,
+      "u_heating": 19.569828151835598,
+      "power_W": 9.712689297071668e-17,
+      "energy_Wh_step": 2.428172324267917e-17
+    },
+    {
+      "time_s": 14747400,
+      "T_zone_degC": 27.698405844688466,
+      "T_outdoor_degC": 26.88453125000001,
+      "H_global_Wm2": 371.4393869173729,
+      "u_heating": 20.80517458906534,
+      "power_W": 9.712696579651268e-17,
+      "energy_Wh_step": 2.428174144912817e-17
+    },
+    {
+      "time_s": 14748300,
+      "T_zone_degC": 27.69928280615119,
+      "T_outdoor_degC": 26.899999999999977,
+      "H_global_Wm2": 384.4287605932203,
+      "u_heating": 21.274322759638228,
+      "power_W": 9.712685539425516e-17,
+      "energy_Wh_step": 2.428171384856379e-17
+    },
+    {
+      "time_s": 14749200,
+      "T_zone_degC": 27.69873163602358,
+      "T_outdoor_degC": 26.920546875000014,
+      "H_global_Wm2": 395.7037539724576,
+      "u_heating": 22.90995152807678,
+      "power_W": 9.712685583057729e-17,
+      "energy_Wh_step": 2.4281713957644322e-17
+    },
+    {
+      "time_s": 14750100,
+      "T_zone_degC": 27.69697344435832,
+      "T_outdoor_degC": 26.948125000000005,
+      "H_global_Wm2": 405.0,
+      "u_heating": 20.24009166982702,
+      "power_W": 9.712687469704412e-17,
+      "energy_Wh_step": 2.428171867426103e-17
+    },
+    {
+      "time_s": 14751000,
+      "T_zone_degC": 27.693614974183106,
+      "T_outdoor_degC": 26.976640625000016,
+      "H_global_Wm2": 404.825544784699,
+      "u_heating": 22.849288993236158,
+      "power_W": 9.712688815541506e-17,
+      "energy_Wh_step": 2.4281722038853764e-17
+    },
+    {
+      "time_s": 14751900,
+      "T_zone_degC": 27.686271193096786,
+      "T_outdoor_degC": 27.0,
+      "H_global_Wm2": 390.2327027591973,
+      "u_heating": 23.21407960106457,
+      "power_W": 9.712690263750657e-17,
+      "energy_Wh_step": 2.4281725659376642e-17
+    },
+    {
+      "time_s": 14752800,
+      "T_zone_degC": 27.674093356277353,
+      "T_outdoor_degC": 27.021484375,
+      "H_global_Wm2": 364.773509354097,
+      "u_heating": 20.223787274382765,
+      "power_W": 9.712687351591108e-17,
+      "energy_Wh_step": 2.428171837897777e-17
+    },
+    {
+      "time_s": 14753700,
+      "T_zone_degC": 27.657089314021732,
+      "T_outdoor_degC": 27.03020833333335,
+      "H_global_Wm2": 332.0,
+      "u_heating": 22.932995145133884,
+      "power_W": 9.712690300874451e-17,
+      "energy_Wh_step": 2.4281725752186128e-17
+    },
+    {
+      "time_s": 14754600,
+      "T_zone_degC": 27.632515369695568,
+      "T_outdoor_degC": 26.99882812499999,
+      "H_global_Wm2": 278.9092088571099,
+      "u_heating": 22.680252041401157,
+      "power_W": 9.712688360787806e-17,
+      "energy_Wh_step": 2.4281720901969515e-17
+    },
+    {
+      "time_s": 14755500,
+      "T_zone_degC": 27.595359630249163,
+      "T_outdoor_degC": 26.899999999999977,
+      "H_global_Wm2": 205.58787913735438,
+      "u_heating": 23.356760747174356,
+      "power_W": 9.712691032963246e-17,
+      "energy_Wh_step": 2.4281727582408115e-17
+    },
+    {
+      "time_s": 14756400,
+      "T_zone_degC": 27.53943706648886,
+      "T_outdoor_degC": 26.736914062499977,
+      "H_global_Wm2": 135.2226098489217,
+      "u_heating": 21.615391421230335,
+      "power_W": 9.712677258539286e-17,
+      "energy_Wh_step": 2.4281693146348216e-17
+    },
+    {
+      "time_s": 14757300,
+      "T_zone_degC": 27.47213274338435,
+      "T_outdoor_degC": 26.54010416666665,
+      "H_global_Wm2": 91.0,
+      "u_heating": 23.038524282589307,
+      "power_W": 9.712698059948125e-17,
+      "energy_Wh_step": 2.4281745149870313e-17
+    },
+    {
+      "time_s": 14758200,
+      "T_zone_degC": 27.399466351874594,
+      "T_outdoor_degC": 26.3232421875,
+      "H_global_Wm2": 69.51663981419485,
+      "u_heating": 22.961781002334895,
+      "power_W": 9.712687106202355e-17,
+      "energy_Wh_step": 2.4281717765505888e-17
+    },
+    {
+      "time_s": 14759100,
+      "T_zone_degC": 27.322742254060813,
+      "T_outdoor_degC": 26.100000000000023,
+      "H_global_Wm2": 51.883453297623035,
+      "u_heating": 20.17861715133676,
+      "power_W": 9.712685508842957e-17,
+      "energy_Wh_step": 2.4281713772107392e-17
+    },
+    {
+      "time_s": 14760000,
+      "T_zone_degC": 27.347593322997398,
+      "T_outdoor_degC": 25.8720703125,
+      "H_global_Wm2": 38.0585401322397,
+      "u_heating": 23.3792132418036,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14760900,
+      "T_zone_degC": 27.321069824355845,
+      "T_outdoor_degC": 25.639062500000023,
+      "H_global_Wm2": 28.0,
+      "u_heating": 22.452953097221773,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14761800,
+      "T_zone_degC": 27.261493713775167,
+      "T_outdoor_degC": 25.411523437500023,
+      "H_global_Wm2": 19.018507281553397,
+      "u_heating": 20.189568918705397,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14762700,
+      "T_zone_degC": 27.19577655056861,
+      "T_outdoor_degC": 25.19999999999999,
+      "H_global_Wm2": 9.905339805825246,
+      "u_heating": 22.1440623741066,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14763600,
+      "T_zone_degC": 27.13007932277867,
+      "T_outdoor_degC": 25.0,
+      "H_global_Wm2": 2.839502427184467,
+      "u_heating": 22.04570176829889,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14764500,
+      "T_zone_degC": 27.064997301607264,
+      "T_outdoor_degC": 24.80000000000001,
+      "H_global_Wm2": 0.0,
+      "u_heating": 22.25947355444981,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14765400,
+      "T_zone_degC": 27.00127504300059,
+      "T_outdoor_degC": 24.600000000000023,
+      "H_global_Wm2": 0.0,
+      "u_heating": 23.54109252675088,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14766300,
+      "T_zone_degC": 26.93841937709567,
+      "T_outdoor_degC": 24.399999999999977,
+      "H_global_Wm2": 0.0,
+      "u_heating": 20.56791008116496,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14767200,
+      "T_zone_degC": 26.875040655335226,
+      "T_outdoor_degC": 24.19999999999999,
+      "H_global_Wm2": 0.0,
+      "u_heating": 19.7090709948531,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14768100,
+      "T_zone_degC": 26.810293778479718,
+      "T_outdoor_degC": 24.0,
+      "H_global_Wm2": 0.0,
+      "u_heating": 21.714281808134597,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14769000,
+      "T_zone_degC": 26.74597190374351,
+      "T_outdoor_degC": 23.80000000000001,
+      "H_global_Wm2": 0.0,
+      "u_heating": 21.499068750590283,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14769900,
+      "T_zone_degC": 26.6825408922237,
+      "T_outdoor_degC": 23.600000000000023,
+      "H_global_Wm2": 0.0,
+      "u_heating": 23.85556643950767,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14770800,
+      "T_zone_degC": 26.62034507422817,
+      "T_outdoor_degC": 23.41187500000001,
+      "H_global_Wm2": 0.0,
+      "u_heating": 19.00399033471404,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14771700,
+      "T_zone_degC": 26.561660364142938,
+      "T_outdoor_degC": 23.24000000000001,
+      "H_global_Wm2": 0.0,
+      "u_heating": 21.825960130519785,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14772600,
+      "T_zone_degC": 26.506197035457888,
+      "T_outdoor_degC": 23.073125000000005,
+      "H_global_Wm2": 0.0,
+      "u_heating": 22.943081206959363,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14773500,
+      "T_zone_degC": 26.451835527623473,
+      "T_outdoor_degC": 22.899999999999977,
+      "H_global_Wm2": 0.0,
+      "u_heating": 19.06964024111579,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14774400,
+      "T_zone_degC": 26.395717895186692,
+      "T_outdoor_degC": 22.701874999999973,
+      "H_global_Wm2": 0.0,
+      "u_heating": 22.670445759207016,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14775300,
+      "T_zone_degC": 26.33618536037409,
+      "T_outdoor_degC": 22.485000000000014,
+      "H_global_Wm2": 0.0,
+      "u_heating": 21.823611834879546,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14776200,
+      "T_zone_degC": 26.275980165894964,
+      "T_outdoor_degC": 22.27562499999999,
+      "H_global_Wm2": 0.0,
+      "u_heating": 21.51901553508064,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14777100,
+      "T_zone_degC": 26.21922148236831,
+      "T_outdoor_degC": 22.100000000000023,
+      "H_global_Wm2": 0.0,
+      "u_heating": 20.50742971322319,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14778000,
+      "T_zone_degC": 26.169833540733066,
+      "T_outdoor_degC": 21.97562499999998,
+      "H_global_Wm2": 0.0,
+      "u_heating": 19.332682988529335,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14778900,
+      "T_zone_degC": 26.12801459211613,
+      "T_outdoor_degC": 21.88499999999999,
+      "H_global_Wm2": 0.0,
+      "u_heating": 22.57702318247184,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14779800,
+      "T_zone_degC": 26.090497836697978,
+      "T_outdoor_degC": 21.801874999999995,
+      "H_global_Wm2": 0.0,
+      "u_heating": 19.77556636962954,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14780700,
+      "T_zone_degC": 26.053119915863363,
+      "T_outdoor_degC": 21.69999999999999,
+      "H_global_Wm2": 0.0,
+      "u_heating": 19.266727658216332,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14781600,
+      "T_zone_degC": 26.012815954245582,
+      "T_outdoor_degC": 21.575468750000027,
+      "H_global_Wm2": 0.0,
+      "u_heating": 23.955050475060112,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14782500,
+      "T_zone_degC": 25.970932730840047,
+      "T_outdoor_degC": 21.44625000000002,
+      "H_global_Wm2": 0.0,
+      "u_heating": 23.286005466890828,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14783400,
+      "T_zone_degC": 25.928892784947152,
+      "T_outdoor_degC": 21.318906249999998,
+      "H_global_Wm2": 0.0,
+      "u_heating": 19.94857844672977,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14784300,
+      "T_zone_degC": 25.887797013480338,
+      "T_outdoor_degC": 21.19999999999999,
+      "H_global_Wm2": 0.0,
+      "u_heating": 21.886543403641248,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14785200,
+      "T_zone_degC": 25.8486897251006,
+      "T_outdoor_degC": 21.095312499999977,
+      "H_global_Wm2": 0.0,
+      "u_heating": 20.135195429995456,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14786100,
+      "T_zone_degC": 25.81174052564478,
+      "T_outdoor_degC": 21.0,
+      "H_global_Wm2": 0.0,
+      "u_heating": 19.318810392007997,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14787000,
+      "T_zone_degC": 25.775885493138446,
+      "T_outdoor_degC": 20.904687500000023,
+      "H_global_Wm2": 0.0,
+      "u_heating": 21.05228587733073,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14787900,
+      "T_zone_degC": 25.739706245142827,
+      "T_outdoor_degC": 20.80000000000001,
+      "H_global_Wm2": 0.0,
+      "u_heating": 22.777250656707285,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14788800,
+      "T_zone_degC": 25.701942471451048,
+      "T_outdoor_degC": 20.681093750000002,
+      "H_global_Wm2": 0.0,
+      "u_heating": 21.447838516461626,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14789700,
+      "T_zone_degC": 25.662643256712215,
+      "T_outdoor_degC": 20.55374999999998,
+      "H_global_Wm2": 0.0,
+      "u_heating": 21.48029716808475,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14790600,
+      "T_zone_degC": 25.622634994947305,
+      "T_outdoor_degC": 20.424531249999973,
+      "H_global_Wm2": 0.0,
+      "u_heating": 22.685507206385694,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14791500,
+      "T_zone_degC": 25.582909886739287,
+      "T_outdoor_degC": 20.30000000000001,
+      "H_global_Wm2": 0.0,
+      "u_heating": 19.775545441782423,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14792400,
+      "T_zone_degC": 25.544249677662435,
+      "T_outdoor_degC": 20.182500000000005,
+      "H_global_Wm2": 0.0,
+      "u_heating": 19.90656076779223,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14793300,
+      "T_zone_degC": 25.5068759684076,
+      "T_outdoor_degC": 20.073333333333323,
+      "H_global_Wm2": 0.0,
+      "u_heating": 23.54760063556104,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14794200,
+      "T_zone_degC": 25.471392403162724,
+      "T_outdoor_degC": 19.97750000000002,
+      "H_global_Wm2": 0.31261488970588236,
+      "u_heating": 19.696683095712025,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14795100,
+      "T_zone_degC": 25.438726785526796,
+      "T_outdoor_degC": 19.899999999999977,
+      "H_global_Wm2": 1.0836397058823528,
+      "u_heating": 21.72618692528948,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14796000,
+      "T_zone_degC": 25.410676154976727,
+      "T_outdoor_degC": 19.859821428571422,
+      "H_global_Wm2": 2.062844669117647,
+      "u_heating": 20.540565920264058,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14796900,
+      "T_zone_degC": 25.38934611591867,
+      "T_outdoor_degC": 19.859523809523807,
+      "H_global_Wm2": 3.0,
+      "u_heating": 19.407196738419923,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14797800,
+      "T_zone_degC": 25.373167824668144,
+      "T_outdoor_degC": 19.879464285714278,
+      "H_global_Wm2": 2.9097060065580274,
+      "u_heating": 20.23390564321907,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14798700,
+      "T_zone_degC": 25.359523845017407,
+      "T_outdoor_degC": 19.899999999999977,
+      "H_global_Wm2": 3.426495429252779,
+      "u_heating": 23.98364979801089,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14799600,
+      "T_zone_degC": 25.34718069005072,
+      "T_outdoor_degC": 19.91428571428571,
+      "H_global_Wm2": 8.23003713732114,
+      "u_heating": 22.762960471429373,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14800500,
+      "T_zone_degC": 25.339036267410165,
+      "T_outdoor_degC": 19.940476190476204,
+      "H_global_Wm2": 21.0,
+      "u_heating": 23.416367470912007,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14801400,
+      "T_zone_degC": 25.34112871276716,
+      "T_outdoor_degC": 19.996428571428567,
+      "H_global_Wm2": 47.294695533948584,
+      "u_heating": 19.44980535697627,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14802300,
+      "T_zone_degC": 25.363718488073232,
+      "T_outdoor_degC": 20.100000000000023,
+      "H_global_Wm2": 85.72279169413316,
+      "u_heating": 22.721339514762583,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14803200,
+      "T_zone_degC": 25.301291701314653,
+      "T_outdoor_degC": 20.297321428571422,
+      "H_global_Wm2": 129.53949200725117,
+      "u_heating": 21.3109768635595,
+      "power_W": 9.713061860671066e-17,
+      "energy_Wh_step": 2.4282654651677666e-17
+    },
+    {
+      "time_s": 14804100,
+      "T_zone_degC": 25.34599356801681,
+      "T_outdoor_degC": 20.592857142857156,
+      "H_global_Wm2": 172.0,
+      "u_heating": 23.31342243125312,
+      "power_W": 9.712983399124658e-17,
+      "energy_Wh_step": 2.4282458497811644e-17
+    },
+    {
+      "time_s": 14805000,
+      "T_zone_degC": 25.434881670769073,
+      "T_outdoor_degC": 20.941964285714278,
+      "H_global_Wm2": 215.06420731707317,
+      "u_heating": 21.672140249406105,
+      "power_W": 9.710453250568404e-17,
+      "energy_Wh_step": 2.427613312642101e-17
+    },
+    {
+      "time_s": 14805900,
+      "T_zone_degC": 25.55830247022311,
+      "T_outdoor_degC": 21.30000000000001,
+      "H_global_Wm2": 261.72040650406507,
+      "u_heating": 22.23083036582517,
+      "power_W": 9.718563496716478e-17,
+      "energy_Wh_step": 2.4296408741791195e-17
+    },
+    {
+      "time_s": 14806800,
+      "T_zone_degC": 25.704655222823874,
+      "T_outdoor_degC": 21.711785714285725,
+      "H_global_Wm2": 306.76640243902443,
+      "u_heating": 20.54261421172229,
+      "power_W": 9.715290208310308e-17,
+      "energy_Wh_step": 2.428822552077577e-17
+    },
+    {
+      "time_s": 14807700,
+      "T_zone_degC": 25.872722065659502,
+      "T_outdoor_degC": 22.183809523809543,
+      "H_global_Wm2": 345.0,
+      "u_heating": 23.904506817402066,
+      "power_W": 9.717530009746043e-17,
+      "energy_Wh_step": 2.4293825024365107e-17
+    },
+    {
+      "time_s": 14808600,
+      "T_zone_degC": 26.03486978065905,
+      "T_outdoor_degC": 22.613928571428573,
+      "H_global_Wm2": 348.79900621118014,
+      "u_heating": 21.650122128991,
+      "power_W": 9.693450955421674e-17,
+      "energy_Wh_step": 2.4233627388554185e-17
+    },
+    {
+      "time_s": 14809500,
+      "T_zone_degC": 26.152027292786784,
+      "T_outdoor_degC": 22.899999999999977,
+      "H_global_Wm2": 313.37068322981366,
+      "u_heating": 22.098087064130013,
+      "power_W": 9.722677974464103e-17,
+      "energy_Wh_step": 2.430669493616026e-17
+    },
+    {
+      "time_s": 14810400,
+      "T_zone_degC": 26.212201903694506,
+      "T_outdoor_degC": 23.05880208333332,
+      "H_global_Wm2": 267.7570186335404,
+      "u_heating": 22.83572186286671,
+      "power_W": 9.70730375147829e-17,
+      "energy_Wh_step": 2.4268259378695724e-17
+    },
+    {
+      "time_s": 14811300,
+      "T_zone_degC": 26.236303142658358,
+      "T_outdoor_degC": 23.1851388888889,
+      "H_global_Wm2": 241.0,
+      "u_heating": 23.040670645427607,
+      "power_W": 9.712697147826757e-17,
+      "energy_Wh_step": 2.4281742869566892e-17
+    },
+    {
+      "time_s": 14812200,
+      "T_zone_degC": 26.254708081510785,
+      "T_outdoor_degC": 23.29390625000002,
+      "H_global_Wm2": 235.96428571428572,
+      "u_heating": 21.88658586381845,
+      "power_W": 9.709299718729475e-17,
+      "energy_Wh_step": 2.427324929682369e-17
+    },
+    {
+      "time_s": 14813100,
+      "T_zone_degC": 26.27866353718116,
+      "T_outdoor_degC": 23.399999999999977,
+      "H_global_Wm2": 237.21946169772258,
+      "u_heating": 22.806267975492467,
+      "power_W": 9.706255188912106e-17,
+      "energy_Wh_step": 2.4265637972280264e-17
+    },
+    {
+      "time_s": 14814000,
+      "T_zone_degC": 26.307710265688627,
+      "T_outdoor_degC": 23.498906250000005,
+      "H_global_Wm2": 246.36490683229812,
+      "u_heating": 19.671566431737155,
+      "power_W": 9.712439377636816e-17,
+      "energy_Wh_step": 2.428109844409204e-17
+    },
+    {
+      "time_s": 14814900,
+      "T_zone_degC": 26.3411192328702,
+      "T_outdoor_degC": 23.587361111111136,
+      "H_global_Wm2": 265.0,
+      "u_heating": 21.139163635373144,
+      "power_W": 9.711745767397652e-17,
+      "energy_Wh_step": 2.427936441849413e-17
+    },
+    {
+      "time_s": 14815800,
+      "T_zone_degC": 26.38493342421316,
+      "T_outdoor_degC": 23.682135416666654,
+      "H_global_Wm2": 311.0114903111543,
+      "u_heating": 23.401986793898892,
+      "power_W": 9.711282911382362e-17,
+      "energy_Wh_step": 2.4278207278455905e-17
+    },
+    {
+      "time_s": 14816700,
+      "T_zone_degC": 26.455972452186472,
+      "T_outdoor_degC": 23.80000000000001,
+      "H_global_Wm2": 382.9509306848173,
+      "u_heating": 20.76268764372584,
+      "power_W": 9.710309274952436e-17,
+      "energy_Wh_step": 2.427577318738109e-17
+    },
+    {
+      "time_s": 14817600,
+      "T_zone_degC": 26.55461951327777,
+      "T_outdoor_degC": 24.00818181818181,
+      "H_global_Wm2": 453.41490571607164,
+      "u_heating": 21.044897732262594,
+      "power_W": 9.712782558836999e-17,
+      "energy_Wh_step": 2.4281956397092498e-17
+    },
+    {
+      "time_s": 14818500,
+      "T_zone_degC": 26.6760501609578,
+      "T_outdoor_degC": 24.311818181818182,
+      "H_global_Wm2": 495.0,
+      "u_heating": 22.244158029151933,
+      "power_W": 9.71099521901671e-17,
+      "energy_Wh_step": 2.4277488047541775e-17
+    },
+    {
+      "time_s": 14819400,
+      "T_zone_degC": 26.79880993188226,
+      "T_outdoor_degC": 24.634545454545446,
+      "H_global_Wm2": 507.49659166024014,
+      "u_heating": 22.45362343318518,
+      "power_W": 9.714501802139854e-17,
+      "energy_Wh_step": 2.4286254505349634e-17
+    },
+    {
+      "time_s": 14820300,
+      "T_zone_degC": 26.90842511471277,
+      "T_outdoor_degC": 24.899999999999977,
+      "H_global_Wm2": 509.4797289853476,
+      "u_heating": 23.1917155443722,
+      "power_W": 9.71115236789982e-17,
+      "energy_Wh_step": 2.427788091974955e-17
+    },
+    {
+      "time_s": 14821200,
+      "T_zone_degC": 26.998728094567696,
+      "T_outdoor_degC": 25.11045454545456,
+      "H_global_Wm2": 501.7230018177812,
+      "u_heating": 20.428032288806975,
+      "power_W": 9.712544271458485e-17,
+      "energy_Wh_step": 2.4281360678646213e-17
+    },
+    {
+      "time_s": 14822100,
+      "T_zone_degC": 27.073887410431325,
+      "T_outdoor_degC": 25.308181818181822,
+      "H_global_Wm2": 485.0,
+      "u_heating": 22.336052144265878,
+      "power_W": 9.712638702243734e-17,
+      "energy_Wh_step": 2.4281596755609334e-17
+    },
+    {
+      "time_s": 14823000,
+      "T_zone_degC": 27.13316793419989,
+      "T_outdoor_degC": 25.476818181818203,
+      "H_global_Wm2": 457.5384033382245,
+      "u_heating": 20.75415808115461,
+      "power_W": 9.712532033032536e-17,
+      "energy_Wh_step": 2.428133008258134e-17
+    },
+    {
+      "time_s": 14823900,
+      "T_zone_degC": 27.176344577906548,
+      "T_outdoor_degC": 25.600000000000023,
+      "H_global_Wm2": 422.96735143066763,
+      "u_heating": 19.338891743590953,
+      "power_W": 9.712673008101824e-17,
+      "energy_Wh_step": 2.428168252025456e-17
+    },
+    {
+      "time_s": 14824800,
+      "T_zone_degC": 27.21116045624052,
+      "T_outdoor_degC": 25.689374999999984,
+      "H_global_Wm2": 390.162623807777,
+      "u_heating": 19.561922558014476,
+      "power_W": 9.712929264058743e-17,
+      "energy_Wh_step": 2.4282323160146857e-17
+    },
+    {
+      "time_s": 14825700,
+      "T_zone_degC": 27.242594997734045,
+      "T_outdoor_degC": 25.768333333333317,
+      "H_global_Wm2": 368.0,
+      "u_heating": 23.23863003862887,
+      "power_W": 9.712704832260936e-17,
+      "energy_Wh_step": 2.428176208065234e-17
+    },
+    {
+      "time_s": 14826600,
+      "T_zone_degC": 27.26873868708094,
+      "T_outdoor_degC": 25.83812499999999,
+      "H_global_Wm2": 362.2896261598144,
+      "u_heating": 19.834008386519955,
+      "power_W": 9.712670978314121e-17,
+      "energy_Wh_step": 2.4281677445785303e-17
+    },
+    {
+      "time_s": 14827500,
+      "T_zone_degC": 27.29453553362015,
+      "T_outdoor_degC": 25.899999999999977,
+      "H_global_Wm2": 365.90531514957604,
+      "u_heating": 19.345340839467887,
+      "power_W": 9.712467178739733e-17,
+      "energy_Wh_step": 2.4281167946849332e-17
+    },
+    {
+      "time_s": 14828400,
+      "T_zone_degC": 27.32114590156459,
+      "T_outdoor_degC": 25.95703125,
+      "H_global_Wm2": 368.3183465645497,
+      "u_heating": 19.826384254299434,
+      "power_W": 9.712591646943173e-17,
+      "energy_Wh_step": 2.4281479117357932e-17
+    },
+    {
+      "time_s": 14829300,
+      "T_zone_degC": 27.346488631588954,
+      "T_outdoor_degC": 26.010416666666686,
+      "H_global_Wm2": 359.0,
+      "u_heating": 19.919944347118854,
+      "power_W": 9.712692592245906e-17,
+      "energy_Wh_step": 2.4281731480614765e-17
+    },
+    {
+      "time_s": 14830200,
+      "T_zone_degC": 27.366109087256405,
+      "T_outdoor_degC": 26.05859375,
+      "H_global_Wm2": 337.72838458827357,
+      "u_heating": 19.745640803999965,
+      "power_W": 9.712880942234426e-17,
+      "energy_Wh_step": 2.4282202355586064e-17
+    },
+    {
+      "time_s": 14831100,
+      "T_zone_degC": 27.37786220569444,
+      "T_outdoor_degC": 26.100000000000023,
+      "H_global_Wm2": 313.46930125795257,
+      "u_heating": 21.830426368120573,
+      "power_W": 9.712489832377569e-17,
+      "energy_Wh_step": 2.428122458094392e-17
+    },
+    {
+      "time_s": 14832000,
+      "T_zone_degC": 27.382248646860887,
+      "T_outdoor_degC": 26.135156250000023,
+      "H_global_Wm2": 289.4755672986553,
+      "u_heating": 21.297879462645383,
+      "power_W": 9.712752590841723e-17,
+      "energy_Wh_step": 2.4281881477104307e-17
+    },
+    {
+      "time_s": 14832900,
+      "T_zone_degC": 27.380497466214138,
+      "T_outdoor_degC": 26.15625,
+      "H_global_Wm2": 269.0,
+      "u_heating": 20.611090301637272,
+      "power_W": 9.712729203032499e-17,
+      "energy_Wh_step": 2.4281823007581248e-17
+    },
+    {
+      "time_s": 14833800,
+      "T_zone_degC": 27.372800660901817,
+      "T_outdoor_degC": 26.14921874999999,
+      "H_global_Wm2": 251.76675696381386,
+      "u_heating": 23.77418567392617,
+      "power_W": 9.712699919567171e-17,
+      "energy_Wh_step": 2.4281749798917928e-17
+    },
+    {
+      "time_s": 14834700,
+      "T_zone_degC": 27.3575338175213,
+      "T_outdoor_degC": 26.100000000000023,
+      "H_global_Wm2": 235.26023010863184,
+      "u_heating": 22.931413587670317,
+      "power_W": 9.712691419431252e-17,
+      "energy_Wh_step": 2.428172854857813e-17
+    },
+    {
+      "time_s": 14835600,
+      "T_zone_degC": 27.33410703416064,
+      "T_outdoor_degC": 26.024999999999977,
+      "H_global_Wm2": 219.37358819913388,
+      "u_heating": 22.01740018469859,
+      "power_W": 9.712687452918083e-17,
+      "energy_Wh_step": 2.4281718632295206e-17
+    },
+    {
+      "time_s": 14836500,
+      "T_zone_degC": 27.306674566406627,
+      "T_outdoor_degC": 25.94999999999999,
+      "H_global_Wm2": 204.0,
+      "u_heating": 22.801152394312602,
+      "power_W": 9.712683190643289e-17,
+      "energy_Wh_step": 2.4281707976608223e-17
+    },
+    {
+      "time_s": 14837400,
+      "T_zone_degC": 27.277142033888765,
+      "T_outdoor_degC": 25.875,
+      "H_global_Wm2": 191.58398410059476,
+      "u_heating": 23.443795546815302,
+      "power_W": 9.712688556961105e-17,
+      "energy_Wh_step": 2.4281721392402762e-17
+    },
+    {
+      "time_s": 14838300,
+      "T_zone_degC": 27.246811736250436,
+      "T_outdoor_degC": 25.80000000000001,
+      "H_global_Wm2": 182.5432960239779,
+      "u_heating": 19.058824762063036,
+      "power_W": 9.712697429921523e-17,
+      "energy_Wh_step": 2.4281743574803808e-17
+    },
+    {
+      "time_s": 14839200,
+      "T_zone_degC": 27.215619497143734,
+      "T_outdoor_degC": 25.725000000000023,
+      "H_global_Wm2": 173.73095993537208,
+      "u_heating": 22.323471819456046,
+      "power_W": 9.712635097439698e-17,
+      "energy_Wh_step": 2.4281587743599244e-17
+    },
+    {
+      "time_s": 14840100,
+      "T_zone_degC": 27.182490411105675,
+      "T_outdoor_degC": 25.649999999999977,
+      "H_global_Wm2": 162.0,
+      "u_heating": 23.612959908585793,
+      "power_W": 9.712690090843075e-17,
+      "energy_Wh_step": 2.4281725227107688e-17
+    },
+    {
+      "time_s": 14841000,
+      "T_zone_degC": 27.145552130075373,
+      "T_outdoor_degC": 25.57499999999999,
+      "H_global_Wm2": 131.3619418882072,
+      "u_heating": 19.51277469520197,
+      "power_W": 9.713416967059466e-17,
+      "energy_Wh_step": 2.4283542417648666e-17
+    },
+    {
+      "time_s": 14841900,
+      "T_zone_degC": 27.098257056505417,
+      "T_outdoor_degC": 25.5,
+      "H_global_Wm2": 82.20444217223357,
+      "u_heating": 22.40612185414106,
+      "power_W": 9.712707523093252e-17,
+      "energy_Wh_step": 2.428176880773313e-17
+    },
+    {
+      "time_s": 14842800,
+      "T_zone_degC": 27.033566274815655,
+      "T_outdoor_degC": 25.37812500000001,
+      "H_global_Wm2": 35.94472137014316,
+      "u_heating": 21.049455186878596,
+      "power_W": 9.712550942458206e-17,
+      "energy_Wh_step": 2.4281377356145515e-17
+    },
+    {
+      "time_s": 14843700,
+      "T_zone_degC": 26.948416792164778,
+      "T_outdoor_degC": 25.191666666666663,
+      "H_global_Wm2": 14.0,
+      "u_heating": 22.86544050433895,
+      "power_W": 9.712583409834936e-17,
+      "energy_Wh_step": 2.428145852458734e-17
+    },
+    {
+      "time_s": 14844600,
+      "T_zone_degC": 26.860504284046726,
+      "T_outdoor_degC": 24.984375,
+      "H_global_Wm2": 11.545519406392694,
+      "u_heating": 22.583556599468018,
+      "power_W": 9.712428082265049e-17,
+      "energy_Wh_step": 2.4281070205662622e-17
+    },
+    {
+      "time_s": 14845500,
+      "T_zone_degC": 26.78062603002047,
+      "T_outdoor_degC": 24.80000000000001,
+      "H_global_Wm2": 9.436199898528667,
+      "u_heating": 23.395090663312175,
+      "power_W": 9.713069581528532e-17,
+      "energy_Wh_step": 2.428267395382133e-17
+    },
+    {
+      "time_s": 14846400,
+      "T_zone_degC": 26.823539354915113,
+      "T_outdoor_degC": 24.649999999999977,
+      "H_global_Wm2": 7.608780441400305,
+      "u_heating": 19.855672183553445,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14847300,
+      "T_zone_degC": 26.823781064446223,
+      "T_outdoor_degC": 24.508333333333326,
+      "H_global_Wm2": 6.0,
+      "u_heating": 19.150841902741973,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14848200,
+      "T_zone_degC": 26.785679434946474,
+      "T_outdoor_degC": 24.36250000000001,
+      "H_global_Wm2": 4.207191780821918,
+      "u_heating": 22.79860587938164,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14849100,
+      "T_zone_degC": 26.73598963437496,
+      "T_outdoor_degC": 24.19999999999999,
+      "H_global_Wm2": 2.2397260273972606,
+      "u_heating": 21.168971160343343,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14850000,
+      "T_zone_degC": 26.680376870807493,
+      "T_outdoor_degC": 24.009374999999977,
+      "H_global_Wm2": 0.6523972602739727,
+      "u_heating": 21.21579753718936,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14850900,
+      "T_zone_degC": 26.6209687615559,
+      "T_outdoor_degC": 23.80000000000001,
+      "H_global_Wm2": 0.0,
+      "u_heating": 23.42181887031471,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14851800,
+      "T_zone_degC": 26.560686999709446,
+      "T_outdoor_degC": 23.59062499999999,
+      "H_global_Wm2": 0.0,
+      "u_heating": 21.646698049356264,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14852700,
+      "T_zone_degC": 26.502640885844016,
+      "T_outdoor_degC": 23.399999999999977,
+      "H_global_Wm2": 0.0,
+      "u_heating": 23.530521000312127,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14853600,
+      "T_zone_degC": 26.44838764531289,
+      "T_outdoor_degC": 23.225000000000023,
+      "H_global_Wm2": 0.0,
+      "u_heating": 23.336976392375792,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14854500,
+      "T_zone_degC": 26.395825179421934,
+      "T_outdoor_degC": 23.05000000000001,
+      "H_global_Wm2": 0.0,
+      "u_heating": 22.460544078181222,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14855400,
+      "T_zone_degC": 26.344029898075064,
+      "T_outdoor_degC": 22.875,
+      "H_global_Wm2": 0.0,
+      "u_heating": 20.27894072239115,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14856300,
+      "T_zone_degC": 26.29278382191228,
+      "T_outdoor_degC": 22.69999999999999,
+      "H_global_Wm2": 0.0,
+      "u_heating": 22.296810993172993,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14857200,
+      "T_zone_degC": 26.24195959705463,
+      "T_outdoor_degC": 22.524999999999977,
+      "H_global_Wm2": 0.0,
+      "u_heating": 21.45247776374035,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14858100,
+      "T_zone_degC": 26.19120042716412,
+      "T_outdoor_degC": 22.350000000000023,
+      "H_global_Wm2": 0.0,
+      "u_heating": 22.05413994569996,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14859000,
+      "T_zone_degC": 26.140423463549496,
+      "T_outdoor_degC": 22.17500000000001,
+      "H_global_Wm2": 0.0,
+      "u_heating": 21.67439847940715,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14859900,
+      "T_zone_degC": 26.089919084265716,
+      "T_outdoor_degC": 22.0,
+      "H_global_Wm2": 0.0,
+      "u_heating": 23.2912275461442,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14860800,
+      "T_zone_degC": 26.039160429885214,
+      "T_outdoor_degC": 21.80937499999999,
+      "H_global_Wm2": 0.0,
+      "u_heating": 20.78341677190194,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14861700,
+      "T_zone_degC": 25.986371018927457,
+      "T_outdoor_degC": 21.600000000000023,
+      "H_global_Wm2": 0.0,
+      "u_heating": 21.82836048742528,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14862600,
+      "T_zone_degC": 25.932737181916934,
+      "T_outdoor_degC": 21.390625,
+      "H_global_Wm2": 0.0,
+      "u_heating": 20.766708980095988,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14863500,
+      "T_zone_degC": 25.880555355986473,
+      "T_outdoor_degC": 21.19999999999999,
+      "H_global_Wm2": 0.0,
+      "u_heating": 23.360882465719598,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14864400,
+      "T_zone_degC": 25.831174665610035,
+      "T_outdoor_degC": 21.024999999999977,
+      "H_global_Wm2": 0.0,
+      "u_heating": 22.098475389123998,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14865300,
+      "T_zone_degC": 25.782683946174075,
+      "T_outdoor_degC": 20.850000000000023,
+      "H_global_Wm2": 0.0,
+      "u_heating": 19.34328058445444,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14866200,
+      "T_zone_degC": 25.7344314584808,
+      "T_outdoor_degC": 20.67500000000001,
+      "H_global_Wm2": 0.0,
+      "u_heating": 23.255176216691048,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14867100,
+      "T_zone_degC": 25.686425800221173,
+      "T_outdoor_degC": 20.5,
+      "H_global_Wm2": 0.0,
+      "u_heating": 21.39385467594496,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14868000,
+      "T_zone_degC": 25.638759441381353,
+      "T_outdoor_degC": 20.32499999999999,
+      "H_global_Wm2": 0.0,
+      "u_heating": 23.89682818432051,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14868900,
+      "T_zone_degC": 25.59137180616949,
+      "T_outdoor_degC": 20.149999999999977,
+      "H_global_Wm2": 0.0,
+      "u_heating": 19.186773451675858,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14869800,
+      "T_zone_degC": 25.544167142333833,
+      "T_outdoor_degC": 19.975000000000023,
+      "H_global_Wm2": 0.0,
+      "u_heating": 21.924048291392612,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14870700,
+      "T_zone_degC": 25.497084710099386,
+      "T_outdoor_degC": 19.80000000000001,
+      "H_global_Wm2": 0.0,
+      "u_heating": 21.77360496986646,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14871600,
+      "T_zone_degC": 25.45008140631211,
+      "T_outdoor_degC": 19.625,
+      "H_global_Wm2": 0.0,
+      "u_heating": 23.569276827882447,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14872500,
+      "T_zone_degC": 25.403117551419427,
+      "T_outdoor_degC": 19.44999999999999,
+      "H_global_Wm2": 0.0,
+      "u_heating": 19.336965763421897,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14873400,
+      "T_zone_degC": 25.356147229461612,
+      "T_outdoor_degC": 19.274999999999977,
+      "H_global_Wm2": 0.0,
+      "u_heating": 20.089165895137132,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14874300,
+      "T_zone_degC": 25.30914642599521,
+      "T_outdoor_degC": 19.100000000000023,
+      "H_global_Wm2": 0.0,
+      "u_heating": 19.4171846056109,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14875200,
+      "T_zone_degC": 25.26212154290579,
+      "T_outdoor_degC": 18.92500000000001,
+      "H_global_Wm2": 0.0,
+      "u_heating": 19.823485016018513,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14876100,
+      "T_zone_degC": 25.21510408250458,
+      "T_outdoor_degC": 18.75,
+      "H_global_Wm2": 0.0,
+      "u_heating": 22.870541712243746,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14877000,
+      "T_zone_degC": 25.168114633442542,
+      "T_outdoor_degC": 18.57499999999999,
+      "H_global_Wm2": 0.0,
+      "u_heating": 20.48057105838465,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14877900,
+      "T_zone_degC": 25.121137733068565,
+      "T_outdoor_degC": 18.399999999999977,
+      "H_global_Wm2": 0.0,
+      "u_heating": 23.423001354823974,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14878800,
+      "T_zone_degC": 25.074116569284797,
+      "T_outdoor_degC": 18.225000000000023,
+      "H_global_Wm2": 0.0,
+      "u_heating": 21.198557703216753,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14879700,
+      "T_zone_degC": 25.026996187759323,
+      "T_outdoor_degC": 18.05000000000001,
+      "H_global_Wm2": 0.0,
+      "u_heating": 23.201177198618584,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14880600,
+      "T_zone_degC": 24.980247323764388,
+      "T_outdoor_degC": 17.875,
+      "H_global_Wm2": 3.6895254629629632,
+      "u_heating": 20.29790486005596,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14881500,
+      "T_zone_degC": 24.936521590954214,
+      "T_outdoor_degC": 17.69999999999999,
+      "H_global_Wm2": 13.2554012345679,
+      "u_heating": 19.81696116195065,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14882400,
+      "T_zone_degC": 24.90780156509902,
+      "T_outdoor_degC": 17.693750000000023,
+      "H_global_Wm2": 26.443576388888882,
+      "u_heating": 20.575995741933177,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14883300,
+      "T_zone_degC": 24.91616877758156,
+      "T_outdoor_degC": 17.933333333333337,
+      "H_global_Wm2": 41.0,
+      "u_heating": 19.125217881246208,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14884200,
+      "T_zone_degC": 24.955986970351034,
+      "T_outdoor_degC": 18.28125,
+      "H_global_Wm2": 62.87229986739251,
+      "u_heating": 19.220276529314283,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14885100,
+      "T_zone_degC": 25.022955909032476,
+      "T_outdoor_degC": 18.600000000000023,
+      "H_global_Wm2": 93.83693544884918,
+      "u_heating": 22.716562783737853,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14886000,
+      "T_zone_degC": 25.114411193195963,
+      "T_outdoor_degC": 18.876339285714266,
+      "H_global_Wm2": 125.38310330588126,
+      "u_heating": 22.547466913719756,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14886900,
+      "T_zone_degC": 25.221934452715345,
+      "T_outdoor_degC": 19.17023809523812,
+      "H_global_Wm2": 149.0,
+      "u_heating": 21.829173423294314,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14887800,
+      "T_zone_degC": 25.32537646866109,
+      "T_outdoor_degC": 19.454017857142844,
+      "H_global_Wm2": 151.49091289782245,
+      "u_heating": 21.94383557386567,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14888700,
+      "T_zone_degC": 25.399552903133724,
+      "T_outdoor_degC": 19.69999999999999,
+      "H_global_Wm2": 137.74377442769404,
+      "u_heating": 21.067365092391853,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14889600,
+      "T_zone_degC": 25.314260415110482,
+      "T_outdoor_degC": 19.836607142857133,
+      "H_global_Wm2": 126.3747487437186,
+      "u_heating": 22.52378272641635,
+      "power_W": 9.6809460088937e-17,
+      "energy_Wh_step": 2.4202365022234248e-17
+    },
+    {
+      "time_s": 14890500,
+      "T_zone_degC": 25.280908192056245,
+      "T_outdoor_degC": 19.871428571428567,
+      "H_global_Wm2": 136.0,
+      "u_heating": 19.03696194607756,
+      "power_W": 9.711605643494766e-17,
+      "energy_Wh_step": 2.4279014108736915e-17
+    },
+    {
+      "time_s": 14891400,
+      "T_zone_degC": 25.278250383589352,
+      "T_outdoor_degC": 19.8955357142857,
+      "H_global_Wm2": 163.51781914893616,
+      "u_heating": 20.453119238609972,
+      "power_W": 9.709030774341851e-17,
+      "energy_Wh_step": 2.4272576935854628e-17
+    },
+    {
+      "time_s": 14892300,
+      "T_zone_degC": 25.303956341652224,
+      "T_outdoor_degC": 20.0,
+      "H_global_Wm2": 192.96973995271867,
+      "u_heating": 19.489354514539507,
+      "power_W": 9.719531734651269e-17,
+      "energy_Wh_step": 2.4298829336628172e-17
+    },
+    {
+      "time_s": 14893200,
+      "T_zone_degC": 25.35700911964517,
+      "T_outdoor_degC": 20.182031250000023,
+      "H_global_Wm2": 223.68679078014182,
+      "u_heating": 20.531137922608856,
+      "power_W": 9.717934371457628e-17,
+      "energy_Wh_step": 2.429483592864407e-17
+    },
+    {
+      "time_s": 14894100,
+      "T_zone_degC": 25.42645149462112,
+      "T_outdoor_degC": 20.37708333333336,
+      "H_global_Wm2": 255.0,
+      "u_heating": 20.91170364699557,
+      "power_W": 9.714199317818755e-17,
+      "energy_Wh_step": 2.4285498294546888e-17
+    },
+    {
+      "time_s": 14895000,
+      "T_zone_degC": 25.50685895218504,
+      "T_outdoor_degC": 20.583593749999977,
+      "H_global_Wm2": 286.6791888297872,
+      "u_heating": 23.7103275549354,
+      "power_W": 9.714187200534073e-17,
+      "energy_Wh_step": 2.4285468001335183e-17
+    },
+    {
+      "time_s": 14895900,
+      "T_zone_degC": 25.604660709854272,
+      "T_outdoor_degC": 20.80000000000001,
+      "H_global_Wm2": 319.17287234042556,
+      "u_heating": 19.91876657100886,
+      "power_W": 9.710635010250732e-17,
+      "energy_Wh_step": 2.427658752562683e-17
+    },
+    {
+      "time_s": 14896800,
+      "T_zone_degC": 25.708153462927953,
+      "T_outdoor_degC": 21.01171875,
+      "H_global_Wm2": 352.83011968085106,
+      "u_heating": 21.762088153300994,
+      "power_W": 9.712728573368142e-17,
+      "energy_Wh_step": 2.4281821433420356e-17
+    },
+    {
+      "time_s": 14897700,
+      "T_zone_degC": 25.817193854421703,
+      "T_outdoor_degC": 21.227083333333326,
+      "H_global_Wm2": 388.0,
+      "u_heating": 22.283434866411973,
+      "power_W": 9.712761735171555e-17,
+      "energy_Wh_step": 2.4281904337928886e-17
+    },
+    {
+      "time_s": 14898600,
+      "T_zone_degC": 25.940086811263143,
+      "T_outdoor_degC": 21.478906250000023,
+      "H_global_Wm2": 443.4751080452128,
+      "u_heating": 23.865678416873056,
+      "power_W": 9.712875879481646e-17,
+      "energy_Wh_step": 2.4282189698704115e-17
+    },
+    {
+      "time_s": 14899500,
+      "T_zone_degC": 26.104360517079215,
+      "T_outdoor_degC": 21.80000000000001,
+      "H_global_Wm2": 523.4744015957447,
+      "u_heating": 19.98735622057778,
+      "power_W": 9.705973320411797e-17,
+      "energy_Wh_step": 2.4264933301029493e-17
+    },
+    {
+      "time_s": 14900400,
+      "T_zone_degC": 26.304442511496404,
+      "T_outdoor_degC": 22.194921874999977,
+      "H_global_Wm2": 606.4864943484042,
+      "u_heating": 22.081718521578885,
+      "power_W": 9.707388700116961e-17,
+      "energy_Wh_step": 2.4268471750292402e-17
+    },
+    {
+      "time_s": 14901300,
+      "T_zone_degC": 26.522303926820257,
+      "T_outdoor_degC": 22.62812500000001,
+      "H_global_Wm2": 671.0,
+      "u_heating": 19.579496844342135,
+      "power_W": 9.715969592336036e-17,
+      "energy_Wh_step": 2.428992398084009e-17
+    },
+    {
+      "time_s": 14902200,
+      "T_zone_degC": 26.723528826651602,
+      "T_outdoor_degC": 23.072265625,
+      "H_global_Wm2": 714.6840759021967,
+      "u_heating": 22.6529431620611,
+      "power_W": 9.724384169853598e-17,
+      "energy_Wh_step": 2.4310960424634e-17
+    },
+    {
+      "time_s": 14903100,
+      "T_zone_degC": 26.901347567799633,
+      "T_outdoor_degC": 23.5,
+      "H_global_Wm2": 748.4804524058577,
+      "u_heating": 20.734011607867487,
+      "power_W": 9.715433980662695e-17,
+      "energy_Wh_step": 2.4288584951656738e-17
+    },
+    {
+      "time_s": 14904000,
+      "T_zone_degC": 27.048198806935204,
+      "T_outdoor_degC": 23.909765624999977,
+      "H_global_Wm2": 770.78660270659,
+      "u_heating": 22.99046620810031,
+      "power_W": 9.710425720271969e-17,
+      "energy_Wh_step": 2.4276064300679923e-17
+    },
+    {
+      "time_s": 14904900,
+      "T_zone_degC": 27.165146054495892,
+      "T_outdoor_degC": 24.31562500000001,
+      "H_global_Wm2": 780.0,
+      "u_heating": 19.21496153999651,
+      "power_W": 9.70994994071387e-17,
+      "energy_Wh_step": 2.4274874851784676e-17
+    },
+    {
+      "time_s": 14905800,
+      "T_zone_degC": 27.256462785637325,
+      "T_outdoor_degC": 24.71367187499999,
+      "H_global_Wm2": 779.3798399682493,
+      "u_heating": 21.436513963608775,
+      "power_W": 9.712243839257427e-17,
+      "energy_Wh_step": 2.4280609598143567e-17
+    },
+    {
+      "time_s": 14906700,
+      "T_zone_degC": 27.33040930655477,
+      "T_outdoor_degC": 25.100000000000023,
+      "H_global_Wm2": 773.7967280603802,
+      "u_heating": 19.478555509272997,
+      "power_W": 9.712700330999154e-17,
+      "energy_Wh_step": 2.4281750827497885e-17
+    },
+    {
+      "time_s": 14907600,
+      "T_zone_degC": 27.389708312308073,
+      "T_outdoor_degC": 25.443359375,
+      "H_global_Wm2": 764.065252122321,
+      "u_heating": 21.644129327728546,
+      "power_W": 9.7119474452284e-17,
+      "energy_Wh_step": 2.4279868613071e-17
+    },
+    {
+      "time_s": 14908500,
+      "T_zone_degC": 27.43508337226831,
+      "T_outdoor_degC": 25.728124999999977,
+      "H_global_Wm2": 751.0,
+      "u_heating": 19.567209735553245,
+      "power_W": 9.712530553838822e-17,
+      "energy_Wh_step": 2.4281326384597055e-17
+    },
+    {
+      "time_s": 14909400,
+      "T_zone_degC": 27.480053647597458,
+      "T_outdoor_degC": 25.97382812500001,
+      "H_global_Wm2": 733.8547994227715,
+      "u_heating": 21.31562409099928,
+      "power_W": 9.712750137347992e-17,
+      "energy_Wh_step": 2.428187534336998e-17
+    },
+    {
+      "time_s": 14910300,
+      "T_zone_degC": 27.527607015842534,
+      "T_outdoor_degC": 26.19999999999999,
+      "H_global_Wm2": 711.9067427265331,
+      "u_heating": 23.29152918268659,
+      "power_W": 9.712681168203983e-17,
+      "energy_Wh_step": 2.428170292050996e-17
+    },
+    {
+      "time_s": 14911200,
+      "T_zone_degC": 27.581735103789583,
+      "T_outdoor_degC": 26.414453125000023,
+      "H_global_Wm2": 686.0053146670282,
+      "u_heating": 22.17681728296201,
+      "power_W": 9.712616695145567e-17,
+      "energy_Wh_step": 2.4281541737863918e-17
+    },
+    {
+      "time_s": 14912100,
+      "T_zone_degC": 27.63792840917756,
+      "T_outdoor_degC": 26.598958333333314,
+      "H_global_Wm2": 657.0,
+      "u_heating": 19.034425523070603,
+      "power_W": 9.712693810495161e-17,
+      "energy_Wh_step": 2.4281734526237904e-17
+    },
+    {
+      "time_s": 14913000,
+      "T_zone_degC": 27.69301700004729,
+      "T_outdoor_degC": 26.733984374999977,
+      "H_global_Wm2": 605.422533353754,
+      "u_heating": 21.200148609613315,
+      "power_W": 9.712699529481133e-17,
+      "energy_Wh_step": 2.4281748823702833e-17
+    },
+    {
+      "time_s": 14913900,
+      "T_zone_degC": 27.730162163878447,
+      "T_outdoor_degC": 26.80000000000001,
+      "H_global_Wm2": 527.4841853288862,
+      "u_heating": 20.991595643964626,
+      "power_W": 9.712686010040369e-17,
+      "energy_Wh_step": 2.4281715025100922e-17
+    },
+    {
+      "time_s": 14914800,
+      "T_zone_degC": 27.74541388543156,
+      "T_outdoor_degC": 26.798749999999984,
+      "H_global_Wm2": 447.5537446395752,
+      "u_heating": 21.905203531819954,
+      "power_W": 9.71267451824981e-17,
+      "energy_Wh_step": 2.4281686295624524e-17
+    },
+    {
+      "time_s": 14915700,
+      "T_zone_degC": 27.744907741536508,
+      "T_outdoor_degC": 26.76333333333332,
+      "H_global_Wm2": 390.0,
+      "u_heating": 23.20618447124349,
+      "power_W": 9.712681599104422e-17,
+      "energy_Wh_step": 2.4281703997761056e-17
+    },
+    {
+      "time_s": 14916600,
+      "T_zone_degC": 27.73789642431217,
+      "T_outdoor_degC": 26.721249999999998,
+      "H_global_Wm2": 389.8030654131356,
+      "u_heating": 20.977256658785628,
+      "power_W": 9.712674595036899e-17,
+      "energy_Wh_step": 2.4281686487592248e-17
+    },
+    {
+      "time_s": 14917500,
+      "T_zone_degC": 27.737983692371017,
+      "T_outdoor_degC": 26.69999999999999,
+      "H_global_Wm2": 434.63397481167607,
+      "u_heating": 21.868721836141777,
+      "power_W": 9.71268420908733e-17,
+      "energy_Wh_step": 2.4281710522718326e-17
+    },
+    {
+      "time_s": 14918400,
+      "T_zone_degC": 27.750335885858988,
+      "T_outdoor_degC": 26.722500000000025,
+      "H_global_Wm2": 477.89789680437855,
+      "u_heating": 23.538197247429217,
+      "power_W": 9.712692514048333e-17,
+      "energy_Wh_step": 2.4281731285120833e-17
+    },
+    {
+      "time_s": 14919300,
+      "T_zone_degC": 27.768120502067177,
+      "T_outdoor_degC": 26.769999999999982,
+      "H_global_Wm2": 473.0,
+      "u_heating": 22.07861399796488,
+      "power_W": 9.712581382553287e-17,
+      "energy_Wh_step": 2.4281453456383217e-17
+    },
+    {
+      "time_s": 14920200,
+      "T_zone_degC": 27.777109480582112,
+      "T_outdoor_degC": 26.807500000000005,
+      "H_global_Wm2": 413.4051711691478,
+      "u_heating": 22.39287161745712,
+      "power_W": 9.71309180654479e-17,
+      "energy_Wh_step": 2.4282729516361975e-17
+    },
+    {
+      "time_s": 14921100,
+      "T_zone_degC": 27.769615256544114,
+      "T_outdoor_degC": 26.80000000000001,
+      "H_global_Wm2": 335.67420645106085,
+      "u_heating": 21.67822421728426,
+      "power_W": 9.713763915280625e-17,
+      "energy_Wh_step": 2.4284409788201563e-17
+    },
+    {
+      "time_s": 14922000,
+      "T_zone_degC": 27.74255911272661,
+      "T_outdoor_degC": 26.714999999999975,
+      "H_global_Wm2": 257.85613850744346,
+      "u_heating": 23.427571464640074,
+      "power_W": 9.712332099880014e-17,
+      "energy_Wh_step": 2.4280830249700036e-17
+    },
+    {
+      "time_s": 14922900,
+      "T_zone_degC": 27.696735066258157,
+      "T_outdoor_degC": 26.556666666666672,
+      "H_global_Wm2": 198.0,
+      "u_heating": 22.14389866461202,
+      "power_W": 9.712935579703763e-17,
+      "energy_Wh_step": 2.4282338949259407e-17
+    },
+    {
+      "time_s": 14923800,
+      "T_zone_degC": 27.63525330411403,
+      "T_outdoor_degC": 26.345000000000027,
+      "H_global_Wm2": 151.55995683694422,
+      "u_heating": 21.134669569190134,
+      "power_W": 9.712591456525403e-17,
+      "energy_Wh_step": 2.4281478641313508e-17
+    },
+    {
+      "time_s": 14924700,
+      "T_zone_degC": 27.561648388708363,
+      "T_outdoor_degC": 26.100000000000023,
+      "H_global_Wm2": 106.93538113397308,
+      "u_heating": 20.387705995956612,
+      "power_W": 9.712772153337568e-17,
+      "energy_Wh_step": 2.428193038334392e-17
+    },
+    {
+      "time_s": 14925600,
+      "T_zone_degC": 27.474397698924747,
+      "T_outdoor_degC": 25.826874999999973,
+      "H_global_Wm2": 71.59311486401539,
+      "u_heating": 23.931982210525153,
+      "power_W": 9.712636015548836e-17,
+      "energy_Wh_step": 2.428159003887209e-17
+    },
+    {
+      "time_s": 14926500,
+      "T_zone_degC": 27.37548555306796,
+      "T_outdoor_degC": 25.535000000000025,
+      "H_global_Wm2": 53.0,
+      "u_heating": 20.71626286024247,
+      "power_W": 9.712593324987895e-17,
+      "energy_Wh_step": 2.428148331246974e-17
+    },
+    {
+      "time_s": 14927400,
+      "T_zone_degC": 27.27129805227247,
+      "T_outdoor_degC": 25.250625000000014,
+      "H_global_Wm2": 47.55271772474813,
+      "u_heating": 20.81567384939611,
+      "power_W": 9.712777316196165e-17,
+      "energy_Wh_step": 2.4281943290490413e-17
+    },
+    {
+      "time_s": 14928300,
+      "T_zone_degC": 27.172417613654034,
+      "T_outdoor_degC": 25.0,
+      "H_global_Wm2": 44.87017243606304,
+      "u_heating": 21.269338716414154,
+      "power_W": 9.714344118257588e-17,
+      "energy_Wh_step": 2.428586029564397e-17
+    },
+    {
+      "time_s": 14929200,
+      "T_zone_degC": 27.082653901606136,
+      "T_outdoor_degC": 24.774999999999977,
+      "H_global_Wm2": 42.252540929346424,
+      "u_heating": 23.197836165943592,
+      "power_W": 9.713371055060064e-17,
+      "energy_Wh_step": 2.428342763765016e-17
+    },
+    {
+      "time_s": 14930100,
+      "T_zone_degC": 27.000540500490843,
+      "T_outdoor_degC": 24.55000000000001,
+      "H_global_Wm2": 37.0,
+      "u_heating": 21.180639906642533,
+      "power_W": 9.712763510457583e-17,
+      "energy_Wh_step": 2.4281908776143958e-17
+    },
+    {
+      "time_s": 14931000,
+      "T_zone_degC": 26.92031869249041,
+      "T_outdoor_degC": 24.32499999999999,
+      "H_global_Wm2": 28.088339172694397,
+      "u_heating": 21.891582496448745,
+      "power_W": 9.712689444766625e-17,
+      "energy_Wh_step": 2.4281723611916562e-17
+    },
+    {
+      "time_s": 14931900,
+      "T_zone_degC": 26.839224015529226,
+      "T_outdoor_degC": 24.100000000000023,
+      "H_global_Wm2": 17.95550783604581,
+      "u_heating": 23.5846543919629,
+      "power_W": 9.712692977816504e-17,
+      "energy_Wh_step": 2.428173244454126e-17
+    },
+    {
+      "time_s": 14932800,
+      "T_zone_degC": 26.864743965633522,
+      "T_outdoor_degC": 23.875,
+      "H_global_Wm2": 9.094922581374323,
+      "u_heating": 21.160854000233495,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14933700,
+      "T_zone_degC": 26.835566011464834,
+      "T_outdoor_degC": 23.649999999999977,
+      "H_global_Wm2": 4.0,
+      "u_heating": 21.811570716407346,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14934600,
+      "T_zone_degC": 26.773029188614373,
+      "T_outdoor_degC": 23.42500000000001,
+      "H_global_Wm2": 2.0357142857142856,
+      "u_heating": 21.629477482124567,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14935500,
+      "T_zone_degC": 26.704723674206605,
+      "T_outdoor_degC": 23.19999999999999,
+      "H_global_Wm2": 0.8095238095238102,
+      "u_heating": 20.442721256553234,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14936400,
+      "T_zone_degC": 26.639916422489364,
+      "T_outdoor_degC": 23.02249999999998,
+      "H_global_Wm2": 0.17857142857142927,
+      "u_heating": 20.39100737027488,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14937300,
+      "T_zone_degC": 26.586630757626153,
+      "T_outdoor_degC": 22.910000000000025,
+      "H_global_Wm2": 0.0,
+      "u_heating": 20.988972920908424,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14938200,
+      "T_zone_degC": 26.541947729741878,
+      "T_outdoor_degC": 22.817499999999995,
+      "H_global_Wm2": 0.0,
+      "u_heating": 20.624132645823067,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14939100,
+      "T_zone_degC": 26.49898619209489,
+      "T_outdoor_degC": 22.69999999999999,
+      "H_global_Wm2": 0.0,
+      "u_heating": 20.482855425650712,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14940000,
+      "T_zone_degC": 26.452103875978537,
+      "T_outdoor_degC": 22.548125000000027,
+      "H_global_Wm2": 0.0,
+      "u_heating": 22.42830155972699,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14940900,
+      "T_zone_degC": 26.40268128321901,
+      "T_outdoor_degC": 22.389999999999986,
+      "H_global_Wm2": 0.0,
+      "u_heating": 23.50126515496663,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14941800,
+      "T_zone_degC": 26.353008314402473,
+      "T_outdoor_degC": 22.236874999999998,
+      "H_global_Wm2": 0.0,
+      "u_heating": 19.43136590454783,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14942700,
+      "T_zone_degC": 26.30535677352276,
+      "T_outdoor_degC": 22.100000000000023,
+      "H_global_Wm2": 0.0,
+      "u_heating": 22.148184332099362,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14943600,
+      "T_zone_degC": 26.261111054264404,
+      "T_outdoor_degC": 21.975000000000023,
+      "H_global_Wm2": 0.0,
+      "u_heating": 19.891240868279354,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14944500,
+      "T_zone_degC": 26.218818640548704,
+      "T_outdoor_degC": 21.850000000000023,
+      "H_global_Wm2": 0.0,
+      "u_heating": 21.10227508320898,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14945400,
+      "T_zone_degC": 26.177547088502934,
+      "T_outdoor_degC": 21.725000000000023,
+      "H_global_Wm2": 0.0,
+      "u_heating": 20.48078650483073,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14946300,
+      "T_zone_degC": 26.13680946142597,
+      "T_outdoor_degC": 21.600000000000023,
+      "H_global_Wm2": 0.0,
+      "u_heating": 22.538762300473277,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14947200,
+      "T_zone_degC": 26.096323001092287,
+      "T_outdoor_degC": 21.475000000000023,
+      "H_global_Wm2": 0.0,
+      "u_heating": 20.571323638204376,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14948100,
+      "T_zone_degC": 26.056047330580782,
+      "T_outdoor_degC": 21.350000000000023,
+      "H_global_Wm2": 0.0,
+      "u_heating": 21.64232602555143,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14949000,
+      "T_zone_degC": 26.01599636189991,
+      "T_outdoor_degC": 21.225000000000023,
+      "H_global_Wm2": 0.0,
+      "u_heating": 21.131500059767287,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14949900,
+      "T_zone_degC": 25.976152310584496,
+      "T_outdoor_degC": 21.100000000000023,
+      "H_global_Wm2": 0.0,
+      "u_heating": 23.991781179456076,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14950800,
+      "T_zone_degC": 25.936483464801995,
+      "T_outdoor_degC": 20.975000000000023,
+      "H_global_Wm2": 0.0,
+      "u_heating": 20.663681943183416,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14951700,
+      "T_zone_degC": 25.896951472241767,
+      "T_outdoor_degC": 20.850000000000023,
+      "H_global_Wm2": 0.0,
+      "u_heating": 21.608994891711028,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14952600,
+      "T_zone_degC": 25.857572839087936,
+      "T_outdoor_degC": 20.725000000000023,
+      "H_global_Wm2": 0.0,
+      "u_heating": 21.96401998530427,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14953500,
+      "T_zone_degC": 25.818409827337007,
+      "T_outdoor_degC": 20.600000000000023,
+      "H_global_Wm2": 0.0,
+      "u_heating": 21.63030484981711,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14954400,
+      "T_zone_degC": 25.7795266034409,
+      "T_outdoor_degC": 20.475000000000023,
+      "H_global_Wm2": 0.0,
+      "u_heating": 22.00331324481844,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14955300,
+      "T_zone_degC": 25.740893209167098,
+      "T_outdoor_degC": 20.350000000000023,
+      "H_global_Wm2": 0.0,
+      "u_heating": 22.05304536986943,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14956200,
+      "T_zone_degC": 25.702465265134833,
+      "T_outdoor_degC": 20.225000000000023,
+      "H_global_Wm2": 0.0,
+      "u_heating": 22.418792150199945,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14957100,
+      "T_zone_degC": 25.664222978378064,
+      "T_outdoor_degC": 20.100000000000023,
+      "H_global_Wm2": 0.0,
+      "u_heating": 22.834997303645952,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14958000,
+      "T_zone_degC": 25.626147044095262,
+      "T_outdoor_degC": 19.975000000000023,
+      "H_global_Wm2": 0.0,
+      "u_heating": 20.407648487759456,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14958900,
+      "T_zone_degC": 25.58820485438912,
+      "T_outdoor_degC": 19.850000000000023,
+      "H_global_Wm2": 0.0,
+      "u_heating": 20.7475782368763,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14959800,
+      "T_zone_degC": 25.550374803021327,
+      "T_outdoor_degC": 19.725000000000023,
+      "H_global_Wm2": 0.0,
+      "u_heating": 22.63314367436327,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14960700,
+      "T_zone_degC": 25.512646610848492,
+      "T_outdoor_degC": 19.600000000000023,
+      "H_global_Wm2": 0.0,
+      "u_heating": 23.061360769837528,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14961600,
+      "T_zone_degC": 25.47501634222624,
+      "T_outdoor_degC": 19.475000000000023,
+      "H_global_Wm2": 0.0,
+      "u_heating": 22.37586916761547,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14962500,
+      "T_zone_degC": 25.437493299490484,
+      "T_outdoor_degC": 19.350000000000023,
+      "H_global_Wm2": 0.0,
+      "u_heating": 23.57969670571084,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14963400,
+      "T_zone_degC": 25.40007402606159,
+      "T_outdoor_degC": 19.225000000000023,
+      "H_global_Wm2": 0.0,
+      "u_heating": 19.596066773641,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14964300,
+      "T_zone_degC": 25.36273841366915,
+      "T_outdoor_degC": 19.100000000000023,
+      "H_global_Wm2": 0.0,
+      "u_heating": 20.62948452179635,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14965200,
+      "T_zone_degC": 25.32545098295128,
+      "T_outdoor_degC": 18.975000000000023,
+      "H_global_Wm2": 0.0,
+      "u_heating": 22.25950987089643,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14966100,
+      "T_zone_degC": 25.28818302914334,
+      "T_outdoor_degC": 18.850000000000023,
+      "H_global_Wm2": 0.0,
+      "u_heating": 23.084061701436397,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14967000,
+      "T_zone_degC": 25.251613683430037,
+      "T_outdoor_degC": 18.725000000000023,
+      "H_global_Wm2": 3.825326492537314,
+      "u_heating": 22.978885160257512,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14967900,
+      "T_zone_degC": 25.21972093467241,
+      "T_outdoor_degC": 18.600000000000023,
+      "H_global_Wm2": 14.117537313432836,
+      "u_heating": 23.81997686376484,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14968800,
+      "T_zone_degC": 25.206255043439455,
+      "T_outdoor_degC": 18.648187500000006,
+      "H_global_Wm2": 29.10097947761194,
+      "u_heating": 20.924862059836187,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14969700,
+      "T_zone_degC": 25.234981938124406,
+      "T_outdoor_degC": 18.95350000000002,
+      "H_global_Wm2": 47.0,
+      "u_heating": 21.401717072794725,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14970600,
+      "T_zone_degC": 25.301924729266602,
+      "T_outdoor_degC": 19.382062500000018,
+      "H_global_Wm2": 73.11043633871459,
+      "u_heating": 20.653153135060577,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14971500,
+      "T_zone_degC": 25.408963868055196,
+      "T_outdoor_degC": 19.80000000000001,
+      "H_global_Wm2": 108.44623819677125,
+      "u_heating": 21.221411268262944,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14972400,
+      "T_zone_degC": 25.545227913835447,
+      "T_outdoor_degC": 20.19353846153848,
+      "H_global_Wm2": 144.80892095644225,
+      "u_heating": 23.617587542501788,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14973300,
+      "T_zone_degC": 25.699641381463437,
+      "T_outdoor_degC": 20.61476923076924,
+      "H_global_Wm2": 174.0,
+      "u_heating": 23.46310884647177,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14974200,
+      "T_zone_degC": 25.847960881675704,
+      "T_outdoor_degC": 21.028615384615364,
+      "H_global_Wm2": 193.14826263166557,
+      "u_heating": 19.307791489163005,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14975100,
+      "T_zone_degC": 25.975037524266668,
+      "T_outdoor_degC": 21.399999999999977,
+      "H_global_Wm2": 205.522918038183,
+      "u_heating": 22.765915332410103,
+      "power_W": 322.0,
+      "energy_Wh_step": 80.5
+    },
+    {
+      "time_s": 14976000,
+      "T_zone_degC": 25.952530597422765,
+      "T_outdoor_degC": 21.703846153846143,
+      "H_global_Wm2": 212.13611442560895,
+      "u_heating": 22.256008858241106,
+      "power_W": 9.715269198731174e-17,
+      "energy_Wh_step": 2.4288172996827934e-17
+    },
+    {
+      "time_s": 14976900,
+      "T_zone_degC": 25.991044649399043,
+      "T_outdoor_degC": 21.938461538461524,
+      "H_global_Wm2": 214.0,
+      "u_heating": 21.306934906405505,
+      "power_W": 9.713044793265903e-17,
+      "energy_Wh_step": 2.4282611983164757e-17
+    },
+    {
+      "time_s": 14977800,
+      "T_zone_degC": 26.038179426893066,
+      "T_outdoor_degC": 22.103846153846177,
+      "H_global_Wm2": 202.77505818250182,
+      "u_heating": 21.201301229582413,
+      "power_W": 9.71267338870323e-17,
+      "energy_Wh_step": 2.4281683471758074e-17
+    },
+    {
+      "time_s": 14978700,
+      "T_zone_degC": 26.062064179054232,
+      "T_outdoor_degC": 22.19999999999999,
+      "H_global_Wm2": 177.9068755834457,
+      "u_heating": 20.930106936373086,
+      "power_W": 9.711987698152976e-17,
+      "energy_Wh_step": 2.427996924538244e-17
+    },
+    {
+      "time_s": 14979600,
+      "T_zone_degC": 26.059954447643975,
+      "T_outdoor_degC": 22.209615384615404,
+      "H_global_Wm2": 152.08525519266672,
+      "u_heating": 20.258929572803886,
+      "power_W": 9.712665933455862e-17,
+      "energy_Wh_step": 2.4281664833639656e-17
+    },
+    {
+      "time_s": 14980500,
+      "T_zone_degC": 26.037576557385364,
+      "T_outdoor_degC": 22.155769230769238,
+      "H_global_Wm2": 138.0,
+      "u_heating": 23.616733983506595,
+      "power_W": 9.713158710474299e-17,
+      "energy_Wh_step": 2.4282896776185748e-17
+    },
+    {
+      "time_s": 14981400,
+      "T_zone_degC": 26.01605862441903,
+      "T_outdoor_degC": 22.09903846153844,
+      "H_global_Wm2": 148.08217685631774,
+      "u_heating": 23.258114792169742,
+      "power_W": 9.714568281586465e-17,
+      "energy_Wh_step": 2.4286420703966163e-17
+    },
+    {
+      "time_s": 14982300,
+      "T_zone_degC": 26.01485767849681,
+      "T_outdoor_degC": 22.100000000000023,
+      "H_global_Wm2": 175.95627654717953,
+      "u_heating": 21.076541019596142,
+      "power_W": 9.70834702454972e-17,
+      "energy_Wh_step": 2.42708675613743e-17
+    },
+    {
+      "time_s": 14983200,
+      "T_zone_degC": 26.040571869602445,
+      "T_outdoor_degC": 22.18269230769232,
+      "H_global_Wm2": 206.10223796445158,
+      "u_heating": 21.461147224726457,
+      "power_W": 9.716092593518201e-17,
+      "energy_Wh_step": 2.4290231483795502e-17
+    },
+    {
+      "time_s": 14984100,
+      "T_zone_degC": 26.083413610853256,
+      "T_outdoor_degC": 22.303846153846166,
+      "H_global_Wm2": 223.0,
+      "u_heating": 21.739680479822148,
+      "power_W": 9.712489668921171e-17,
+      "energy_Wh_step": 2.428122417230293e-17
+    },
+    {
+      "time_s": 14985000,
+      "T_zone_degC": 26.12487082856694,
+      "T_outdoor_degC": 22.423076923076906,
+      "H_global_Wm2": 198.60329861111111,
+      "u_heating": 20.848301859650437,
+      "power_W": 9.711578275805914e-17,
+      "energy_Wh_step": 2.4278945689514785e-17
+    },
+    {
+      "time_s": 14985900,
+      "T_zone_degC": 26.14182581686879,
+      "T_outdoor_degC": 22.5,
+      "H_global_Wm2": 143.67515432098764,
+      "u_heating": 22.960136949952805,
+      "power_W": 9.714294482678203e-17,
+      "energy_Wh_step": 2.4285736206695508e-17
+    },
+    {
+      "time_s": 14986800,
+      "T_zone_degC": 26.124741595221735,
+      "T_outdoor_degC": 22.481468531468522,
+      "H_global_Wm2": 100.90943287037035,
+      "u_heating": 20.9341919488751,
+      "power_W": 9.71384030147788e-17,
+      "energy_Wh_step": 2.42846007536947e-17
+    },
+    {
+      "time_s": 14987700,
+      "T_zone_degC": 26.0875590412507,
+      "T_outdoor_degC": 22.391608391608372,
+      "H_global_Wm2": 113.0,
+      "u_heating": 20.134039901189677,
+      "power_W": 9.711767112231942e-17,
+      "energy_Wh_step": 2.4279417780579856e-17
+    },
+    {
+      "time_s": 14988600,
+      "T_zone_degC": 26.066510445090046,
+      "T_outdoor_degC": 22.305944055944053,
+      "H_global_Wm2": 166.75,
+      "u_heating": 22.682498164011147,
+      "power_W": 9.707700031968126e-17,
+      "energy_Wh_step": 2.4269250079920315e-17
+    },
+    {
+      "time_s": 14989500,
+      "T_zone_degC": 26.080272803239666,
+      "T_outdoor_degC": 22.30000000000001,
+      "H_global_Wm2": 220.5,
+      "u_heating": 22.34822014035163,
+      "power_W": 9.71442412594739e-17,
+      "energy_Wh_step": 2.4286060314868475e-17
+    },
+    {
+      "time_s": 14990400,
+      "T_zone_degC": 26.125273659305492,
+      "T_outdoor_degC": 22.38011363636366,
+      "H_global_Wm2": 274.25,
+      "u_heating": 22.74610672882515,
+      "power_W": 9.713090554743702e-17,
+      "energy_Wh_step": 2.4282726386859256e-17
+    },
+    {
+      "time_s": 14991300,
+      "T_zone_degC": 26.188400196004977,
+      "T_outdoor_degC": 22.50454545454545,
+      "H_global_Wm2": 328.0,
+      "u_heating": 21.644273443944925,
+      "power_W": 9.712407815554967e-17,
+      "energy_Wh_step": 2.4281019538887417e-17
+    },
+    {
+      "time_s": 14992200,
+      "T_zone_degC": 26.2666882234239,
+      "T_outdoor_degC": 22.676704545454527,
+      "H_global_Wm2": 381.75,
+      "u_heating": 22.009195653505206,
+      "power_W": 9.712779955074733e-17,
+      "energy_Wh_step": 2.4281949887686832e-17
+    },
+    {
+      "time_s": 14993100,
+      "T_zone_degC": 26.358102556222093,
+      "T_outdoor_degC": 22.899999999999977,
+      "H_global_Wm2": 435.5,
+      "u_heating": 21.299988884354207,
+      "power_W": 9.712725750409829e-17,
+      "energy_Wh_step": 2.4281814376024573e-17
+    },
+    {
+      "time_s": 14994000,
+      "T_zone_degC": 26.458796695953254,
+      "T_outdoor_degC": 23.16874999999999,
+      "H_global_Wm2": 489.25,
+      "u_heating": 22.292229976256337,
+      "power_W": 9.712543806578336e-17,
+      "energy_Wh_step": 2.428135951644584e-17
+    },
+    {
+      "time_s": 14994900,
+      "T_zone_degC": 26.561489308072964,
+      "T_outdoor_degC": 23.458333333333314,
+      "H_global_Wm2": 543.0,
+      "u_heating": 19.12910419253105,
+      "power_W": 9.714158280046367e-17,
+      "energy_Wh_step": 2.4285395700115917e-17
+    },
+    {
+      "time_s": 14995800,
+      "T_zone_degC": 26.655757625792262,
+      "T_outdoor_degC": 23.743749999999977,
+      "H_global_Wm2": 575.0790890957446,
+      "u_heating": 23.491605626700398,
+      "power_W": 9.713930665690211e-17,
+      "energy_Wh_step": 2.4284826664225528e-17
+    },
+    {
+      "time_s": 14996700,
+      "T_zone_degC": 26.741187638020165,
+      "T_outdoor_degC": 24.0,
+      "H_global_Wm2": 576.9609042553192,
+      "u_heating": 20.246127654392712,
+      "power_W": 9.712115805134482e-17,
+      "energy_Wh_step": 2.4280289512836206e-17
+    },
+    {
+      "time_s": 14997600,
+      "T_zone_degC": 26.82135340978732,
+      "T_outdoor_degC": 24.228645833333303,
+      "H_global_Wm2": 568.362267287234,
+      "u_heating": 22.90229558448693,
+      "power_W": 9.712392270817958e-17,
+      "energy_Wh_step": 2.4280980677044894e-17
+    },
+    {
+      "time_s": 14998500,
+      "T_zone_degC": 26.897841632305017,
+      "T_outdoor_degC": 24.451388888888914,
+      "H_global_Wm2": 569.0,
+      "u_heating": 23.08835071728875,
+      "power_W": 9.712559917839907e-17,
+      "energy_Wh_step": 2.4281399794599766e-17
+    },
+    {
+      "time_s": 14999400,
+      "T_zone_degC": 26.97235000160066,
+      "T_outdoor_degC": 24.673437499999977,
+      "H_global_Wm2": 587.8740307896891,
+      "u_heating": 20.8854365327766,
+      "power_W": 9.712671432677808e-17,
+      "energy_Wh_step": 2.428167858169452e-17
+    },
+    {
+      "time_s": 15000300,
+      "T_zone_degC": 27.04644800898609,
+      "T_outdoor_degC": 24.899999999999977,
+      "H_global_Wm2": 614.0858906164757,
+      "u_heating": 22.040466450951104,
+      "power_W": 9.712671305868102e-17,
+      "energy_Wh_step": 2.4281678264670255e-17
+    },
+    {
+      "time_s": 15001200,
+      "T_zone_degC": 27.121917479507715,
+      "T_outdoor_degC": 25.149999999999977,
+      "H_global_Wm2": 637.5048051350245,
+      "u_heating": 22.60075835230606,
+      "power_W": 9.712631209315321e-17,
+      "energy_Wh_step": 2.4281578023288302e-17
+    },
+    {
+      "time_s": 15002100,
+      "T_zone_degC": 27.19899805863082,
+      "T_outdoor_degC": 25.419444444444423,
+      "H_global_Wm2": 648.0,
+      "u_heating": 20.871814846861373,
+      "power_W": 9.712690915180633e-17,
+      "energy_Wh_step": 2.4281727287951582e-17
+    },
+    {
+      "time_s": 15003000,
+      "T_zone_degC": 27.274820810409665,
+      "T_outdoor_degC": 25.679166666666674,
+      "H_global_Wm2": 620.9314629120879,
+      "u_heating": 23.705925611638378,
+      "power_W": 9.712676333230688e-17,
+      "energy_Wh_step": 2.428169083307672e-17
+    },
+    {
+      "time_s": 15003900,
+      "T_zone_degC": 27.342689494894273,
+      "T_outdoor_degC": 25.899999999999977,
+      "H_global_Wm2": 558.3274908424909,
+      "u_heating": 20.13960410743379,
+      "power_W": 9.711923246643715e-17,
+      "energy_Wh_step": 2.4279808116609288e-17
+    },
+    {
+      "time_s": 15004800,
+      "T_zone_degC": 27.394941873084292,
+      "T_outdoor_degC": 26.047187500000007,
+      "H_global_Wm2": 490.05977335164835,
+      "u_heating": 20.946703917026383,
+      "power_W": 9.712409350172786e-17,
+      "energy_Wh_step": 2.4281023375431966e-17
+    },
+    {
+      "time_s": 15005700,
+      "T_zone_degC": 27.430779740155685,
+      "T_outdoor_degC": 26.125833333333333,
+      "H_global_Wm2": 446.0,
+      "u_heating": 19.563460298208824,
+      "power_W": 9.712572797664676e-17,
+      "energy_Wh_step": 2.428143199416169e-17
+    },
+    {
+      "time_s": 15006600,
+      "T_zone_degC": 27.452900004716355,
+      "T_outdoor_degC": 26.166562499999998,
+      "H_global_Wm2": 429.6581128934625,
+      "u_heating": 20.650491504844904,
+      "power_W": 9.712629095270331e-17,
+      "energy_Wh_step": 2.4281572738175828e-17
+    },
+    {
+      "time_s": 15007500,
+      "T_zone_degC": 27.466702691422086,
+      "T_outdoor_degC": 26.19999999999999,
+      "H_global_Wm2": 419.42020581113803,
+      "u_heating": 21.50552933548539,
+      "power_W": 9.712738709076513e-17,
+      "energy_Wh_step": 2.4281846772691283e-17
+    },
+    {
+      "time_s": 15008400,
+      "T_zone_degC": 27.47643567767983,
+      "T_outdoor_degC": 26.23906249999999,
+      "H_global_Wm2": 407.47219582324453,
+      "u_heating": 20.6383302023541,
+      "power_W": 9.71267281011667e-17,
+      "energy_Wh_step": 2.4281682025291674e-17
+    },
+    {
+      "time_s": 15009300,
+      "T_zone_degC": 27.48199453516645,
+      "T_outdoor_degC": 26.27249999999998,
+      "H_global_Wm2": 386.0,
+      "u_heating": 19.376449678246427,
+      "power_W": 9.71269775154327e-17,
+      "energy_Wh_step": 2.4281744378858174e-17
+    },
+    {
+      "time_s": 15010200,
+      "T_zone_degC": 27.48197962453787,
+      "T_outdoor_degC": 26.29468750000001,
+      "H_global_Wm2": 354.3967518091792,
+      "u_heating": 23.397477197374542,
+      "power_W": 9.712574901687977e-17,
+      "energy_Wh_step": 2.4281437254219942e-17
+    },
+    {
+      "time_s": 15011100,
+      "T_zone_degC": 27.475375681943433,
+      "T_outdoor_degC": 26.30000000000001,
+      "H_global_Wm2": 319.813654541992,
+      "u_heating": 21.506415700582806,
+      "power_W": 9.712665826620114e-17,
+      "energy_Wh_step": 2.4281664566550286e-17
+    },
+    {
+      "time_s": 15012000,
+      "T_zone_degC": 27.461633956405308,
+      "T_outdoor_degC": 26.283749999999998,
+      "H_global_Wm2": 286.0737300038088,
+      "u_heating": 19.8062381906084,
+      "power_W": 9.712815258236023e-17,
+      "energy_Wh_step": 2.428203814559006e-17
+    },
+    {
+      "time_s": 15012900,
+      "T_zone_degC": 27.440789115306472,
+      "T_outdoor_degC": 26.245000000000005,
+      "H_global_Wm2": 257.0,
+      "u_heating": 21.188999410310466,
+      "power_W": 9.712783342499627e-17,
+      "energy_Wh_step": 2.4281958356249067e-17
+    },
+    {
+      "time_s": 15013800,
+      "T_zone_degC": 27.41345528914536,
+      "T_outdoor_degC": 26.183749999999975,
+      "H_global_Wm2": 232.7220856741573,
+      "u_heating": 21.301620895971926,
+      "power_W": 9.712819021730475e-17,
+      "energy_Wh_step": 2.4282047554326186e-17
+    },
+    {
+      "time_s": 15014700,
+      "T_zone_degC": 27.37812124713139,
+      "T_outdoor_degC": 26.100000000000023,
+      "H_global_Wm2": 209.89185393258427,
+      "u_heating": 20.611218956355675,
+      "power_W": 9.712760010024263e-17,
+      "energy_Wh_step": 2.4281900025060657e-17
+    },
+    {
+      "time_s": 15015600,
+      "T_zone_degC": 27.33268361155558,
+      "T_outdoor_degC": 25.997500000000002,
+      "H_global_Wm2": 187.1156952247191,
+      "u_heating": 19.781386726065996,
+      "power_W": 9.712580915933226e-17,
+      "energy_Wh_step": 2.4281452289833065e-17
+    },
+    {
+      "time_s": 15016500,
+      "T_zone_degC": 27.2779352841506,
+      "T_outdoor_degC": 25.879999999999995,
+      "H_global_Wm2": 163.0,
+      "u_heating": 19.293465990588157,
+      "power_W": 9.712651352696151e-17,
+      "energy_Wh_step": 2.4281628381740377e-17
+    },
+    {
+      "time_s": 15017400,
+      "T_zone_degC": 27.214886315332592,
+      "T_outdoor_degC": 25.747500000000002,
+      "H_global_Wm2": 135.44497282608694,
+      "u_heating": 21.843853332050642,
+      "power_W": 9.712684128396326e-17,
+      "energy_Wh_step": 2.4281710320990815e-17
+    },
+    {
+      "time_s": 15018300,
+      "T_zone_degC": 27.14275696696268,
+      "T_outdoor_degC": 25.600000000000023,
+      "H_global_Wm2": 105.26992753623188,
+      "u_heating": 19.62257220107241,
+      "power_W": 9.712624828750835e-17,
+      "energy_Wh_step": 2.4281562071877088e-17
+    },
+    {
+      "time_s": 15019200,
+      "T_zone_degC": 27.06657355423107,
+      "T_outdoor_degC": 25.445625000000007,
+      "H_global_Wm2": 75.45991847826087,
+      "u_heating": 19.696128755608687,
+      "power_W": 9.712145268047996e-17,
+      "energy_Wh_step": 2.428036317011999e-17
+    },
+    {
+      "time_s": 15020100,
+      "T_zone_degC": 26.993422155645817,
+      "T_outdoor_degC": 25.285000000000025,
+      "H_global_Wm2": 49.0,
+      "u_heating": 23.95540788126741,
+      "power_W": 9.712662303107248e-17,
+      "energy_Wh_step": 2.428165575776812e-17
+    },
+    {
+      "time_s": 15021000,
+      "T_zone_degC": 26.922597927984725,
+      "T_outdoor_degC": 25.106875000000002,
+      "H_global_Wm2": 27.96195652173913,
+      "u_heating": 23.531577345686888,
+      "power_W": 9.712685759603537e-17,
+      "energy_Wh_step": 2.4281714399008843e-17
+    },
+    {
+      "time_s": 15021900,
+      "T_zone_degC": 26.850183268714886,
+      "T_outdoor_degC": 24.899999999999977,
+      "H_global_Wm2": 12.605072463768117,
+      "u_heating": 20.815433813591433,
+      "power_W": 9.712723042777301e-17,
+      "energy_Wh_step": 2.4281807606943252e-17
+    },
+    {
+      "time_s": 15022800,
+      "T_zone_degC": 26.773756882090993,
+      "T_outdoor_degC": 24.67500000000001,
+      "H_global_Wm2": 3.1956521739130395,
+      "u_heating": 21.639328602355235,
+      "power_W": 9.712756182729897e-17,
+      "energy_Wh_step": 2.4281890456824742e-17
+    },
+    {
+      "time_s": 15023700,
+      "T_zone_degC": 26.696992070335227,
+      "T_outdoor_degC": 24.44999999999999,
+      "H_global_Wm2": 0.0,
+      "u_heating": 23.056522522789848,
+      "power_W": 9.71291376770352e-17,
+      "energy_Wh_step": 2.42822844192588e-17
+    },
+    {
+      "time_s": 15024600,
+      "T_zone_degC": 26.62334220150558,
+      "T_outdoor_degC": 24.225000000000023,
+      "H_global_Wm2": 0.0,
+      "u_heating": 19.014169668513134,
+      "power_W": 9.713244349661612e-17,
+      "energy_Wh_step": 2.428311087415403e-17
+    },
+    {
+      "time_s": 15025500,
+      "T_zone_degC": 26.552886720663196,
+      "T_outdoor_degC": 24.0,
+      "H_global_Wm2": 0.0,
+      "u_heating": 22.0228314786344,
+      "power_W": 9.712929293957833e-17,
+      "energy_Wh_step": 2.4282323234894584e-17
+    },
+    {
+      "time_s": 15026400,
+      "T_zone_degC": 26.484559280925907,
+      "T_outdoor_degC": 23.774999999999977,
+      "H_global_Wm2": 0.0,
+      "u_heating": 20.326903801540592,
+      "power_W": 9.712605327709779e-17,
+      "energy_Wh_step": 2.4281513319274447e-17
+    },
+    {
+      "time_s": 15027300,
+      "T_zone_degC": 26.417755071500892,
+      "T_outdoor_degC": 23.55000000000001,
+      "H_global_Wm2": 0.0,
+      "u_heating": 21.245949718622633,
+      "power_W": 9.712679359139562e-17,
+      "energy_Wh_step": 2.4281698397848905e-17
+    },
+    {
+      "time_s": 15028200,
+      "T_zone_degC": 26.35216298916754,
+      "T_outdoor_degC": 23.32499999999999,
+      "H_global_Wm2": 0.0,
+      "u_heating": 23.01046603063213,
+      "power_W": 9.712383845221821e-17,
+      "energy_Wh_step": 2.4280959613054552e-17
+    },
+    {
+      "time_s": 15029100,
+      "T_zone_degC": 26.28759691665158,
+      "T_outdoor_degC": 23.100000000000023,
+      "H_global_Wm2": 0.0,
+      "u_heating": 21.332895331894175,
+      "power_W": 9.712458864715665e-17,
+      "energy_Wh_step": 2.4281147161789162e-17
+    },
+    {
+      "time_s": 15030000,
+      "T_zone_degC": 26.224004383397585,
+      "T_outdoor_degC": 22.875,
+      "H_global_Wm2": 0.0,
+      "u_heating": 22.073108975393964,
+      "power_W": 9.712616247176703e-17,
+      "energy_Wh_step": 2.4281540617941757e-17
+    },
+    {
+      "time_s": 15030900,
+      "T_zone_degC": 26.16167199184588,
+      "T_outdoor_degC": 22.649999999999977,
+      "H_global_Wm2": 0.0,
+      "u_heating": 22.576907304829568,
+      "power_W": 9.712532683850987e-17,
+      "energy_Wh_step": 2.428133170962747e-17
+    },
+    {
+      "time_s": 15031800,
+      "T_zone_degC": 26.10051360194268,
+      "T_outdoor_degC": 22.42500000000001,
+      "H_global_Wm2": 0.0,
+      "u_heating": 23.763429812987987,
+      "power_W": 9.712600337771385e-17,
+      "energy_Wh_step": 2.4281500844428463e-17
+    },
+    {
+      "time_s": 15032700,
+      "T_zone_degC": 26.040093972648663,
+      "T_outdoor_degC": 22.19999999999999,
+      "H_global_Wm2": 0.0,
+      "u_heating": 20.794236439928884,
+      "power_W": 9.712669852593201e-17,
+      "energy_Wh_step": 2.4281674631483003e-17
+    },
+    {
+      "time_s": 15033600,
+      "T_zone_degC": 25.979996218149893,
+      "T_outdoor_degC": 21.975000000000023,
+      "H_global_Wm2": 0.0,
+      "u_heating": 22.73658171335595,
+      "power_W": 9.712686820784275e-17,
+      "energy_Wh_step": 2.428171705196069e-17
+    },
+    {
+      "time_s": 15034500,
+      "T_zone_degC": 25.920165965726653,
+      "T_outdoor_degC": 21.75,
+      "H_global_Wm2": 0.0,
+      "u_heating": 23.18154077402211,
+      "power_W": 9.712686820784275e-17,
+      "energy_Wh_step": 2.428171705196069e-17
+    },
+    {
+      "time_s": 15035400,
+      "T_zone_degC": 25.86066891971666,
+      "T_outdoor_degC": 21.524999999999977,
+      "H_global_Wm2": 0.0,
+      "u_heating": 20.7303348266787,
+      "power_W": 9.712667674803202e-17,
+      "energy_Wh_step": 2.4281669187008005e-17
+    },
+    {
+      "time_s": 15036300,
+      "T_zone_degC": 25.801496568284676,
+      "T_outdoor_degC": 21.30000000000001,
+      "H_global_Wm2": 0.0,
+      "u_heating": 22.438606533068835,
+      "power_W": 9.712704421622232e-17,
+      "energy_Wh_step": 2.428176105405558e-17
+    },
+    {
+      "time_s": 15037200,
+      "T_zone_degC": 25.74414202912959,
+      "T_outdoor_degC": 21.100000000000023,
+      "H_global_Wm2": 0.0,
+      "u_heating": 19.81708901893909,
+      "power_W": 9.712677059758329e-17,
+      "energy_Wh_step": 2.4281692649395822e-17
+    },
+    {
+      "time_s": 15038100,
+      "T_zone_degC": 25.69163067747968,
+      "T_outdoor_degC": 20.933333333333337,
+      "H_global_Wm2": 0.0,
+      "u_heating": 22.661587977915506,
+      "power_W": 9.712652137427843e-17,
+      "energy_Wh_step": 2.4281630343569607e-17
+    },
+    {
+      "time_s": 15039000,
+      "T_zone_degC": 25.642297570322683,
+      "T_outdoor_degC": 20.774999999999977,
+      "H_global_Wm2": 0.0,
+      "u_heating": 19.625005168020785,
+      "power_W": 9.712661626176239e-17,
+      "energy_Wh_step": 2.4281654065440597e-17
+    },
+    {
+      "time_s": 15039900,
+      "T_zone_degC": 25.593006923956636,
+      "T_outdoor_degC": 20.600000000000023,
+      "H_global_Wm2": 0.0,
+      "u_heating": 21.950933452697655,
+      "power_W": 9.712725808911754e-17,
+      "energy_Wh_step": 2.4281814522279385e-17
+    },
+    {
+      "time_s": 15040800,
+      "T_zone_degC": 25.54139665488816,
+      "T_outdoor_degC": 20.40234375,
+      "H_global_Wm2": 0.0,
+      "u_heating": 22.38499759467355,
+      "power_W": 9.712698290961939e-17,
+      "energy_Wh_step": 2.4281745727404848e-17
+    },
+    {
+      "time_s": 15041700,
+      "T_zone_degC": 25.488608995230834,
+      "T_outdoor_degC": 20.197916666666686,
+      "H_global_Wm2": 0.0,
+      "u_heating": 23.95661471060758,
+      "power_W": 9.712686124862545e-17,
+      "energy_Wh_step": 2.428171531215636e-17
+    },
+    {
+      "time_s": 15042600,
+      "T_zone_degC": 25.4357236754189,
+      "T_outdoor_degC": 19.994531250000023,
+      "H_global_Wm2": 0.0,
+      "u_heating": 22.96772040371433,
+      "power_W": 9.71268689304141e-17,
+      "energy_Wh_step": 2.4281717232603525e-17
+    },
+    {
+      "time_s": 15043500,
+      "T_zone_degC": 25.383574209138942,
+      "T_outdoor_degC": 19.80000000000001,
+      "H_global_Wm2": 0.0,
+      "u_heating": 19.008081149664903,
+      "power_W": 9.712682069843599e-17,
+      "energy_Wh_step": 2.4281705174608998e-17
+    },
+    {
+      "time_s": 15044400,
+      "T_zone_degC": 25.333186994949983,
+      "T_outdoor_degC": 19.622656249999977,
+      "H_global_Wm2": 0.0,
+      "u_heating": 19.976860976565614,
+      "power_W": 9.712690637345715e-17,
+      "energy_Wh_step": 2.4281726593364288e-17
+    },
+    {
+      "time_s": 15045300,
+      "T_zone_degC": 25.284861444025353,
+      "T_outdoor_degC": 19.45625000000001,
+      "H_global_Wm2": 0.0,
+      "u_heating": 23.829606630950217,
+      "power_W": 9.712680494981252e-17,
+      "energy_Wh_step": 2.428170123745313e-17
+    },
+    {
+      "time_s": 15046200,
+      "T_zone_degC": 25.237205348949487,
+      "T_outdoor_degC": 19.286718749999977,
+      "H_global_Wm2": 0.0,
+      "u_heating": 20.92077925129739,
+      "power_W": 9.712671781053299e-17,
+      "energy_Wh_step": 2.4281679452633247e-17
+    },
+    {
+      "time_s": 15047100,
+      "T_zone_degC": 25.188293995392996,
+      "T_outdoor_degC": 19.100000000000023,
+      "H_global_Wm2": 0.0,
+      "u_heating": 21.31415964289277,
+      "power_W": 9.712682654798475e-17,
+      "energy_Wh_step": 2.428170663699619e-17
+    },
+    {
+      "time_s": 15048000,
+      "T_zone_degC": 25.137080940862063,
+      "T_outdoor_degC": 18.899999999999977,
+      "H_global_Wm2": 0.0,
+      "u_heating": 20.74761752481925,
+      "power_W": 9.712730760563257e-17,
+      "energy_Wh_step": 2.4281826901408143e-17
+    },
+    {
+      "time_s": 15048900,
+      "T_zone_degC": 25.085052531815677,
+      "T_outdoor_degC": 18.69999999999999,
+      "H_global_Wm2": 0.0,
+      "u_heating": 19.410417967979956,
+      "power_W": 9.712717276135295e-17,
+      "energy_Wh_step": 2.4281793190338237e-17
+    },
+    {
+      "time_s": 15049800,
+      "T_zone_degC": 25.032753017985385,
+      "T_outdoor_degC": 18.5,
+      "H_global_Wm2": 0.0,
+      "u_heating": 23.376981900478384,
+      "power_W": 9.712683893718411e-17,
+      "energy_Wh_step": 2.4281709734296028e-17
+    },
+    {
+      "time_s": 15050700,
+      "T_zone_degC": 24.980334421449356,
+      "T_outdoor_degC": 18.30000000000001,
+      "H_global_Wm2": 0.0,
+      "u_heating": 21.699932303912355,
+      "power_W": 9.712674009215538e-17,
+      "energy_Wh_step": 2.4281685023038845e-17
+    },
+    {
+      "time_s": 15051600,
+      "T_zone_degC": 24.92788903889391,
+      "T_outdoor_degC": 18.100000000000023,
+      "H_global_Wm2": 0.0,
+      "u_heating": 22.974665209992022,
+      "power_W": 9.712682177340097e-17,
+      "energy_Wh_step": 2.4281705443350242e-17
+    },
+    {
+      "time_s": 15052500,
+      "T_zone_degC": 24.875433442491897,
+      "T_outdoor_degC": 17.899999999999977,
+      "H_global_Wm2": 0.0,
+      "u_heating": 22.521103098098028,
+      "power_W": 9.712684855485005e-17,
+      "energy_Wh_step": 2.4281712138712512e-17
+    },
+    {
+      "time_s": 15053400,
+      "T_zone_degC": 24.82339785264878,
+      "T_outdoor_degC": 17.69999999999999,
+      "H_global_Wm2": 3.433768656716418,
+      "u_heating": 23.92900093820861,
+      "power_W": 9.712745281367647e-17,
+      "energy_Wh_step": 2.4281863203419116e-17
+    },
+    {
+      "time_s": 15054300,
+      "T_zone_degC": 24.77420778765662,
+      "T_outdoor_degC": 17.5,
+      "H_global_Wm2": 12.156716417910447,
+      "u_heating": 19.441455828666484,
+      "power_W": 9.712406031712637e-17,
+      "energy_Wh_step": 2.4281015079281593e-17
+    },
+    {
+      "time_s": 15055200,
+      "T_zone_degC": 24.740857920842984,
+      "T_outdoor_degC": 17.49390625000001,
+      "H_global_Wm2": 23.80130597014925,
+      "u_heating": 20.122568982325102,
+      "power_W": 9.712534468015803e-17,
+      "energy_Wh_step": 2.428133617003951e-17
+    },
+    {
+      "time_s": 15056100,
+      "T_zone_degC": 24.74637168566852,
+      "T_outdoor_degC": 17.75875000000002,
+      "H_global_Wm2": 36.0,
+      "u_heating": 23.676735829395952,
+      "power_W": 9.712014025889652e-17,
+      "energy_Wh_step": 2.428003506472413e-17
+    },
+    {
+      "time_s": 15057000,
+      "T_zone_degC": 24.779663805797554,
+      "T_outdoor_degC": 18.119218750000016,
+      "H_global_Wm2": 48.558970472158435,
+      "u_heating": 23.518725992085287,
+      "power_W": 9.713191299934512e-17,
+      "energy_Wh_step": 2.428297824983628e-17
+    },
+    {
+      "time_s": 15057900,
+      "T_zone_degC": 24.820113677648123,
+      "T_outdoor_degC": 18.399999999999977,
+      "H_global_Wm2": 62.470687428243394,
+      "u_heating": 23.482986962917575,
+      "power_W": 9.7123982034262e-17,
+      "energy_Wh_step": 2.42809955085655e-17
+    },
+    {
+      "time_s": 15058800,
+      "T_zone_degC": 24.85274148831587,
+      "T_outdoor_degC": 18.577209821428596,
+      "H_global_Wm2": 77.14706067020666,
+      "u_heating": 22.205257654779995,
+      "power_W": 9.712849000940829e-17,
+      "energy_Wh_step": 2.4282122502352072e-17
+    },
+    {
+      "time_s": 15059700,
+      "T_zone_degC": 24.885457852908246,
+      "T_outdoor_degC": 18.748392857142846,
+      "H_global_Wm2": 92.0,
+      "u_heating": 19.933772288218996,
+      "power_W": 9.712497548182537e-17,
+      "energy_Wh_step": 2.4281243870456344e-17
+    },
+    {
+      "time_s": 15060600,
+      "T_zone_degC": 24.922693877295274,
+      "T_outdoor_degC": 18.920379464285702,
+      "H_global_Wm2": 110.76499672202797,
+      "u_heating": 21.724716029493507,
+      "power_W": 9.712076865996528e-17,
+      "energy_Wh_step": 2.428019216499132e-17
+    },
+    {
+      "time_s": 15061500,
+      "T_zone_degC": 24.969145304204005,
+      "T_outdoor_degC": 19.100000000000023,
+      "H_global_Wm2": 134.54479895104896,
+      "u_heating": 22.59779113000829,
+      "power_W": 9.712296154792313e-17,
+      "energy_Wh_step": 2.4280740386980783e-17
+    },
+    {
+      "time_s": 15062400,
+      "T_zone_degC": 25.02878136286415,
+      "T_outdoor_degC": 19.32790178571429,
+      "H_global_Wm2": 158.80220170454544,
+      "u_heating": 22.58044557851566,
+      "power_W": 9.712686820784275e-17,
+      "energy_Wh_step": 2.428171705196069e-17
+    },
+    {
+      "time_s": 15063300,
+      "T_zone_degC": 25.10243216812472,
+      "T_outdoor_degC": 19.605357142857144,
+      "H_global_Wm2": 179.0,
+      "u_heating": 23.93788731685526,
+      "power_W": 9.712686820784275e-17,
+      "energy_Wh_step": 2.428171705196069e-17
+    },
+    {
+      "time_s": 15064200,
+      "T_zone_degC": 25.177603777229137,
+      "T_outdoor_degC": 19.88013392857141,
+      "H_global_Wm2": 171.60386250200182,
+      "u_heating": 22.56293412613661,
+      "power_W": 9.715157929170954e-17,
+      "energy_Wh_step": 2.4287894822927384e-17
+    },
+    {
+      "time_s": 15065100,
+      "T_zone_degC": 25.228635942536357,
+      "T_outdoor_degC": 20.100000000000023,
+      "H_global_Wm2": 134.20470559974376,
+      "u_heating": 22.073788596346343,
+      "power_W": 9.722298214517701e-17,
+      "energy_Wh_step": 2.4305745536294255e-17
+    },
+    {
+      "time_s": 15066000,
+      "T_zone_degC": 25.239387228644887,
+      "T_outdoor_degC": 20.14678308823528,
+      "H_global_Wm2": 93.95319589761384,
+      "u_heating": 19.422355941442635,
+      "power_W": 9.713033718132741e-17,
+      "energy_Wh_step": 2.4282584295331853e-17
+    },
+    {
+      "time_s": 15066900,
+      "T_zone_degC": 25.21276979815184,
+      "T_outdoor_degC": 20.033088235294144,
+      "H_global_Wm2": 78.0,
+      "u_heating": 21.952378970644407,
+      "power_W": 9.71320035079821e-17,
+      "energy_Wh_step": 2.4283000876995526e-17
+    },
+    {
+      "time_s": 15067800,
+      "T_zone_degC": 25.182900218318196,
+      "T_outdoor_degC": 19.90284926470588,
+      "H_global_Wm2": 102.58064724288823,
+      "u_heating": 23.835401590594735,
+      "power_W": 9.710729475530027e-17,
+      "energy_Wh_step": 2.4276823688825068e-17
+    },
+    {
+      "time_s": 15068700,
+      "T_zone_degC": 25.18454852393205,
+      "T_outdoor_degC": 19.899999999999977,
+      "H_global_Wm2": 151.13554277492844,
+      "u_heating": 19.612530746383207,
+      "power_W": 9.716675032640043e-17,
+      "energy_Wh_step": 2.429168758160011e-17
+    },
+    {
+      "time_s": 15069600,
+      "T_zone_degC": 25.231170310050913,
+      "T_outdoor_degC": 20.050959329044133,
+      "H_global_Wm2": 201.6226669195044,
+      "u_heating": 19.593576485535976,
+      "power_W": 9.714463257878532e-17,
+      "energy_Wh_step": 2.428615814469633e-17
+    },
+    {
+      "time_s": 15070500,
+      "T_zone_degC": 25.303447078444265,
+      "T_outdoor_degC": 20.252068014705856,
+      "H_global_Wm2": 232.0,
+      "u_heating": 20.210311218271407,
+      "power_W": 9.713096302427172e-17,
+      "energy_Wh_step": 2.428274075606793e-17
+    },
+    {
+      "time_s": 15071400,
+      "T_zone_degC": 25.374906665900653,
+      "T_outdoor_degC": 20.452142693014707,
+      "H_global_Wm2": 222.59600087758656,
+      "u_heating": 22.011706845154606,
+      "power_W": 9.718370410731463e-17,
+      "energy_Wh_step": 2.4295926026828657e-17
+    },
+    {
+      "time_s": 15072300,
+      "T_zone_degC": 25.42434382889178,
+      "T_outdoor_degC": 20.600000000000023,
+      "H_global_Wm2": 189.69757135064754,
+      "u_heating": 21.992704627933893,
+      "power_W": 9.714280774085633e-17,
+      "energy_Wh_step": 2.4285701935214082e-17
+    },
+    {
+      "time_s": 15073200,
+      "T_zone_degC": 25.44646166306262,
+      "T_outdoor_degC": 20.66253255208335,
+      "H_global_Wm2": 165.2003561483847,
+      "u_heating": 19.48318756703972,
+      "power_W": 9.708913033623728e-17,
+      "energy_Wh_step": 2.427228258405932e-17
+    },
+    {
+      "time_s": 15074100,
+      "T_zone_degC": 25.454954149733396,
+      "T_outdoor_degC": 20.678732638888903,
+      "H_global_Wm2": 181.0,
+      "u_heating": 20.39454017605127,
+      "power_W": 9.713061863577861e-17,
+      "energy_Wh_step": 2.4282654658944653e-17
+    },
+    {
+      "time_s": 15075000,
+      "T_zone_degC": 25.476270545748662,
+      "T_outdoor_degC": 20.70556640625,
+      "H_global_Wm2": 230.26166555363503,
+      "u_heating": 19.466264480250487,
+      "power_W": 9.710797117308278e-17,
+      "energy_Wh_step": 2.4276992793270695e-17
+    },
+    {
+      "time_s": 15075900,
+      "T_zone_degC": 25.526780081135882,
+      "T_outdoor_degC": 20.80000000000001,
+      "H_global_Wm2": 282.95115318807177,
+      "u_heating": 20.316205528474804,
+      "power_W": 9.711288053484451e-17,
+      "energy_Wh_step": 2.427822013371113e-17
+    },
+    {
+      "time_s": 15076800,
+      "T_zone_degC": 25.6008508648942,
+      "T_outdoor_degC": 20.966666666666697,
+      "H_global_Wm2": 336.16506422847266,
+      "u_heating": 20.22558819141672,
+      "power_W": 9.711551330444792e-17,
+      "energy_Wh_step": 2.427887832611198e-17
+    },
+    {
+      "time_s": 15077700,
+      "T_zone_degC": 25.68826016446542,
+      "T_outdoor_degC": 21.172222222222217,
+      "H_global_Wm2": 387.0,
+      "u_heating": 21.401970710932247,
+      "power_W": 9.71274898463099e-17,
+      "energy_Wh_step": 2.4281872461577475e-17
+    },
+    {
+      "time_s": 15078600,
+      "T_zone_degC": 25.786650713195684,
+      "T_outdoor_degC": 21.416666666666686,
+      "H_global_Wm2": 436.2576308139535,
+      "u_heating": 22.06076381529894,
+      "power_W": 9.713797803830035e-17,
+      "energy_Wh_step": 2.4284494509575087e-17
+    },
+    {
+      "time_s": 15079500,
+      "T_zone_degC": 25.892503976711964,
+      "T_outdoor_degC": 21.69999999999999,
+      "H_global_Wm2": 485.42603359173125,
+      "u_heating": 21.7648760479633,
+      "power_W": 9.715192854851573e-17,
+      "energy_Wh_step": 2.428798213712893e-17
+    },
+    {
+      "time_s": 15080400,
+      "T_zone_degC": 26.000925461650468,
+      "T_outdoor_degC": 22.01875000000001,
+      "H_global_Wm2": 532.6314195736434,
+      "u_heating": 23.16409076252105,
+      "power_W": 9.715088370872804e-17,
+      "energy_Wh_step": 2.428772092718201e-17
+    },
+    {
+      "time_s": 15081300,
+      "T_zone_degC": 26.10390865529172,
+      "T_outdoor_degC": 22.355555555555554,
+      "H_global_Wm2": 576.0,
+      "u_heating": 23.94731927119097,
+      "power_W": 9.712629229613974e-17,
+      "energy_Wh_step": 2.4281573074034936e-17
+    },
+    {
+      "time_s": 15082200,
+      "T_zone_degC": 26.19959221020457,
+      "T_outdoor_degC": 22.689583333333303,
+      "H_global_Wm2": 608.3172990176423,
+      "u_heating": 19.513653952732884,
+      "power_W": 9.711500415801286e-17,
+      "energy_Wh_step": 2.4278751039503216e-17
+    },
+    {
+      "time_s": 15083100,
+      "T_zone_degC": 26.288732545437824,
+      "T_outdoor_degC": 23.0,
+      "H_global_Wm2": 626.270549318364,
+      "u_heating": 23.4427856961464,
+      "power_W": 9.712740027875242e-17,
+      "energy_Wh_step": 2.4281850069688105e-17
+    },
+    {
+      "time_s": 15084000,
+      "T_zone_degC": 26.376870859047983,
+      "T_outdoor_degC": 23.290624999999977,
+      "H_global_Wm2": 633.8385249599038,
+      "u_heating": 19.63539021098272,
+      "power_W": 9.712551738717995e-17,
+      "energy_Wh_step": 2.428137934679499e-17
+    },
+    {
+      "time_s": 15084900,
+      "T_zone_degC": 26.46475696319351,
+      "T_outdoor_degC": 23.57499999999999,
+      "H_global_Wm2": 635.0,
+      "u_heating": 20.50360532720677,
+      "power_W": 9.712689499729404e-17,
+      "energy_Wh_step": 2.428172374932351e-17
+    },
+    {
+      "time_s": 15085800,
+      "T_zone_degC": 26.550670709048916,
+      "T_outdoor_degC": 23.84687500000001,
+      "H_global_Wm2": 633.3447039287734,
+      "u_heating": 22.912936287214244,
+      "power_W": 9.712830200935847e-17,
+      "energy_Wh_step": 2.4282075502339617e-17
+    },
+    {
+      "time_s": 15086700,
+      "T_zone_degC": 26.632847436041743,
+      "T_outdoor_degC": 24.100000000000023,
+      "H_global_Wm2": 630.4680610514415,
+      "u_heating": 21.432788574138772,
+      "power_W": 9.712745741489387e-17,
+      "energy_Wh_step": 2.4281864353723467e-17
+    },
+    {
+      "time_s": 15087600,
+      "T_zone_degC": 26.70980353658075,
+      "T_outdoor_degC": 24.335416666666674,
+      "H_global_Wm2": 627.3573876483889,
+      "u_heating": 22.368592046636728,
+      "power_W": 9.712777535685668e-17,
+      "energy_Wh_step": 2.428194383921417e-17
+    },
+    {
+      "time_s": 15088500,
+      "T_zone_degC": 26.78166274613403,
+      "T_outdoor_degC": 24.56111111111113,
+      "H_global_Wm2": 625.0,
+      "u_heating": 20.0571737053455,
+      "power_W": 9.71302068776365e-17,
+      "energy_Wh_step": 2.4282551719409124e-17
+    },
+    {
+      "time_s": 15089400,
+      "T_zone_degC": 26.848955076963875,
+      "T_outdoor_degC": 24.78125,
+      "H_global_Wm2": 625.7240778688524,
+      "u_heating": 22.35238809244664,
+      "power_W": 9.712490315633759e-17,
+      "energy_Wh_step": 2.4281225789084398e-17
+    },
+    {
+      "time_s": 15090300,
+      "T_zone_degC": 26.90974799800216,
+      "T_outdoor_degC": 25.0,
+      "H_global_Wm2": 628.9991803278689,
+      "u_heating": 23.69045711672304,
+      "power_W": 9.712355857391741e-17,
+      "energy_Wh_step": 2.4280889643479352e-17
+    },
+    {
+      "time_s": 15091200,
+      "T_zone_degC": 26.96493909553294,
+      "T_outdoor_degC": 25.219140625000023,
+      "H_global_Wm2": 631.5246926229509,
+      "u_heating": 20.772867818324077,
+      "power_W": 9.71315482043583e-17,
+      "energy_Wh_step": 2.4282887051089576e-17
+    },
+    {
+      "time_s": 15092100,
+      "T_zone_degC": 27.015348769296565,
+      "T_outdoor_degC": 25.431597222222194,
+      "H_global_Wm2": 630.0,
+      "u_heating": 20.90866933871936,
+      "power_W": 9.712856357534514e-17,
+      "energy_Wh_step": 2.4282140893836284e-17
+    },
+    {
+      "time_s": 15093000,
+      "T_zone_degC": 27.062699103779437,
+      "T_outdoor_degC": 25.628255208333314,
+      "H_global_Wm2": 595.8438025210085,
+      "u_heating": 23.09271359151504,
+      "power_W": 9.713068842837918e-17,
+      "energy_Wh_step": 2.4282672107094794e-17
+    },
+    {
+      "time_s": 15093900,
+      "T_zone_degC": 27.10686012120732,
+      "T_outdoor_degC": 25.80000000000001,
+      "H_global_Wm2": 524.3168067226891,
+      "u_heating": 23.793480233717133,
+      "power_W": 9.712660713360042e-17,
+      "energy_Wh_step": 2.4281651783400105e-17
+    },
+    {
+      "time_s": 15094800,
+      "T_zone_degC": 27.142537644637002,
+      "T_outdoor_degC": 25.909765624999977,
+      "H_global_Wm2": 447.88140756302516,
+      "u_heating": 20.957857029266364,
+      "power_W": 9.713473641604319e-17,
+      "energy_Wh_step": 2.4283684104010797e-17
+    },
+    {
+      "time_s": 15095700,
+      "T_zone_degC": 27.163218378408317,
+      "T_outdoor_degC": 25.944791666666674,
+      "H_global_Wm2": 399.0,
+      "u_heating": 21.490337105833703,
+      "power_W": 9.71231865726168e-17,
+      "energy_Wh_step": 2.42807966431542e-17
+    },
+    {
+      "time_s": 15096600,
+      "T_zone_degC": 27.168874288779875,
+      "T_outdoor_degC": 25.93242187499999,
+      "H_global_Wm2": 374.91000727213964,
+      "u_heating": 23.656936017396013,
+      "power_W": 9.713034250295152e-17,
+      "energy_Wh_step": 2.428258562573788e-17
+    },
+    {
+      "time_s": 15097500,
+      "T_zone_degC": 27.16235844724315,
+      "T_outdoor_degC": 25.899999999999977,
+      "H_global_Wm2": 351.04363283775047,
+      "u_heating": 22.69896362699935,
+      "power_W": 9.712929441521523e-17,
+      "energy_Wh_step": 2.4282323603803808e-17
+    },
+    {
+      "time_s": 15098400,
+      "T_zone_degC": 27.147606635958027,
+      "T_outdoor_degC": 25.863392857142856,
+      "H_global_Wm2": 327.1554419844861,
+      "u_heating": 23.424333591767397,
+      "power_W": 9.712421205142916e-17,
+      "energy_Wh_step": 2.428105301285729e-17
+    },
+    {
+      "time_s": 15099300,
+      "T_zone_degC": 27.12667274054394,
+      "T_outdoor_degC": 25.819047619047637,
+      "H_global_Wm2": 303.0,
+      "u_heating": 20.321665383467668,
+      "power_W": 9.712698722563518e-17,
+      "energy_Wh_step": 2.4281746806408794e-17
+    },
+    {
+      "time_s": 15100200,
+      "T_zone_degC": 27.10064957345952,
+      "T_outdoor_degC": 25.765178571428578,
+      "H_global_Wm2": 278.62327704622965,
+      "u_heating": 19.41787771022363,
+      "power_W": 9.712678118747296e-17,
+      "energy_Wh_step": 2.428169529686824e-17
+    },
+    {
+      "time_s": 15101100,
+      "T_zone_degC": 27.067743504645648,
+      "T_outdoor_degC": 25.69999999999999,
+      "H_global_Wm2": 254.1996179108248,
+      "u_heating": 19.86449100896602,
+      "power_W": 9.712476622760978e-17,
+      "energy_Wh_step": 2.4281191556902445e-17
+    },
+    {
+      "time_s": 15102000,
+      "T_zone_degC": 27.028060906763017,
+      "T_outdoor_degC": 25.628571428571433,
+      "H_global_Wm2": 229.6761498200076,
+      "u_heating": 20.188173321444477,
+      "power_W": 9.712584995326711e-17,
+      "energy_Wh_step": 2.4281462488316778e-17
+    },
+    {
+      "time_s": 15102900,
+      "T_zone_degC": 26.98249896525499,
+      "T_outdoor_degC": 25.547619047619037,
+      "H_global_Wm2": 205.0,
+      "u_heating": 22.8439604193391,
+      "power_W": 9.712586753349308e-17,
+      "energy_Wh_step": 2.428146688337327e-17
+    },
+    {
+      "time_s": 15103800,
+      "T_zone_degC": 26.929435462474714,
+      "T_outdoor_degC": 25.44285714285712,
+      "H_global_Wm2": 173.4572893167902,
+      "u_heating": 23.8085499616547,
+      "power_W": 9.712754782853307e-17,
+      "energy_Wh_step": 2.4281886957133266e-17
+    },
+    {
+      "time_s": 15104700,
+      "T_zone_degC": 26.865205192586075,
+      "T_outdoor_degC": 25.30000000000001,
+      "H_global_Wm2": 133.57288645396926,
+      "u_heating": 20.871908787081857,
+      "power_W": 9.71306110798038e-17,
+      "energy_Wh_step": 2.428265276995095e-17
+    },
+    {
+      "time_s": 15105600,
+      "T_zone_degC": 26.792272594097028,
+      "T_outdoor_degC": 25.11500000000001,
+      "H_global_Wm2": 93.1520403641637,
+      "u_heating": 20.098190661720295,
+      "power_W": 9.712492786615589e-17,
+      "energy_Wh_step": 2.4281231966538973e-17
+    },
+    {
+      "time_s": 15106500,
+      "T_zone_degC": 26.71626914992862,
+      "T_outdoor_degC": 24.906666666666638,
+      "H_global_Wm2": 60.0,
+      "u_heating": 21.955166971994675,
+      "power_W": 9.712696623616063e-17,
+      "energy_Wh_step": 2.428174155904016e-17
+    },
+    {
+      "time_s": 15107400,
+      "T_zone_degC": 26.640036796649326,
+      "T_outdoor_degC": 24.694999999999993,
+      "H_global_Wm2": 35.48481308411215,
+      "u_heating": 23.153447488131953,
+      "power_W": 9.711821063394185e-17,
+      "energy_Wh_step": 2.4279552658485463e-17
+    },
+    {
+      "time_s": 15108300,
+      "T_zone_degC": 26.566693879027696,
+      "T_outdoor_degC": 24.5,
+      "H_global_Wm2": 16.54205607476635,
+      "u_heating": 20.78329000550207,
+      "power_W": 9.712437786726513e-17,
+      "energy_Wh_step": 2.4281094466816282e-17
+    },
+    {
+      "time_s": 15109200,
+      "T_zone_degC": 26.496593296342553,
+      "T_outdoor_degC": 24.326874999999973,
+      "H_global_Wm2": 4.328271028037371,
+      "u_heating": 20.56454162341871,
+      "power_W": 9.712655084354069e-17,
+      "energy_Wh_step": 2.4281637710885173e-17
+    },
+    {
+      "time_s": 15110100,
+      "T_zone_degC": 26.429326458361743,
+      "T_outdoor_degC": 24.160000000000025,
+      "H_global_Wm2": 0.0,
+      "u_heating": 23.57547747298723,
+      "power_W": 9.712995833301076e-17,
+      "energy_Wh_step": 2.428248958325269e-17
+    },
+    {
+      "time_s": 15111000,
+      "T_zone_degC": 26.366214477981714,
+      "T_outdoor_degC": 23.988125000000025,
+      "H_global_Wm2": 0.0,
+      "u_heating": 22.977397876587062,
+      "power_W": 9.712381241742282e-17,
+      "energy_Wh_step": 2.4280953104355705e-17
+    },
+    {
+      "time_s": 15111900,
+      "T_zone_degC": 26.305333387253825,
+      "T_outdoor_degC": 23.80000000000001,
+      "H_global_Wm2": 0.0,
+      "u_heating": 20.717883418293958,
+      "power_W": 9.712247350720285e-17,
+      "energy_Wh_step": 2.4280618376800712e-17
+    },
+    {
+      "time_s": 15112800,
+      "T_zone_degC": 26.24427132128028,
+      "T_outdoor_degC": 23.600000000000023,
+      "H_global_Wm2": 0.0,
+      "u_heating": 21.840537007978646,
+      "power_W": 9.712505918367191e-17,
+      "energy_Wh_step": 2.4281264795917977e-17
+    },
+    {
+      "time_s": 15113700,
+      "T_zone_degC": 26.183870650867675,
+      "T_outdoor_degC": 23.399999999999977,
+      "H_global_Wm2": 0.0,
+      "u_heating": 21.12492506057407,
+      "power_W": 9.712560902258168e-17,
+      "energy_Wh_step": 2.428140225564542e-17
+    },
+    {
+      "time_s": 15114600,
+      "T_zone_degC": 26.124501490714124,
+      "T_outdoor_degC": 23.19999999999999,
+      "H_global_Wm2": 0.0,
+      "u_heating": 19.656774017840835,
+      "power_W": 9.712846777566029e-17,
+      "energy_Wh_step": 2.4282116943915072e-17
+    },
+    {
+      "time_s": 15115500,
+      "T_zone_degC": 26.066179383753536,
+      "T_outdoor_degC": 23.0,
+      "H_global_Wm2": 0.0,
+      "u_heating": 23.65448327741683,
+      "power_W": 9.712758801130897e-17,
+      "energy_Wh_step": 2.4281897002827244e-17
+    },
+    {
+      "time_s": 15116400,
+      "T_zone_degC": 26.008909074585915,
+      "T_outdoor_degC": 22.80000000000001,
+      "H_global_Wm2": 0.0,
+      "u_heating": 19.196719921355417,
+      "power_W": 9.712463787302377e-17,
+      "energy_Wh_step": 2.4281159468255942e-17
+    },
+    {
+      "time_s": 15117300,
+      "T_zone_degC": 25.952762508149135,
+      "T_outdoor_degC": 22.600000000000023,
+      "H_global_Wm2": 0.0,
+      "u_heating": 22.267109265065447,
+      "power_W": 9.712682009463554e-17,
+      "energy_Wh_step": 2.4281705023658886e-17
+    },
+    {
+      "time_s": 15118200,
+      "T_zone_degC": 25.8975604366139,
+      "T_outdoor_degC": 22.399999999999977,
+      "H_global_Wm2": 0.0,
+      "u_heating": 19.288247650334707,
+      "power_W": 9.712649962631097e-17,
+      "energy_Wh_step": 2.4281624906577743e-17
+    },
+    {
+      "time_s": 15119100,
+      "T_zone_degC": 25.84294517640683,
+      "T_outdoor_degC": 22.19999999999999,
+      "H_global_Wm2": 0.0,
+      "u_heating": 22.245521247822186,
+      "power_W": 9.712628016982671e-17,
+      "energy_Wh_step": 2.4281570042456677e-17
+    }
+  ],
+  "meta": {
+    "scenario": {},
+    "control_signal": "thermostatDayZon_oveTsetZon_u",
+    "activate_signal": "thermostatDayZon_oveTsetZon_activate",
+    "heating_proxy_signal": null,
+    "zone_signal": "dayZon_reaTRooAir_y",
+    "generator": "scripts/generate_boptest_datasets.py"
+  }
+}

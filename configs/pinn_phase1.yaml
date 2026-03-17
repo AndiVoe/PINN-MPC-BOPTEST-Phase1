@@ -1,4 +1,4 @@
-study_id: pinn_phase1_singlezone
+﻿study_id: pinn_phase1_singlezone
 
 data:
   dataset_root: datasets/phase1_singlezone

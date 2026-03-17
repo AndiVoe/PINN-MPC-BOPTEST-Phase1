@@ -1,0 +1,10 @@
+episode,comparable,missing_pair,diff_fields,split,weather_class,n_steps,dt_s,pinn_boptest_tdis_tot,rc_boptest_tdis_tot,pinn_local_discomfort_kh,rc_local_discomfort_kh,definition_mismatch_risk
+te_ext_01,True,False,,test,extreme,672,900,0.0,0.0,0.0,10.568162,True
+te_ext_02,True,False,,test,extreme,672,900,0.0,0.0,0.0,10.568162,True
+te_long_01,True,False,,future_test,standard_long,2880,900,0.0,0.0,0.0,59.434329,True
+te_long_02,True,False,,future_test,winter_long,2880,900,0.0,0.0,0.0,59.434329,True
+te_long_03,True,False,,future_test,winter_long,2880,900,0.0,0.0,0.0,59.434329,True
+te_std_01,True,False,,test,standard,672,900,0.0,0.0,0.0,0.0,False
+te_std_02,True,False,,test,standard,672,900,0.0,0.0,0.0,8.675052,True
+te_win_01,True,False,,future_test,winter,672,900,0.0,0.0,0.0,10.568162,True
+te_win_02,True,False,,future_test,winter,672,900,0.0,0.0,0.0,7.685743,True

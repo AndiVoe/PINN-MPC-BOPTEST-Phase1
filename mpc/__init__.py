@@ -1,4 +1,4 @@
-"""WP4 MPC harness package."""
+﻿"""WP4 MPC harness package."""
 
 from .kpi import KPILogger
 from .occupancy import comfort_bounds, comfort_bounds_sequence, is_occupied

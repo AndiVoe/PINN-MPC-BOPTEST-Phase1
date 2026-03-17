@@ -1,0 +1,17 @@
+{
+  "created_utc": "2026-03-16T08:17:12.754458+00:00",
+  "status": "failed",
+  "tried_base_urls": [
+    "http://127.0.0.1:5000",
+    "http://127.0.0.1:8000",
+    "http://localhost:5000",
+    "http://localhost:8000"
+  ],
+  "errors": {
+    "http://127.0.0.1:5000": "<urlopen error [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte>",
+    "http://127.0.0.1:8000": "<urlopen error [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte>",
+    "http://localhost:5000": "<urlopen error [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte>",
+    "http://localhost:8000": "<urlopen error [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte>"
+  },
+  "hint": "Start BOPTEST API locally and rerun this script."
+}

@@ -1,0 +1,12 @@
+{
+  "created_utc": "2026-03-16T08:35:23.418843+00:00",
+  "root": "C:\\Users\\AVoelser\\OneDrive - Scientific Network South Tyrol\\3_PhD\\Simulation\\PINN",
+  "bundle_dir": "C:\\Users\\AVoelser\\OneDrive - Scientific Network South Tyrol\\3_PhD\\Simulation\\PINN\\results\\eu_rc_vs_pinn\\publication_bundle",
+  "file_count": 11,
+  "platform": {
+    "system": "Windows",
+    "release": "11",
+    "python": "3.13.12"
+  },
+  "index_csv": "results/eu_rc_vs_pinn/publication_bundle/file_index.csv"
+}

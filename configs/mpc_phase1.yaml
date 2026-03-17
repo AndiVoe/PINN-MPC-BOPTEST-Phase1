@@ -1,4 +1,4 @@
-# WP4 MPC configuration for phase 1 (singlezone_commercial_hydronic)
+﻿# WP4 MPC configuration for phase 1 (singlezone_commercial_hydronic)
 # Consistent with manifests/phase1_singlezone.yaml objective definitions.
 
 mpc:
@@ -12,14 +12,14 @@ mpc:
 
   # Comfort temperature bounds (degrees C)
   comfort_bounds_degC:
-    occupied:   [21.0, 24.0]   # 08:00 – 18:00
+    occupied:   [21.0, 24.0]   # 08:00 ÔÇô 18:00
     unoccupied: [15.0, 30.0]   # outside occupied hours
 
   # Objective weights (must be identical for both predictors to ensure fair comparison)
   objective_weights:
-    comfort: 100.0             # (penalty per K²·step outside bounds)
+    comfort: 100.0             # (penalty per K┬▓┬Àstep outside bounds)
     energy: 0.0001             # (penalty per degC of setpoint, proxy for heating demand)
-    control_smoothness: 0.1   # (penalty per |Δu| between consecutive steps)
+    control_smoothness: 0.1   # (penalty per |╬öu| between consecutive steps)
 
   # SLSQP solver settings
   solver_maxiter: 100

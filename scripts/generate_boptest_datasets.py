@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
 WP2 dataset generator for BOPTEST episodes.
 
@@ -70,6 +70,20 @@ class BoptestClient:
             raise RuntimeError(f"Testid {testid} is not Running (status: {status}).")
         self.testid = testid
         print(f"Attached to existing Running testid: {testid}")
+
+    def stop(self) -> bool:
+        testid = self._require_testid()
+        try:
+            resp = requests.put(f"{self.base_url}/stop/{testid}", timeout=60)
+            if not resp.ok:
+                return False
+            try:
+                data = resp.json()
+                return bool(data.get("payload", True))
+            except Exception:
+                return True
+        except requests.RequestException:
+            return False
 
     def wait_running(self, timeout_s: int = 1200, poll_interval_s: int = 5) -> None:
         testid = self._require_testid()
@@ -326,6 +340,7 @@ def main() -> None:
     parser.add_argument("--startup-timeout-s", type=int, default=1800)
     parser.add_argument("--startup-poll-interval-s", type=int, default=5)
     parser.add_argument("--reuse-testid", default="", help="Attach to an already-Running testid, skipping select+wait.")
+    parser.add_argument("--recover-from-queued", action="store_true", help="If startup stays Queued, stop test and retry selection once.")
     parser.add_argument("--resume", action="store_true", help="Skip episodes that already have a valid output JSON file.")
     args = parser.parse_args()
 
@@ -354,15 +369,32 @@ def main() -> None:
     resolved_url = resolve_boptest_url(args.url)
     print(f"Using BOPTEST URL: {resolved_url}")
     client = BoptestClient(resolved_url)
+    owns_test_session = not bool(args.reuse_testid)
     if args.reuse_testid:
         client.attach_testid(args.reuse_testid)
     else:
         testid = client.select_test_case(args.case)
         print(f"Selected testcase {args.case} with testid {testid}")
-        client.wait_running(
-            timeout_s=int(args.startup_timeout_s),
-            poll_interval_s=int(args.startup_poll_interval_s),
-        )
+        try:
+            client.wait_running(
+                timeout_s=int(args.startup_timeout_s),
+                poll_interval_s=int(args.startup_poll_interval_s),
+            )
+        except TimeoutError:
+            if not args.recover_from_queued:
+                raise
+            print("Startup timeout in Queued state. Attempting one-time recovery ...")
+            try:
+                stopped = client.stop()
+                print(f"stop({testid}) -> {stopped}")
+            except Exception as exc:
+                print(f"Warning: stop failed: {exc}")
+            testid = client.select_test_case(args.case)
+            print(f"Retry selected testcase {args.case} with testid {testid}")
+            client.wait_running(
+                timeout_s=int(args.startup_timeout_s),
+                poll_interval_s=int(args.startup_poll_interval_s),
+            )
 
     index: list[dict[str, Any]] = []
     existing_index_path = output_dir / "index.json"
@@ -407,6 +439,13 @@ def main() -> None:
     ensure_dir(output_dir)
     with index_path.open("w", encoding="utf-8") as f:
         json.dump(index, f, indent=2)
+
+    if owns_test_session:
+        try:
+            stopped = client.stop()
+            print(f"Stopped test session: {stopped}")
+        except Exception as exc:
+            print(f"Warning: failed to stop test session: {exc}")
 
     print(f"Done. Wrote index: {index_path}")
 

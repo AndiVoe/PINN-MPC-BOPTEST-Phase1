@@ -1,0 +1,8 @@
+{
+  "failures": [
+    {
+      "case_id": "multizone_residential_hydronic",
+      "error": "Command failed (1): C:\\Users\\AVoelser\\OneDrive - Scientific Network South Tyrol\\3_PhD\\Simulation\\PINN\\.venv\\Scripts\\python.exe -u scripts/train_pinn.py --config configs/eu/pinn_multizone_residential_hydronic.yaml --artifact-dir artifacts/eu/multizone_residential_hydronic"
+    }
+  ]
+}

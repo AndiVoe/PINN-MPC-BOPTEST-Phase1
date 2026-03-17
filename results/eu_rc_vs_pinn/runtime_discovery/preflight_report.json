@@ -1,0 +1,35 @@
+{
+  "url": "http://127.0.0.1:8000",
+  "requested_case": "bestest_hydronic",
+  "max_wait_s": 120,
+  "poll_s": 2,
+  "version": {
+    "status": 200,
+    "message": "Queried the version number successfully.",
+    "payload": {
+      "version": "1.0.0-dev"
+    }
+  },
+  "testcases": {
+    "count": null
+  },
+  "selected_probe_case": "bestest_hydronic",
+  "docker": {
+    "available": true,
+    "queue_len_jobs": 0,
+    "tests_total": 0,
+    "tests_queued": 0,
+    "tests_running": 0,
+    "note": ""
+  },
+  "probe_testid": "02ee54b1-55ce-4de4-a806-dc4ea8d7c6c5",
+  "probe_status_log": [
+    {
+      "elapsed_s": 0,
+      "status": "Running"
+    }
+  ],
+  "probe_reached_running": true,
+  "diagnosis": "healthy",
+  "recommendations": []
+}

@@ -1,0 +1,50 @@
+{
+  "created_utc": "2026-03-16T08:35:22.605710+00:00",
+  "status": "ok",
+  "base_url": "http://127.0.0.1:8000",
+  "version": {
+    "status": 200,
+    "message": "Queried the version number successfully.",
+    "payload": {
+      "version": "1.0.0-dev"
+    }
+  },
+  "testcases": [
+    {
+      "testcaseid": "bestest_air"
+    },
+    {
+      "testcaseid": "bestest_hydronic"
+    },
+    {
+      "testcaseid": "bestest_hydronic_heat_pump"
+    },
+    {
+      "testcaseid": "multizone_office_complex_air"
+    },
+    {
+      "testcaseid": "multizone_office_simple_air"
+    },
+    {
+      "testcaseid": "multizone_office_simple_hydronic"
+    },
+    {
+      "testcaseid": "multizone_residential_hydronic"
+    },
+    {
+      "testcaseid": "singlezone_commercial_hydronic"
+    },
+    {
+      "testcaseid": "testcase1"
+    },
+    {
+      "testcaseid": "testcase2"
+    },
+    {
+      "testcaseid": "testcase3"
+    },
+    {
+      "testcaseid": "twozone_apartment_hydronic"
+    }
+  ]
+}

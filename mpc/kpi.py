@@ -1,4 +1,4 @@
-"""KPI accumulator for MPC episodes."""
+﻿"""KPI accumulator for MPC episodes."""
 
 from __future__ import annotations
 
