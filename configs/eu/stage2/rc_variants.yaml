@@ -1,0 +1,16 @@
+variants:
+  - name: rc_base
+    scale_ua: 1.0
+    scale_solar_gain: 1.0
+    scale_hvac_gain: 1.0
+    scale_capacity: 1.0
+  - name: rc_envelope_plus
+    scale_ua: 1.1
+    scale_solar_gain: 1.0
+    scale_hvac_gain: 1.0
+    scale_capacity: 0.9
+  - name: rc_mass_plus
+    scale_ua: 0.9
+    scale_solar_gain: 1.0
+    scale_hvac_gain: 1.0
+    scale_capacity: 1.1

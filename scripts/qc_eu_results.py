@@ -22,6 +22,48 @@ class EpisodeRun:
     payload: dict[str, Any]
 
 
+def _to_float(value: Any) -> float | None:
+    try:
+        out = float(value)
+    except (TypeError, ValueError):
+        return None
+    return out if math.isfinite(out) else None
+
+
+def infer_floor_area_m2(payload: dict[str, Any]) -> float | None:
+    diag = payload.get("diagnostic_kpis", {})
+    chall = payload.get("challenge_kpis", {})
+    summary = payload.get("kpi_summary", {})
+    boptest = payload.get("boptest_kpis", {})
+
+    peak_heating_w = _to_float(diag.get("peak_heating_power_W"))
+    if peak_heating_w is None:
+        peak_heating_w = _to_float(diag.get("peak_power_W"))
+    if peak_heating_w is None or peak_heating_w <= 0.0:
+        return None
+
+    pdih_kw_per_m2 = None
+    for container in (chall, summary):
+        item = container.get("pdih_tot")
+        if isinstance(item, dict):
+            pdih_kw_per_m2 = _to_float(item.get("value"))
+            if pdih_kw_per_m2 is not None:
+                break
+    if pdih_kw_per_m2 is None:
+        pdih_kw_per_m2 = _to_float(boptest.get("pdih_tot"))
+
+    if pdih_kw_per_m2 is None or pdih_kw_per_m2 <= 0.0:
+        return None
+
+    # area = peak_heating_power / (peak_heating_power_density)
+    area_m2 = peak_heating_w / (pdih_kw_per_m2 * 1000.0)
+    # Several BESTEST-style cases use normalized reference areas (~1 m2),
+    # which are not suitable for absolute W/m2 plausibility limits.
+    if area_m2 < 10.0:
+        return None
+    return area_m2
+
+
 def _is_finite(x: Any) -> bool:
     return isinstance(x, (int, float)) and math.isfinite(float(x))
 
@@ -83,8 +125,9 @@ def run_plausibility_checks(run: EpisodeRun) -> list[str]:
 
     t_zone = _check_series("t_zone", -30.0, 60.0)
     u_heat = _check_series("u_heating", 5.0, 40.0)
-    power = _check_series("power_w", -200.0, 120000.0)
+    power = _check_series("power_w", -1000.0, 1_000_000.0)
     solve = _check_series("solve_time_ms", 0.0, 60000.0)
+    floor_area_m2 = infer_floor_area_m2(data)
 
     if np.all(np.isfinite(t_zone)):
         if np.any(np.abs(np.diff(t_zone)) > 4.0):
@@ -93,8 +136,14 @@ def run_plausibility_checks(run: EpisodeRun) -> list[str]:
         if np.any(np.abs(np.diff(u_heat)) > 8.0):
             issues.append("large_control_jump_gt_8C_per_step")
     if np.all(np.isfinite(power)):
-        if np.max(power) > 50000.0:
-            issues.append("very_high_power_peak_gt_50kW")
+        if floor_area_m2 is not None and floor_area_m2 > 1e-9:
+            power_density = power / floor_area_m2
+            if np.any(power_density < -5.0) or np.any(power_density > 500.0):
+                issues.append("out_of_range_power_density_w_per_m2:[-5.0,500.0]")
+            if np.max(power_density) > 300.0:
+                issues.append("very_high_power_density_peak_gt_300W_per_m2")
+        elif np.max(power) > 120000.0:
+            issues.append("very_high_power_peak_gt_120kW_no_area_norm")
     if np.all(np.isfinite(solve)):
         if np.percentile(solve, 99) > 10000.0:
             issues.append("very_slow_solver_p99_gt_10s")
@@ -123,6 +172,9 @@ def build_kpi_rows(runs: list[EpisodeRun]) -> list[dict[str, Any]]:
     for run in runs:
         diag = run.payload.get("diagnostic_kpis", {})
         chall = run.payload.get("challenge_kpis", {})
+        area_m2 = infer_floor_area_m2(run.payload)
+        total_energy_wh = _to_float(diag.get("total_energy_Wh"))
+        peak_power_w = _to_float(diag.get("peak_power_W"))
         rows.append(
             {
                 "case": run.case,
@@ -130,8 +182,11 @@ def build_kpi_rows(runs: list[EpisodeRun]) -> list[dict[str, Any]]:
                 "episode_id": run.episode_id,
                 "comfort_Kh": diag.get("comfort_Kh"),
                 "comfort_violation_steps": diag.get("comfort_violation_steps"),
-                "total_energy_Wh": diag.get("total_energy_Wh"),
-                "peak_power_W": diag.get("peak_power_W"),
+                "total_energy_Wh": total_energy_wh,
+                "peak_power_W": peak_power_w,
+                "floor_area_m2": area_m2,
+                "total_energy_Wh_per_m2": (total_energy_wh / area_m2) if area_m2 and total_energy_wh is not None else None,
+                "peak_power_W_per_m2": (peak_power_w / area_m2) if area_m2 and peak_power_w is not None else None,
                 "mpc_solve_time_mean_ms": diag.get("mpc_solve_time_mean_ms"),
                 "mpc_solve_time_p95_ms": diag.get("mpc_solve_time_p95_ms"),
                 "tdis_tot": (chall.get("tdis_tot") or {}).get("value") if isinstance(chall.get("tdis_tot"), dict) else None,
@@ -286,6 +341,9 @@ def main() -> int:
             "comfort_violation_steps",
             "total_energy_Wh",
             "peak_power_W",
+            "floor_area_m2",
+            "total_energy_Wh_per_m2",
+            "peak_power_W_per_m2",
             "mpc_solve_time_mean_ms",
             "mpc_solve_time_p95_ms",
             "tdis_tot",

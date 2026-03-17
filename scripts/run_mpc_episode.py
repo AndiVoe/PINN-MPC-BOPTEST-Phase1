@@ -308,6 +308,11 @@ def main() -> None:
         help="Interior model: 'rc' (whitebox RC) or 'pinn' (surrogate).",
     )
     parser.add_argument(
+        "--predictor-label",
+        default="",
+        help="Optional output/result label (e.g. rc_fast). Defaults to predictor name.",
+    )
+    parser.add_argument(
         "--episode", default="all-test",
         help="Episode ID from the manifest (e.g. te_std_01) or 'all-test' for all test episodes.",
     )
@@ -325,6 +330,10 @@ def main() -> None:
         action="store_true",
         help="If startup stays Queued, stop the stuck test and retry selection once.",
     )
+    parser.add_argument("--rc-scale-ua", type=float, default=1.0)
+    parser.add_argument("--rc-scale-solar-gain", type=float, default=1.0)
+    parser.add_argument("--rc-scale-hvac-gain", type=float, default=1.0)
+    parser.add_argument("--rc-scale-capacity", type=float, default=1.0)
     args = parser.parse_args()
 
     # ------------------------------------------------------------------ setup
@@ -350,13 +359,23 @@ def main() -> None:
         predictor_name = "pinn"
     else:
         print("Loading RC predictor from checkpoint ...", flush=True)
-        predictor = RCPredictor.from_checkpoint(ckpt_path)
+        rc_base = RCPredictor.from_checkpoint(ckpt_path)
+        predictor = RCPredictor(
+            ua=rc_base.ua * args.rc_scale_ua,
+            solar_gain=rc_base.solar_gain * args.rc_scale_solar_gain,
+            hvac_gain=rc_base.hvac_gain * args.rc_scale_hvac_gain,
+            capacity=rc_base.capacity * args.rc_scale_capacity,
+        )
         predictor_name = "rc"
         print(
             f"  RC params: ua={predictor.ua:.4f}, solar_gain={predictor.solar_gain:.4f}, "
-            f"hvac_gain={predictor.hvac_gain:.4f}, capacity={predictor.capacity:.4f}",
+            f"hvac_gain={predictor.hvac_gain:.4f}, capacity={predictor.capacity:.4f}"
+            f" | scales=({args.rc_scale_ua:.3f},{args.rc_scale_solar_gain:.3f},"
+            f"{args.rc_scale_hvac_gain:.3f},{args.rc_scale_capacity:.3f})",
             flush=True,
         )
+
+    predictor_label = args.predictor_label.strip() or predictor_name
 
     # ------------------------------------------------------------------ solver
     mpc = mpc_cfg.get("mpc", {})
@@ -417,7 +436,7 @@ def main() -> None:
             client.wait_running(timeout_s=args.startup_timeout_s)
 
     # ------------------------------------------------------------------ run
-    output_dir = ROOT / args.output_dir / predictor_name
+    output_dir = ROOT / args.output_dir / predictor_label
     _ensure_dir(output_dir)
 
     try:
@@ -425,7 +444,7 @@ def main() -> None:
             ep_id = episode["id"]
             out_path = output_dir / f"{ep_id}.json"
             print(f"\n{'='*60}", flush=True)
-            print(f"Episode {ep_id} | predictor={predictor_name}", flush=True)
+            print(f"Episode {ep_id} | predictor={predictor_label}", flush=True)
             print(f"{'='*60}", flush=True)
 
             try:
@@ -436,8 +455,21 @@ def main() -> None:
                     episode=episode,
                     defaults=defaults,
                     solver=solver,
-                    predictor_name=predictor_name,
+                    predictor_name=predictor_label,
                 )
+                result["predictor_base"] = predictor_name
+                result["predictor_label"] = predictor_label
+                if predictor_name == "rc":
+                    result["rc_variant"] = {
+                        "scale_ua": args.rc_scale_ua,
+                        "scale_solar_gain": args.rc_scale_solar_gain,
+                        "scale_hvac_gain": args.rc_scale_hvac_gain,
+                        "scale_capacity": args.rc_scale_capacity,
+                        "ua": predictor.ua,
+                        "solar_gain": predictor.solar_gain,
+                        "hvac_gain": predictor.hvac_gain,
+                        "capacity": predictor.capacity,
+                    }
                 with out_path.open("w", encoding="utf-8") as f:
                     json.dump(result, f, indent=2)
                 print(f"  Saved -> {out_path}", flush=True)

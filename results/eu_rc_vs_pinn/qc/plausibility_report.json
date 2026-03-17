@@ -149,21 +149,16 @@
       "case": "singlezone_commercial_hydronic",
       "predictor": "rc",
       "episode_id": "te_std_01",
-      "status": "WARN",
-      "issues": [
-        "out_of_range_power_w:[-200.0,120000.0]",
-        "very_high_power_peak_gt_50kW"
-      ],
+      "status": "PASS",
+      "issues": [],
       "file": "C:/Users/AVoelser/OneDrive - Scientific Network South Tyrol/3_PhD/Simulation/PINN/results/eu_rc_vs_pinn/raw/singlezone_commercial_hydronic/rc/te_std_01.json"
     },
     {
       "case": "singlezone_commercial_hydronic",
       "predictor": "rc",
       "episode_id": "te_std_02",
-      "status": "WARN",
-      "issues": [
-        "very_high_power_peak_gt_50kW"
-      ],
+      "status": "PASS",
+      "issues": [],
       "file": "C:/Users/AVoelser/OneDrive - Scientific Network South Tyrol/3_PhD/Simulation/PINN/results/eu_rc_vs_pinn/raw/singlezone_commercial_hydronic/rc/te_std_02.json"
     },
     {
@@ -178,11 +173,8 @@
       "case": "singlezone_commercial_hydronic",
       "predictor": "pinn",
       "episode_id": "te_std_01",
-      "status": "WARN",
-      "issues": [
-        "out_of_range_power_w:[-200.0,120000.0]",
-        "very_high_power_peak_gt_50kW"
-      ],
+      "status": "PASS",
+      "issues": [],
       "file": "C:/Users/AVoelser/OneDrive - Scientific Network South Tyrol/3_PhD/Simulation/PINN/results/eu_rc_vs_pinn/raw/singlezone_commercial_hydronic/pinn/te_std_01.json"
     },
     {

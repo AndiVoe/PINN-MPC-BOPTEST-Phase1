@@ -35,6 +35,7 @@ Optional custom paths:
    - `t_zone` mostly in realistic building range (no implausible spikes).
    - `u_heating` remains within actuator bounds.
    - Power values are finite and non-pathological.
+   - For cases with inferable physical floor area, power checks are performed on normalized density (`W/m2`).
 4. **Comfort Consistency**:
    - Compare `t_zone` against `t_lower`/`t_upper` in time-series figures.
    - Large reported discomfort should match visible band violations.
@@ -52,3 +53,5 @@ Optional custom paths:
 - control discontinuities,
 - unusually high solve-time tails,
 - schema/time-step inconsistencies.
+
+Note on floor-area normalization: some BESTEST-style cases expose normalized KPI references that imply a unit reference area. For these cases, absolute `W/m2` plausibility checks are skipped to avoid false alarms from non-physical reference scaling.
