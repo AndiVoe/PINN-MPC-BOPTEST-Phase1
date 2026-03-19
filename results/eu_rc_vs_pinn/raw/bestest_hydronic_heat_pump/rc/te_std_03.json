@@ -7,6 +7,24 @@
   "start_time_s": 14515200,
   "control_interval_s": 900,
   "n_steps": 672,
+  "resolved_signals": {
+    "zone_temp_signals": [
+      "reaTZon_y"
+    ],
+    "outdoor_temp_signal": "weaSta_reaWeaTDryBul_y",
+    "solar_signal": "weaSta_reaWeaHGloHor_y",
+    "control_value_signals": [
+      "oveTSet_u"
+    ],
+    "control_activate_signals": [
+      "oveTSet_activate"
+    ],
+    "system_control_value_signals": [],
+    "system_control_activate_signals": [],
+    "fixed_control_commands": {},
+    "has_forecast_signals": true
+  },
+  "mapping_warnings": [],
   "kpi_summary": {
     "cost_tot": {
       "value": 0.032219390814175915,
@@ -82,11 +100,11 @@
     "peak_heating_power_W": 4054.66,
     "peak_electric_power_W": 2050.76,
     "control_smoothness": 0.1754,
-    "mpc_solve_time_mean_ms": 2.431,
-    "mpc_solve_time_p95_ms": 3.926,
-    "mpc_solve_time_max_ms": 29.376,
+    "mpc_solve_time_mean_ms": 3.011,
+    "mpc_solve_time_p95_ms": 3.95,
+    "mpc_solve_time_max_ms": 33.609,
     "n_mpc_solves": 672,
-    "episode_wall_time_s": 32.14
+    "episode_wall_time_s": 31.95
   },
   "boptest_kpis": {
     "tdis_tot": 6.84718432888866,
@@ -97,7 +115,7 @@
     "pele_tot": 0.01066707830037881,
     "pgas_tot": null,
     "pdih_tot": null,
-    "time_rat": 3.558225121634708e-05
+    "time_rat": 3.20747736017916e-05
   },
   "step_records": [
     {
@@ -107,7 +125,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.1836000378243625,
+      "solve_time_ms": 2.9296999564394355,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -119,7 +137,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.7617999585345387,
+      "solve_time_ms": 2.8937000315636396,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -131,7 +149,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.146699989680201,
+      "solve_time_ms": 4.274199949577451,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -143,7 +161,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.241100009996444,
+      "solve_time_ms": 3.025099984370172,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -155,7 +173,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 3.1533000292256474,
+      "solve_time_ms": 3.382700029760599,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -167,7 +185,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 3.521399979945272,
+      "solve_time_ms": 2.9492999892681837,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -179,7 +197,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 3.978300024755299,
+      "solve_time_ms": 3.7356000393629074,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -191,7 +209,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.1720000077039003,
+      "solve_time_ms": 2.611400093883276,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -203,7 +221,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.222200040705502,
+      "solve_time_ms": 2.358500030823052,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -215,7 +233,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.0531999762170017,
+      "solve_time_ms": 2.9036999912932515,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -227,7 +245,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.895699999295175,
+      "solve_time_ms": 2.947899978607893,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -239,7 +257,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.2115999599918723,
+      "solve_time_ms": 2.6344999205321074,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -251,7 +269,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.654300013091415,
+      "solve_time_ms": 2.4488000199198723,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -263,7 +281,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.986199989914894,
+      "solve_time_ms": 2.6898999931290746,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -275,7 +293,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.9762000301852822,
+      "solve_time_ms": 2.475599991157651,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -287,7 +305,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.9600999657995999,
+      "solve_time_ms": 2.2125999676063657,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -299,7 +317,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.460299991071224,
+      "solve_time_ms": 2.9030999867245555,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -311,7 +329,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.2042999626137316,
+      "solve_time_ms": 3.244199906475842,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -323,7 +341,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.9856999861076474,
+      "solve_time_ms": 3.5444999812170863,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -335,7 +353,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.824099977966398,
+      "solve_time_ms": 2.8238999657332897,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -347,7 +365,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.2717000101692975,
+      "solve_time_ms": 2.6555999647825956,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -359,7 +377,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.43130000308156,
+      "solve_time_ms": 2.5583000387996435,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -371,7 +389,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.6523999986238778,
+      "solve_time_ms": 2.978599979542196,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -383,7 +401,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.8626999808475375,
+      "solve_time_ms": 2.923899912275374,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -395,7 +413,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.2969000274315476,
+      "solve_time_ms": 2.5194999761879444,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -407,7 +425,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.8313999753445387,
+      "solve_time_ms": 2.5718999095261097,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -419,7 +437,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.1694000461138785,
+      "solve_time_ms": 4.3666999554261565,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -431,7 +449,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.301400003489107,
+      "solve_time_ms": 4.472100059501827,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -443,7 +461,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.929400023072958,
+      "solve_time_ms": 3.714199992828071,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -455,7 +473,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.0810000132769346,
+      "solve_time_ms": 3.583999932743609,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -467,7 +485,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.7891000024974346,
+      "solve_time_ms": 6.094600073993206,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -479,7 +497,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.16159998672083,
+      "solve_time_ms": 3.712399979121983,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -491,7 +509,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.3579999688081443,
+      "solve_time_ms": 3.4904000349342823,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -503,7 +521,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.9019999890588224,
+      "solve_time_ms": 2.9631999786943197,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -515,7 +533,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.0062000257894397,
+      "solve_time_ms": 4.333500051870942,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -527,7 +545,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.846300030592829,
+      "solve_time_ms": 3.0519000720232725,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -539,7 +557,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.3737000301480293,
+      "solve_time_ms": 2.518799970857799,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -551,7 +569,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.562300011049956,
+      "solve_time_ms": 2.7051999932155013,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -563,7 +581,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.9369999645277858,
+      "solve_time_ms": 2.804699935950339,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -575,7 +593,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.0111000048927963,
+      "solve_time_ms": 2.7197999879717827,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -587,7 +605,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.3180999560281634,
+      "solve_time_ms": 3.1823000172153115,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -599,7 +617,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.202000003308058,
+      "solve_time_ms": 2.5381000014021993,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -611,7 +629,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.999199972487986,
+      "solve_time_ms": 2.7886000461876392,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -623,7 +641,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.119299955666065,
+      "solve_time_ms": 2.871000091545284,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -635,7 +653,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.9143999670632184,
+      "solve_time_ms": 2.5438000448048115,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -647,7 +665,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 3.2340000034309924,
+      "solve_time_ms": 2.646800014190376,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -659,7 +677,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.4096000124700367,
+      "solve_time_ms": 2.7040999848395586,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -671,7 +689,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.915200031362474,
+      "solve_time_ms": 3.546199994161725,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -683,7 +701,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.5386999477632344,
+      "solve_time_ms": 3.005799953825772,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -695,7 +713,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.118100004736334,
+      "solve_time_ms": 2.342300023883581,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -707,7 +725,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.5311000063084066,
+      "solve_time_ms": 2.357900026254356,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -719,7 +737,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.8100999877788126,
+      "solve_time_ms": 2.9637000989168882,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -731,7 +749,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.1300999796949327,
+      "solve_time_ms": 2.731700078584254,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -743,7 +761,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.907500030938536,
+      "solve_time_ms": 2.7117999270558357,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -755,7 +773,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.2632000036537647,
+      "solve_time_ms": 3.1225000275298953,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -767,7 +785,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.8813000060617924,
+      "solve_time_ms": 3.3780999947339296,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -779,7 +797,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.9864999921992421,
+      "solve_time_ms": 3.2468000426888466,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -791,7 +809,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.057099947705865,
+      "solve_time_ms": 3.4205999691039324,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -803,7 +821,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.9522999646142125,
+      "solve_time_ms": 2.7535000117495656,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -815,7 +833,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.9287000177428126,
+      "solve_time_ms": 3.1874000560492277,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -827,7 +845,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.9960000063292682,
+      "solve_time_ms": 3.4107998944818974,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -839,7 +857,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.496000030077994,
+      "solve_time_ms": 2.48299993108958,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -851,7 +869,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.022900036536157,
+      "solve_time_ms": 2.9714000411331654,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -863,7 +881,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.1700000506825745,
+      "solve_time_ms": 3.803200088441372,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -875,7 +893,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.8924000323750079,
+      "solve_time_ms": 2.655399963259697,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -887,7 +905,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.1646999521180987,
+      "solve_time_ms": 3.306600032374263,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -899,7 +917,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.3104000138118863,
+      "solve_time_ms": 2.210899954661727,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -911,7 +929,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.004799956921488,
+      "solve_time_ms": 2.002199995331466,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -923,7 +941,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.4080000002868474,
+      "solve_time_ms": 2.155299996957183,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -935,7 +953,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.4410999612882733,
+      "solve_time_ms": 3.013000008650124,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -947,7 +965,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.398100041318685,
+      "solve_time_ms": 3.230300033465028,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -959,7 +977,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 3.0826000147499144,
+      "solve_time_ms": 2.5638999650254846,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -971,7 +989,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.195000008214265,
+      "solve_time_ms": 3.3311001025140285,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -983,7 +1001,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 3.9389999583363533,
+      "solve_time_ms": 4.003799986094236,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -995,7 +1013,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.2187000140547752,
+      "solve_time_ms": 2.7953999815508723,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -1007,7 +1025,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.5930999545380473,
+      "solve_time_ms": 3.7242999533191323,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -1019,7 +1037,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.424399950541556,
+      "solve_time_ms": 2.560800057835877,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -1031,7 +1049,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.7988999607041478,
+      "solve_time_ms": 2.8821000596508384,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -1043,7 +1061,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.197100024204701,
+      "solve_time_ms": 3.0346999410539865,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -1055,7 +1073,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.7580999992787838,
+      "solve_time_ms": 2.103199949488044,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -1067,7 +1085,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.4704000097699463,
+      "solve_time_ms": 3.270899993367493,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -1079,7 +1097,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.9893000135198236,
+      "solve_time_ms": 3.305999911390245,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -1091,7 +1109,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.0052999607287347,
+      "solve_time_ms": 2.5551000144332647,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -1103,7 +1121,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.033800003118813,
+      "solve_time_ms": 2.929199952632189,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -1115,7 +1133,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.147299994248897,
+      "solve_time_ms": 2.7421999257057905,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -1127,7 +1145,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.8942999886348844,
+      "solve_time_ms": 3.295999951660633,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -1139,7 +1157,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.042399952188134,
+      "solve_time_ms": 2.4833999341353774,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -1151,7 +1169,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.7128999936394393,
+      "solve_time_ms": 2.6906999992206693,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -1163,7 +1181,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.5614999467507005,
+      "solve_time_ms": 3.120600013062358,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -1175,7 +1193,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.7871999880298972,
+      "solve_time_ms": 2.2815000265836716,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -1187,7 +1205,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.7197999879717827,
+      "solve_time_ms": 3.186199930496514,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -1199,7 +1217,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.1185000077821314,
+      "solve_time_ms": 2.9664000030606985,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -1211,7 +1229,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.5563000235706568,
+      "solve_time_ms": 3.468099981546402,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -1223,7 +1241,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.27269995957613,
+      "solve_time_ms": 2.7736000483855605,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -1235,7 +1253,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.0407999982126057,
+      "solve_time_ms": 3.414300037547946,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -1247,7 +1265,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.9114000024273992,
+      "solve_time_ms": 2.8423999901860952,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -1259,7 +1277,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 3.669800003990531,
+      "solve_time_ms": 2.4278999771922827,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -1271,7 +1289,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.221300033852458,
+      "solve_time_ms": 3.2954999478533864,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -1283,7 +1301,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.3150999913923442,
+      "solve_time_ms": 2.7147000655531883,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -1295,7 +1313,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.7399000353179872,
+      "solve_time_ms": 4.068300011567771,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -1307,7 +1325,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.0705999922938645,
+      "solve_time_ms": 3.3705999376252294,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -1319,7 +1337,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.7917000115849078,
+      "solve_time_ms": 3.5151999909430742,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -1331,7 +1349,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.030600036960095,
+      "solve_time_ms": 2.3578000254929066,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -1343,7 +1361,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.8740000086836517,
+      "solve_time_ms": 2.9333001002669334,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -1355,7 +1373,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.1246999967843294,
+      "solve_time_ms": 2.75129999499768,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -1367,7 +1385,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 3.8300000014714897,
+      "solve_time_ms": 3.7273999769240618,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -1379,7 +1397,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 3.285400045569986,
+      "solve_time_ms": 2.828199998475611,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -1391,7 +1409,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 3.774199984036386,
+      "solve_time_ms": 2.4022000143304467,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -1403,7 +1421,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.243999973870814,
+      "solve_time_ms": 2.4134999839589,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -1415,7 +1433,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 3.9575000409968197,
+      "solve_time_ms": 4.6983000356704,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -1427,7 +1445,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.6944000273942947,
+      "solve_time_ms": 3.23300005402416,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -1439,7 +1457,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.9703999860212207,
+      "solve_time_ms": 3.514799987897277,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -1451,7 +1469,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.9780999864451587,
+      "solve_time_ms": 3.9422999834641814,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -1463,7 +1481,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.141400007531047,
+      "solve_time_ms": 3.9142000023275614,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -1475,7 +1493,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.440100011881441,
+      "solve_time_ms": 3.423799993470311,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -1487,7 +1505,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.1471999934874475,
+      "solve_time_ms": 2.3575000232085586,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -1499,7 +1517,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.2255000076256692,
+      "solve_time_ms": 3.3767001004889607,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -1511,7 +1529,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.0172999938949943,
+      "solve_time_ms": 2.7965999906882644,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -1523,7 +1541,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.6046999846585095,
+      "solve_time_ms": 3.272300004027784,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -1535,7 +1553,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.8945999909192324,
+      "solve_time_ms": 3.6898000398650765,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -1547,7 +1565,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.9404999911785126,
+      "solve_time_ms": 3.208799986168742,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -1559,7 +1577,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.002399996854365,
+      "solve_time_ms": 3.1226000282913446,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -1571,7 +1589,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.211300015915185,
+      "solve_time_ms": 3.7984999362379313,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -1583,7 +1601,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.0390000427141786,
+      "solve_time_ms": 2.9027999844402075,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -1595,7 +1613,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.0232999813742936,
+      "solve_time_ms": 2.687699976377189,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -1607,7 +1625,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.079300000332296,
+      "solve_time_ms": 3.298599971458316,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -1619,7 +1637,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.0253999973647296,
+      "solve_time_ms": 2.4326000129804015,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -1631,7 +1649,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.803999999538064,
+      "solve_time_ms": 3.3691999269649386,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -1643,7 +1661,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.3355999728664756,
+      "solve_time_ms": 2.635300043039024,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -1655,7 +1673,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.8792999908328056,
+      "solve_time_ms": 2.7872000355273485,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -1667,7 +1685,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.3104000138118863,
+      "solve_time_ms": 2.37360002938658,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -1679,7 +1697,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.9916999735869467,
+      "solve_time_ms": 2.341300016269088,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -1691,7 +1709,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.198199974372983,
+      "solve_time_ms": 2.4694999447092414,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -1703,7 +1721,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.0969000179320574,
+      "solve_time_ms": 2.5351999793201685,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -1715,7 +1733,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.003900008276105,
+      "solve_time_ms": 3.0319999204948545,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -1727,7 +1745,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 3.011799999512732,
+      "solve_time_ms": 2.0864999387413263,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -1739,7 +1757,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.1112000104039907,
+      "solve_time_ms": 2.7597000589594245,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -1751,7 +1769,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.9925000378862023,
+      "solve_time_ms": 3.2421000069007277,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -1763,7 +1781,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 3.0513000092469156,
+      "solve_time_ms": 2.4431999772787094,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -1775,7 +1793,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.5545000098645687,
+      "solve_time_ms": 2.732600085437298,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -1787,7 +1805,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.181900024879724,
+      "solve_time_ms": 2.733199973590672,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -1799,7 +1817,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.8590999534353614,
+      "solve_time_ms": 3.9502999279648066,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -1811,7 +1829,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.8798999954015017,
+      "solve_time_ms": 2.6439999928697944,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -1823,7 +1841,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.394000010099262,
+      "solve_time_ms": 2.8863000916317105,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -1835,7 +1853,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.064800006337464,
+      "solve_time_ms": 3.543499973602593,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -1847,7 +1865,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.261799992993474,
+      "solve_time_ms": 3.3820999087765813,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -1859,7 +1877,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.8060000147670507,
+      "solve_time_ms": 3.948599915020168,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -1871,7 +1889,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.256800013128668,
+      "solve_time_ms": 2.84169998485595,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -1883,7 +1901,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.1831999765709043,
+      "solve_time_ms": 2.5735999224707484,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -1895,7 +1913,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.7968999929726124,
+      "solve_time_ms": 2.387699903920293,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -1907,7 +1925,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.804499992635101,
+      "solve_time_ms": 3.160799969919026,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -1919,7 +1937,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.958100008778274,
+      "solve_time_ms": 3.2118000090122223,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -1931,7 +1949,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.9928000401705503,
+      "solve_time_ms": 2.0071000326424837,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -1943,7 +1961,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.688000036869198,
+      "solve_time_ms": 2.9229000210762024,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -1955,7 +1973,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.9943999941460788,
+      "solve_time_ms": 3.113200073130429,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -1967,7 +1985,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.062199986539781,
+      "solve_time_ms": 3.5348000237718225,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -1979,7 +1997,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.9746000180020928,
+      "solve_time_ms": 3.5018998896703124,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -1991,7 +2009,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.0838999771513045,
+      "solve_time_ms": 3.737499937415123,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -2003,7 +2021,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.7452000067569315,
+      "solve_time_ms": 3.827399923466146,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -2015,7 +2033,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.2346999612636864,
+      "solve_time_ms": 4.065299988724291,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -2027,7 +2045,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 4.059400002006441,
+      "solve_time_ms": 3.414000035263598,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -2039,7 +2057,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 4.906599991954863,
+      "solve_time_ms": 2.8304000152274966,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -2051,7 +2069,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 3.0068999622017145,
+      "solve_time_ms": 3.6973999813199043,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -2063,7 +2081,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.242799964733422,
+      "solve_time_ms": 3.5073000472038984,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -2075,7 +2093,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.1193999564275146,
+      "solve_time_ms": 2.932199975475669,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -2087,7 +2105,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 4.529999976512045,
+      "solve_time_ms": 2.9073000187054276,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -2099,7 +2117,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.946100023109466,
+      "solve_time_ms": 3.119200002402067,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -2111,7 +2129,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.868100011255592,
+      "solve_time_ms": 2.384499995969236,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -2123,7 +2141,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.8472999799996614,
+      "solve_time_ms": 2.6805999223142862,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -2135,7 +2153,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.0727000082843006,
+      "solve_time_ms": 3.1726000597700477,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -2147,7 +2165,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 3.7273000343702734,
+      "solve_time_ms": 2.078499994240701,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -2159,7 +2177,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.166799968108535,
+      "solve_time_ms": 3.1359000131487846,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -2171,7 +2189,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.9833999685943127,
+      "solve_time_ms": 2.651499933563173,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -2183,7 +2201,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.166299964301288,
+      "solve_time_ms": 2.832000027410686,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -2195,7 +2213,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.0521999686025083,
+      "solve_time_ms": 2.785900025628507,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -2207,7 +2225,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.961299974936992,
+      "solve_time_ms": 2.0192000083625317,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -2219,7 +2237,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.8192999996244907,
+      "solve_time_ms": 2.1675999742001295,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -2231,7 +2249,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.1753000328317285,
+      "solve_time_ms": 2.758400049060583,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -2243,7 +2261,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.4421000271104276,
+      "solve_time_ms": 2.26690003182739,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -2255,7 +2273,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.810199988540262,
+      "solve_time_ms": 3.1000999733805656,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -2267,7 +2285,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.947999990079552,
+      "solve_time_ms": 3.519900026731193,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -2279,7 +2297,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.4850000045262277,
+      "solve_time_ms": 2.0934001076966524,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -2291,7 +2309,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.3172999499365687,
+      "solve_time_ms": 3.0969000654295087,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -2303,7 +2321,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.231099992059171,
+      "solve_time_ms": 3.521400038152933,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -2315,7 +2333,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.8929000361822546,
+      "solve_time_ms": 3.442100016400218,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -2327,7 +2345,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.4808000307530165,
+      "solve_time_ms": 3.327400074340403,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -2339,7 +2357,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.8929000361822546,
+      "solve_time_ms": 2.7583999326452613,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -2351,7 +2369,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.074000018183142,
+      "solve_time_ms": 3.1873000552877784,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -2363,7 +2381,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.262699999846518,
+      "solve_time_ms": 3.8030999712646008,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -2375,7 +2393,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.9201000104658306,
+      "solve_time_ms": 2.8608000138774514,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -2387,7 +2405,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.297600032761693,
+      "solve_time_ms": 2.11130001116544,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -2399,7 +2417,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.9313000375404954,
+      "solve_time_ms": 2.750999992713332,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -2411,7 +2429,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.9339000466279685,
+      "solve_time_ms": 2.1652000723406672,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -2423,7 +2441,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.678499964531511,
+      "solve_time_ms": 2.4305999977514148,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -2435,7 +2453,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.9716000533662736,
+      "solve_time_ms": 3.2414000015705824,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -2447,7 +2465,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.5138999917544425,
+      "solve_time_ms": 2.972099930047989,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -2459,7 +2477,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.3356000310741365,
+      "solve_time_ms": 2.578900079242885,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -2471,7 +2489,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.5551000144332647,
+      "solve_time_ms": 2.5523999938741326,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -2483,7 +2501,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.010700001846999,
+      "solve_time_ms": 2.669599954970181,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -2495,7 +2513,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.099400036968291,
+      "solve_time_ms": 2.322399988770485,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -2507,7 +2525,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.253199985716492,
+      "solve_time_ms": 3.380000009201467,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -2519,7 +2537,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.344599983189255,
+      "solve_time_ms": 3.1698000384494662,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -2531,7 +2549,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.9121000077575445,
+      "solve_time_ms": 3.6129000363871455,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -2543,7 +2561,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.2755999816581607,
+      "solve_time_ms": 3.111399943009019,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -2555,7 +2573,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 3.3672000281512737,
+      "solve_time_ms": 2.544200047850609,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -2567,7 +2585,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.809500030707568,
+      "solve_time_ms": 2.5195999769493937,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -2579,7 +2597,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 4.5196000137366354,
+      "solve_time_ms": 2.620800049044192,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -2591,7 +2609,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 4.609900002833456,
+      "solve_time_ms": 2.6851000729948282,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -2603,7 +2621,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 4.27590002072975,
+      "solve_time_ms": 2.6489999145269394,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -2615,7 +2633,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.659799996763468,
+      "solve_time_ms": 2.6870000874623656,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -2627,7 +2645,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 4.423299978952855,
+      "solve_time_ms": 2.2727000759914517,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -2639,7 +2657,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.2788000060245395,
+      "solve_time_ms": 3.0026999302208424,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -2651,7 +2669,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.1861999994143844,
+      "solve_time_ms": 2.810099977068603,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -2663,7 +2681,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.9957999465987086,
+      "solve_time_ms": 3.7731999764218926,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -2675,7 +2693,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.8464000313542783,
+      "solve_time_ms": 2.84620001912117,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -2687,7 +2705,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.3518999805673957,
+      "solve_time_ms": 3.253500093705952,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -2699,7 +2717,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.2049000253900886,
+      "solve_time_ms": 2.980099990963936,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -2711,7 +2729,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.9660000107251108,
+      "solve_time_ms": 2.7753000613301992,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -2723,7 +2741,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.2471999982371926,
+      "solve_time_ms": 2.7691000141203403,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -2735,7 +2753,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.9788999925367534,
+      "solve_time_ms": 2.0641000010073185,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -2747,7 +2765,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.8884000019170344,
+      "solve_time_ms": 2.646000008098781,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -2759,7 +2777,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.0268000080250204,
+      "solve_time_ms": 2.5703998981043696,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -2771,7 +2789,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.3811999708414078,
+      "solve_time_ms": 2.8681999538093805,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -2783,7 +2801,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.1591000258922577,
+      "solve_time_ms": 2.8252999763935804,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -2795,7 +2813,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.9938000477850437,
+      "solve_time_ms": 3.3992999233305454,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -2807,7 +2825,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.003300003707409,
+      "solve_time_ms": 2.5722000282257795,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -2819,7 +2837,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.1090000518597662,
+      "solve_time_ms": 2.655999967828393,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -2831,7 +2849,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.9042000058107078,
+      "solve_time_ms": 2.785800024867058,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -2843,7 +2861,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.030799980275333,
+      "solve_time_ms": 3.085999982431531,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -2855,7 +2873,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.6679999534972012,
+      "solve_time_ms": 3.358400077559054,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -2867,7 +2885,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.2943999501876533,
+      "solve_time_ms": 3.6410000175237656,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -2879,7 +2897,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.8206000095233321,
+      "solve_time_ms": 2.458699978888035,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -2891,7 +2909,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.052999974694103,
+      "solve_time_ms": 2.836700063198805,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -2903,7 +2921,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.2530999849550426,
+      "solve_time_ms": 2.9914999613538384,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -2915,7 +2933,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.4030000204220414,
+      "solve_time_ms": 2.8388999635353684,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -2927,7 +2945,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.929399964865297,
+      "solve_time_ms": 2.7783000841736794,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -2939,7 +2957,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.3286999785341322,
+      "solve_time_ms": 2.5731000350788236,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -2951,7 +2969,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.1772999898530543,
+      "solve_time_ms": 2.811599988490343,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -2963,7 +2981,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.204400021582842,
+      "solve_time_ms": 2.706499886699021,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -2975,7 +2993,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.9611000316217542,
+      "solve_time_ms": 3.0208000680431724,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -2987,7 +3005,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.2006999934092164,
+      "solve_time_ms": 2.1519999718293548,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -2999,7 +3017,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.906599965877831,
+      "solve_time_ms": 2.0531000336632133,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -3011,7 +3029,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 3.347399993799627,
+      "solve_time_ms": 2.6894999900832772,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -3023,7 +3041,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.104699960909784,
+      "solve_time_ms": 2.58089997805655,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -3035,7 +3053,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.069300040602684,
+      "solve_time_ms": 3.759999992325902,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -3047,7 +3065,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.0315999863669276,
+      "solve_time_ms": 2.70389998331666,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -3059,7 +3077,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.208299993071705,
+      "solve_time_ms": 3.63880000077188,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -3071,7 +3089,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.150300017092377,
+      "solve_time_ms": 3.298099967651069,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -3083,7 +3101,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.8659000052139163,
+      "solve_time_ms": 3.357800072990358,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -3095,7 +3113,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.22389999544248,
+      "solve_time_ms": 5.433800048194826,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -3107,7 +3125,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.3027000133879483,
+      "solve_time_ms": 3.1367000192403793,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -3119,7 +3137,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.4491999647580087,
+      "solve_time_ms": 2.8748000040650368,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -3131,7 +3149,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.2587000275962055,
+      "solve_time_ms": 2.5399000151082873,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -3143,7 +3161,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.3388999979943037,
+      "solve_time_ms": 4.803800024092197,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -3155,7 +3173,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.2264000144787133,
+      "solve_time_ms": 2.8593000024557114,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -3167,7 +3185,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.0256999996490777,
+      "solve_time_ms": 3.5358999157324433,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -3179,7 +3197,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.6963999844156206,
+      "solve_time_ms": 3.4153000451624393,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -3191,7 +3209,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.4741999804973602,
+      "solve_time_ms": 4.538499983027577,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -3203,7 +3221,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.843900012318045,
+      "solve_time_ms": 3.8379000034183264,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -3215,7 +3233,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.345499990042299,
+      "solve_time_ms": 2.8174000326544046,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -3227,7 +3245,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.1281999652273953,
+      "solve_time_ms": 2.3195999674499035,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -3239,7 +3257,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.9123000092804432,
+      "solve_time_ms": 2.934299991466105,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -3251,7 +3269,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.3834999883547425,
+      "solve_time_ms": 2.2893999703228474,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -3263,7 +3281,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.0139000262133777,
+      "solve_time_ms": 2.9902999522164464,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -3275,7 +3293,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.362100000027567,
+      "solve_time_ms": 2.743199933320284,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -3287,7 +3305,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.9150999723933637,
+      "solve_time_ms": 2.383399987593293,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -3299,7 +3317,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.258199965581298,
+      "solve_time_ms": 3.447099938057363,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -3311,7 +3329,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.172199951019138,
+      "solve_time_ms": 3.0172000406309962,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -3323,7 +3341,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.373000024817884,
+      "solve_time_ms": 2.5560000212863088,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -3335,7 +3353,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.833299989812076,
+      "solve_time_ms": 3.500599996186793,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -3347,7 +3365,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.0305999787524343,
+      "solve_time_ms": 3.6663999781012535,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -3359,7 +3377,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 3.1736999517306685,
+      "solve_time_ms": 3.172299941070378,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -3371,7 +3389,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 4.984700004570186,
+      "solve_time_ms": 2.8620000230148435,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -3383,7 +3401,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 3.337399975862354,
+      "solve_time_ms": 2.435100032016635,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -3395,7 +3413,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.571100019849837,
+      "solve_time_ms": 3.655600012280047,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -3407,7 +3425,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 3.054599976167083,
+      "solve_time_ms": 2.206699922680855,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -3419,7 +3437,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 3.343000018503517,
+      "solve_time_ms": 2.5350000942125916,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -3431,7 +3449,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 3.2918000360950828,
+      "solve_time_ms": 2.270400058478117,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -3443,7 +3461,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 3.9566000341437757,
+      "solve_time_ms": 2.3024999536573887,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -3455,7 +3473,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 3.1072000274434686,
+      "solve_time_ms": 2.6553000789135695,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -3467,7 +3485,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.196400018874556,
+      "solve_time_ms": 3.323999932035804,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -3479,7 +3497,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.614900004118681,
+      "solve_time_ms": 2.413600101135671,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -3491,7 +3509,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 3.0355999479070306,
+      "solve_time_ms": 3.180600004270673,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -3503,7 +3521,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.2634000051766634,
+      "solve_time_ms": 2.6327999075874686,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -3515,7 +3533,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 5.671399994753301,
+      "solve_time_ms": 3.114800085313618,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -3527,7 +3545,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 3.942999988794327,
+      "solve_time_ms": 3.403299953788519,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -3539,7 +3557,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.4031000211834908,
+      "solve_time_ms": 2.855299971997738,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -3551,7 +3569,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.312599972356111,
+      "solve_time_ms": 2.986100036650896,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -3563,7 +3581,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.336000034119934,
+      "solve_time_ms": 4.925800021737814,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -3575,7 +3593,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.0397999905981123,
+      "solve_time_ms": 3.435599966906011,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -3587,7 +3605,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.7898999978788197,
+      "solve_time_ms": 4.591100034303963,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -3599,7 +3617,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.9463000353425741,
+      "solve_time_ms": 3.595300018787384,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -3611,7 +3629,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.7669000080786645,
+      "solve_time_ms": 2.0352000137791038,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -3623,7 +3641,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.2912999847903848,
+      "solve_time_ms": 3.065700060687959,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -3635,7 +3653,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.9898999598808587,
+      "solve_time_ms": 3.3149999799206853,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -3647,7 +3665,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.183399978093803,
+      "solve_time_ms": 3.001500037498772,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -3659,7 +3677,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.1652999566867948,
+      "solve_time_ms": 2.4258000776171684,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -3671,7 +3689,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.366500033531338,
+      "solve_time_ms": 2.906200010329485,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -3683,7 +3701,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.068399975541979,
+      "solve_time_ms": 3.7462000036612153,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -3695,7 +3713,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.833599992096424,
+      "solve_time_ms": 2.161000040359795,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -3707,7 +3725,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.2596000344492495,
+      "solve_time_ms": 2.6325000217184424,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -3719,7 +3737,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.2017000010237098,
+      "solve_time_ms": 2.5507000973448157,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -3731,7 +3749,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.7663000035099685,
+      "solve_time_ms": 3.8907999405637383,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -3743,7 +3761,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.9248999888077378,
+      "solve_time_ms": 2.890200004912913,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -3755,7 +3773,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.211000013630837,
+      "solve_time_ms": 2.893200027756393,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -3767,7 +3785,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 3.20320000173524,
+      "solve_time_ms": 3.015700029209256,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -3779,7 +3797,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 3.970900026615709,
+      "solve_time_ms": 2.831599907949567,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -3791,7 +3809,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 3.6612999974749982,
+      "solve_time_ms": 2.432100009173155,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -3803,7 +3821,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.3461999953724444,
+      "solve_time_ms": 3.378800000064075,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -3815,7 +3833,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 4.8396000056527555,
+      "solve_time_ms": 2.409700071439147,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -3827,7 +3845,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.8431999487802386,
+      "solve_time_ms": 2.2567000705748796,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -3839,7 +3857,7 @@
       "power_w": 4761.989053198026,
       "power_heating_w": 1530.0181836162326,
       "power_electric_w": 1683.476619278083,
-      "solve_time_ms": 1.9648000015877187,
+      "solve_time_ms": 2.539800014346838,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -3851,7 +3869,7 @@
       "power_w": 4924.690362162067,
       "power_heating_w": 1654.3866701538586,
       "power_electric_w": 1700.1671262890036,
-      "solve_time_ms": 2.0440000225789845,
+      "solve_time_ms": 2.2966000251471996,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -3863,7 +3881,7 @@
       "power_w": 4942.94836144962,
       "power_heating_w": 1653.4934896731347,
       "power_electric_w": 1700.0641020418889,
-      "solve_time_ms": 2.3164000012911856,
+      "solve_time_ms": 2.342300023883581,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -3875,7 +3893,7 @@
       "power_w": 4737.89000825919,
       "power_heating_w": 1541.7303226575846,
       "power_electric_w": 1685.0199927079402,
-      "solve_time_ms": 1.9557999912649393,
+      "solve_time_ms": 2.9473999748006463,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -3887,7 +3905,7 @@
       "power_w": 4297.600760338496,
       "power_heating_w": 1316.1821334017877,
       "power_electric_w": 1654.8463140372783,
-      "solve_time_ms": 1.8814000068232417,
+      "solve_time_ms": 3.098099958151579,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -3899,7 +3917,7 @@
       "power_w": 4797.973193914164,
       "power_heating_w": 1571.2167652163241,
       "power_electric_w": 1688.7183372656646,
-      "solve_time_ms": 1.7968000029213727,
+      "solve_time_ms": 3.5345000214874744,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -3911,7 +3929,7 @@
       "power_w": 4352.531983773515,
       "power_heating_w": 1339.7906386214595,
       "power_electric_w": 1657.8534083138547,
-      "solve_time_ms": 2.288699964992702,
+      "solve_time_ms": 2.8945000376552343,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -3923,7 +3941,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.8825999577529728,
+      "solve_time_ms": 3.1471000984311104,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -3935,7 +3953,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.3066000430844724,
+      "solve_time_ms": 3.94550000783056,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -3947,7 +3965,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.4688999983482063,
+      "solve_time_ms": 3.813900053501129,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -3959,7 +3977,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.0391999860294163,
+      "solve_time_ms": 3.7601999938488007,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -3971,7 +3989,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.7872999887913465,
+      "solve_time_ms": 2.863900037482381,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -3983,7 +4001,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.8141999607905746,
+      "solve_time_ms": 2.507600001990795,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -3995,7 +4013,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.8310999730601907,
+      "solve_time_ms": 2.428100095130503,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -4007,7 +4025,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 3.5872000153176486,
+      "solve_time_ms": 2.6220999425277114,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -4019,7 +4037,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.8206000095233321,
+      "solve_time_ms": 2.4969999212771654,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -4031,7 +4049,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 3.888299979735166,
+      "solve_time_ms": 3.2097999937832355,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -4043,7 +4061,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 3.9815999916754663,
+      "solve_time_ms": 2.964999992400408,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -4055,7 +4073,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 3.5719999577850103,
+      "solve_time_ms": 3.0201999470591545,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -4067,7 +4085,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 3.8247000193223357,
+      "solve_time_ms": 2.092299982905388,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -4079,7 +4097,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.2333000088110566,
+      "solve_time_ms": 3.1498000025749207,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -4091,7 +4109,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.089699963107705,
+      "solve_time_ms": 2.429499989375472,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -4103,7 +4121,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.8010999667458236,
+      "solve_time_ms": 2.938200021162629,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -4115,7 +4133,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.7931000222451985,
+      "solve_time_ms": 2.395200077444315,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -4127,7 +4145,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.7743999962694943,
+      "solve_time_ms": 2.4660000344738364,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -4139,7 +4157,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.3982999846339226,
+      "solve_time_ms": 2.5849000085145235,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -4151,7 +4169,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.9425000064074993,
+      "solve_time_ms": 2.695900038816035,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -4163,7 +4181,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.64030002290383,
+      "solve_time_ms": 2.405900042504072,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -4175,7 +4193,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.1758999791927636,
+      "solve_time_ms": 2.273599966429174,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -4187,7 +4205,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.8852999676018953,
+      "solve_time_ms": 2.7913000667467713,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -4199,7 +4217,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.2521999781019986,
+      "solve_time_ms": 3.1678000232204795,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -4211,7 +4229,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.9169000443071127,
+      "solve_time_ms": 2.3361999774351716,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -4223,7 +4241,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.896399993915111,
+      "solve_time_ms": 2.4537999415770173,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -4235,7 +4253,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.049800008535385,
+      "solve_time_ms": 2.411699970252812,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -4247,7 +4265,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.098000026308,
+      "solve_time_ms": 2.1581000182777643,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -4259,7 +4277,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.1858999971300364,
+      "solve_time_ms": 2.4924000026658177,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -4271,7 +4289,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.121299970895052,
+      "solve_time_ms": 2.388100023381412,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -4283,7 +4301,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 3.605299978516996,
+      "solve_time_ms": 2.545100054703653,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -4295,7 +4313,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.9055999582633376,
+      "solve_time_ms": 2.155599999241531,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -4307,7 +4325,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.1501000155694783,
+      "solve_time_ms": 2.2673000348731875,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -4319,7 +4337,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.8306999700143933,
+      "solve_time_ms": 2.1803000709041953,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -4331,7 +4349,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.0377999753691256,
+      "solve_time_ms": 2.1377999801188707,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -4343,7 +4361,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.1037000115029514,
+      "solve_time_ms": 3.2671999651938677,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -4355,7 +4373,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.2215000353753567,
+      "solve_time_ms": 3.2652999507263303,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -4367,7 +4385,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.9128000130876899,
+      "solve_time_ms": 2.319399965927005,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -4379,7 +4397,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.9733000081032515,
+      "solve_time_ms": 2.7831000043079257,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -4391,7 +4409,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.2778999991714954,
+      "solve_time_ms": 3.5095999483019114,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -4403,7 +4421,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.257400017697364,
+      "solve_time_ms": 2.409899956546724,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -4415,7 +4433,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.572400029748678,
+      "solve_time_ms": 2.1612000418826938,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -4427,7 +4445,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.2046000231057405,
+      "solve_time_ms": 3.5125999711453915,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -4439,7 +4457,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.4981999886222184,
+      "solve_time_ms": 3.1427000649273396,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -4451,7 +4469,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.407299994956702,
+      "solve_time_ms": 2.4380999384447932,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -4463,7 +4481,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.2410000092349946,
+      "solve_time_ms": 2.9886000556871295,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -4475,7 +4493,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.3382999934256077,
+      "solve_time_ms": 2.806900069117546,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -4487,7 +4505,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 4.365200002212077,
+      "solve_time_ms": 3.196600009687245,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -4499,7 +4517,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 3.0371000175364316,
+      "solve_time_ms": 3.1771999783813953,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -4511,7 +4529,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.4476000107824802,
+      "solve_time_ms": 3.5861999494954944,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -4523,7 +4541,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 3.0811000033281744,
+      "solve_time_ms": 2.550699980929494,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -4535,7 +4553,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.120800025295466,
+      "solve_time_ms": 2.1566998912021518,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -4547,7 +4565,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.6356999878771603,
+      "solve_time_ms": 3.193399985320866,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -4559,7 +4577,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 3.607999999076128,
+      "solve_time_ms": 2.3203000891953707,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -4571,7 +4589,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.6855000178329647,
+      "solve_time_ms": 2.7996000135317445,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -4583,7 +4601,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.9995999755337834,
+      "solve_time_ms": 2.498700050637126,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -4595,7 +4613,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.1865000016987324,
+      "solve_time_ms": 2.4025000166147947,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -4607,7 +4625,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.4317000061273575,
+      "solve_time_ms": 3.243600018322468,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -4619,7 +4637,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.8975999555550516,
+      "solve_time_ms": 3.435299964621663,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -4631,7 +4649,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.274499973282218,
+      "solve_time_ms": 2.7719999197870493,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -4643,7 +4661,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.8863000441342592,
+      "solve_time_ms": 2.661100006662309,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -4655,7 +4673,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.2063999786041677,
+      "solve_time_ms": 3.2025000546127558,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -4667,7 +4685,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.7852000310085714,
+      "solve_time_ms": 2.624999964609742,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -4679,7 +4697,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.817000040318817,
+      "solve_time_ms": 3.543000086210668,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -4691,7 +4709,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.7868000431917608,
+      "solve_time_ms": 3.0791000463068485,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -4703,7 +4721,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.572000026702881,
+      "solve_time_ms": 2.0837000338360667,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -4715,7 +4733,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.0617999834939837,
+      "solve_time_ms": 2.0459999796003103,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -4727,7 +4745,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.011900010984391,
+      "solve_time_ms": 2.695899922400713,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -4739,7 +4757,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.037899976130575,
+      "solve_time_ms": 3.401600057259202,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -4751,7 +4769,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.036500023677945,
+      "solve_time_ms": 3.339799935929477,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -4763,7 +4781,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.249399956781417,
+      "solve_time_ms": 2.4511999217793345,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -4775,7 +4793,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.9907999667339027,
+      "solve_time_ms": 2.41199997253716,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -4787,7 +4805,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.111299952957779,
+      "solve_time_ms": 2.5487999664619565,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -4799,7 +4817,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.282799978274852,
+      "solve_time_ms": 3.013000008650124,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -4811,7 +4829,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.132499997969717,
+      "solve_time_ms": 2.496300032362342,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -4823,7 +4841,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.9466000376269221,
+      "solve_time_ms": 2.301999949850142,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -4835,7 +4853,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.9741999567486346,
+      "solve_time_ms": 2.3128000320866704,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -4847,7 +4865,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.0372000290080905,
+      "solve_time_ms": 2.0804000087082386,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -4859,7 +4877,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.908399979583919,
+      "solve_time_ms": 2.4999999441206455,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -4871,7 +4889,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.781200000550598,
+      "solve_time_ms": 3.4969999687746167,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -4883,7 +4901,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.0134999649599195,
+      "solve_time_ms": 3.1780999852344394,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -4895,7 +4913,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.3811000282876194,
+      "solve_time_ms": 2.156499889679253,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -4907,7 +4925,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.0205999608151615,
+      "solve_time_ms": 3.7776000099256635,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -4919,7 +4937,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.4022000143304467,
+      "solve_time_ms": 2.8782999143004417,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -4931,7 +4949,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.7122999890707433,
+      "solve_time_ms": 2.708100015297532,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -4943,7 +4961,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.2069000406190753,
+      "solve_time_ms": 2.5159999495372176,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -4955,7 +4973,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 3.734600031748414,
+      "solve_time_ms": 1.9880000036209822,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -4967,7 +4985,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 4.09070000750944,
+      "solve_time_ms": 2.6090999599546194,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -4979,7 +4997,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 4.322100023273379,
+      "solve_time_ms": 3.2740000169724226,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -4991,7 +5009,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.166799968108535,
+      "solve_time_ms": 2.7288999408483505,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -5003,7 +5021,7 @@
       "power_w": 5404.586138048018,
       "power_heating_w": 1332.5200737759671,
       "power_electric_w": 1656.3935635010075,
-      "solve_time_ms": 2.3312000557780266,
+      "solve_time_ms": 3.655300009995699,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -5015,7 +5033,7 @@
       "power_w": 4773.362587868528,
       "power_heating_w": 1564.915081539665,
       "power_electric_w": 1686.3813731865512,
-      "solve_time_ms": 2.6848000125028193,
+      "solve_time_ms": 3.449699957855046,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -5027,7 +5045,7 @@
       "power_w": 4934.38288408013,
       "power_heating_w": 1663.3325155791686,
       "power_electric_w": 1699.49362446154,
-      "solve_time_ms": 2.2877000155858696,
+      "solve_time_ms": 3.365500015206635,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -5039,7 +5057,7 @@
       "power_w": 4951.418334309219,
       "power_heating_w": 1661.8630240482785,
       "power_electric_w": 1699.5986306016935,
-      "solve_time_ms": 2.7356999926269054,
+      "solve_time_ms": 2.6741999899968505,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -5051,7 +5069,7 @@
       "power_w": 4792.267060364755,
       "power_heating_w": 1573.8492058906925,
       "power_electric_w": 1688.2295845541103,
-      "solve_time_ms": 2.813400002196431,
+      "solve_time_ms": 2.9811999993398786,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -5063,7 +5081,7 @@
       "power_w": 4438.848831653206,
       "power_heating_w": 1391.7306551685078,
       "power_electric_w": 1664.3622966594453,
-      "solve_time_ms": 2.341900020837784,
+      "solve_time_ms": 3.0500999419018626,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -5075,7 +5093,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.0810000132769346,
+      "solve_time_ms": 2.999700023792684,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -5087,7 +5105,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.079300000332296,
+      "solve_time_ms": 3.265000064857304,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -5099,7 +5117,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.6792000280693173,
+      "solve_time_ms": 2.4007000029087067,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -5111,7 +5129,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.8245999817736447,
+      "solve_time_ms": 2.6379000628367066,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -5123,7 +5141,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.832999987527728,
+      "solve_time_ms": 2.710200031287968,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -5135,7 +5153,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.0176999969407916,
+      "solve_time_ms": 3.6717000184580684,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -5147,7 +5165,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.9090999849140644,
+      "solve_time_ms": 2.728799940086901,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -5159,7 +5177,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.4367999867536128,
+      "solve_time_ms": 2.9418000485748053,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -5171,7 +5189,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.0422000088728964,
+      "solve_time_ms": 2.6256999699398875,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -5183,7 +5201,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.4769000010564923,
+      "solve_time_ms": 2.5272000348195434,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -5195,7 +5213,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.011599950492382,
+      "solve_time_ms": 2.725300029851496,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -5207,7 +5225,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.2319999989122152,
+      "solve_time_ms": 2.36030004452914,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -5219,7 +5237,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.0166999893262982,
+      "solve_time_ms": 2.5545000098645687,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -5231,7 +5249,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.051199960988015,
+      "solve_time_ms": 2.6277999859303236,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -5243,7 +5261,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.7594000091776252,
+      "solve_time_ms": 2.4329000152647495,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -5255,7 +5273,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.9854999845847487,
+      "solve_time_ms": 2.5194999761879444,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -5267,7 +5285,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.2545999963767827,
+      "solve_time_ms": 2.0487000001594424,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -5279,7 +5297,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.121300029102713,
+      "solve_time_ms": 1.9845999777317047,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -5291,7 +5309,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.9830999663099647,
+      "solve_time_ms": 2.3743000347167253,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -5303,7 +5321,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.089700021315366,
+      "solve_time_ms": 2.7802999829873443,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -5315,7 +5333,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.174299967009574,
+      "solve_time_ms": 2.2542999358847737,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -5327,7 +5345,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.1998000447638333,
+      "solve_time_ms": 3.56330000795424,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -5339,7 +5357,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.9641999970190227,
+      "solve_time_ms": 2.6018000207841396,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -5351,7 +5369,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.312299970071763,
+      "solve_time_ms": 2.181699965149164,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -5363,7 +5381,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.0756999729201198,
+      "solve_time_ms": 2.367399982176721,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -5375,7 +5393,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.28760001482442,
+      "solve_time_ms": 2.7249999111518264,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -5387,7 +5405,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.7637000419199467,
+      "solve_time_ms": 4.14860004093498,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -5399,7 +5417,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.483299991581589,
+      "solve_time_ms": 2.639999962411821,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -5411,7 +5429,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.4092000094242394,
+      "solve_time_ms": 2.193500055000186,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -5423,7 +5441,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.931800041347742,
+      "solve_time_ms": 2.6838999474421144,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -5435,7 +5453,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.9555999897420406,
+      "solve_time_ms": 3.1700999243184924,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -5447,7 +5465,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 3.112400008831173,
+      "solve_time_ms": 2.4053999222815037,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -5459,7 +5477,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 3.598199982661754,
+      "solve_time_ms": 3.294499940238893,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -5471,7 +5489,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 4.73809998948127,
+      "solve_time_ms": 3.2313999254256487,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -5483,7 +5501,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 3.4995999885722995,
+      "solve_time_ms": 3.900800016708672,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -5495,7 +5513,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 3.812999988440424,
+      "solve_time_ms": 3.0593000119552016,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -5507,7 +5525,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 3.723700006958097,
+      "solve_time_ms": 2.861199900507927,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -5519,7 +5537,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.4852000060491264,
+      "solve_time_ms": 3.2021000515669584,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -5531,7 +5549,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.398099983111024,
+      "solve_time_ms": 2.7857000241056085,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -5543,7 +5561,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.827100000809878,
+      "solve_time_ms": 3.7484000204131007,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -5555,7 +5573,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.110100002028048,
+      "solve_time_ms": 3.442100016400218,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -5567,7 +5585,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.8181000486947596,
+      "solve_time_ms": 3.0376999638974667,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -5579,7 +5597,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.004500012844801,
+      "solve_time_ms": 4.597999970428646,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -5591,7 +5609,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.8980999593622983,
+      "solve_time_ms": 3.452200093306601,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -5603,7 +5621,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 3.4743999713100493,
+      "solve_time_ms": 2.812799997627735,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -5615,7 +5633,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.152400033082813,
+      "solve_time_ms": 2.6495999190956354,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -5627,7 +5645,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.8427000031806529,
+      "solve_time_ms": 2.893799915909767,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -5639,7 +5657,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.404600032605231,
+      "solve_time_ms": 4.942000028677285,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -5651,7 +5669,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.2690999903716147,
+      "solve_time_ms": 4.306699964217842,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -5663,7 +5681,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.1432999637909234,
+      "solve_time_ms": 3.070699982345104,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -5675,7 +5693,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.2268000175245106,
+      "solve_time_ms": 2.411399967968464,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -5687,7 +5705,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.0131999626755714,
+      "solve_time_ms": 2.9510000022128224,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -5699,7 +5717,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 3.664999967440963,
+      "solve_time_ms": 3.1814000103622675,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -5711,7 +5729,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.1108000073581934,
+      "solve_time_ms": 2.90389999281615,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -5723,7 +5741,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.0859999931417406,
+      "solve_time_ms": 3.8844000082463026,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -5735,7 +5753,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.0031999447382987,
+      "solve_time_ms": 2.9598999535664916,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -5747,7 +5765,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.417699957732111,
+      "solve_time_ms": 4.107999964617193,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -5759,7 +5777,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.0166999893262982,
+      "solve_time_ms": 3.349200007505715,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -5771,7 +5789,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 3.063599986489862,
+      "solve_time_ms": 3.272300004027784,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -5783,7 +5801,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.0259000011719763,
+      "solve_time_ms": 2.773999935016036,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -5795,7 +5813,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.9315000283531845,
+      "solve_time_ms": 4.129600012674928,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -5807,7 +5825,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 3.522199986036867,
+      "solve_time_ms": 2.8898000018671155,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -5819,7 +5837,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 3.1918000313453376,
+      "solve_time_ms": 3.7536999443545938,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -5831,7 +5849,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.3988999892026186,
+      "solve_time_ms": 3.9558999706059694,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -5843,7 +5861,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.8699000356718898,
+      "solve_time_ms": 3.666900098323822,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -5855,7 +5873,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.1226999815553427,
+      "solve_time_ms": 2.9732000548392534,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -5867,7 +5885,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.0821000216528773,
+      "solve_time_ms": 3.0808000592514873,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -5879,7 +5897,7 @@
       "power_w": 4786.644817293559,
       "power_heating_w": 1488.0728981385882,
       "power_electric_w": 1676.1579074760011,
-      "solve_time_ms": 2.0249999943189323,
+      "solve_time_ms": 2.6234000688418746,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -5891,7 +5909,7 @@
       "power_w": 5087.101149065959,
       "power_heating_w": 1745.4335775252157,
       "power_electric_w": 1709.6565339974113,
-      "solve_time_ms": 1.8692000303417444,
+      "solve_time_ms": 12.730999966152012,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -5903,7 +5921,7 @@
       "power_w": 5469.97004223202,
       "power_heating_w": 1927.619359791691,
       "power_electric_w": 1733.815780671107,
-      "solve_time_ms": 2.860400010831654,
+      "solve_time_ms": 4.560600034892559,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -5915,7 +5933,7 @@
       "power_w": 5778.148465064501,
       "power_heating_w": 2068.6479723041807,
       "power_electric_w": 1752.8599734888066,
-      "solve_time_ms": 2.086700056679547,
+      "solve_time_ms": 3.7537000607699156,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -5927,7 +5945,7 @@
       "power_w": 6040.232864437273,
       "power_heating_w": 2188.380162865271,
       "power_electric_w": 1769.307306199666,
-      "solve_time_ms": 2.156800008378923,
+      "solve_time_ms": 2.527599921450019,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -5939,7 +5957,7 @@
       "power_w": 6261.982565659806,
       "power_heating_w": 2289.144464189742,
       "power_electric_w": 1783.3648063166183,
-      "solve_time_ms": 2.978899981826544,
+      "solve_time_ms": 3.8303000619634986,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -5951,7 +5969,7 @@
       "power_w": 6426.195882105345,
       "power_heating_w": 2361.834129961494,
       "power_electric_w": 1793.6789831019737,
-      "solve_time_ms": 2.9267999925650656,
+      "solve_time_ms": 3.8819999899715185,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -5963,7 +5981,7 @@
       "power_w": 6485.08282633278,
       "power_heating_w": 2382.0260424351945,
       "power_electric_w": 1796.6988626784405,
-      "solve_time_ms": 2.1778999944217503,
+      "solve_time_ms": 3.2149000326171517,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -5975,7 +5993,7 @@
       "power_w": 6367.100617470172,
       "power_heating_w": 2315.039175697463,
       "power_electric_w": 1787.6484877484822,
-      "solve_time_ms": 2.280100015923381,
+      "solve_time_ms": 2.98400002066046,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -5987,7 +6005,7 @@
       "power_w": 6096.365938656338,
       "power_heating_w": 2174.939593945018,
       "power_electric_w": 1768.6785313060018,
-      "solve_time_ms": 4.1529000154696405,
+      "solve_time_ms": 3.699399996548891,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -5999,7 +6017,7 @@
       "power_w": 5767.417965027224,
       "power_heating_w": 2009.9152453970387,
       "power_electric_w": 1746.528326106003,
-      "solve_time_ms": 3.8159999530762434,
+      "solve_time_ms": 3.595300018787384,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -6011,7 +6029,7 @@
       "power_w": 5488.665116562954,
       "power_heating_w": 1872.9139915649553,
       "power_electric_w": 1728.2765370426082,
-      "solve_time_ms": 3.925599972717464,
+      "solve_time_ms": 2.7299000648781657,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -6023,7 +6041,7 @@
       "power_w": 5261.655824413307,
       "power_heating_w": 1762.5024059002337,
       "power_electric_w": 1713.5866660056186,
-      "solve_time_ms": 2.0901000243611634,
+      "solve_time_ms": 3.410500008612871,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -6035,7 +6053,7 @@
       "power_w": 5076.20115791261,
       "power_heating_w": 1673.0624212452362,
       "power_electric_w": 1701.702353659547,
-      "solve_time_ms": 1.866100006736815,
+      "solve_time_ms": 2.771100029349327,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -6047,7 +6065,7 @@
       "power_w": 4929.880446074235,
       "power_heating_w": 1603.0834138160048,
       "power_electric_w": 1692.4148473645669,
-      "solve_time_ms": 3.292400040663779,
+      "solve_time_ms": 2.620200044475496,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -6059,7 +6077,7 @@
       "power_w": 4822.505177889972,
       "power_heating_w": 1552.3403841952738,
       "power_electric_w": 1685.6858072794234,
-      "solve_time_ms": 2.1265000104904175,
+      "solve_time_ms": 2.9690000228583813,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -6071,7 +6089,7 @@
       "power_w": 4757.759441425879,
       "power_heating_w": 1522.6190427420156,
       "power_electric_w": 1681.7437360663398,
-      "solve_time_ms": 1.824699982535094,
+      "solve_time_ms": 3.2276000129058957,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -6083,7 +6101,7 @@
       "power_w": 4740.574096872773,
       "power_heating_w": 1516.2427853182655,
       "power_electric_w": 1680.890378701346,
-      "solve_time_ms": 2.311699965503067,
+      "solve_time_ms": 3.718300024047494,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -6095,7 +6113,7 @@
       "power_w": 4770.526660781289,
       "power_heating_w": 1532.8068477273325,
       "power_electric_w": 1683.0715177745815,
-      "solve_time_ms": 1.8754000193439424,
+      "solve_time_ms": 3.6231999984011054,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -6107,7 +6125,7 @@
       "power_w": 4877.4950453931015,
       "power_heating_w": 1588.2461734651401,
       "power_electric_w": 1690.461624711092,
-      "solve_time_ms": 2.6717999717220664,
+      "solve_time_ms": 3.3828000305220485,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -6119,7 +6137,7 @@
       "power_w": 5150.1166690501805,
       "power_heating_w": 1725.8866318291425,
       "power_electric_w": 1708.9347317340835,
-      "solve_time_ms": 1.9165000412613153,
+      "solve_time_ms": 3.498900099657476,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -6131,7 +6149,7 @@
       "power_w": 5547.733427935649,
       "power_heating_w": 1922.7203407142708,
       "power_electric_w": 1735.5662455658035,
-      "solve_time_ms": 2.0560999982990324,
+      "solve_time_ms": 3.9235000731423497,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -6143,7 +6161,7 @@
       "power_w": 5947.382723595897,
       "power_heating_w": 2116.297752818847,
       "power_electric_w": 1761.9411970426727,
-      "solve_time_ms": 2.0579000120051205,
+      "solve_time_ms": 3.471899894066155,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -6155,7 +6173,7 @@
       "power_w": 6195.189134214966,
       "power_heating_w": 2230.8852909801003,
       "power_electric_w": 1777.5392557376822,
-      "solve_time_ms": 2.2317999973893166,
+      "solve_time_ms": 4.125799983739853,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -6167,7 +6185,7 @@
       "power_w": 6203.036448721112,
       "power_heating_w": 2225.498788141981,
       "power_electric_w": 1776.6925006667207,
-      "solve_time_ms": 4.020000051241368,
+      "solve_time_ms": 3.606799989938736,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -6179,7 +6197,7 @@
       "power_w": 5938.905567305783,
       "power_heating_w": 2086.517721587609,
       "power_electric_w": 1757.6920241235161,
-      "solve_time_ms": 3.9909000042825937,
+      "solve_time_ms": 3.920300048775971,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -6191,7 +6209,7 @@
       "power_w": 5436.697396855825,
       "power_heating_w": 1833.2138189969614,
       "power_electric_w": 1723.4791085773,
-      "solve_time_ms": 4.028600000310689,
+      "solve_time_ms": 3.1422999454662204,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -6203,7 +6221,7 @@
       "power_w": 4808.334852665261,
       "power_heating_w": 1522.687639769385,
       "power_electric_w": 1682.0155138069604,
-      "solve_time_ms": 2.848799980711192,
+      "solve_time_ms": 2.7194999856874347,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -6215,7 +6233,7 @@
       "power_w": 4170.971338152779,
       "power_heating_w": 1211.993132902375,
       "power_electric_w": 1640.9148239739202,
-      "solve_time_ms": 2.629099995829165,
+      "solve_time_ms": 2.5068999966606498,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -6227,7 +6245,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.2589999716728926,
+      "solve_time_ms": 3.6551000084728003,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -6239,7 +6257,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.8712999881245196,
+      "solve_time_ms": 3.491699928417802,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -6251,7 +6269,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.2726000170223415,
+      "solve_time_ms": 3.4082001075148582,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -6263,7 +6281,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.209800004493445,
+      "solve_time_ms": 3.030400024726987,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -6275,7 +6293,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.8619000329636037,
+      "solve_time_ms": 3.3276999602094293,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -6287,7 +6305,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.0451999735087156,
+      "solve_time_ms": 2.458199975080788,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -6299,7 +6317,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 3.0113999964669347,
+      "solve_time_ms": 2.578600076958537,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -6311,7 +6329,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.9788999925367534,
+      "solve_time_ms": 3.2873000018298626,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -6323,7 +6341,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.895399997010827,
+      "solve_time_ms": 3.583999932743609,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -6335,7 +6353,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.7861999804154038,
+      "solve_time_ms": 2.1757999202236533,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -6347,7 +6365,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.369800000451505,
+      "solve_time_ms": 2.293099998496473,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -6359,7 +6377,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.9747999613173306,
+      "solve_time_ms": 2.682600053958595,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -6371,7 +6389,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.9384000333957374,
+      "solve_time_ms": 2.2179000079631805,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -6383,7 +6401,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.9029999966733158,
+      "solve_time_ms": 2.5987999979406595,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -6395,7 +6413,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.9599999650381505,
+      "solve_time_ms": 1.9564999965950847,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -6407,7 +6425,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.2342000156641006,
+      "solve_time_ms": 3.2239999854937196,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -6419,7 +6437,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.9470000406727195,
+      "solve_time_ms": 2.571100019849837,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -6431,7 +6449,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.8819999531842768,
+      "solve_time_ms": 2.81810003798455,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -6443,7 +6461,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.2031000116840005,
+      "solve_time_ms": 3.3735999604687095,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -6455,7 +6473,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.1644000080414116,
+      "solve_time_ms": 3.781900042667985,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -6467,7 +6485,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.0102999988012016,
+      "solve_time_ms": 2.7284000534564257,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -6479,7 +6497,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.8748000147752464,
+      "solve_time_ms": 2.405499923042953,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -6491,7 +6509,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.3889000294730067,
+      "solve_time_ms": 3.048200043849647,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -6503,7 +6521,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.023399982135743,
+      "solve_time_ms": 2.7630000840872526,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -6515,7 +6533,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.9745000172406435,
+      "solve_time_ms": 2.051500021480024,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -6527,7 +6545,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.940299989655614,
+      "solve_time_ms": 2.548099961131811,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -6539,7 +6557,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.217200002633035,
+      "solve_time_ms": 3.842800040729344,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -6551,7 +6569,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.157699957024306,
+      "solve_time_ms": 2.979899989441037,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -6563,7 +6581,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.185799996368587,
+      "solve_time_ms": 4.417699994519353,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -6575,7 +6593,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.2311999928206205,
+      "solve_time_ms": 2.484199940226972,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -6587,7 +6605,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.9878000020980835,
+      "solve_time_ms": 3.244900028221309,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -6599,7 +6617,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.070800052024424,
+      "solve_time_ms": 2.656899974681437,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -6611,7 +6629,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.2489000111818314,
+      "solve_time_ms": 2.0444999681785703,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -6623,7 +6641,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.7752000130712986,
+      "solve_time_ms": 2.464899909682572,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -6635,7 +6653,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.866999955382198,
+      "solve_time_ms": 2.330699935555458,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -6647,7 +6665,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.023099979851395,
+      "solve_time_ms": 2.3282000329345465,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -6659,7 +6677,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.428300038445741,
+      "solve_time_ms": 2.8068999527022243,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -6671,7 +6689,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.0658000139519572,
+      "solve_time_ms": 3.9083999581635,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -6683,7 +6701,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.2473999997600913,
+      "solve_time_ms": 2.7350999880582094,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -6695,7 +6713,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.0927999867126346,
+      "solve_time_ms": 3.5852999426424503,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -6707,7 +6725,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.8921999726444483,
+      "solve_time_ms": 2.466800040565431,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -6719,7 +6737,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.2540000500157475,
+      "solve_time_ms": 2.8202999383211136,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -6731,7 +6749,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.8730000010691583,
+      "solve_time_ms": 2.3628000635653734,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -6743,7 +6761,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.0929999882355332,
+      "solve_time_ms": 2.531200065277517,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -6755,7 +6773,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.9546000403352082,
+      "solve_time_ms": 2.5403000181540847,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -6767,7 +6785,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.3735000286251307,
+      "solve_time_ms": 2.4142999900504947,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -6779,7 +6797,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.2965000243857503,
+      "solve_time_ms": 2.328300033695996,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -6791,7 +6809,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 3.0162999755702913,
+      "solve_time_ms": 3.7840999430045485,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -6803,7 +6821,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.9532000296749175,
+      "solve_time_ms": 2.1932999370619655,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -6815,7 +6833,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.2835999843664467,
+      "solve_time_ms": 2.1886000176891685,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -6827,7 +6845,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.053000032901764,
+      "solve_time_ms": 3.1799999997019768,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -6839,7 +6857,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.045600034762174,
+      "solve_time_ms": 2.2635000059381127,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -6851,7 +6869,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.7817000043578446,
+      "solve_time_ms": 2.7140999445691705,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -6863,7 +6881,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.1087999921292067,
+      "solve_time_ms": 4.25349990837276,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -6875,7 +6893,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.141400007531047,
+      "solve_time_ms": 2.592400065623224,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -6887,7 +6905,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.8627999816089869,
+      "solve_time_ms": 2.4930000072345138,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -6899,7 +6917,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.2303000441752374,
+      "solve_time_ms": 2.287600073032081,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -6911,7 +6929,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.1099000005051494,
+      "solve_time_ms": 2.3311999393627048,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -6923,7 +6941,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.4985000491142273,
+      "solve_time_ms": 2.0081999246031046,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -6935,7 +6953,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.0960000110790133,
+      "solve_time_ms": 2.7466999599710107,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -6947,7 +6965,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.35580001026392,
+      "solve_time_ms": 2.707500010728836,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -6959,7 +6977,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.9538000342436135,
+      "solve_time_ms": 3.382300026714802,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -6971,7 +6989,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.4166000075638294,
+      "solve_time_ms": 2.6389000704512,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -6983,7 +7001,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.294600009918213,
+      "solve_time_ms": 2.504599979147315,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -6995,7 +7013,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.1528000361286104,
+      "solve_time_ms": 2.585700014606118,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -7007,7 +7025,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.504899981431663,
+      "solve_time_ms": 2.9522000113502145,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -7019,7 +7037,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 3.0678000184707344,
+      "solve_time_ms": 2.092099981382489,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -7031,7 +7049,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 4.191100015304983,
+      "solve_time_ms": 3.6659000907093287,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -7043,7 +7061,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 3.4016999998129904,
+      "solve_time_ms": 3.3732999581843615,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -7055,7 +7073,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 3.27440002001822,
+      "solve_time_ms": 2.7892999351024628,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -7067,7 +7085,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 3.7874000263400376,
+      "solve_time_ms": 2.6594999944791198,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -7079,7 +7097,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 5.436200008261949,
+      "solve_time_ms": 3.2395999878644943,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -7091,7 +7109,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 4.863200010731816,
+      "solve_time_ms": 3.4570000134408474,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -7103,7 +7121,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 3.3322999952360988,
+      "solve_time_ms": 2.9072000179439783,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -7115,7 +7133,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.0779999904334545,
+      "solve_time_ms": 2.953600022010505,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -7127,7 +7145,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.4112999672070146,
+      "solve_time_ms": 3.445100039243698,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -7139,7 +7157,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.9255999941378832,
+      "solve_time_ms": 2.63709994032979,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -7151,7 +7169,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.1797000081278384,
+      "solve_time_ms": 2.8913000132888556,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -7163,7 +7181,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.768800022546202,
+      "solve_time_ms": 2.4591999826952815,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -7175,7 +7193,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.9571000011637807,
+      "solve_time_ms": 2.675499999895692,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -7187,7 +7205,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.0343000069260597,
+      "solve_time_ms": 2.597099984996021,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -7199,7 +7217,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.1451999782584608,
+      "solve_time_ms": 3.420499968342483,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -7211,7 +7229,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.9020999898202717,
+      "solve_time_ms": 2.892599906772375,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -7223,7 +7241,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.947099983226508,
+      "solve_time_ms": 2.400800003670156,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -7235,7 +7253,7 @@
       "power_w": 5202.7384046893985,
       "power_heating_w": 1398.9632952729628,
       "power_electric_w": 1666.1774043769392,
-      "solve_time_ms": 2.3111000191420317,
+      "solve_time_ms": 2.799800015054643,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -7247,7 +7265,7 @@
       "power_w": 4884.006214855192,
       "power_heating_w": 1613.5105001591508,
       "power_electric_w": 1694.6724003636637,
-      "solve_time_ms": 1.9423000048846006,
+      "solve_time_ms": 2.306499984115362,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -7259,7 +7277,7 @@
       "power_w": 5260.005358918652,
       "power_heating_w": 1815.5012178183442,
       "power_electric_w": 1722.2525779305656,
-      "solve_time_ms": 1.7681000172160566,
+      "solve_time_ms": 3.419599961489439,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -7271,7 +7289,7 @@
       "power_w": 5800.771982284865,
       "power_heating_w": 2078.521639751652,
       "power_electric_w": 1759.0716244575033,
-      "solve_time_ms": 2.2126000258140266,
+      "solve_time_ms": 2.6229999493807554,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -7283,7 +7301,7 @@
       "power_w": 6418.787719940121,
       "power_heating_w": 2375.545443626049,
       "power_electric_w": 1801.6799760955128,
-      "solve_time_ms": 3.174200013745576,
+      "solve_time_ms": 2.0867999410256743,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -7295,7 +7313,7 @@
       "power_w": 6965.304044164466,
       "power_heating_w": 2632.9605367343643,
       "power_electric_w": 1839.3655578996986,
-      "solve_time_ms": 2.328300033695996,
+      "solve_time_ms": 2.7464000741019845,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -7307,7 +7325,7 @@
       "power_w": 9794.684922824945,
       "power_heating_w": 4016.196443892557,
       "power_electric_w": 2042.7461398037549,
-      "solve_time_ms": 29.376399994362146,
+      "solve_time_ms": 33.609400037676096,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -7319,7 +7337,7 @@
       "power_w": 9938.216992892498,
       "power_heating_w": 4054.6614316764685,
       "power_electric_w": 2050.7587275038086,
-      "solve_time_ms": 7.727199990767986,
+      "solve_time_ms": 8.36080010049045,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -7331,7 +7349,7 @@
       "power_w": 9753.785160020272,
       "power_heating_w": 3939.235630479283,
       "power_electric_w": 2034.4273182118827,
-      "solve_time_ms": 4.363399988505989,
+      "solve_time_ms": 5.371300037950277,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -7343,7 +7361,7 @@
       "power_w": 9116.95256219017,
       "power_heating_w": 3607.8212293487422,
       "power_electric_w": 1984.6165044476784,
-      "solve_time_ms": 1.7564999870955944,
+      "solve_time_ms": 3.493300057016313,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -7355,7 +7373,7 @@
       "power_w": 9097.107067453473,
       "power_heating_w": 3596.212385668981,
       "power_electric_w": 1981.273757430804,
-      "solve_time_ms": 1.955099985934794,
+      "solve_time_ms": 2.3979999823495746,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -7367,7 +7385,7 @@
       "power_w": 8043.960719623508,
       "power_heating_w": 3064.0447311648504,
       "power_electric_w": 1901.7924007446918,
-      "solve_time_ms": 4.292900033760816,
+      "solve_time_ms": 2.5103999068960547,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -7379,7 +7397,7 @@
       "power_w": 6489.857951188173,
       "power_heating_w": 2292.09236493056,
       "power_electric_w": 1790.4756528992957,
-      "solve_time_ms": 3.640000009909272,
+      "solve_time_ms": 2.0207999041303992,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -7391,7 +7409,7 @@
       "power_w": 4673.781964905256,
       "power_heating_w": 1399.4689693275784,
       "power_electric_w": 1666.6711058234,
-      "solve_time_ms": 2.029300027061254,
+      "solve_time_ms": 2.269200049340725,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -7403,7 +7421,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.7342999819666147,
+      "solve_time_ms": 2.8322000289335847,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -7415,7 +7433,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.701599965803325,
+      "solve_time_ms": 2.3444000398740172,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -7427,7 +7445,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.8750999588519335,
+      "solve_time_ms": 2.4071999359875917,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -7439,7 +7457,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.041800005827099,
+      "solve_time_ms": 4.028300056234002,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -7451,7 +7469,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.8996000289916992,
+      "solve_time_ms": 2.9453999595716596,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -7463,7 +7481,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.2994999890215695,
+      "solve_time_ms": 2.624400076456368,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -7475,7 +7493,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.8882999429479241,
+      "solve_time_ms": 2.537399996072054,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -7487,7 +7505,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.4333999608643353,
+      "solve_time_ms": 2.9265000484883785,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -7499,7 +7517,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.099400036968291,
+      "solve_time_ms": 4.794800071977079,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -7511,7 +7529,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.540700021199882,
+      "solve_time_ms": 2.300300053320825,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -7523,7 +7541,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 3.7606999976560473,
+      "solve_time_ms": 3.2625000458210707,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -7535,7 +7553,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.364699961617589,
+      "solve_time_ms": 3.1886999495327473,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -7547,7 +7565,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.0256999996490777,
+      "solve_time_ms": 2.3249000078067183,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -7559,7 +7577,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.2689999896101654,
+      "solve_time_ms": 3.2224999740719795,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -7571,7 +7589,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.336299978196621,
+      "solve_time_ms": 4.926300025545061,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -7583,7 +7601,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 3.2121999538503587,
+      "solve_time_ms": 3.786599962040782,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -7595,7 +7613,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.0218000281602144,
+      "solve_time_ms": 2.7525000041350722,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -7607,7 +7625,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.9885000074282289,
+      "solve_time_ms": 3.4373000962659717,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -7619,7 +7637,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.6224000030197203,
+      "solve_time_ms": 2.740300027653575,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -7631,7 +7649,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.9384999652393162,
+      "solve_time_ms": 2.4628000101074576,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -7643,7 +7661,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.228999976068735,
+      "solve_time_ms": 3.139499924145639,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -7655,7 +7673,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.871399988885969,
+      "solve_time_ms": 2.495400025509298,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -7667,7 +7685,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.762300031259656,
+      "solve_time_ms": 2.0334000000730157,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -7679,7 +7697,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.2612999891862273,
+      "solve_time_ms": 2.5403000181540847,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -7691,7 +7709,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.0726000075228512,
+      "solve_time_ms": 2.3397000040858984,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -7703,7 +7721,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.0072999759577215,
+      "solve_time_ms": 2.4150999961420894,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -7715,7 +7733,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.1951000089757144,
+      "solve_time_ms": 2.4434999795630574,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -7727,7 +7745,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.9057000172324479,
+      "solve_time_ms": 2.3236999986693263,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -7739,7 +7757,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.895099994726479,
+      "solve_time_ms": 2.443699981085956,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -7751,7 +7769,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.0176999969407916,
+      "solve_time_ms": 2.4401999544352293,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -7763,7 +7781,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.212399966083467,
+      "solve_time_ms": 2.132499939762056,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -7775,7 +7793,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.000699983909726,
+      "solve_time_ms": 2.259699977003038,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -7787,7 +7805,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.8320000381208956,
+      "solve_time_ms": 2.063599997200072,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -7799,7 +7817,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.9197000074200332,
+      "solve_time_ms": 3.749700030311942,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -7811,7 +7829,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.264700015075505,
+      "solve_time_ms": 3.1296000815927982,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -7823,7 +7841,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.1311999880708754,
+      "solve_time_ms": 2.8656000504270196,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -7835,7 +7853,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.3437999770976603,
+      "solve_time_ms": 2.294600009918213,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -7847,7 +7865,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 3.5098999505862594,
+      "solve_time_ms": 2.148900064639747,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -7859,7 +7877,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.4981999886222184,
+      "solve_time_ms": 2.0785999950021505,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -7871,7 +7889,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 3.1340999994426966,
+      "solve_time_ms": 2.1828999742865562,
       "t_lower": 21.0,
       "t_upper": 24.0,
       "occupied": true
@@ -7883,7 +7901,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 3.771900024730712,
+      "solve_time_ms": 3.2561999978497624,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -7895,7 +7913,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.6074000052176416,
+      "solve_time_ms": 1.966700074262917,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -7907,7 +7925,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.482399984728545,
+      "solve_time_ms": 2.112200018018484,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -7919,7 +7937,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.1173999994061887,
+      "solve_time_ms": 2.8731999918818474,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -7931,7 +7949,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.1362999686971307,
+      "solve_time_ms": 3.3922999864444137,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -7943,7 +7961,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.796499989926815,
+      "solve_time_ms": 3.575800103135407,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -7955,7 +7973,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 3.161399974487722,
+      "solve_time_ms": 4.086500033736229,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -7967,7 +7985,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.447800012305379,
+      "solve_time_ms": 2.5425999192520976,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -7979,7 +7997,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.999199972487986,
+      "solve_time_ms": 2.775799948722124,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -7991,7 +8009,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.8103000367991626,
+      "solve_time_ms": 3.4925000509247184,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -8003,7 +8021,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.815700019709766,
+      "solve_time_ms": 3.51129996124655,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -8015,7 +8033,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.0834000315517187,
+      "solve_time_ms": 2.198500093072653,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -8027,7 +8045,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.4414999643340707,
+      "solve_time_ms": 3.2973000779747963,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -8039,7 +8057,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.0318999886512756,
+      "solve_time_ms": 2.5550000136718154,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -8051,7 +8069,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 3.0679000192321837,
+      "solve_time_ms": 3.220300073735416,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -8063,7 +8081,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.2529999841935933,
+      "solve_time_ms": 3.3320999937132,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -8075,7 +8093,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.3372999858111143,
+      "solve_time_ms": 2.3749000392854214,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -8087,7 +8105,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 4.377199977170676,
+      "solve_time_ms": 2.076599979773164,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -8099,7 +8117,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.220999973360449,
+      "solve_time_ms": 2.6799000333994627,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -8111,7 +8129,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 3.635499975644052,
+      "solve_time_ms": 2.6131999911740422,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -8123,7 +8141,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.022599976044148,
+      "solve_time_ms": 2.9365000082179904,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -8135,7 +8153,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 1.902199990581721,
+      "solve_time_ms": 2.61199998203665,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -8147,7 +8165,7 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.103299950249493,
+      "solve_time_ms": 3.3258000621572137,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
@@ -8159,10 +8177,44 @@
       "power_w": 0.0,
       "power_heating_w": 0.0,
       "power_electric_w": 0.0,
-      "solve_time_ms": 2.501400012988597,
+      "solve_time_ms": 3.3004999859258533,
       "t_lower": 15.0,
       "t_upper": 30.0,
       "occupied": false
     }
-  ]
+  ],
+  "mpc_config": {
+    "horizon_s": 21600,
+    "u_min_degC": 18.0,
+    "u_max_degC": 26.0,
+    "comfort_bounds_degC": {
+      "occupied": [
+        21.0,
+        24.0
+      ],
+      "unoccupied": [
+        15.0,
+        30.0
+      ]
+    },
+    "objective_weights": {
+      "comfort": 100.0,
+      "energy": 0.0001,
+      "control_smoothness": 0.1
+    },
+    "solver_maxiter": 100,
+    "solver_ftol": 0.0001
+  },
+  "predictor_base": "rc",
+  "predictor_label": "rc",
+  "rc_variant": {
+    "scale_ua": 1.0,
+    "scale_solar_gain": 1.0,
+    "scale_hvac_gain": 1.0,
+    "scale_capacity": 1.0,
+    "ua": 0.185,
+    "solar_gain": 0.347,
+    "hvac_gain": 0.767,
+    "capacity": 10.7
+  }
 }

@@ -1,0 +1,5 @@
+case,predictor,episode_id,status,issue_count,issues,file
+bestest_hydronic_heat_pump,rc,te_std_01,PASS,0,,C:/Users/AVoelser/OneDrive - Scientific Network South Tyrol/3_PhD/Simulation/PINN/results/eu_rc_vs_pinn_fixcheck/raw/bestest_hydronic_heat_pump/rc/te_std_01.json
+bestest_hydronic_heat_pump,pinn,te_std_01,WARN,1,high_control_saturation_at_u_min_gt_25pct,C:/Users/AVoelser/OneDrive - Scientific Network South Tyrol/3_PhD/Simulation/PINN/results/eu_rc_vs_pinn_fixcheck/raw/bestest_hydronic_heat_pump/pinn/te_std_01.json
+multizone_residential_hydronic,rc,te_std_01,WARN,1,high_control_saturation_at_u_max_gt_25pct,C:/Users/AVoelser/OneDrive - Scientific Network South Tyrol/3_PhD/Simulation/PINN/results/eu_rc_vs_pinn_fixcheck/raw/multizone_residential_hydronic/rc/te_std_01.json
+twozone_apartment_hydronic,rc,te_std_01,PASS,0,,C:/Users/AVoelser/OneDrive - Scientific Network South Tyrol/3_PhD/Simulation/PINN/results/eu_rc_vs_pinn_fixcheck/raw/twozone_apartment_hydronic/rc/te_std_01.json

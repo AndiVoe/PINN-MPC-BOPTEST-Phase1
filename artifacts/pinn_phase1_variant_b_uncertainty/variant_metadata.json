@@ -1,0 +1,31 @@
+{
+  "variant": "B",
+  "study_id": "pinn_phase1_variant_b_uncertainty",
+  "config_path": "C:\\Users\\AVoelser\\OneDrive - Scientific Network South Tyrol\\3_PhD\\Simulation\\PINN\\configs\\pinn_phase1_variant_b.yaml",
+  "output_dir": "C:\\Users\\AVoelser\\OneDrive - Scientific Network South Tyrol\\3_PhD\\Simulation\\PINN\\artifacts\\pinn_phase1_variant_b_uncertainty",
+  "best_epoch": 143,
+  "best_val_loss": -6.416616412815145,
+  "training_config": {
+    "seed": 42,
+    "device": "cpu",
+    "batch_size": 256,
+    "epochs": 150,
+    "patience": 20,
+    "learning_rate": 0.001,
+    "weight_decay": 1e-05,
+    "lambda_physics": 0.01,
+    "loss_weighting": {
+      "mode": "uncertainty",
+      "uncertainty": {
+        "init_log_sigma_data": 0.0,
+        "init_log_sigma_physics": 0.0
+      }
+    }
+  },
+  "model_config": {
+    "hidden_dim": 64,
+    "depth": 3,
+    "dropout": 0.1
+  },
+  "loss_weighting_mode": "uncertainty"
+}

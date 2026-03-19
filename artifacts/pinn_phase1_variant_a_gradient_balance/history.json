@@ -1,0 +1,1352 @@
+[
+  {
+    "epoch": 1.0,
+    "train_loss": 0.0757442480142858,
+    "train_rmse_degC": 0.2652347986437841,
+    "val_loss": 0.015161178237168694,
+    "val_rmse_degC": 0.09478369575448543,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 0.6488495165926997
+  },
+  {
+    "epoch": 2.0,
+    "train_loss": 0.012700348198173268,
+    "train_rmse_degC": 0.10335984447122809,
+    "val_loss": 0.00926610512794974,
+    "val_rmse_degC": 0.09004409894932139,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 1.5578052991421216
+  },
+  {
+    "epoch": 3.0,
+    "train_loss": 0.011007257111711077,
+    "train_rmse_degC": 0.09890206822552444,
+    "val_loss": 0.009077894876137842,
+    "val_rmse_degC": 0.09376888386216571,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 1.695619694452433
+  },
+  {
+    "epoch": 4.0,
+    "train_loss": 0.010565154694883136,
+    "train_rmse_degC": 0.09807146792832269,
+    "val_loss": 0.008512670410194625,
+    "val_rmse_degC": 0.08942975022982867,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 1.8360525661132374
+  },
+  {
+    "epoch": 5.0,
+    "train_loss": 0.010340817126464442,
+    "train_rmse_degC": 0.09759946379184546,
+    "val_loss": 0.008150177018164522,
+    "val_rmse_degC": 0.08710494367411237,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 1.866439580658579
+  },
+  {
+    "epoch": 6.0,
+    "train_loss": 0.010171587177831263,
+    "train_rmse_degC": 0.0970945764735787,
+    "val_loss": 0.007839366074668135,
+    "val_rmse_degC": 0.08573131061118382,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 1.8994570589407678
+  },
+  {
+    "epoch": 7.0,
+    "train_loss": 0.010119801018918207,
+    "train_rmse_degC": 0.09713008686586823,
+    "val_loss": 0.007816293908369168,
+    "val_rmse_degC": 0.08770826303837867,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 2.025140746773835
+  },
+  {
+    "epoch": 8.0,
+    "train_loss": 0.010161422521072097,
+    "train_rmse_degC": 0.09728327439075272,
+    "val_loss": 0.0077743342870793646,
+    "val_rmse_degC": 0.08724293549062709,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 2.152395246981252
+  },
+  {
+    "epoch": 9.0,
+    "train_loss": 0.010150953914953504,
+    "train_rmse_degC": 0.0976844100876029,
+    "val_loss": 0.008399449469280137,
+    "val_rmse_degC": 0.0856987980029165,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 2.4531680699994096
+  },
+  {
+    "epoch": 10.0,
+    "train_loss": 0.010252565006696343,
+    "train_rmse_degC": 0.09842814682035171,
+    "val_loss": 0.007979241631447647,
+    "val_rmse_degC": 0.08640580412825832,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 2.6339321983110264
+  },
+  {
+    "epoch": 11.0,
+    "train_loss": 0.010126813251008842,
+    "train_rmse_degC": 0.09862615039224151,
+    "val_loss": 0.007824270014447089,
+    "val_rmse_degC": 0.08783408114921162,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 2.660073792005773
+  },
+  {
+    "epoch": 12.0,
+    "train_loss": 0.010244578608879389,
+    "train_rmse_degC": 0.09918847797565938,
+    "val_loss": 0.008122570590628242,
+    "val_rmse_degC": 0.09204372988551092,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 3.100012023731111
+  },
+  {
+    "epoch": 13.0,
+    "train_loss": 0.010469193176597252,
+    "train_rmse_degC": 0.10097754865108535,
+    "val_loss": 0.008596744238441995,
+    "val_rmse_degC": 0.08763257571838773,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 3.9808171421524357
+  },
+  {
+    "epoch": 14.0,
+    "train_loss": 0.01049019353740913,
+    "train_rmse_degC": 0.10116244963161088,
+    "val_loss": 0.008924679479515944,
+    "val_rmse_degC": 0.09433945364684422,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 3.9910994505898976
+  },
+  {
+    "epoch": 15.0,
+    "train_loss": 0.010588058802103499,
+    "train_rmse_degC": 0.10166949168609833,
+    "val_loss": 0.008278903129459227,
+    "val_rmse_degC": 0.09252239338416143,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 5.016638391233442
+  },
+  {
+    "epoch": 16.0,
+    "train_loss": 0.011230699873912914,
+    "train_rmse_degC": 0.10274225099258973,
+    "val_loss": 0.008303746496411886,
+    "val_rmse_degC": 0.08576993123157099,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 4.603708570434719
+  },
+  {
+    "epoch": 17.0,
+    "train_loss": 0.01000867254793333,
+    "train_rmse_degC": 0.10081410660367239,
+    "val_loss": 0.007648575917752418,
+    "val_rmse_degC": 0.08722826732806264,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 4.677695623391644
+  },
+  {
+    "epoch": 18.0,
+    "train_loss": 0.010003143695719315,
+    "train_rmse_degC": 0.10103955614934525,
+    "val_loss": 0.008003674142184804,
+    "val_rmse_degC": 0.08918048709265851,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 5.310795030722072
+  },
+  {
+    "epoch": 19.0,
+    "train_loss": 0.010130977786899767,
+    "train_rmse_degC": 0.10163230658048668,
+    "val_loss": 0.008376482410575701,
+    "val_rmse_degC": 0.09322283641473915,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 6.582427495560255
+  },
+  {
+    "epoch": 20.0,
+    "train_loss": 0.01064212188879708,
+    "train_rmse_degC": 0.10239298276659083,
+    "val_loss": 0.008699604955497691,
+    "val_rmse_degC": 0.09162650283990269,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 6.450866324203111
+  },
+  {
+    "epoch": 21.0,
+    "train_loss": 0.010211093264728622,
+    "train_rmse_degC": 0.10170949575789387,
+    "val_loss": 0.007832296982396467,
+    "val_rmse_degC": 0.08991088698013651,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 7.179192545942572
+  },
+  {
+    "epoch": 22.0,
+    "train_loss": 0.010217379080015987,
+    "train_rmse_degC": 0.10168965150594877,
+    "val_loss": 0.009434178522919844,
+    "val_rmse_degC": 0.09413607439821906,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 7.646215893581198
+  },
+  {
+    "epoch": 23.0,
+    "train_loss": 0.010601423289377004,
+    "train_rmse_degC": 0.10186751393892941,
+    "val_loss": 0.008580654613873553,
+    "val_rmse_degC": 0.08698125168698691,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 6.987179353645512
+  },
+  {
+    "epoch": 24.0,
+    "train_loss": 0.009853428080714998,
+    "train_rmse_degC": 0.1006335180180285,
+    "val_loss": 0.007404350900492352,
+    "val_rmse_degC": 0.08801977681105248,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 7.169418706192527
+  },
+  {
+    "epoch": 25.0,
+    "train_loss": 0.009651990952983433,
+    "train_rmse_degC": 0.1007306623598873,
+    "val_loss": 0.007333334470126117,
+    "val_rmse_degC": 0.08796006667888275,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 8.170809347855293
+  },
+  {
+    "epoch": 26.0,
+    "train_loss": 0.009859619145381084,
+    "train_rmse_degC": 0.100689321692681,
+    "val_loss": 0.00937324619939448,
+    "val_rmse_degC": 0.09127769807237197,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 7.480219995509963
+  },
+  {
+    "epoch": 27.0,
+    "train_loss": 0.009675977168668578,
+    "train_rmse_degC": 0.09966257154636192,
+    "val_loss": 0.007753700148397515,
+    "val_rmse_degC": 0.09077727474678357,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 6.7388162899695425
+  },
+  {
+    "epoch": 28.0,
+    "train_loss": 0.009302770284037358,
+    "train_rmse_degC": 0.09910192794431918,
+    "val_loss": 0.007317991991112378,
+    "val_rmse_degC": 0.08554777831817358,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 7.491845705277675
+  },
+  {
+    "epoch": 29.0,
+    "train_loss": 0.009418900053942612,
+    "train_rmse_degC": 0.09901716270381328,
+    "val_loss": 0.008076308959964579,
+    "val_rmse_degC": 0.08678274086720904,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 7.590438784165434
+  },
+  {
+    "epoch": 30.0,
+    "train_loss": 0.0094103593859494,
+    "train_rmse_degC": 0.09836710363310597,
+    "val_loss": 0.008111741141195446,
+    "val_rmse_degC": 0.09027276527474913,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 6.460442878714764
+  },
+  {
+    "epoch": 31.0,
+    "train_loss": 0.00917784056371338,
+    "train_rmse_degC": 0.0979809144891825,
+    "val_loss": 0.007037173619357822,
+    "val_rmse_degC": 0.0864675819702463,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 7.412406769910333
+  },
+  {
+    "epoch": 32.0,
+    "train_loss": 0.009113737253376903,
+    "train_rmse_degC": 0.09813451652826224,
+    "val_loss": 0.007043913692435813,
+    "val_rmse_degC": 0.08669119802351757,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 8.043541380820908
+  },
+  {
+    "epoch": 33.0,
+    "train_loss": 0.009170981791190585,
+    "train_rmse_degC": 0.097869438049675,
+    "val_loss": 0.00729189806891225,
+    "val_rmse_degC": 0.08574768597225656,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 8.589601772519647
+  },
+  {
+    "epoch": 34.0,
+    "train_loss": 0.009062841609564517,
+    "train_rmse_degC": 0.09771959564994315,
+    "val_loss": 0.007047474545311466,
+    "val_rmse_degC": 0.0869844166832742,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 7.867118868887853
+  },
+  {
+    "epoch": 35.0,
+    "train_loss": 0.008995692329402593,
+    "train_rmse_degC": 0.09764256952993938,
+    "val_loss": 0.007575246270873685,
+    "val_rmse_degC": 0.08479594022601693,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 9.13117903785662
+  },
+  {
+    "epoch": 36.0,
+    "train_loss": 0.009078572925237565,
+    "train_rmse_degC": 0.0976139524852813,
+    "val_loss": 0.007630438582719083,
+    "val_rmse_degC": 0.08340286003971613,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 10.037907637686116
+  },
+  {
+    "epoch": 37.0,
+    "train_loss": 0.00909424525298367,
+    "train_rmse_degC": 0.09713380573785696,
+    "val_loss": 0.006858182002286442,
+    "val_rmse_degC": 0.08603502316839132,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 8.549643931897183
+  },
+  {
+    "epoch": 38.0,
+    "train_loss": 0.008784625911506859,
+    "train_rmse_degC": 0.09664117966636417,
+    "val_loss": 0.0069296081937660755,
+    "val_rmse_degC": 0.08483413846258461,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 8.54313638010973
+  },
+  {
+    "epoch": 39.0,
+    "train_loss": 0.00884385908950607,
+    "train_rmse_degC": 0.09648088002444129,
+    "val_loss": 0.006725517771971563,
+    "val_rmse_degC": 0.08391358995227727,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 8.886342603568236
+  },
+  {
+    "epoch": 40.0,
+    "train_loss": 0.008775643871100578,
+    "train_rmse_degC": 0.09600914042587874,
+    "val_loss": 0.00698072918803166,
+    "val_rmse_degC": 0.08410701929586933,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 7.5210520807011445
+  },
+  {
+    "epoch": 41.0,
+    "train_loss": 0.00853045229553451,
+    "train_rmse_degC": 0.09517412103042323,
+    "val_loss": 0.00653081197130609,
+    "val_rmse_degC": 0.08340206487290475,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 7.716099326935115
+  },
+  {
+    "epoch": 42.0,
+    "train_loss": 0.008471840399910103,
+    "train_rmse_degC": 0.09512953940393261,
+    "val_loss": 0.006460780813601618,
+    "val_rmse_degC": 0.08203182416057202,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 8.227013074008067
+  },
+  {
+    "epoch": 43.0,
+    "train_loss": 0.00849474231461299,
+    "train_rmse_degC": 0.09522424564151451,
+    "val_loss": 0.006514503945348071,
+    "val_rmse_degC": 0.08235744104434903,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 8.83014995865036
+  },
+  {
+    "epoch": 44.0,
+    "train_loss": 0.008493924605527359,
+    "train_rmse_degC": 0.09479364568275771,
+    "val_loss": 0.0067259553353539525,
+    "val_rmse_degC": 0.08402970424782494,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 8.076078325025124
+  },
+  {
+    "epoch": 45.0,
+    "train_loss": 0.008364980771556549,
+    "train_rmse_degC": 0.09465771934351853,
+    "val_loss": 0.006546717954607994,
+    "val_rmse_degC": 0.08393536698557094,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 8.868255502439887
+  },
+  {
+    "epoch": 46.0,
+    "train_loss": 0.008397798071038468,
+    "train_rmse_degC": 0.09450057325783813,
+    "val_loss": 0.006458578400880143,
+    "val_rmse_degC": 0.08411190857064803,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 9.0878737337253
+  },
+  {
+    "epoch": 47.0,
+    "train_loss": 0.008346270847097742,
+    "train_rmse_degC": 0.09435404143573434,
+    "val_loss": 0.0065404896245472655,
+    "val_rmse_degC": 0.08383805425197328,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 8.661040974892725
+  },
+  {
+    "epoch": 48.0,
+    "train_loss": 0.008226936436001484,
+    "train_rmse_degC": 0.09414616261061455,
+    "val_loss": 0.006554146168195544,
+    "val_rmse_degC": 0.08288308732416738,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 9.366843379631074
+  },
+  {
+    "epoch": 49.0,
+    "train_loss": 0.008236357905905206,
+    "train_rmse_degC": 0.0939234817824007,
+    "val_loss": 0.006418818580167127,
+    "val_rmse_degC": 0.08312646426090645,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 8.847209440635378
+  },
+  {
+    "epoch": 50.0,
+    "train_loss": 0.008234844260820837,
+    "train_rmse_degC": 0.0933682973889597,
+    "val_loss": 0.006691934861487053,
+    "val_rmse_degC": 0.08345801237948164,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 7.77889308525368
+  },
+  {
+    "epoch": 51.0,
+    "train_loss": 0.008077233854886672,
+    "train_rmse_degC": 0.09278035057266937,
+    "val_loss": 0.006249349369999193,
+    "val_rmse_degC": 0.08256433058523803,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 7.665336875574406
+  },
+  {
+    "epoch": 52.0,
+    "train_loss": 0.008091418797560165,
+    "train_rmse_degC": 0.0923364046174679,
+    "val_loss": 0.006123420735196545,
+    "val_rmse_degC": 0.0804344538268781,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 7.282808330675593
+  },
+  {
+    "epoch": 53.0,
+    "train_loss": 0.008001635175418539,
+    "train_rmse_degC": 0.09228465517717349,
+    "val_loss": 0.006184940687179476,
+    "val_rmse_degC": 0.08251457885719683,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 6.789864932873042
+  },
+  {
+    "epoch": 54.0,
+    "train_loss": 0.007868832534283651,
+    "train_rmse_degC": 0.09129816129383728,
+    "val_loss": 0.005935391298760334,
+    "val_rmse_degC": 0.07897272053873483,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 5.7400998314530245
+  },
+  {
+    "epoch": 55.0,
+    "train_loss": 0.0077599310845884294,
+    "train_rmse_degC": 0.0907832587044303,
+    "val_loss": 0.006261898887561615,
+    "val_rmse_degC": 0.08116446173191831,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 6.387915317159697
+  },
+  {
+    "epoch": 56.0,
+    "train_loss": 0.007759245131275826,
+    "train_rmse_degC": 0.09101310324192115,
+    "val_loss": 0.005937586960434114,
+    "val_rmse_degC": 0.08006611124794881,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 7.033732482516969
+  },
+  {
+    "epoch": 57.0,
+    "train_loss": 0.007788957187316486,
+    "train_rmse_degC": 0.09105211515410197,
+    "val_loss": 0.0059092041388176236,
+    "val_rmse_degC": 0.08046667789409764,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 7.407817278477656
+  },
+  {
+    "epoch": 58.0,
+    "train_loss": 0.007789332933179845,
+    "train_rmse_degC": 0.09068939394795095,
+    "val_loss": 0.005780929373369043,
+    "val_rmse_degC": 0.07880327948532942,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 5.855976140600954
+  },
+  {
+    "epoch": 59.0,
+    "train_loss": 0.007599040515206373,
+    "train_rmse_degC": 0.09001576776215608,
+    "val_loss": 0.005883106269253259,
+    "val_rmse_degC": 0.07839093755656569,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 6.081366387088753
+  },
+  {
+    "epoch": 60.0,
+    "train_loss": 0.007588867725914559,
+    "train_rmse_degC": 0.08953480019823214,
+    "val_loss": 0.005790021503691169,
+    "val_rmse_degC": 0.07842213934846645,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 5.8217207546592835
+  },
+  {
+    "epoch": 61.0,
+    "train_loss": 0.007503254093429637,
+    "train_rmse_degC": 0.0893586999086852,
+    "val_loss": 0.005761512628743972,
+    "val_rmse_degC": 0.07883201274750579,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 5.682820303176375
+  },
+  {
+    "epoch": 62.0,
+    "train_loss": 0.007507996296605407,
+    "train_rmse_degC": 0.08933837459428817,
+    "val_loss": 0.005841102387239787,
+    "val_rmse_degC": 0.08018837591504405,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 6.234199898410313
+  },
+  {
+    "epoch": 63.0,
+    "train_loss": 0.007520562111387576,
+    "train_rmse_degC": 0.08938938010608241,
+    "val_loss": 0.005859076742210527,
+    "val_rmse_degC": 0.07868178586533342,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 6.0771268336348365
+  },
+  {
+    "epoch": 64.0,
+    "train_loss": 0.007435480100081903,
+    "train_rmse_degC": 0.08913737920825084,
+    "val_loss": 0.00567768827141797,
+    "val_rmse_degC": 0.07864522680253284,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 6.399241631606242
+  },
+  {
+    "epoch": 65.0,
+    "train_loss": 0.007517904869035086,
+    "train_rmse_degC": 0.08891876893840392,
+    "val_loss": 0.005615104146679272,
+    "val_rmse_degC": 0.07736800199444774,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 5.324024749952035
+  },
+  {
+    "epoch": 66.0,
+    "train_loss": 0.007330401777208844,
+    "train_rmse_degC": 0.08819147103792348,
+    "val_loss": 0.0055365038899657625,
+    "val_rmse_degC": 0.07732116355891641,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 5.475587033837279
+  },
+  {
+    "epoch": 67.0,
+    "train_loss": 0.007297232572194716,
+    "train_rmse_degC": 0.0882519338640676,
+    "val_loss": 0.005793476782617022,
+    "val_rmse_degC": 0.07840894802214596,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 5.768750469679898
+  },
+  {
+    "epoch": 68.0,
+    "train_loss": 0.007307920354648396,
+    "train_rmse_degC": 0.08830467611513176,
+    "val_loss": 0.005750378768685678,
+    "val_rmse_degC": 0.077858604437157,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 5.594993964110354
+  },
+  {
+    "epoch": 69.0,
+    "train_loss": 0.007225371306411408,
+    "train_rmse_degC": 0.08745464923364567,
+    "val_loss": 0.005578891697565951,
+    "val_rmse_degC": 0.0766428337901321,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 4.656155699963492
+  },
+  {
+    "epoch": 70.0,
+    "train_loss": 0.007186425014704807,
+    "train_rmse_degC": 0.08703025379620205,
+    "val_loss": 0.005490686496006305,
+    "val_rmse_degC": 0.0751768772588552,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 4.721968535210404
+  },
+  {
+    "epoch": 71.0,
+    "train_loss": 0.007098922914035629,
+    "train_rmse_degC": 0.08636415450483986,
+    "val_loss": 0.005371390393589541,
+    "val_rmse_degC": 0.07559173509577605,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 4.036664554939544
+  },
+  {
+    "epoch": 72.0,
+    "train_loss": 0.00700528989349373,
+    "train_rmse_degC": 0.08588721830815035,
+    "val_loss": 0.005301673310890727,
+    "val_rmse_degC": 0.07482508916732042,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 4.002728104659709
+  },
+  {
+    "epoch": 73.0,
+    "train_loss": 0.006984419677493529,
+    "train_rmse_degC": 0.0856738991174776,
+    "val_loss": 0.0056096730079229825,
+    "val_rmse_degC": 0.07468969176178805,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 3.835041099403945
+  },
+  {
+    "epoch": 74.0,
+    "train_loss": 0.006949109914057953,
+    "train_rmse_degC": 0.08487764610213117,
+    "val_loss": 0.005379771046207221,
+    "val_rmse_degC": 0.07455821704512583,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 3.1649370568799027
+  },
+  {
+    "epoch": 75.0,
+    "train_loss": 0.006877024419063502,
+    "train_rmse_degC": 0.08440636580555198,
+    "val_loss": 0.005268798832921797,
+    "val_rmse_degC": 0.073691221977573,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 3.3360554985289648
+  },
+  {
+    "epoch": 76.0,
+    "train_loss": 0.006804275923254504,
+    "train_rmse_degC": 0.08392108081549217,
+    "val_loss": 0.005171309801265486,
+    "val_rmse_degC": 0.07446632591752976,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 2.8537212597089927
+  },
+  {
+    "epoch": 77.0,
+    "train_loss": 0.0067738756091901605,
+    "train_rmse_degC": 0.08365808835958422,
+    "val_loss": 0.005114733724509284,
+    "val_rmse_degC": 0.07367305639789189,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 2.955825128298065
+  },
+  {
+    "epoch": 78.0,
+    "train_loss": 0.00669743036235957,
+    "train_rmse_degC": 0.08354709599802022,
+    "val_loss": 0.005247614403351053,
+    "val_rmse_degC": 0.07369887535801604,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 3.246487342697553
+  },
+  {
+    "epoch": 79.0,
+    "train_loss": 0.006735268586777406,
+    "train_rmse_degC": 0.084034438050358,
+    "val_loss": 0.005169753526544251,
+    "val_rmse_degC": 0.0743031256151829,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 3.539967511398261
+  },
+  {
+    "epoch": 80.0,
+    "train_loss": 0.006781083594367345,
+    "train_rmse_degC": 0.08412584198124054,
+    "val_loss": 0.005199105884108121,
+    "val_rmse_degC": 0.07401322331698613,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 3.3335101447979913
+  },
+  {
+    "epoch": 81.0,
+    "train_loss": 0.006675705401124169,
+    "train_rmse_degC": 0.0834762075455795,
+    "val_loss": 0.005030406605668821,
+    "val_rmse_degC": 0.07300267665952105,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 2.958837880203074
+  },
+  {
+    "epoch": 82.0,
+    "train_loss": 0.006661969265251449,
+    "train_rmse_degC": 0.0831009923816048,
+    "val_loss": 0.00546455262686874,
+    "val_rmse_degC": 0.07511787440093923,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 2.6468573194558878
+  },
+  {
+    "epoch": 83.0,
+    "train_loss": 0.0066144097530710065,
+    "train_rmse_degC": 0.08243899048943548,
+    "val_loss": 0.004920618808460484,
+    "val_rmse_degC": 0.0709729551625159,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 2.2693399823245066
+  },
+  {
+    "epoch": 84.0,
+    "train_loss": 0.006459942490271428,
+    "train_rmse_degC": 0.0816880850681343,
+    "val_loss": 0.004914658654886457,
+    "val_rmse_degC": 0.07167202147059118,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 2.41227205118691
+  },
+  {
+    "epoch": 85.0,
+    "train_loss": 0.0064818536026715135,
+    "train_rmse_degC": 0.0819085899154853,
+    "val_loss": 0.005059594260709119,
+    "val_rmse_degC": 0.07260837354423347,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 2.724740118563209
+  },
+  {
+    "epoch": 86.0,
+    "train_loss": 0.006519464046314499,
+    "train_rmse_degC": 0.08212239331046037,
+    "val_loss": 0.004993085784146398,
+    "val_rmse_degC": 0.07337122482054079,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 2.8152516726915464
+  },
+  {
+    "epoch": 87.0,
+    "train_loss": 0.006488107053227112,
+    "train_rmse_degC": 0.08196829941767146,
+    "val_loss": 0.005012568894179674,
+    "val_rmse_degC": 0.07254721937857064,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 2.3629611285179393
+  },
+  {
+    "epoch": 88.0,
+    "train_loss": 0.0064208768599634735,
+    "train_rmse_degC": 0.08140600834138015,
+    "val_loss": 0.00507862622198689,
+    "val_rmse_degC": 0.07194781982492554,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 2.4413638873675287
+  },
+  {
+    "epoch": 89.0,
+    "train_loss": 0.00642806331622907,
+    "train_rmse_degC": 0.08119030222815825,
+    "val_loss": 0.004880355540579726,
+    "val_rmse_degC": 0.07180988038396324,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 2.2087251909581376
+  },
+  {
+    "epoch": 90.0,
+    "train_loss": 0.006369644875457289,
+    "train_rmse_degC": 0.08118361237204667,
+    "val_loss": 0.004835838432550075,
+    "val_rmse_degC": 0.07128228468476848,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 2.3580123449498496
+  },
+  {
+    "epoch": 91.0,
+    "train_loss": 0.0063327185294215676,
+    "train_rmse_degC": 0.08079107826844092,
+    "val_loss": 0.004860264787675283,
+    "val_rmse_degC": 0.06996422776655953,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 2.341680839164604
+  },
+  {
+    "epoch": 92.0,
+    "train_loss": 0.006310859373532388,
+    "train_rmse_degC": 0.08078600206041556,
+    "val_loss": 0.0048706524570968045,
+    "val_rmse_degC": 0.07017856207628623,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 2.468218251439982
+  },
+  {
+    "epoch": 93.0,
+    "train_loss": 0.006322570895323677,
+    "train_rmse_degC": 0.08090913500171154,
+    "val_loss": 0.004909117621454326,
+    "val_rmse_degC": 0.07143981793503439,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 2.6444591490500966
+  },
+  {
+    "epoch": 94.0,
+    "train_loss": 0.0063112713248499935,
+    "train_rmse_degC": 0.08098111619907203,
+    "val_loss": 0.00487687722981065,
+    "val_rmse_degC": 0.07125722784179389,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 2.609235623993952
+  },
+  {
+    "epoch": 95.0,
+    "train_loss": 0.006299045199451536,
+    "train_rmse_degC": 0.08091687406392638,
+    "val_loss": 0.004903548065400869,
+    "val_rmse_degC": 0.07061510676682217,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 2.5777258606589695
+  },
+  {
+    "epoch": 96.0,
+    "train_loss": 0.006303403219573618,
+    "train_rmse_degC": 0.08090457956737503,
+    "val_loss": 0.004796291247632038,
+    "val_rmse_degC": 0.07098422713610336,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 2.3816912112587776
+  },
+  {
+    "epoch": 97.0,
+    "train_loss": 0.006222444172843114,
+    "train_rmse_degC": 0.08024032675359188,
+    "val_loss": 0.0047586493502230825,
+    "val_rmse_degC": 0.07019172205465471,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 2.1849332468974643
+  },
+  {
+    "epoch": 98.0,
+    "train_loss": 0.006211605734042397,
+    "train_rmse_degC": 0.08006875619150872,
+    "val_loss": 0.004844221393348741,
+    "val_rmse_degC": 0.07140741275428336,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 2.2093786085813893
+  },
+  {
+    "epoch": 99.0,
+    "train_loss": 0.0061974586080158316,
+    "train_rmse_degC": 0.08006709788098292,
+    "val_loss": 0.005060935022389924,
+    "val_rmse_degC": 0.07086907892855195,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 2.20296151740087
+  },
+  {
+    "epoch": 100.0,
+    "train_loss": 0.0061605418507163345,
+    "train_rmse_degC": 0.07962307696396174,
+    "val_loss": 0.004871637275894957,
+    "val_rmse_degC": 0.07096822563818635,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 2.146030192969152
+  },
+  {
+    "epoch": 101.0,
+    "train_loss": 0.006199573352655338,
+    "train_rmse_degC": 0.08012712569760498,
+    "val_loss": 0.004950034572297344,
+    "val_rmse_degC": 0.07064654100549246,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 2.5155802290064813
+  },
+  {
+    "epoch": 102.0,
+    "train_loss": 0.006234005962207477,
+    "train_rmse_degC": 0.0802766992663865,
+    "val_loss": 0.004725458849937657,
+    "val_rmse_degC": 0.07025277877101209,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 2.432747929942151
+  },
+  {
+    "epoch": 103.0,
+    "train_loss": 0.006131702403677188,
+    "train_rmse_degC": 0.0795782542936255,
+    "val_loss": 0.004692742588545367,
+    "val_rmse_degC": 0.07059786768731453,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 2.125495880907935
+  },
+  {
+    "epoch": 104.0,
+    "train_loss": 0.006119069614634103,
+    "train_rmse_degC": 0.07963752939527136,
+    "val_loss": 0.004755267526415883,
+    "val_rmse_degC": 0.0695475763682353,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 2.151740418293344
+  },
+  {
+    "epoch": 105.0,
+    "train_loss": 0.006115077253592086,
+    "train_rmse_degC": 0.07967583711487629,
+    "val_loss": 0.004645035842269793,
+    "val_rmse_degC": 0.06865282194999138,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 2.235506391120528
+  },
+  {
+    "epoch": 106.0,
+    "train_loss": 0.006106214888599297,
+    "train_rmse_degC": 0.07945069131268166,
+    "val_loss": 0.0046182324368667675,
+    "val_rmse_degC": 0.06910506361461895,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 2.0951847876556577
+  },
+  {
+    "epoch": 107.0,
+    "train_loss": 0.006052489165990242,
+    "train_rmse_degC": 0.07899663568343415,
+    "val_loss": 0.0045908759202358445,
+    "val_rmse_degC": 0.06892623876105029,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 1.9910758908478003
+  },
+  {
+    "epoch": 108.0,
+    "train_loss": 0.006009658552674781,
+    "train_rmse_degC": 0.07882323407803998,
+    "val_loss": 0.0046280660748415125,
+    "val_rmse_degC": 0.07020908538489766,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 2.137447325175873
+  },
+  {
+    "epoch": 109.0,
+    "train_loss": 0.006018606901920173,
+    "train_rmse_degC": 0.07900042526638537,
+    "val_loss": 0.004756818332566412,
+    "val_rmse_degC": 0.06836931650577338,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 2.167144090037045
+  },
+  {
+    "epoch": 110.0,
+    "train_loss": 0.006031196448541123,
+    "train_rmse_degC": 0.07864068366068655,
+    "val_loss": 0.004629962315613573,
+    "val_rmse_degC": 0.07021777925341208,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 1.8512497907869059
+  },
+  {
+    "epoch": 111.0,
+    "train_loss": 0.005952253239576312,
+    "train_rmse_degC": 0.07839807878469225,
+    "val_loss": 0.004559623400906958,
+    "val_rmse_degC": 0.06893445450407903,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 2.0245084760559147
+  },
+  {
+    "epoch": 112.0,
+    "train_loss": 0.005973986393952038,
+    "train_rmse_degC": 0.07856734063466068,
+    "val_loss": 0.004585222502123848,
+    "val_rmse_degC": 0.06994607666448223,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 1.9566467739365905
+  },
+  {
+    "epoch": 113.0,
+    "train_loss": 0.005930925963721315,
+    "train_rmse_degC": 0.07821299311477847,
+    "val_loss": 0.004505888195278126,
+    "val_rmse_degC": 0.06882775195790126,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 1.678921017279675
+  },
+  {
+    "epoch": 114.0,
+    "train_loss": 0.005877651409067906,
+    "train_rmse_degC": 0.07777235612698252,
+    "val_loss": 0.004587657262478163,
+    "val_rmse_degC": 0.069381790800238,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 1.800889934766406
+  },
+  {
+    "epoch": 115.0,
+    "train_loss": 0.005919909798223257,
+    "train_rmse_degC": 0.07782508653042887,
+    "val_loss": 0.004450930435149396,
+    "val_rmse_degC": 0.0676574710743601,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 1.420944981697837
+  },
+  {
+    "epoch": 116.0,
+    "train_loss": 0.005821322701395786,
+    "train_rmse_degC": 0.07744111548931196,
+    "val_loss": 0.004433801400457161,
+    "val_rmse_degC": 0.06709154908702096,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 1.6816048168772195
+  },
+  {
+    "epoch": 117.0,
+    "train_loss": 0.0058183307501302834,
+    "train_rmse_degC": 0.07732026377984708,
+    "val_loss": 0.004512179169620647,
+    "val_rmse_degC": 0.06738407634005199,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 1.6291358300701018
+  },
+  {
+    "epoch": 118.0,
+    "train_loss": 0.0057803127540842665,
+    "train_rmse_degC": 0.07691951449631597,
+    "val_loss": 0.004414806923872046,
+    "val_rmse_degC": 0.0680109603784501,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 1.642479067494059
+  },
+  {
+    "epoch": 119.0,
+    "train_loss": 0.005797021705157578,
+    "train_rmse_degC": 0.07715513695099212,
+    "val_loss": 0.004525899648355479,
+    "val_rmse_degC": 0.06883111152410545,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 1.57183545690356
+  },
+  {
+    "epoch": 120.0,
+    "train_loss": 0.005816236150141489,
+    "train_rmse_degC": 0.07709461517646829,
+    "val_loss": 0.004593050557059609,
+    "val_rmse_degC": 0.06973262210051437,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 1.5511911072620879
+  },
+  {
+    "epoch": 121.0,
+    "train_loss": 0.005832928992989226,
+    "train_rmse_degC": 0.0773886688696603,
+    "val_loss": 0.004478123125060837,
+    "val_rmse_degC": 0.0680969027182012,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 1.5882750400653902
+  },
+  {
+    "epoch": 122.0,
+    "train_loss": 0.005767487174097099,
+    "train_rmse_degC": 0.07694717861769144,
+    "val_loss": 0.0044466160229461385,
+    "val_rmse_degC": 0.0682650885384987,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 1.5030420201042776
+  },
+  {
+    "epoch": 123.0,
+    "train_loss": 0.005819610995043882,
+    "train_rmse_degC": 0.077242041558395,
+    "val_loss": 0.0044874389060452335,
+    "val_rmse_degC": 0.06807950328494221,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 1.8399108002547855
+  },
+  {
+    "epoch": 124.0,
+    "train_loss": 0.005880261476901607,
+    "train_rmse_degC": 0.07762080904150331,
+    "val_loss": 0.004629844337446412,
+    "val_rmse_degC": 0.07056470254747153,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 1.8253679543872783
+  },
+  {
+    "epoch": 125.0,
+    "train_loss": 0.005890474821520914,
+    "train_rmse_degC": 0.07814395240973858,
+    "val_loss": 0.004526983711996217,
+    "val_rmse_degC": 0.0688765379964133,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 2.243823664629557
+  },
+  {
+    "epoch": 126.0,
+    "train_loss": 0.005913417174499824,
+    "train_rmse_degC": 0.07801462504366154,
+    "val_loss": 0.00455766891014114,
+    "val_rmse_degC": 0.06812542946939493,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 1.9482785299341423
+  },
+  {
+    "epoch": 127.0,
+    "train_loss": 0.005831952179725186,
+    "train_rmse_degC": 0.07752254562864358,
+    "val_loss": 0.004366561659402179,
+    "val_rmse_degC": 0.06770621831730782,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 1.616500142636305
+  },
+  {
+    "epoch": 128.0,
+    "train_loss": 0.005693373096374896,
+    "train_rmse_degC": 0.07668018119143967,
+    "val_loss": 0.004318043520193875,
+    "val_rmse_degC": 0.06749550951181064,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 1.497025067887145
+  },
+  {
+    "epoch": 129.0,
+    "train_loss": 0.005719516412445223,
+    "train_rmse_degC": 0.07683679059264101,
+    "val_loss": 0.004381366720875578,
+    "val_rmse_degC": 0.06701038834357938,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 1.687560197431318
+  },
+  {
+    "epoch": 130.0,
+    "train_loss": 0.005772666415311599,
+    "train_rmse_degC": 0.07708195907730295,
+    "val_loss": 0.004758481880103067,
+    "val_rmse_degC": 0.06867364903101143,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 1.9721212851082308
+  },
+  {
+    "epoch": 131.0,
+    "train_loss": 0.005909909694087754,
+    "train_rmse_degC": 0.07730666983858318,
+    "val_loss": 0.0047247494902633875,
+    "val_rmse_degC": 0.06756597065608203,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 1.3854397727138525
+  },
+  {
+    "epoch": 132.0,
+    "train_loss": 0.0056807305464882845,
+    "train_rmse_degC": 0.07651666908178253,
+    "val_loss": 0.004324862508633453,
+    "val_rmse_degC": 0.06626110202743139,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 1.695179098313384
+  },
+  {
+    "epoch": 133.0,
+    "train_loss": 0.005762831478666975,
+    "train_rmse_degC": 0.07703091641339252,
+    "val_loss": 0.004590311901013737,
+    "val_rmse_degC": 0.06778936458253884,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 1.8696734873845366
+  },
+  {
+    "epoch": 134.0,
+    "train_loss": 0.005760191841919847,
+    "train_rmse_degC": 0.07721453689774062,
+    "val_loss": 0.004439548958487109,
+    "val_rmse_degC": 0.06735566849215005,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 2.013130395268891
+  },
+  {
+    "epoch": 135.0,
+    "train_loss": 0.005802476365476388,
+    "train_rmse_degC": 0.0773062490148887,
+    "val_loss": 0.004372313610332201,
+    "val_rmse_degC": 0.06764291762520494,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 1.7842799680648478
+  },
+  {
+    "epoch": 136.0,
+    "train_loss": 0.005800054763234186,
+    "train_rmse_degC": 0.07708995513856645,
+    "val_loss": 0.004377046708245213,
+    "val_rmse_degC": 0.06651766729021626,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 1.5270112248168402
+  },
+  {
+    "epoch": 137.0,
+    "train_loss": 0.005700445814697573,
+    "train_rmse_degC": 0.07646599639857546,
+    "val_loss": 0.00449059949979608,
+    "val_rmse_degC": 0.0664952422599039,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 1.5078333703624471
+  },
+  {
+    "epoch": 138.0,
+    "train_loss": 0.005670505219592097,
+    "train_rmse_degC": 0.07635061314482355,
+    "val_loss": 0.004320909989506406,
+    "val_rmse_degC": 0.06634961700345483,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 1.461427425959472
+  },
+  {
+    "epoch": 139.0,
+    "train_loss": 0.005654013822557496,
+    "train_rmse_degC": 0.07619709514364861,
+    "val_loss": 0.004440101699823106,
+    "val_rmse_degC": 0.06782412077247449,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 1.522998650457682
+  },
+  {
+    "epoch": 140.0,
+    "train_loss": 0.005667383178802076,
+    "train_rmse_degC": 0.0765329188058154,
+    "val_loss": 0.004304781696313629,
+    "val_rmse_degC": 0.06700243986619789,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 1.6591065496295945
+  },
+  {
+    "epoch": 141.0,
+    "train_loss": 0.005698089967854228,
+    "train_rmse_degC": 0.07659969290754372,
+    "val_loss": 0.004407766756730712,
+    "val_rmse_degC": 0.06662226895884026,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 1.7591583097817003
+  },
+  {
+    "epoch": 142.0,
+    "train_loss": 0.0057779937638807255,
+    "train_rmse_degC": 0.07738755486947259,
+    "val_loss": 0.004473349429256159,
+    "val_rmse_degC": 0.06805454682200053,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 2.2723769374229836
+  },
+  {
+    "epoch": 143.0,
+    "train_loss": 0.005818319317717725,
+    "train_rmse_degC": 0.07788851150800807,
+    "val_loss": 0.004650221660111416,
+    "val_rmse_degC": 0.06798937328296827,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 2.417741160367126
+  },
+  {
+    "epoch": 144.0,
+    "train_loss": 0.005822836696940589,
+    "train_rmse_degC": 0.07740003565486175,
+    "val_loss": 0.004344516632254007,
+    "val_rmse_degC": 0.06731216557340022,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 1.6143415634348277
+  },
+  {
+    "epoch": 145.0,
+    "train_loss": 0.005699632788364767,
+    "train_rmse_degC": 0.07693800500434378,
+    "val_loss": 0.004382210647640126,
+    "val_rmse_degC": 0.0668891937090799,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 1.7339479477303168
+  },
+  {
+    "epoch": 146.0,
+    "train_loss": 0.005720139897053241,
+    "train_rmse_degC": 0.07660548975375099,
+    "val_loss": 0.00433739090280055,
+    "val_rmse_degC": 0.06568549026028812,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 1.3401707399476868
+  },
+  {
+    "epoch": 147.0,
+    "train_loss": 0.005585739747156151,
+    "train_rmse_degC": 0.07578113543098099,
+    "val_loss": 0.004301076357276491,
+    "val_rmse_degC": 0.06609343521349995,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 1.4403837558275152
+  },
+  {
+    "epoch": 148.0,
+    "train_loss": 0.0055657153575779696,
+    "train_rmse_degC": 0.07576333716575258,
+    "val_loss": 0.004258333097438254,
+    "val_rmse_degC": 0.06587391907695017,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 1.690547630815511
+  },
+  {
+    "epoch": 149.0,
+    "train_loss": 0.005664668450297642,
+    "train_rmse_degC": 0.0764275107711631,
+    "val_loss": 0.004349604397512495,
+    "val_rmse_degC": 0.06688252433144562,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 1.8586928774473743
+  },
+  {
+    "epoch": 150.0,
+    "train_loss": 0.005649575106318442,
+    "train_rmse_degC": 0.07635099849148139,
+    "val_loss": 0.004346249264216636,
+    "val_rmse_degC": 0.06621893710251613,
+    "loss_weight_mode": "gradient_balance",
+    "lambda_physics_eff": 1.4540551487279307
+  }
+]

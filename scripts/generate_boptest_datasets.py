@@ -158,6 +158,22 @@ def pick_first(candidates: list[str], available: set[str]) -> str | None:
     return None
 
 
+def pick_configured_or_candidate(
+    mappings: dict[str, Any],
+    configured_key: str,
+    candidates_key: str,
+    available: set[str],
+) -> str | None:
+    """Resolve a signal by preferring explicit mapping, then candidate fallback."""
+    configured = mappings.get(configured_key)
+    if isinstance(configured, str) and configured in available:
+        return configured
+    candidates = mappings.get(candidates_key, [])
+    if isinstance(candidates, list):
+        return pick_first([str(x) for x in candidates], available)
+    return None
+
+
 def to_deg_c(value: float | None) -> float | None:
     if value is None:
         return None
@@ -231,8 +247,18 @@ def run_episode(
     outdoor_signal = pick_first(mappings["outdoor_temp_candidates"], set(mappings["outdoor_temp_candidates"]))
     solar_signal = pick_first(mappings["solar_candidates"], set(mappings["solar_candidates"]))
 
-    u_val_name = pick_first(mappings["control_value_candidates"], input_names)
-    u_act_name = pick_first(mappings["control_activate_candidates"], input_names)
+    u_val_name = pick_configured_or_candidate(
+        mappings,
+        "control_value_signal",
+        "control_value_candidates",
+        input_names,
+    )
+    u_act_name = pick_configured_or_candidate(
+        mappings,
+        "control_activate_signal",
+        "control_activate_candidates",
+        input_names,
+    )
 
     policy = defaults.get("control_policy", {})
     seed = int(policy.get("seed_base", 1)) + abs(hash(episode["id"])) % 100000

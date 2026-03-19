@@ -13,6 +13,17 @@ defaults:
     setpoint_max_degC: 24.0
 case_mappings:
   twozone_apartment_hydronic:
+    outdoor_temp_signal: weatherStation_reaWeaTDryBul_y
+    solar_signal: weatherStation_reaWeaHGloHor_y
+    zone_temp_signals:
+    - dayZon_reaTRooAir_y
+    - nigZon_reaTRooAir_y
+    control_value_signals:
+    - thermostatDayZon_oveTsetZon_u
+    - thermostatNigZon_oveTsetZon_u
+    control_activate_signals:
+    - thermostatDayZon_oveTsetZon_activate
+    - thermostatNigZon_oveTsetZon_activate
     zone_temp_candidates:
     - dayZon_reaTRooAir_y
     - nigZon_reaTRooAir_y

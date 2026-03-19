@@ -13,6 +13,11 @@ defaults:
     setpoint_max_degC: 24.0
 case_mappings:
   bestest_hydronic:
+    zone_temp_signal: reaTRoo_y
+    outdoor_temp_signal: weaSta_reaWeaTDryBul_y
+    solar_signal: weaSta_reaWeaHGloHor_y
+    control_value_signal: oveTSetHea_u
+    control_activate_signal: oveTSetHea_activate
     zone_temp_candidates:
     - reaTZon_y
     - reaTRoo_y

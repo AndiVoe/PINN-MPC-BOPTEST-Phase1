@@ -1,0 +1,26 @@
+[
+  {
+    "mode": "manual",
+    "best_val_loss": 0.004583187424196083,
+    "val_rmse": 0.07167354068239465,
+    "val_rollout_rmse": 0.5268760603344029,
+    "test_rmse": 0.08501388516269164,
+    "test_rollout_rmse": 0.8770700753881531
+  },
+  {
+    "mode": "gradient_balance",
+    "best_val_loss": 0.009974964723635004,
+    "val_rmse": 0.09793197105588561,
+    "val_rollout_rmse": 4.047179745588818,
+    "test_rmse": 0.12428181335038722,
+    "test_rollout_rmse": 4.913165225734992
+  },
+  {
+    "mode": "uncertainty",
+    "best_val_loss": -0.18197162011874238,
+    "val_rmse": 0.08603570642007101,
+    "val_rollout_rmse": 3.1522397734701797,
+    "test_rmse": 0.11132219895934437,
+    "test_rollout_rmse": 4.158037500243366
+  }
+]

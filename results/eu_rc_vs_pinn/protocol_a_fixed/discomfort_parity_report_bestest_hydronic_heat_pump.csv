@@ -1,0 +1,2 @@
+episode,comparable,missing_pair,diff_fields,split,weather_class,n_steps,dt_s,pinn_boptest_tdis_tot,rc_boptest_tdis_tot,pinn_local_discomfort_kh,rc_local_discomfort_kh,definition_mismatch_risk
+te_std_01,True,False,,test,standard,672,900,2.999779,2.303138,3.809535,21.344364,False

@@ -19,10 +19,23 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Train a physics-regularized PINN surrogate for Phase 1.")
     parser.add_argument("--config", default="configs/pinn_phase1.yaml")
     parser.add_argument("--artifact-dir", default="artifacts/pinn_phase1")
+    parser.add_argument(
+        "--resume-checkpoint",
+        action="store_true",
+        help="Resume training from artifact-dir/latest_checkpoint.pt if present.",
+    )
+    parser.add_argument(
+        "--checkpoint-every-epochs",
+        type=int,
+        default=0,
+        help="Override checkpoint cadence. 0 keeps value from config.",
+    )
     args = parser.parse_args()
 
     root = ROOT
     config = load_training_config(root / args.config)
+    if args.checkpoint_every_epochs > 0:
+        config.setdefault("training", {})["checkpoint_every_epochs"] = int(args.checkpoint_every_epochs)
     set_seed(int(config["training"]["seed"]))
 
     datasets = build_datasets(config, root)
@@ -33,7 +46,13 @@ def main() -> None:
         dropout=float(config["model"].get("dropout", 0.0)),
     )
 
-    result = train_model(model, datasets, config, root / args.artifact_dir)
+    result = train_model(
+        model,
+        datasets,
+        config,
+        root / args.artifact_dir,
+        resume_checkpoint=bool(args.resume_checkpoint),
+    )
     print(json.dumps(result, indent=2))
 
 

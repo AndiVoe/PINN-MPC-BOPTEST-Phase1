@@ -1,0 +1,33 @@
+{
+  "variant": "A",
+  "study_id": "pinn_phase1_variant_a_gradient_balance",
+  "config_path": "C:\\Users\\AVoelser\\OneDrive - Scientific Network South Tyrol\\3_PhD\\Simulation\\PINN\\configs\\pinn_phase1_variant_a.yaml",
+  "output_dir": "C:\\Users\\AVoelser\\OneDrive - Scientific Network South Tyrol\\3_PhD\\Simulation\\PINN\\artifacts\\pinn_phase1_variant_a_gradient_balance",
+  "best_epoch": 148,
+  "best_val_loss": 0.004258333097438254,
+  "training_config": {
+    "seed": 42,
+    "device": "cpu",
+    "batch_size": 256,
+    "epochs": 150,
+    "patience": 20,
+    "learning_rate": 0.001,
+    "weight_decay": 1e-05,
+    "lambda_physics": 0.005,
+    "loss_weighting": {
+      "mode": "gradient_balance",
+      "gradient_balance": {
+        "ema_beta": 0.95,
+        "lambda_min": 1e-06,
+        "lambda_max": "1.0e2",
+        "target_ratio": 1.0
+      }
+    }
+  },
+  "model_config": {
+    "hidden_dim": 64,
+    "depth": 3,
+    "dropout": 0.0
+  },
+  "loss_weighting_mode": "gradient_balance"
+}

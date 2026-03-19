@@ -1,0 +1,41 @@
+{
+  "total_runs": 4,
+  "runs": [
+    {
+      "case": "bestest_hydronic_heat_pump",
+      "predictor": "rc",
+      "episode_id": "te_std_01",
+      "status": "PASS",
+      "issues": [],
+      "file": "C:/Users/AVoelser/OneDrive - Scientific Network South Tyrol/3_PhD/Simulation/PINN/results/eu_rc_vs_pinn_fixcheck/raw/bestest_hydronic_heat_pump/rc/te_std_01.json"
+    },
+    {
+      "case": "bestest_hydronic_heat_pump",
+      "predictor": "pinn",
+      "episode_id": "te_std_01",
+      "status": "WARN",
+      "issues": [
+        "high_control_saturation_at_u_min_gt_25pct"
+      ],
+      "file": "C:/Users/AVoelser/OneDrive - Scientific Network South Tyrol/3_PhD/Simulation/PINN/results/eu_rc_vs_pinn_fixcheck/raw/bestest_hydronic_heat_pump/pinn/te_std_01.json"
+    },
+    {
+      "case": "multizone_residential_hydronic",
+      "predictor": "rc",
+      "episode_id": "te_std_01",
+      "status": "WARN",
+      "issues": [
+        "high_control_saturation_at_u_max_gt_25pct"
+      ],
+      "file": "C:/Users/AVoelser/OneDrive - Scientific Network South Tyrol/3_PhD/Simulation/PINN/results/eu_rc_vs_pinn_fixcheck/raw/multizone_residential_hydronic/rc/te_std_01.json"
+    },
+    {
+      "case": "twozone_apartment_hydronic",
+      "predictor": "rc",
+      "episode_id": "te_std_01",
+      "status": "PASS",
+      "issues": [],
+      "file": "C:/Users/AVoelser/OneDrive - Scientific Network South Tyrol/3_PhD/Simulation/PINN/results/eu_rc_vs_pinn_fixcheck/raw/twozone_apartment_hydronic/rc/te_std_01.json"
+    }
+  ]
+}

@@ -13,6 +13,17 @@ defaults:
     setpoint_max_degC: 24.0
 case_mappings:
   singlezone_commercial_hydronic:
+    zone_temp_signal: reaTZon_y
+    outdoor_temp_signal: weaSta_reaWeaTDryBul_y
+    solar_signal: weaSta_reaWeaHGloHor_y
+    control_value_signal: oveTZonSet_u
+    control_activate_signal: oveTZonSet_activate
+    predictor_mpc_overrides:
+      rc:
+        objective_weights:
+          comfort: 100.0
+          energy: 0.002
+          control_smoothness: 0.5
     zone_temp_candidates:
     - reaTZon_y
     - reaTRoo_y

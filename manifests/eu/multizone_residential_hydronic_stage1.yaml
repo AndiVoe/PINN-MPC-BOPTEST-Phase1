@@ -13,6 +13,35 @@ defaults:
     setpoint_max_degC: 24.0
 case_mappings:
   multizone_residential_hydronic:
+    zone_temp_signals:
+    - conHeaLiv_reaTZon_y
+    - conHeaRo1_reaTZon_y
+    - conHeaRo2_reaTZon_y
+    - conHeaRo3_reaTZon_y
+    - conHeaBth_reaTZon_y
+    outdoor_temp_signal: weatherStation_reaWeaTDryBul_y
+    solar_signal: weatherStation_reaWeaHGloHor_y
+    control_value_signals:
+    - conHeaLiv_oveTSetHea_u
+    - conHeaRo1_oveTSetHea_u
+    - conHeaRo2_oveTSetHea_u
+    - conHeaRo3_oveTSetHea_u
+    - conHeaBth_oveTSetHea_u
+    control_activate_signals:
+    - conHeaLiv_oveTSetHea_activate
+    - conHeaRo1_oveTSetHea_activate
+    - conHeaRo2_oveTSetHea_activate
+    - conHeaRo3_oveTSetHea_activate
+    - conHeaBth_oveTSetHea_activate
+    system_control_value_signals:
+    - oveTSetSup_u
+    - oveTSetPumBoi_u
+    system_control_activate_signals:
+    - oveTSetSup_activate
+    - oveTSetPumBoi_activate
+    fixed_control_commands:
+      oveEmiPum_activate: 1.0
+      oveEmiPum_u: 1.0
     zone_temp_candidates:
     - conHeaLiv_reaTZon_y
     - conHeaRo1_reaTZon_y
@@ -59,6 +88,14 @@ case_mappings:
     - oveValRad_activate
     - dh_oveTSupSetHea_activate
     - oveTSupSetAir_activate
+    system_control_value_candidates:
+    - oveTSetSup_u
+    - oveTSetPumBoi_u
+    - oveMixValSup_u
+    system_control_activate_candidates:
+    - oveTSetSup_activate
+    - oveTSetPumBoi_activate
+    - oveMixValSup_activate
 episodes:
 - id: tr_std_01
   split: train

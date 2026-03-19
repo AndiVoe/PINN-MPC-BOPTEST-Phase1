@@ -50,5 +50,9 @@
     "solar_gain": 0.05543189495801926,
     "hvac_gain": 0.4858539402484894,
     "capacity": 12.000718116760254
+  },
+  "loss_weighting": {
+    "loss_weight_mode": "manual",
+    "lambda_physics_eff": 0.01
   }
 }

@@ -4,10 +4,13 @@ from __future__ import annotations
 import argparse
 import json
 import queue
+import shutil
 import subprocess
 import sys
 import threading
 import time
+import urllib.error
+import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -120,12 +123,78 @@ def has_all_episode_outputs(output_dir: Path, episode_ids: list[str]) -> bool:
     return all((output_dir / f"{ep_id}.json").exists() for ep_id in episode_ids)
 
 
-def build_manifest(case_id: str) -> dict[str, Any]:
+def build_manifest(case_id: str, season: str = "standard") -> dict[str, Any]:
     # Generic single-zone style mapping with broad candidates.
     # This can still fail for some multizone IDs if no compatible signals exist.
+    case_mapping = {
+        "zone_temp_candidates": [
+            "reaTZon_y",
+            "reaTRoo_y",
+            "TRooAir_y",
+            "zon_reaTRooAir_y",
+            "reaTZonNor_y",
+            "reaTZonCor_y",
+            "reaTZonSou_y",
+        ],
+        "outdoor_temp_candidates": [
+            "weaSta_reaWeaTDryBul_y",
+            "TDryBul_y",
+            "TDryBul",
+        ],
+        "solar_candidates": [
+            "weaSta_reaWeaHGloHor_y",
+            "HGloHor_y",
+            "HGloHor",
+        ],
+        "control_value_candidates": [
+            "oveTSet_u",
+            "oveHeaPumY_u",
+            "oveFan_u",
+            "ovePum_u",
+            "oveTZonSet_u",
+            "oveTSetHea_u",
+            "oveTRooSetHea_u",
+            "oveValRad_u",
+            "dh_oveTSupSetHea_u",
+            "oveTSupSetAir_u",
+        ],
+        "control_activate_candidates": [
+            "oveTSet_activate",
+            "oveHeaPumY_activate",
+            "oveFan_activate",
+            "ovePum_activate",
+            "oveTZonSet_activate",
+            "oveTSetHea_activate",
+            "oveTRooSetHea_activate",
+            "oveValRad_activate",
+            "dh_oveTSupSetHea_activate",
+            "oveTSupSetAir_activate",
+        ],
+    }
+
+    # Keep explicit mapping for known heat-pump case to avoid proxy-control fallback.
+    if "heat_pump" in case_id:
+        case_mapping["control_value_signal"] = "oveTSet_u"
+        case_mapping["control_activate_signal"] = "oveTSet_activate"
+
+    if season == "heating":
+        test_episodes = [
+            {"id": "te_heat_01", "split": "test", "weather_class": "standard", "start_time_s": 23673600},
+            {"id": "te_heat_02", "split": "test", "weather_class": "standard", "start_time_s": 26352000},
+            {"id": "te_heat_03", "split": "test", "weather_class": "standard", "start_time_s": 28944000},
+        ]
+        study_suffix = "heating_season"
+    else:
+        test_episodes = [
+            {"id": "te_std_01", "split": "test", "weather_class": "standard", "start_time_s": 9676800},
+            {"id": "te_std_02", "split": "test", "weather_class": "standard", "start_time_s": 12096000},
+            {"id": "te_std_03", "split": "test", "weather_class": "standard", "start_time_s": 14515200},
+        ]
+        study_suffix = "stage1"
+
     return {
         "version": 1,
-        "study_id": f"eu_stage1_{case_id}",
+        "study_id": f"eu_{study_suffix}_{case_id}",
         "phase": "eu_stage1",
         "defaults": {
             "control_interval_s": 900,
@@ -139,54 +208,14 @@ def build_manifest(case_id: str) -> dict[str, Any]:
                 "setpoint_max_degC": 24.0,
             },
         },
-        "case_mappings": {
-            case_id: {
-                "zone_temp_candidates": [
-                    "reaTZon_y",
-                    "reaTRoo_y",
-                    "TRooAir_y",
-                    "zon_reaTRooAir_y",
-                    "reaTZonNor_y",
-                    "reaTZonCor_y",
-                    "reaTZonSou_y",
-                ],
-                "outdoor_temp_candidates": [
-                    "weaSta_reaWeaTDryBul_y",
-                    "TDryBul_y",
-                    "TDryBul",
-                ],
-                "solar_candidates": [
-                    "weaSta_reaWeaHGloHor_y",
-                    "HGloHor_y",
-                    "HGloHor",
-                ],
-                "control_value_candidates": [
-                    "oveTZonSet_u",
-                    "oveTSetHea_u",
-                    "oveTRooSetHea_u",
-                    "oveValRad_u",
-                    "dh_oveTSupSetHea_u",
-                    "oveTSupSetAir_u",
-                ],
-                "control_activate_candidates": [
-                    "oveTZonSet_activate",
-                    "oveTSetHea_activate",
-                    "oveTRooSetHea_activate",
-                    "oveValRad_activate",
-                    "dh_oveTSupSetHea_activate",
-                    "oveTSupSetAir_activate",
-                ],
-            }
-        },
+        "case_mappings": {case_id: case_mapping},
         "episodes": [
             {"id": "tr_std_01", "split": "train", "weather_class": "standard", "start_time_s": 0},
             {"id": "tr_std_02", "split": "train", "weather_class": "standard", "start_time_s": 2419200},
             {"id": "tr_std_03", "split": "train", "weather_class": "standard", "start_time_s": 4838400},
             {"id": "val_std_01", "split": "val", "weather_class": "standard", "start_time_s": 7257600},
-            {"id": "te_std_01", "split": "test", "weather_class": "standard", "start_time_s": 9676800},
-            {"id": "te_std_02", "split": "test", "weather_class": "standard", "start_time_s": 12096000},
-            {"id": "te_std_03", "split": "test", "weather_class": "standard", "start_time_s": 14515200},
-        ],
+            *test_episodes,
+        ]
     }
 
 
@@ -208,17 +237,274 @@ def build_pinn_config(dataset_root: str) -> dict[str, Any]:
     }
 
 
+def _run_capture(cmd: list[str]) -> subprocess.CompletedProcess[str]:
+    return subprocess.run(cmd, check=False, capture_output=True, text=True, cwd=ROOT)
+
+
+def get_redis_queue_stats(redis_name: str = "project1-boptest-redis-1") -> dict[str, int] | None:
+    if shutil.which("docker") is None:
+        return None
+
+    q = _run_capture(["docker", "exec", redis_name, "redis-cli", "LLEN", "jobs"])
+    if q.returncode != 0:
+        return None
+
+    jobs = int((q.stdout or "0").strip().splitlines()[-1])
+
+    script = (
+        "local q=0; local r=0; local tot=0; "
+        "for _,k in ipairs(redis.call('keys','tests:*')) do "
+        "tot=tot+1; local s=redis.call('hget',k,'status'); "
+        "if s=='Queued' then q=q+1 elseif s=='Running' then r=r+1 end; "
+        "end; return {tot,q,r}"
+    )
+    cnt = _run_capture(["docker", "exec", redis_name, "redis-cli", "--raw", "EVAL", script, "0"])
+    if cnt.returncode != 0:
+        return {"jobs": jobs, "tests_total": -1, "tests_queued": -1, "tests_running": -1}
+
+    lines = [x.strip() for x in (cnt.stdout or "").splitlines() if x.strip()]
+    if len(lines) < 3:
+        return {"jobs": jobs, "tests_total": -1, "tests_queued": -1, "tests_running": -1}
+
+    return {
+        "jobs": jobs,
+        "tests_total": int(lines[0]),
+        "tests_queued": int(lines[1]),
+        "tests_running": int(lines[2]),
+    }
+
+
+def get_redis_active_tests(redis_name: str = "project1-boptest-redis-1") -> list[tuple[str, str]] | None:
+    if shutil.which("docker") is None:
+        return None
+
+    script = (
+        "local out={}; "
+        "for _,k in ipairs(redis.call('keys','tests:*')) do "
+        "local s=redis.call('hget',k,'status'); "
+        "if s=='Queued' or s=='Running' then table.insert(out,k..'='..s) end; "
+        "end; return out"
+    )
+    res = _run_capture(["docker", "exec", redis_name, "redis-cli", "--raw", "EVAL", script, "0"])
+    if res.returncode != 0:
+        return None
+
+    out: list[tuple[str, str]] = []
+    for raw in (res.stdout or "").splitlines():
+        line = raw.strip()
+        if not line or not line.startswith("tests:") or "=" not in line:
+            continue
+        key, status = line.split("=", 1)
+        test_id = key.split(":", 1)[1]
+        out.append((test_id, status))
+    return out
+
+
+def recover_stale_queued_tests(url: str, redis_name: str = "project1-boptest-redis-1") -> bool:
+    stats = get_redis_queue_stats(redis_name=redis_name)
+    if stats is None:
+        return False
+    if int(stats.get("tests_queued", 0)) <= 0 or int(stats.get("tests_running", 0)) > 0:
+        return False
+
+    active = get_redis_active_tests(redis_name=redis_name)
+    if active is None:
+        return False
+
+    to_stop = [test_id for test_id, state in active if state == "Queued"]
+    if not to_stop:
+        return False
+
+    print(f"[queue-guard] Attempting stale queue cleanup for {len(to_stop)} queued test(s) ...")
+    stopped = 0
+    base = url.rstrip("/")
+    for test_id in to_stop:
+        req = urllib.request.Request(f"{base}/stop/{test_id}", method="PUT")
+        try:
+            with urllib.request.urlopen(req, timeout=20):
+                stopped += 1
+        except (urllib.error.URLError, TimeoutError):
+            continue
+
+    if stopped <= 0:
+        return False
+
+    time.sleep(2)
+    post = get_redis_queue_stats(redis_name=redis_name)
+    if post is not None:
+        print(
+            "[queue-guard] Cleanup result: "
+            f"jobs={post['jobs']} queued={post['tests_queued']} running={post['tests_running']}"
+        )
+    return True
+
+
+def clear_stale_jobs_queue_if_idle(redis_name: str = "project1-boptest-redis-1") -> bool:
+    stats = get_redis_queue_stats(redis_name=redis_name)
+    if stats is None:
+        return False
+    if int(stats.get("jobs", 0)) <= 0:
+        return False
+    if int(stats.get("tests_running", 0)) > 0 or int(stats.get("tests_queued", 0)) > 0:
+        return False
+
+    print(f"[queue-guard] Clearing stale Redis jobs list (jobs={stats['jobs']}, no active tests).")
+    res = _run_capture(["docker", "exec", redis_name, "redis-cli", "DEL", "jobs"])
+    return res.returncode == 0
+
+
+def enforce_queue_guard(
+    *,
+    context: str,
+    max_jobs: int,
+    max_queued_tests: int,
+    url: str | None = None,
+    auto_recover_once: bool = False,
+    redis_name: str = "project1-boptest-redis-1",
+) -> None:
+    if max_jobs <= 0 and max_queued_tests <= 0:
+        return
+
+    stats = get_redis_queue_stats(redis_name=redis_name)
+    if stats is None:
+        print(f"[queue-guard] Skipped ({context}): docker/redis stats unavailable.")
+        return
+
+    def _collect_violations(current: dict[str, int]) -> list[str]:
+        items: list[str] = []
+        if max_jobs > 0 and int(current["jobs"]) > max_jobs:
+            items.append(f"jobs={current['jobs']} > max_jobs={max_jobs}")
+        if max_queued_tests > 0 and int(current["tests_queued"]) > max_queued_tests:
+            items.append(
+                f"tests_queued={current['tests_queued']} > max_queued_tests={max_queued_tests}"
+            )
+        return items
+
+    violations = _collect_violations(stats)
+    if violations and auto_recover_once and url:
+        recovered = recover_stale_queued_tests(url=url, redis_name=redis_name)
+        if recovered:
+            refreshed = get_redis_queue_stats(redis_name=redis_name)
+            if refreshed is not None:
+                stats = refreshed
+                violations = _collect_violations(stats)
+
+    if violations and auto_recover_once:
+        cleaned = clear_stale_jobs_queue_if_idle(redis_name=redis_name)
+        if cleaned:
+            refreshed = get_redis_queue_stats(redis_name=redis_name)
+            if refreshed is not None:
+                stats = refreshed
+                violations = _collect_violations(stats)
+
+    if violations:
+        raise RuntimeError(
+            f"Queue guard blocked run at {context}: {'; '.join(violations)}. "
+            f"Current tests_running={stats['tests_running']}, tests_total={stats['tests_total']}."
+        )
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Run EU stage-1 baseline campaign (1 RC + 1 PINN per case).")
     parser.add_argument("--mapping", default="results/eu_rc_vs_pinn/runtime_discovery/eu_testcases_resolved_mapping.json")
     parser.add_argument("--url", default="http://127.0.0.1:8000")
+    parser.add_argument(
+        "--season",
+        choices=["standard", "heating"],
+        default="standard",
+        help="Episode season profile for test splits. 'heating' uses winter-oriented test windows.",
+    )
     parser.add_argument("--max-cases", type=int, default=0, help="0 means all")
     parser.add_argument("--resume", action="store_true")
     parser.add_argument("--skip-preflight", action="store_true", help="Skip BOPTEST health preflight gate.")
+    parser.add_argument(
+        "--startup-timeout-s",
+        type=int,
+        default=420,
+        help="Timeout for BOPTEST case startup (Queued->Running) per step in seconds.",
+    )
+    parser.add_argument(
+        "--no-auto-discover-mapping",
+        action="store_true",
+        help="Do not auto-run testcase discovery when mapping file is missing.",
+    )
+    parser.add_argument("--short-episode", action="store_true", help="Use shorter timeouts and validation runs (1-day episodes only). Useful for quick validation before full campaigns.")
+    parser.add_argument(
+        "--step-max-retries",
+        type=int,
+        default=2,
+        help="Maximum retries per step after the initial attempt (default: 2).",
+    )
+    parser.add_argument(
+        "--step-retry-backoff-s",
+        type=int,
+        default=20,
+        help="Initial backoff in seconds between retry attempts (exponential).",
+    )
+    parser.add_argument(
+        "--max-queue-jobs",
+        type=int,
+        default=12,
+        help="Fail fast when Redis jobs queue exceeds this threshold (<=0 disables).",
+    )
+    parser.add_argument(
+        "--max-queued-tests",
+        type=int,
+        default=6,
+        help="Fail fast when Redis tests in Queued state exceed this threshold (<=0 disables).",
+    )
     args = parser.parse_args()
+    
+    # Adjust timeouts for short-episode mode
+    startup_timeout_s = "120" if args.short_episode else str(int(args.startup_timeout_s))
+    if args.short_episode:
+        episode_label = f"SHORT VALIDATION ({args.season})"
+    else:
+        episode_label = f"FULL CAMPAIGN ({args.season})"
+
+    results_root = Path("results/eu_rc_vs_pinn/raw") if args.season == "standard" else Path("results/eu_rc_vs_pinn_heating/raw")
+    runtime_root = Path("results/eu_rc_vs_pinn/runtime_discovery") if args.season == "standard" else Path("results/eu_rc_vs_pinn_heating/runtime_discovery")
+
+    venv_python = ROOT / ".venv/Scripts/python.exe"
+    py = str(venv_python if venv_python.exists() else Path(sys.executable))
+    log_root = ROOT / "logs/eu_campaign_stage1"
+    log_root.mkdir(parents=True, exist_ok=True)
 
     mapping_path = ROOT / args.mapping
-    mapping = json.loads(mapping_path.read_text(encoding="utf-8"))
+    if not mapping_path.exists():
+        if args.no_auto_discover_mapping:
+            raise FileNotFoundError(
+                f"Mapping file not found: {mapping_path}. "
+                "Run scripts/discover_boptest_testcases.py first or remove --no-auto-discover-mapping."
+            )
+        discover_log = log_root / "discover_mapping.log"
+        print(f"Mapping missing at {mapping_path}. Running testcase discovery ...")
+        run(
+            [
+                py,
+                "-u",
+                "scripts/discover_boptest_testcases.py",
+                "--base-urls",
+                args.url,
+                "--output-dir",
+                str(mapping_path.parent.relative_to(ROOT)).replace("\\", "/"),
+            ],
+            discover_log,
+        )
+        if not mapping_path.exists():
+            raise FileNotFoundError(
+                "Testcase discovery completed but mapping is still missing at "
+                f"{mapping_path}. Check {discover_log} for details."
+            )
+
+    try:
+        mapping = json.loads(mapping_path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as exc:
+        raise RuntimeError(
+            f"Invalid mapping JSON at {mapping_path}: {exc}. "
+            "Re-run scripts/discover_boptest_testcases.py to regenerate."
+        ) from exc
+
     cases = [c for c in mapping.get("cases", []) if c.get("resolved")]
     if args.max_cases > 0:
         cases = cases[: args.max_cases]
@@ -226,26 +512,41 @@ def main() -> int:
     if not cases:
         raise RuntimeError("No resolved cases available in mapping file.")
 
-    py = str(ROOT / ".venv/Scripts/python.exe")
-    log_root = ROOT / "logs/eu_campaign_stage1"
-    status_path = ROOT / "results/eu_rc_vs_pinn/runtime_discovery/campaign_live_status.json"
+    status_path = ROOT / runtime_root / "campaign_live_status.json"
 
     status: dict[str, Any] = {
         "started_utc": now_utc_iso(),
         "updated_utc": now_utc_iso(),
         "state": "starting",
+        "mode": "short_validation" if args.short_episode else "full_campaign",
+        "episode_type": episode_label,
         "total_cases": len(cases),
         "completed_cases": 0,
         "failed_cases": 0,
         "current_case": None,
         "current_case_index": 0,
         "current_step": None,
+        "current_step_attempt": 0,
         "step_started_utc": None,
         "step_elapsed_s": 0,
         "last_step_status": None,
         "last_error": None,
-        "failure_summary": "results/eu_rc_vs_pinn/stage1_failures.json",
+        "failure_summary": (str((results_root.parent / "stage1_failures.json").as_posix())),
     }
+
+    print(f"\n{'='*72}")
+    print(f"CAMPAIGN MODE: {episode_label}")
+    print(f"Total cases: {len(cases)}")
+    print(f"Startup timeout: {startup_timeout_s}s")
+    print(
+        "Queue guard: "
+        f"max_jobs={args.max_queue_jobs}, max_queued_tests={args.max_queued_tests}"
+    )
+    print(
+        "Retries: "
+        f"max_retries={args.step_max_retries}, backoff_s={args.step_retry_backoff_s}"
+    )
+    print(f"{'='*72}\n")
 
     def update_status(**changes: Any) -> None:
         status.update(changes)
@@ -277,6 +578,18 @@ def main() -> int:
         ], preflight_log, on_heartbeat=lambda elapsed: update_status(step_elapsed_s=elapsed, heartbeat="preflight running"))
         update_status(last_step_status="ok", heartbeat="preflight completed")
 
+    try:
+        enforce_queue_guard(
+            context="campaign_start",
+            max_jobs=int(args.max_queue_jobs),
+            max_queued_tests=int(args.max_queued_tests),
+            url=args.url,
+            auto_recover_once=True,
+        )
+    except Exception as exc:
+        update_status(state="blocked_queue", last_error=str(exc), heartbeat="queue guard failed")
+        raise
+
     failures: list[dict[str, str]] = []
     update_status(state="running", current_case=None, current_case_index=0, current_step=None, step_elapsed_s=0)
 
@@ -287,33 +600,78 @@ def main() -> int:
             current_case=case_id,
             current_case_index=case_index,
             current_step=None,
+            current_step_attempt=0,
             step_started_utc=None,
             step_elapsed_s=0,
             last_error=None,
             heartbeat=f"case {case_id} started",
         )
 
-        manifest_rel = Path(f"manifests/eu/{case_id}_stage1.yaml")
+        manifest_suffix = "stage1" if args.season == "standard" else "heating_season"
+        manifest_rel = Path(f"manifests/eu/{case_id}_{manifest_suffix}.yaml")
         pinn_cfg_rel = Path(f"configs/eu/pinn_{case_id}.yaml")
         dataset_rel = Path(f"datasets/eu/{case_id}")
         artifact_rel = Path(f"artifacts/eu/{case_id}")
-        result_rel = Path(f"results/eu_rc_vs_pinn/raw/{case_id}")
+        result_rel = results_root / case_id
         case_log = log_root / f"{case_id}.log"
 
-        def run_step(step_name: str, cmd: list[str]) -> None:
-            step_t0 = time.time()
-            update_status(
-                current_step=step_name,
-                step_started_utc=now_utc_iso(),
-                step_elapsed_s=0,
-                heartbeat=f"{step_name} started",
-            )
-            run(cmd, case_log, on_heartbeat=lambda elapsed: update_status(step_elapsed_s=elapsed, heartbeat=f"{step_name} running"))
-            update_status(
-                last_step_status="ok",
-                step_elapsed_s=int(time.time() - step_t0),
-                heartbeat=f"{step_name} completed",
-            )
+        def run_step(step_name: str, cmd: list[str], require_queue_capacity: bool = False) -> None:
+            max_attempts = 1 + max(0, int(args.step_max_retries))
+            for attempt in range(1, max_attempts + 1):
+                if require_queue_capacity:
+                    enforce_queue_guard(
+                        context=f"{case_id}:{step_name}:attempt_{attempt}",
+                        max_jobs=int(args.max_queue_jobs),
+                        max_queued_tests=int(args.max_queued_tests),
+                        url=args.url,
+                        auto_recover_once=True,
+                    )
+
+                step_t0 = time.time()
+                update_status(
+                    current_step=step_name,
+                    current_step_attempt=attempt,
+                    step_started_utc=now_utc_iso(),
+                    step_elapsed_s=0,
+                    heartbeat=f"{step_name} attempt {attempt}/{max_attempts} started",
+                )
+                try:
+                    run(
+                        cmd,
+                        case_log,
+                        on_heartbeat=lambda elapsed: update_status(
+                            step_elapsed_s=elapsed,
+                            heartbeat=f"{step_name} attempt {attempt}/{max_attempts} running",
+                        ),
+                    )
+                    update_status(
+                        last_step_status="ok",
+                        step_elapsed_s=int(time.time() - step_t0),
+                        heartbeat=f"{step_name} completed",
+                    )
+                    return
+                except Exception as exc:
+                    if attempt >= max_attempts:
+                        update_status(
+                            last_step_status="failed",
+                            last_error=f"{step_name} failed after {max_attempts} attempts: {exc}",
+                            step_elapsed_s=int(time.time() - step_t0),
+                            heartbeat=f"{step_name} failed",
+                        )
+                        raise
+
+                    wait_s = int(args.step_retry_backoff_s) * (2 ** (attempt - 1))
+                    msg = (
+                        f"{step_name} attempt {attempt}/{max_attempts} failed for case {case_id}: {exc}. "
+                        f"Retrying in {wait_s}s ..."
+                    )
+                    print(msg)
+                    update_status(
+                        last_step_status="retrying",
+                        last_error=msg,
+                        heartbeat=f"{step_name} retry scheduled",
+                    )
+                    time.sleep(wait_s)
 
         try:
             manifest_abs = ROOT / manifest_rel
@@ -321,7 +679,7 @@ def main() -> int:
 
             # Preserve curated per-case manifests/configs when they already exist.
             if not manifest_abs.exists():
-                write_yaml(manifest_abs, build_manifest(case_id))
+                write_yaml(manifest_abs, build_manifest(case_id, season=args.season))
             if not pinn_cfg_abs.exists():
                 write_yaml(pinn_cfg_abs, build_pinn_config(str(dataset_rel).replace('\\', '/')))
 
@@ -341,18 +699,21 @@ def main() -> int:
                     "--startup-poll-interval-s", "5",
                     "--recover-from-queued",
                     "--resume",
-                ])
+                ], require_queue_capacity=True)
 
             # Train PINN per case
             checkpoint = ROOT / artifact_rel / "best_model.pt"
             if not args.resume or not checkpoint.exists():
-                run_step("train_pinn", [
+                train_cmd = [
                     py,
                     "-u",
                     "scripts/train_pinn.py",
                     "--config", str(pinn_cfg_rel).replace('\\', '/'),
                     "--artifact-dir", str(artifact_rel).replace('\\', '/'),
-                ])
+                ]
+                if args.resume:
+                    train_cmd.append("--resume-checkpoint")
+                run_step("train_pinn", train_cmd)
 
             # RC benchmark (single implemented RC architecture)
             rc_out = ROOT / result_rel / "rc"
@@ -369,9 +730,10 @@ def main() -> int:
                     "--output-dir", str(result_rel).replace('\\', '/'),
                     "--url", args.url,
                     "--case", case_id,
-                    "--startup-timeout-s", "180",
+                    "--startup-timeout-s", startup_timeout_s,
                     "--recover-from-queued",
-                ])
+                    "--resume-existing",
+                ], require_queue_capacity=True)
 
             # PINN benchmark
             pinn_out = ROOT / result_rel / "pinn"
@@ -388,13 +750,15 @@ def main() -> int:
                     "--output-dir", str(result_rel).replace('\\', '/'),
                     "--url", args.url,
                     "--case", case_id,
-                    "--startup-timeout-s", "180",
+                    "--startup-timeout-s", startup_timeout_s,
                     "--recover-from-queued",
-                ])
+                    "--resume-existing",
+                ], require_queue_capacity=True)
 
             update_status(
                 completed_cases=int(status["completed_cases"]) + 1,
                 current_step=None,
+                current_step_attempt=0,
                 step_started_utc=None,
                 step_elapsed_s=0,
                 heartbeat=f"case {case_id} completed",
@@ -410,7 +774,7 @@ def main() -> int:
             )
             continue
 
-    summary_path = ROOT / "results/eu_rc_vs_pinn/stage1_failures.json"
+    summary_path = ROOT / results_root.parent / "stage1_failures.json"
     summary_path.parent.mkdir(parents=True, exist_ok=True)
     summary_path.write_text(json.dumps({"failures": failures}, indent=2), encoding="utf-8")
 

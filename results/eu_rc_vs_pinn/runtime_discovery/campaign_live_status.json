@@ -1,17 +1,20 @@
 {
-  "started_utc": "2026-03-17T06:46:27.331786+00:00",
-  "updated_utc": "2026-03-17T07:31:21.952219+00:00",
+  "started_utc": "2026-03-18T15:30:16.645992+00:00",
+  "updated_utc": "2026-03-19T10:01:07.025705+00:00",
   "state": "finished_with_failures",
+  "mode": "full_campaign",
+  "episode_type": "FULL CAMPAIGN",
   "total_cases": 5,
   "completed_cases": 4,
   "failed_cases": 1,
   "current_case": null,
   "current_case_index": 5,
   "current_step": null,
+  "current_step_attempt": 3,
   "step_started_utc": null,
   "step_elapsed_s": 0,
   "last_step_status": "failed",
-  "last_error": "Command failed (1): C:\\Users\\AVoelser\\OneDrive - Scientific Network South Tyrol\\3_PhD\\Simulation\\PINN\\.venv\\Scripts\\python.exe -u scripts/train_pinn.py --config configs/eu/pinn_multizone_residential_hydronic.yaml --artifact-dir artifacts/eu/multizone_residential_hydronic",
+  "last_error": "Command failed (1): C:\\Users\\AVoelser\\OneDrive - Scientific Network South Tyrol\\3_PhD\\Simulation\\PINN\\.venv\\Scripts\\python.exe -u scripts/run_mpc_episode.py --predictor pinn --episode all-test --manifest manifests/eu/multizone_residential_hydronic_stage1.yaml --mpc-config configs/mpc_phase1.yaml --checkpoint artifacts/eu/multizone_residential_hydronic/best_model.pt --output-dir results/eu_rc_vs_pinn/raw/multizone_residential_hydronic --url http://127.0.0.1:8000 --case multizone_residential_hydronic --startup-timeout-s 420 --recover-from-queued --resume-existing",
   "failure_summary": "results/eu_rc_vs_pinn/stage1_failures.json",
   "heartbeat": "campaign finished"
 }

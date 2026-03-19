@@ -1,0 +1,82 @@
+version: 1
+study_id: eu_heating_season_bestest_hydronic
+phase: eu_stage1
+defaults:
+  control_interval_s: 900
+  episode_length_days: 7
+  warmup_period_s: 604800
+  start_time_s: 0
+  control_policy:
+    mode: random_heating_setpoint
+    seed_base: 20260316
+    setpoint_min_degC: 19.0
+    setpoint_max_degC: 24.0
+case_mappings:
+  bestest_hydronic:
+    zone_temp_candidates:
+    - reaTZon_y
+    - reaTRoo_y
+    - TRooAir_y
+    - zon_reaTRooAir_y
+    - reaTZonNor_y
+    - reaTZonCor_y
+    - reaTZonSou_y
+    outdoor_temp_candidates:
+    - weaSta_reaWeaTDryBul_y
+    - TDryBul_y
+    - TDryBul
+    solar_candidates:
+    - weaSta_reaWeaHGloHor_y
+    - HGloHor_y
+    - HGloHor
+    control_value_candidates:
+    - oveTSet_u
+    - oveHeaPumY_u
+    - oveFan_u
+    - ovePum_u
+    - oveTZonSet_u
+    - oveTSetHea_u
+    - oveTRooSetHea_u
+    - oveValRad_u
+    - dh_oveTSupSetHea_u
+    - oveTSupSetAir_u
+    control_activate_candidates:
+    - oveTSet_activate
+    - oveHeaPumY_activate
+    - oveFan_activate
+    - ovePum_activate
+    - oveTZonSet_activate
+    - oveTSetHea_activate
+    - oveTRooSetHea_activate
+    - oveValRad_activate
+    - dh_oveTSupSetHea_activate
+    - oveTSupSetAir_activate
+episodes:
+- id: tr_std_01
+  split: train
+  weather_class: standard
+  start_time_s: 0
+- id: tr_std_02
+  split: train
+  weather_class: standard
+  start_time_s: 2419200
+- id: tr_std_03
+  split: train
+  weather_class: standard
+  start_time_s: 4838400
+- id: val_std_01
+  split: val
+  weather_class: standard
+  start_time_s: 7257600
+- id: te_heat_01
+  split: test
+  weather_class: standard
+  start_time_s: 23673600
+- id: te_heat_02
+  split: test
+  weather_class: standard
+  start_time_s: 26352000
+- id: te_heat_03
+  split: test
+  weather_class: standard
+  start_time_s: 28944000

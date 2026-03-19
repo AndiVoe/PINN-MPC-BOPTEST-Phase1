@@ -1,0 +1,33 @@
+# Variant B: Uncertainty-weighted loss
+# Model learns to quantify its own prediction uncertainty (aleatoric + epistemic),
+# using uncertainty to weight individual data points and regularize physics violations.
+# Higher uncertainty = lower weight in loss, allowing PINN to be adaptive near edges.
+
+study_id: pinn_phase1_variant_b_uncertainty
+
+data:
+  dataset_root: datasets/phase1_singlezone
+
+model:
+  hidden_dim: 64
+  depth: 3
+  dropout: 0.1              # Enable MC dropout for epistemic uncertainty
+
+training:
+  seed: 42
+  device: cpu
+  batch_size: 256
+  epochs: 150
+  patience: 20
+  learning_rate: 0.001
+  weight_decay: 0.00001
+  lambda_physics: 0.01      # Standard physics weighting; uncertainty handles adaptation
+  loss_weighting:
+    mode: uncertainty
+    # Uncertainty weighting: model outputs log-variance predictions
+    # for both data and physics residuals.
+    uncertainty:
+      init_log_sigma_data: 0.0      # Initial log-std for data likelihood
+      init_log_sigma_physics: 0.0   # Initial log-std for physics likelihood
+      # Model learns to increase uncertainty where data is  noisy or physics is infeasible,
+      # effectively de-weighting those terms and focusing on core learning.

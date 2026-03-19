@@ -1,0 +1,20 @@
+{
+  "started_utc": "2026-03-19T14:06:25.191849+00:00",
+  "updated_utc": "2026-03-19T15:25:14.891163+00:00",
+  "state": "running",
+  "mode": "full_campaign",
+  "episode_type": "FULL CAMPAIGN (heating)",
+  "total_cases": 5,
+  "completed_cases": 4,
+  "failed_cases": 0,
+  "current_case": "multizone_residential_hydronic",
+  "current_case_index": 5,
+  "current_step": "benchmark_rc",
+  "current_step_attempt": 1,
+  "step_started_utc": "2026-03-19T15:11:12.867462+00:00",
+  "step_elapsed_s": 841,
+  "last_step_status": "ok",
+  "last_error": null,
+  "failure_summary": "results/eu_rc_vs_pinn_heating/stage1_failures.json",
+  "heartbeat": "benchmark_rc attempt 1/3 running"
+}

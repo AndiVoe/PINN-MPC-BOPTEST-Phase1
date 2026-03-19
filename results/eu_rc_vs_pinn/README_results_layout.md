@@ -26,3 +26,28 @@ This folder is organized so all intermediate and final outputs can be manually i
 ## Retention Policy
 
 Keep all raw episode JSON files, aggregate CSV files, and bundle metadata for the full publication lifecycle.
+
+## Current Article Table Snapshot (March 19, 2026)
+
+The following values are derived from `results/eu_rc_vs_pinn/raw/*/*/*.json` and are synchronized with the manuscript/outline tables.
+
+### Case-level comfort comparison
+
+| Case | RC Comfort (Kh) | PINN Comfort (Kh) | Delta (PINN - RC) | Relative Change | Better |
+|---|---:|---:|---:|---:|---|
+| bestest_hydronic | 71.1 | 65.6 | -5.6 | -7.9% | PINN |
+| bestest_hydronic_heat_pump | 18.9 | 91.1 | +72.2 | +381.9% | RC |
+| singlezone_commercial_hydronic | 12.8 | 5.3 | -7.5 | -58.5% | PINN |
+| twozone_apartment_hydronic | 190.6 | 105.0 | -85.6 | -44.9% | PINN |
+
+### Cross-case aggregate summary
+
+| Predictor | Cases included | Mean comfort (Kh) | Mean challenge discomfort (tdis_tot) | Mean energy (Wh) | Mean challenge cost (cost_tot) | Mean peak power (W) | Mean wall time (s) |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| RC | 4 | 73.37 | 105.06 | 1677987.60 | 0.097347 | 32787.62 | 46.33 |
+| PINN | 4 | 66.76 | 89.70 | 888679.60 | 0.077169 | 30192.75 | 388.18 |
+
+### Completion note
+
+- Completed in article set: `bestest_hydronic`, `bestest_hydronic_heat_pump`, `singlezone_commercial_hydronic`, `twozone_apartment_hydronic` (all 3 RC + 3 PINN episodes each).
+- Deferred complex case: `multizone_residential_hydronic` remains outside headline article tables.

@@ -1,0 +1,5 @@
+case,predictor,episode_id,comfort_Kh,comfort_violation_steps,total_energy_Wh,peak_power_W,floor_area_m2,total_energy_Wh_per_m2,peak_power_W_per_m2,mpc_solve_time_mean_ms,mpc_solve_time_p95_ms,zone_signal_count,control_signal_count,outdoor_temp_signal,solar_signal,tdis_tot,cost_tot
+bestest_hydronic_heat_pump,rc,te_std_01,21.3444,107,1676525.49,27102.76,,,,2.356,3.236,1,1,weaSta_reaWeaTDryBul_y,weaSta_reaWeaHGloHor_y,2.303138281114101,0.4151326783322483
+bestest_hydronic_heat_pump,pinn,te_std_01,83.7806,248,940137.06,29079.53,,,,1493.367,4156.085,1,1,weaSta_reaWeaTDryBul_y,weaSta_reaWeaHGloHor_y,132.60544523125103,0.21397525772123188
+multizone_residential_hydronic,rc,te_std_01,296.0844,228,672.0,4.0,,,,3.702,6.95,5,5,weatherStation_reaWeaTDryBul_y,weatherStation_reaWeaHGloHor_y,0.0,0.0019554126837262016
+twozone_apartment_hydronic,rc,te_std_01,153.1828,261,233889.0,9452.15,,,,2.736,3.405,2,2,weatherStation_reaWeaTDryBul_y,weatherStation_reaWeaHGloHor_y,201.84749455574158,0.1279414674380031

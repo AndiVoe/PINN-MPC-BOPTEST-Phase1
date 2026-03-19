@@ -13,6 +13,21 @@ defaults:
     setpoint_max_degC: 24.0
 case_mappings:
   bestest_hydronic_heat_pump:
+    zone_temp_signal: reaTZon_y
+    outdoor_temp_signal: weaSta_reaWeaTDryBul_y
+    solar_signal: weaSta_reaWeaHGloHor_y
+    control_value_signal: oveTSet_u
+    control_activate_signal: oveTSet_activate
+    predictor_mpc_overrides:
+      pinn:
+        u_min_degC: 18.5
+        u_max_degC: 24.5
+        objective_weights:
+          comfort: 140.0
+          energy: 0.002
+          control_smoothness: 4.0
+        solver_maxiter: 140
+        solver_ftol: 5.0e-5
     zone_temp_candidates:
     - reaTZon_y
     - reaTRoo_y

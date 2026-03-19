@@ -97,9 +97,15 @@ def run_plausibility_checks(run: EpisodeRun) -> list[str]:
     records = data.get("step_records", [])
     declared_steps = int(data.get("n_steps", -1))
     control_interval_s = int(data.get("control_interval_s", 0))
+    resolved_signals = data.get("resolved_signals", {}) if isinstance(data.get("resolved_signals", {}), dict) else {}
+    mpc_config = data.get("mpc_config", {}) if isinstance(data.get("mpc_config", {}), dict) else {}
 
     if not isinstance(records, list) or not records:
         return ["missing_or_empty_step_records"]
+
+    for warning in data.get("mapping_warnings", []):
+        if isinstance(warning, str):
+            issues.append(warning)
 
     if declared_steps != len(records):
         issues.append(f"n_steps_mismatch:declared={declared_steps},actual={len(records)}")
@@ -135,6 +141,16 @@ def run_plausibility_checks(run: EpisodeRun) -> list[str]:
     if np.all(np.isfinite(u_heat)):
         if np.any(np.abs(np.diff(u_heat)) > 8.0):
             issues.append("large_control_jump_gt_8C_per_step")
+        u_min = _to_float(mpc_config.get("u_min_degC"))
+        u_max = _to_float(mpc_config.get("u_max_degC"))
+        if u_min is not None and len(u_heat) > 0:
+            sat_min = float(np.mean(np.abs(u_heat - u_min) < 1e-6))
+            if sat_min > 0.25:
+                issues.append("high_control_saturation_at_u_min_gt_25pct")
+        if u_max is not None and len(u_heat) > 0:
+            sat_max = float(np.mean(np.abs(u_heat - u_max) < 1e-6))
+            if sat_max > 0.25:
+                issues.append("high_control_saturation_at_u_max_gt_25pct")
     if np.all(np.isfinite(power)):
         if floor_area_m2 is not None and floor_area_m2 > 1e-9:
             power_density = power / floor_area_m2
@@ -154,6 +170,11 @@ def run_plausibility_checks(run: EpisodeRun) -> list[str]:
         if _is_finite(lo) and _is_finite(hi) and float(lo) > float(hi):
             issues.append(f"invalid_comfort_band_at_step_{i}")
             break
+
+    if not resolved_signals.get("outdoor_temp_signal"):
+        issues.append("missing_outdoor_temp_signal")
+    if not resolved_signals.get("solar_signal"):
+        issues.append("missing_solar_signal")
 
     return sorted(set(issues))
 
@@ -189,6 +210,10 @@ def build_kpi_rows(runs: list[EpisodeRun]) -> list[dict[str, Any]]:
                 "peak_power_W_per_m2": (peak_power_w / area_m2) if area_m2 and peak_power_w is not None else None,
                 "mpc_solve_time_mean_ms": diag.get("mpc_solve_time_mean_ms"),
                 "mpc_solve_time_p95_ms": diag.get("mpc_solve_time_p95_ms"),
+                "zone_signal_count": len((run.payload.get("resolved_signals", {}) or {}).get("zone_temp_signals", [])),
+                "control_signal_count": len((run.payload.get("resolved_signals", {}) or {}).get("control_value_signals", [])),
+                "outdoor_temp_signal": (run.payload.get("resolved_signals", {}) or {}).get("outdoor_temp_signal"),
+                "solar_signal": (run.payload.get("resolved_signals", {}) or {}).get("solar_signal"),
                 "tdis_tot": (chall.get("tdis_tot") or {}).get("value") if isinstance(chall.get("tdis_tot"), dict) else None,
                 "cost_tot": (chall.get("cost_tot") or {}).get("value") if isinstance(chall.get("cost_tot"), dict) else None,
             }
@@ -346,6 +371,10 @@ def main() -> int:
             "peak_power_W_per_m2",
             "mpc_solve_time_mean_ms",
             "mpc_solve_time_p95_ms",
+            "zone_signal_count",
+            "control_signal_count",
+            "outdoor_temp_signal",
+            "solar_signal",
             "tdis_tot",
             "cost_tot",
         ],

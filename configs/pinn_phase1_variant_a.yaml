@@ -1,0 +1,33 @@
+# Variant A: Gradient-balanced loss weighting
+# Automatically balances comfort and physics terms during training.
+# The model learns when to reduce heating to avoid upper-bound violations.
+
+study_id: pinn_phase1_variant_a_gradient_balance
+
+data:
+  dataset_root: datasets/phase1_singlezone
+
+model:
+  hidden_dim: 64
+  depth: 3
+  dropout: 0.0
+
+training:
+  seed: 42
+  device: cpu
+  batch_size: 256
+  epochs: 150
+  patience: 20
+  learning_rate: 0.001
+  weight_decay: 0.00001
+  # Comfort-focused physics weighting (lower than baseline to avoid over-constraining)
+  lambda_physics: 0.005
+  loss_weighting:
+    mode: gradient_balance
+    # Gradient-balanced weighting: automatically scales each loss term
+    # to keep gradients in similar magnitude, preventing one term from dominating.
+    gradient_balance:
+      ema_beta: 0.95          # EMA for gradient magnitude tracking
+      lambda_min: 1.0e-6      # Min weight floor to prevent zero weighting
+      lambda_max: 1.0e2       # Max weight ceiling to prevent extreme scaling
+      target_ratio: 1.0       # Target ratio of physics grad to data grad magnitude

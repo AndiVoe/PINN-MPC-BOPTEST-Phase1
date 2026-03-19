@@ -1,0 +1,9 @@
+[
+  {
+    "dataset_id": "tr_std_01",
+    "split": "train",
+    "weather_class": "standard",
+    "path": "datasets/eu/bestest_hydronic_heat_pump_fixcheck/json/tr_std_01.json",
+    "n_records": 672
+  }
+]

@@ -57,6 +57,95 @@ def _pick_first(candidates: list[str], available: set[str]) -> str | None:
     return None
 
 
+def _as_name_list(value: Any) -> list[str]:
+    if value is None:
+        return []
+    if isinstance(value, str):
+        return [value]
+    if isinstance(value, list) and all(isinstance(item, str) for item in value):
+        return list(value)
+    raise ValueError(f"Signal mapping must be a string or list[str], got: {value!r}")
+
+
+def _unique_in_order(names: list[str]) -> list[str]:
+    seen: set[str] = set()
+    out: list[str] = []
+    for name in names:
+        if name in seen:
+            continue
+        seen.add(name)
+        out.append(name)
+    return out
+
+
+def _validate_available(names: list[str], available: set[str], label: str) -> list[str]:
+    missing = [name for name in names if name not in available]
+    if missing:
+        raise RuntimeError(f"Could not resolve {label}: missing {missing}")
+    return names
+
+
+def _resolve_signal_group(
+    mappings: dict[str, Any],
+    *,
+    singular_key: str,
+    plural_key: str,
+    candidate_key: str,
+    available: set[str],
+    required: bool,
+    label: str,
+) -> list[str]:
+    explicit = _as_name_list(mappings.get(plural_key))
+    if not explicit:
+        explicit = _as_name_list(mappings.get(singular_key))
+    if explicit:
+        return _unique_in_order(_validate_available(explicit, available, label))
+
+    picked = _pick_first(mappings.get(candidate_key, []), available)
+    if picked is not None:
+        return [picked]
+    if required:
+        raise RuntimeError(f"Could not resolve {label}.")
+    return []
+
+
+def _resolve_optional_signal(
+    mappings: dict[str, Any],
+    *,
+    explicit_key: str,
+    candidate_key: str,
+    available: set[str],
+) -> str | None:
+    explicit = mappings.get(explicit_key)
+    if explicit is not None:
+        names = _validate_available(_as_name_list(explicit), available, explicit_key)
+        if len(names) != 1:
+            raise RuntimeError(f"{explicit_key} must resolve to exactly one signal.")
+        return names[0]
+    return _pick_first(mappings.get(candidate_key, []), available)
+
+
+def _resolve_fixed_control_commands(
+    mappings: dict[str, Any],
+    *,
+    available: set[str],
+) -> dict[str, float]:
+    raw = mappings.get("fixed_control_commands", {})
+    if raw is None:
+        return {}
+    if not isinstance(raw, dict):
+        raise ValueError("fixed_control_commands must be a mapping of signal->value.")
+    missing = [name for name in raw.keys() if name not in available]
+    if missing:
+        raise RuntimeError(f"Could not resolve fixed control command signals: {missing}")
+    parsed: dict[str, float] = {}
+    for key, value in raw.items():
+        if not isinstance(value, (int, float)):
+            raise ValueError(f"fixed_control_commands[{key}] must be numeric, got {value!r}")
+        parsed[key] = float(value)
+    return parsed
+
+
 def _to_degc(value: float | None) -> float | None:
     if value is None:
         return None
@@ -84,6 +173,38 @@ def _resolve_boptest_url(hint: str) -> str:
 
 def _ensure_dir(path: Path) -> None:
     path.mkdir(parents=True, exist_ok=True)
+
+
+def _has_valid_existing_output(path: Path, episode_id: str, predictor_label: str) -> bool:
+    if not path.exists():
+        return False
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except Exception:
+        return False
+    if not isinstance(payload, dict):
+        return False
+    return (
+        payload.get("episode_id") == episode_id
+        and payload.get("predictor_label") == predictor_label
+        and isinstance(payload.get("step_records"), list)
+        and len(payload.get("step_records", [])) > 0
+    )
+
+
+def _deep_merge(base: dict[str, Any], updates: dict[str, Any]) -> dict[str, Any]:
+    merged = dict(base)
+    for key, value in updates.items():
+        if isinstance(value, dict) and isinstance(merged.get(key), dict):
+            merged[key] = _deep_merge(merged[key], value)
+        else:
+            merged[key] = value
+    return merged
+
+
+def _control_uses_kelvin(signal_name: str) -> bool:
+    signal_name_l = signal_name.lower()
+    return any(token in signal_name_l for token in ("set", "tset", "zonset"))
 
 
 # ---------------------------------------------------------------------------
@@ -126,19 +247,76 @@ def run_mpc_episode(
     all_names = init_names | input_names
 
     mappings = case_mappings
-    zone_signal = _pick_first(mappings["zone_temp_candidates"], all_names)
-    outdoor_signal = _pick_first(mappings["outdoor_temp_candidates"], all_names)
-    solar_signal = _pick_first(mappings["solar_candidates"], all_names)
-    u_val_name = _pick_first(mappings["control_value_candidates"], input_names)
-    u_act_name = _pick_first(mappings["control_activate_candidates"], input_names)
+    zone_signals = _resolve_signal_group(
+        mappings,
+        singular_key="zone_temp_signal",
+        plural_key="zone_temp_signals",
+        candidate_key="zone_temp_candidates",
+        available=all_names,
+        required=True,
+        label="zone temperature signal",
+    )
+    outdoor_signal = _resolve_optional_signal(
+        mappings,
+        explicit_key="outdoor_temp_signal",
+        candidate_key="outdoor_temp_candidates",
+        available=all_names,
+    )
+    solar_signal = _resolve_optional_signal(
+        mappings,
+        explicit_key="solar_signal",
+        candidate_key="solar_candidates",
+        available=all_names,
+    )
+    u_val_names = _resolve_signal_group(
+        mappings,
+        singular_key="control_value_signal",
+        plural_key="control_value_signals",
+        candidate_key="control_value_candidates",
+        available=input_names,
+        required=True,
+        label="control input signal",
+    )
+    system_u_val_names = _resolve_signal_group(
+        mappings,
+        singular_key="system_control_value_signal",
+        plural_key="system_control_value_signals",
+        candidate_key="system_control_value_candidates",
+        available=input_names,
+        required=False,
+        label="system control input signal",
+    )
+    u_act_names = _resolve_signal_group(
+        mappings,
+        singular_key="control_activate_signal",
+        plural_key="control_activate_signals",
+        candidate_key="control_activate_candidates",
+        available=input_names,
+        required=False,
+        label="control activate signal",
+    )
+    system_u_act_names = _resolve_signal_group(
+        mappings,
+        singular_key="system_control_activate_signal",
+        plural_key="system_control_activate_signals",
+        candidate_key="system_control_activate_candidates",
+        available=input_names,
+        required=False,
+        label="system control activate signal",
+    )
+    fixed_control_cmd = _resolve_fixed_control_commands(mappings, available=input_names)
 
-    print(f"  Signals: zone={zone_signal}, outdoor={outdoor_signal}, "
-          f"solar={solar_signal}, u={u_val_name}", flush=True)
+    print(
+        f"  Signals: zone={zone_signals}, outdoor={outdoor_signal}, "
+        f"solar={solar_signal}, u={u_val_names}, system_u={system_u_val_names}",
+        flush=True,
+    )
 
-    if zone_signal is None:
-        raise RuntimeError("Could not resolve zone temperature signal.")
-    if u_val_name is None:
-        raise RuntimeError("Could not resolve control input signal.")
+    mapping_warnings: list[str] = []
+    if outdoor_signal is None:
+        mapping_warnings.append("missing_outdoor_temp_signal")
+    if solar_signal is None:
+        mapping_warnings.append("missing_solar_signal")
 
     forecast_points = []
     if outdoor_signal:
@@ -158,13 +336,16 @@ def run_mpc_episode(
     episode_wall_start = time.perf_counter()
 
     def _read_zone_temp(payload: dict) -> float:
-        val = payload.get(zone_signal)
-        if val is None:
-            raise RuntimeError(f"Zone signal '{zone_signal}' missing from payload.")
-        result = _to_degc(float(val))
-        if result is None:
-            raise RuntimeError("Could not decode zone temperature.")
-        return result
+        values: list[float] = []
+        for zone_signal in zone_signals:
+            val = payload.get(zone_signal)
+            if val is None:
+                raise RuntimeError(f"Zone signal '{zone_signal}' missing from payload.")
+            result = _to_degc(float(val))
+            if result is None:
+                raise RuntimeError(f"Could not decode zone temperature from '{zone_signal}'.")
+            values.append(result)
+        return sum(values) / len(values)
 
     def _read_power_components(payload: dict[str, Any]) -> dict[str, float]:
         p_heat = 0.0
@@ -226,11 +407,19 @@ def run_mpc_episode(
             time_s=t_s,
         )
 
-        # Apply setpoint to plant (convert degC -> K for oveTZonSet_u).
-        u_cmd = u_opt + 273.15 if ("Set" in u_val_name or "TSet" in u_val_name or "ZonSet" in u_val_name) else u_opt
-        control_cmd: dict[str, float] = {u_val_name: u_cmd}
-        if u_act_name:
+        control_cmd: dict[str, float] = {}
+        for u_val_name in u_val_names:
+            u_cmd = u_opt + 273.15 if _control_uses_kelvin(u_val_name) else u_opt
+            control_cmd[u_val_name] = u_cmd
+        for system_u_val_name in system_u_val_names:
+            u_cmd = u_opt + 273.15 if _control_uses_kelvin(system_u_val_name) else u_opt
+            control_cmd[system_u_val_name] = u_cmd
+        for u_act_name in u_act_names:
             control_cmd[u_act_name] = 1.0
+        for system_u_act_name in system_u_act_names:
+            control_cmd[system_u_act_name] = 1.0
+        for signal_name, signal_value in fixed_control_cmd.items():
+            control_cmd[signal_name] = signal_value
 
         next_payload = client.advance(control_cmd)
 
@@ -289,6 +478,18 @@ def run_mpc_episode(
         "start_time_s": start_time_s,
         "control_interval_s": step_s,
         "n_steps": n_steps,
+        "resolved_signals": {
+            "zone_temp_signals": zone_signals,
+            "outdoor_temp_signal": outdoor_signal,
+            "solar_signal": solar_signal,
+            "control_value_signals": u_val_names,
+            "control_activate_signals": u_act_names,
+            "system_control_value_signals": system_u_val_names,
+            "system_control_activate_signals": system_u_act_names,
+            "fixed_control_commands": fixed_control_cmd,
+            "has_forecast_signals": bool(forecast_points),
+        },
+        "mapping_warnings": mapping_warnings,
         "kpi_summary": challenge_kpis,
         "challenge_kpis": challenge_kpis,
         "diagnostic_kpis": diagnostic_kpis,
@@ -334,6 +535,11 @@ def main() -> None:
     parser.add_argument("--rc-scale-solar-gain", type=float, default=1.0)
     parser.add_argument("--rc-scale-hvac-gain", type=float, default=1.0)
     parser.add_argument("--rc-scale-capacity", type=float, default=1.0)
+    parser.add_argument(
+        "--resume-existing",
+        action="store_true",
+        help="Skip episodes that already have a valid output JSON file.",
+    )
     args = parser.parse_args()
 
     # ------------------------------------------------------------------ setup
@@ -378,10 +584,22 @@ def main() -> None:
     predictor_label = args.predictor_label.strip() or predictor_name
 
     # ------------------------------------------------------------------ solver
-    mpc = mpc_cfg.get("mpc", {})
+    case_mpc_overrides = case_mappings.get("mpc_overrides", {})
+    predictor_mpc_overrides = (case_mappings.get("predictor_mpc_overrides", {}) or {}).get(predictor_name, {})
+    mpc = _deep_merge(mpc_cfg.get("mpc", {}), case_mpc_overrides)
+    mpc = _deep_merge(mpc, predictor_mpc_overrides)
     horizon_s = int(mpc.get("horizon_s", 21600))
     dt_s = int(defaults["control_interval_s"])
     horizon_steps = horizon_s // dt_s
+
+    if case_mpc_overrides:
+        print(f"Applying case-specific MPC overrides: {json.dumps(case_mpc_overrides)}", flush=True)
+    if predictor_mpc_overrides:
+        print(
+            f"Applying predictor-specific MPC overrides for {predictor_name}: "
+            f"{json.dumps(predictor_mpc_overrides)}",
+            flush=True,
+        )
 
     comfort_occ = tuple(mpc.get("comfort_bounds_degC", {}).get("occupied", [21.0, 24.0]))
     comfort_unocc = tuple(mpc.get("comfort_bounds_degC", {}).get("unoccupied", [15.0, 30.0]))
@@ -443,6 +661,11 @@ def main() -> None:
         for episode in target_episodes:
             ep_id = episode["id"]
             out_path = output_dir / f"{ep_id}.json"
+
+            if args.resume_existing and _has_valid_existing_output(out_path, ep_id, predictor_label):
+                print(f"Skipping episode {ep_id}: existing output found at {out_path}", flush=True)
+                continue
+
             print(f"\n{'='*60}", flush=True)
             print(f"Episode {ep_id} | predictor={predictor_label}", flush=True)
             print(f"{'='*60}", flush=True)
@@ -457,6 +680,15 @@ def main() -> None:
                     solver=solver,
                     predictor_name=predictor_label,
                 )
+                result["mpc_config"] = {
+                    "horizon_s": horizon_s,
+                    "u_min_degC": float(mpc.get("u_min_degC", 18.0)),
+                    "u_max_degC": float(mpc.get("u_max_degC", 26.0)),
+                    "comfort_bounds_degC": mpc.get("comfort_bounds_degC", {}),
+                    "objective_weights": mpc.get("objective_weights", {}),
+                    "solver_maxiter": int(mpc.get("solver_maxiter", 100)),
+                    "solver_ftol": float(mpc.get("solver_ftol", 1e-4)),
+                }
                 result["predictor_base"] = predictor_name
                 result["predictor_label"] = predictor_label
                 if predictor_name == "rc":

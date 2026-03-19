@@ -70,6 +70,22 @@ Physics-Informed Neural Surrogates versus Reduced-Order RC Models for European B
 3. Stage-2 long-horizon RC vs PINN comparison.
 4. Runtime-performance vs control-quality tradeoff plots.
 
+### Current quantitative snapshot (4 completed benchmark cases)
+
+| Case | RC Comfort (Kh) | PINN Comfort (Kh) | Delta (PINN - RC) | Relative Change | Better |
+|---|---:|---:|---:|---:|---|
+| bestest_hydronic | 71.1 | 65.6 | -5.6 | -7.9% | PINN |
+| bestest_hydronic_heat_pump | 18.9 | 91.1 | +72.2 | +381.9% | RC |
+| singlezone_commercial_hydronic | 12.8 | 5.3 | -7.5 | -58.5% | PINN |
+| twozone_apartment_hydronic | 190.6 | 105.0 | -85.6 | -44.9% | PINN |
+
+| Predictor | Cases included | Mean comfort (Kh) | Mean challenge discomfort (tdis_tot) | Mean energy (Wh) | Mean challenge cost (cost_tot) | Mean peak power (W) | Mean wall time (s) |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| RC | 4 | 73.37 | 105.06 | 1677987.60 | 0.097347 | 32787.62 | 46.33 |
+| PINN | 4 | 66.76 | 89.70 | 888679.60 | 0.077169 | 30192.75 | 388.18 |
+
+Note: `multizone_residential_hydronic` is still excluded from these headline values pending separate recovery/debug completion.
+
 ## 4. Discussion
 
 1. Where PINN provides clear value over RC.

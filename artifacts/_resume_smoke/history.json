@@ -1,0 +1,29 @@
+[
+  {
+    "epoch": 1.0,
+    "train_loss": 0.06505722293775516,
+    "train_rmse_degC": 0.2706144585347937,
+    "val_loss": 0.0101212939100365,
+    "val_rmse_degC": 0.1062811313923433,
+    "loss_weight_mode": "manual",
+    "lambda_physics_eff": 0.01
+  },
+  {
+    "epoch": 2.0,
+    "train_loss": 0.007743407123649499,
+    "train_rmse_degC": 0.09315764322909893,
+    "val_loss": 0.004779210709723826,
+    "val_rmse_degC": 0.07330946431110456,
+    "loss_weight_mode": "manual",
+    "lambda_physics_eff": 0.01
+  },
+  {
+    "epoch": 3.0,
+    "train_loss": 0.00579883830142529,
+    "train_rmse_degC": 0.08060512572010084,
+    "val_loss": 0.00448927092095268,
+    "val_rmse_degC": 0.07100674033020264,
+    "loss_weight_mode": "manual",
+    "lambda_physics_eff": 0.01
+  }
+]
