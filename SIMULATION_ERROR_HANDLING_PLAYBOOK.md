@@ -116,3 +116,38 @@ foreach($line in $active){
 - Signal resolution errors are usually manifest mapping issues, not optimizer instability.
 - Incomplete or malformed datasets propagate into training errors; always validate dataset index before retraining.
 - Duplicate orchestrator processes can create misleading progress signals and should be eliminated early.
+
+## 7) 2026-03-19 Incident Update (Applied Fixes)
+
+1. **Heat-pump control mapping hardening in dataset generation**
+- Issue observed: heat-pump datasets were generated with `meta.control_signal = null`, forcing fallback to heating proxy and weakening retraining quality.
+- Fix applied: generator now prioritizes explicit manifest control mapping before candidate auto-resolution for control value/activate signals.
+- Verification command:
+```powershell
+$hp = Get-ChildItem 'datasets/eu/bestest_hydronic_heat_pump/json/*.json'
+foreach($f in $hp){
+  $j = Get-Content $f.FullName -Raw | ConvertFrom-Json
+  "{0}: control_signal={1}; activate_signal={2}; heating_proxy={3}" -f $f.Name, $j.meta.control_signal, $j.meta.activate_signal, $j.meta.heating_proxy_signal
+}
+```
+
+2. **Heat-pump case manifest alignment for control candidates**
+- Issue observed: auto-generated manifest variants could omit or mis-prioritize the intended heat-pump control channel.
+- Fix applied: ensured heat-pump case mapping keeps the correct control path (`oveTSet_u` + `oveTSet_activate`) and candidate list includes these first.
+
+3. **Strict fairness validation path (Protocol A) executed**
+- Issue observed: predictor-specific overrides can mask root-cause diagnosis.
+- Fix applied: use Protocol A manifests (no predictor-specific overrides) for confirmation runs before broader campaign conclusions.
+
+4. **Live status interpretation for operational decisions**
+- Rule used today: treat `finished_with_failures` as terminal for campaign bookkeeping, and treat `running` as active for partial-result checkpoint pushes.
+- Check command:
+```powershell
+Get-Content results/eu_rc_vs_pinn_heating/runtime_discovery/campaign_live_status.json -Raw
+```
+
+5. **PowerShell invocation reliability for Python commands**
+- Use call operator form to avoid command parsing edge cases:
+```powershell
+& ".venv/Scripts/python.exe" -m py_compile scripts/run_eu_campaign_stage1.py
+```

@@ -1,6 +1,6 @@
 {
   "started_utc": "2026-03-19T14:06:25.191849+00:00",
-  "updated_utc": "2026-03-19T15:25:14.891163+00:00",
+  "updated_utc": "2026-03-19T15:28:55.694488+00:00",
   "state": "running",
   "mode": "full_campaign",
   "episode_type": "FULL CAMPAIGN (heating)",
@@ -12,7 +12,7 @@
   "current_step": "benchmark_rc",
   "current_step_attempt": 1,
   "step_started_utc": "2026-03-19T15:11:12.867462+00:00",
-  "step_elapsed_s": 841,
+  "step_elapsed_s": 1062,
   "last_step_status": "ok",
   "last_error": null,
   "failure_summary": "results/eu_rc_vs_pinn_heating/stage1_failures.json",
