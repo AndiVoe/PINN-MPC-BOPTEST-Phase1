@@ -13,7 +13,7 @@ from typing import Any
 import numpy as np
 from scipy.optimize import Bounds, minimize
 
-from .occupancy import comfort_bounds_sequence
+from .occupancy import OccupancySchedule, comfort_bounds_sequence
 from .predictors import PredictorBase
 
 
@@ -38,6 +38,9 @@ class MPCSolver:
         SLSQP function tolerance.
     occupied_bounds, unoccupied_bounds
         Comfort temperature ranges (degC) used for occupancy-aware penalties.
+    occupancy_schedule
+        OccupancySchedule instance defining when occupied hours occur.
+        If None, uses global default (08:00-18:00 daily).
     """
 
     def __init__(
@@ -55,6 +58,7 @@ class MPCSolver:
         ftol: float = 1e-4,
         occupied_bounds: tuple[float, float] = (21.0, 24.0),
         unoccupied_bounds: tuple[float, float] = (15.0, 30.0),
+        occupancy_schedule: OccupancySchedule | None = None,
     ) -> None:
         self.predictor = predictor
         self.horizon = horizon_steps
@@ -68,6 +72,7 @@ class MPCSolver:
         self.ftol = ftol
         self.occupied_bounds = occupied_bounds
         self.unoccupied_bounds = unoccupied_bounds
+        self.occupancy_schedule = occupancy_schedule
 
         # Warm-start storage: shift-by-1 between steps.
         self._prev_solution: np.ndarray | None = None
@@ -113,7 +118,8 @@ class MPCSolver:
         wseq = weather_forecast[:n]
 
         cb = comfort_bounds_sequence(
-            time_s, n, int(self.dt_s), self.occupied_bounds, self.unoccupied_bounds
+            time_s, n, int(self.dt_s), self.occupied_bounds, self.unoccupied_bounds,
+            schedule=self.occupancy_schedule
         )
 
         # Warm start: shift previous solution or repeat current setpoint.

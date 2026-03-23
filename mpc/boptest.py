@@ -127,6 +127,16 @@ class BoptestClient:
         resp.raise_for_status()
         return resp.json().get("payload", {})
 
+    def get_forecast_points(self) -> set[str]:
+        resp = requests.get(f"{self.base_url}/forecast_points/{self._testid()}", timeout=60)
+        resp.raise_for_status()
+        payload = resp.json().get("payload", {})
+        if isinstance(payload, dict):
+            return set(payload.keys())
+        if isinstance(payload, list):
+            return {str(x) for x in payload}
+        return set()
+
     def get_forecast(
         self,
         point_names: list[str],

@@ -1,0 +1,50 @@
+version: 1
+study_id: pinn_vs_whitebox_mpc
+phase: phase1_singlezone
+
+defaults:
+  control_interval_s: 900
+  episode_length_days: 30
+  warmup_period_s: 604800
+  start_time_s: 0
+
+case_mappings:
+  singlezone_commercial_hydronic:
+    zone_temp_candidates:
+      - reaTZon_y
+      - TRooAir_y
+      - zon_reaTRooAir_y
+    outdoor_temp_candidates:
+      - weaSta_reaWeaTDryBul_y
+      - TDryBul_y
+      - TDryBul
+    solar_candidates:
+      - weaSta_reaWeaHGloHor_y
+      - HGloHor_y
+      - HGloHor
+    control_value_candidates:
+      - oveTZonSet_u
+      - dh_oveTSupSetHea_u
+      - oveValRad_u
+      - oveTSupSetAir_u
+    control_activate_candidates:
+      - oveTZonSet_activate
+      - dh_oveTSupSetHea_activate
+      - oveValRad_activate
+      - oveTSupSetAir_activate
+
+episodes:
+  - id: te_long_01
+    split: future_test
+    weather_class: standard_long
+    start_time_s: 0
+
+  - id: te_long_02
+    split: future_test
+    weather_class: winter_long
+    start_time_s: 0
+
+  - id: te_long_03
+    split: future_test
+    weather_class: winter_long
+    start_time_s: 0

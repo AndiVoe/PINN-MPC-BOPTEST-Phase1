@@ -300,22 +300,97 @@ def get_redis_active_tests(redis_name: str = "project1-boptest-redis-1") -> list
     return out
 
 
-def recover_stale_queued_tests(url: str, redis_name: str = "project1-boptest-redis-1") -> bool:
+def get_redis_active_test_details(
+    redis_name: str = "project1-boptest-redis-1",
+) -> list[dict[str, int | str]] | None:
+    if shutil.which("docker") is None:
+        return None
+
+    script = (
+        "local out={}; "
+        "for _,k in ipairs(redis.call('keys','tests:*')) do "
+        "local s=redis.call('hget',k,'status'); "
+        "if s=='Queued' or s=='Running' then "
+        "local ts=redis.call('hget',k,'timestamp'); "
+        "if not ts then ts='0' end; "
+        "table.insert(out,k..'='..s..'='..ts); "
+        "end; end; return out"
+    )
+    res = _run_capture(["docker", "exec", redis_name, "redis-cli", "--raw", "EVAL", script, "0"])
+    if res.returncode != 0:
+        return None
+
+    out: list[dict[str, int | str]] = []
+    for raw in (res.stdout or "").splitlines():
+        line = raw.strip()
+        if not line or not line.startswith("tests:"):
+            continue
+        parts = line.split("=", 2)
+        if len(parts) != 3:
+            continue
+        key, status, ts_raw = parts
+        try:
+            ts_ms = int(ts_raw)
+        except ValueError:
+            ts_ms = 0
+        out.append(
+            {
+                "test_id": key.split(":", 1)[1],
+                "status": status,
+                "timestamp_ms": ts_ms,
+            }
+        )
+    return out
+
+
+def restart_boptest_services(services: list[str] | None = None) -> bool:
+    if shutil.which("docker") is None:
+        return False
+    svc = services or ["project1-boptest-web-1", "project1-boptest-worker-1"]
+    cmd = ["docker", "restart", *svc]
+    res = _run_capture(cmd)
+    return res.returncode == 0
+
+
+def recover_stale_queued_tests(
+    url: str,
+    redis_name: str = "project1-boptest-redis-1",
+    stale_queued_age_s: int = 180,
+    allow_container_restart: bool = True,
+) -> bool:
     stats = get_redis_queue_stats(redis_name=redis_name)
     if stats is None:
         return False
-    if int(stats.get("tests_queued", 0)) <= 0 or int(stats.get("tests_running", 0)) > 0:
+    if int(stats.get("tests_queued", 0)) <= 0:
         return False
 
-    active = get_redis_active_tests(redis_name=redis_name)
-    if active is None:
+    active_details = get_redis_active_test_details(redis_name=redis_name)
+    if active_details is None:
         return False
 
-    to_stop = [test_id for test_id, state in active if state == "Queued"]
+    queued = [x for x in active_details if x.get("status") == "Queued"]
+    running = [x for x in active_details if x.get("status") == "Running"]
+    if not queued:
+        return False
+
+    now_ms = int(time.time() * 1000)
+    oldest_queued_ms = min(int(x.get("timestamp_ms", 0) or 0) for x in queued)
+    oldest_age_s = max(0, (now_ms - oldest_queued_ms) // 1000) if oldest_queued_ms > 0 else 0
+
+    # Recovery is only appropriate when queue is stale and nothing is actively running.
+    if running:
+        return False
+    if oldest_age_s < max(30, int(stale_queued_age_s)):
+        return False
+
+    to_stop = [str(x["test_id"]) for x in queued]
     if not to_stop:
         return False
 
-    print(f"[queue-guard] Attempting stale queue cleanup for {len(to_stop)} queued test(s) ...")
+    print(
+        "[queue-guard] Attempting stale queue cleanup for "
+        f"{len(to_stop)} queued test(s), oldest_age_s={oldest_age_s} ..."
+    )
     stopped = 0
     base = url.rstrip("/")
     for test_id in to_stop:
@@ -326,17 +401,30 @@ def recover_stale_queued_tests(url: str, redis_name: str = "project1-boptest-red
         except (urllib.error.URLError, TimeoutError):
             continue
 
-    if stopped <= 0:
-        return False
-
+    recovered = stopped > 0
     time.sleep(2)
+
     post = get_redis_queue_stats(redis_name=redis_name)
     if post is not None:
         print(
             "[queue-guard] Cleanup result: "
             f"jobs={post['jobs']} queued={post['tests_queued']} running={post['tests_running']}"
         )
-    return True
+
+    # If stale queue still remains, restart web+worker once.
+    if allow_container_restart and post is not None and int(post.get("tests_queued", 0)) > 0 and int(post.get("tests_running", 0)) == 0:
+        print("[queue-guard] Queue still stale after stop cleanup; restarting web/worker ...")
+        if restart_boptest_services():
+            recovered = True
+            time.sleep(5)
+            post2 = get_redis_queue_stats(redis_name=redis_name)
+            if post2 is not None:
+                print(
+                    "[queue-guard] Post-restart queue status: "
+                    f"jobs={post2['jobs']} queued={post2['tests_queued']} running={post2['tests_running']}"
+                )
+
+    return recovered
 
 
 def clear_stale_jobs_queue_if_idle(redis_name: str = "project1-boptest-redis-1") -> bool:
@@ -361,6 +449,8 @@ def enforce_queue_guard(
     url: str | None = None,
     auto_recover_once: bool = False,
     redis_name: str = "project1-boptest-redis-1",
+    stale_queued_age_s: int = 180,
+    allow_container_restart: bool = True,
 ) -> None:
     if max_jobs <= 0 and max_queued_tests <= 0:
         return
@@ -381,7 +471,14 @@ def enforce_queue_guard(
         return items
 
     violations = _collect_violations(stats)
-    if violations and auto_recover_once and url:
+    should_try_stale_recover = (
+        auto_recover_once
+        and url is not None
+        and int(stats.get("tests_queued", 0)) > 0
+        and int(stats.get("tests_running", 0)) == 0
+    )
+
+    if (violations or should_try_stale_recover) and auto_recover_once and url:
         recovered = recover_stale_queued_tests(url=url, redis_name=redis_name)
         if recovered:
             refreshed = get_redis_queue_stats(redis_name=redis_name)
@@ -452,6 +549,17 @@ def main() -> int:
         type=int,
         default=6,
         help="Fail fast when Redis tests in Queued state exceed this threshold (<=0 disables).",
+    )
+    parser.add_argument(
+        "--stale-queued-age-s",
+        type=int,
+        default=180,
+        help="Auto-recover if queued tests are older than this age (and no tests are Running).",
+    )
+    parser.add_argument(
+        "--no-queue-container-restart",
+        action="store_true",
+        help="Disable automatic web/worker restart during stale queue recovery.",
     )
     args = parser.parse_args()
     
@@ -585,6 +693,8 @@ def main() -> int:
             max_queued_tests=int(args.max_queued_tests),
             url=args.url,
             auto_recover_once=True,
+            stale_queued_age_s=int(args.stale_queued_age_s),
+            allow_container_restart=not bool(args.no_queue_container_restart),
         )
     except Exception as exc:
         update_status(state="blocked_queue", last_error=str(exc), heartbeat="queue guard failed")
@@ -625,6 +735,8 @@ def main() -> int:
                         max_queued_tests=int(args.max_queued_tests),
                         url=args.url,
                         auto_recover_once=True,
+                        stale_queued_age_s=int(args.stale_queued_age_s),
+                        allow_container_restart=not bool(args.no_queue_container_restart),
                     )
 
                 step_t0 = time.time()

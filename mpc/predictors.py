@@ -19,6 +19,7 @@ Both expose the same interface used by MPCSolver:
 from __future__ import annotations
 
 import math
+import json
 from pathlib import Path
 from typing import Any
 
@@ -107,8 +108,44 @@ class RCPredictor(PredictorBase):
 
     @classmethod
     def from_checkpoint(cls, checkpoint_path: Path | str) -> "RCPredictor":
-        ckpt = torch.load(checkpoint_path, map_location="cpu", weights_only=False)
+        ckpt_path = Path(checkpoint_path)
+        ckpt = torch.load(ckpt_path, map_location="cpu", weights_only=False)
         p = ckpt.get("physics_parameters", {})
+
+        # Backward compatibility: older checkpoints do not store physics_parameters.
+        # In that case, recover them from model_state_dict log-parameters.
+        if not p and isinstance(ckpt.get("model_state_dict"), dict):
+            state = ckpt["model_state_dict"]
+
+            def _softplus_from_state(name: str) -> float | None:
+                tensor = state.get(name)
+                if tensor is None:
+                    return None
+                value = float(torch.nn.functional.softplus(tensor.detach().cpu()).item())
+                return value
+
+            ua = _softplus_from_state("log_ua")
+            solar_gain = _softplus_from_state("log_solar_gain")
+            hvac_gain = _softplus_from_state("log_hvac_gain")
+            capacity = _softplus_from_state("log_capacity")
+            if None not in (ua, solar_gain, hvac_gain, capacity):
+                p = {
+                    "ua": ua,
+                    "solar_gain": solar_gain,
+                    "hvac_gain": hvac_gain,
+                    "capacity": capacity,
+                }
+
+        # Final fallback: metrics.json stores learned physics parameters.
+        if not p:
+            metrics_path = ckpt_path.parent / "metrics.json"
+            if metrics_path.exists():
+                try:
+                    metrics = json.loads(metrics_path.read_text(encoding="utf-8"))
+                    p = metrics.get("physics_parameters", {}) or {}
+                except Exception:
+                    p = {}
+
         return cls(
             ua=float(p.get("ua", 0.185)),
             solar_gain=float(p.get("solar_gain", 0.347)),

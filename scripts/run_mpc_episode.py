@@ -33,7 +33,7 @@ if str(ROOT) not in sys.path:
 
 from mpc.boptest import BoptestClient
 from mpc.kpi import KPILogger
-from mpc.occupancy import comfort_bounds, is_occupied
+from mpc.occupancy import comfort_bounds, is_occupied, OccupancySchedule
 from mpc.predictors import PINNPredictor, RCPredictor
 from mpc.solver import MPCSolver
 
@@ -220,6 +220,7 @@ def run_mpc_episode(
     defaults: dict[str, Any],
     solver: MPCSolver,
     predictor_name: str,
+    occupancy_schedule: OccupancySchedule | None = None,
 ) -> dict[str, Any]:
     """
     Run one full MPC episode against the BOPTEST plant.
@@ -304,11 +305,30 @@ def run_mpc_episode(
         required=False,
         label="system control activate signal",
     )
+    power_heat_names = _resolve_signal_group(
+        mappings,
+        singular_key="power_heating_signal",
+        plural_key="power_heating_signals",
+        candidate_key="power_heating_candidates",
+        available=all_names,
+        required=False,
+        label="heating power signal",
+    )
+    power_ele_names = _resolve_signal_group(
+        mappings,
+        singular_key="power_electric_signal",
+        plural_key="power_electric_signals",
+        candidate_key="power_electric_candidates",
+        available=all_names,
+        required=False,
+        label="electric power signal",
+    )
     fixed_control_cmd = _resolve_fixed_control_commands(mappings, available=input_names)
 
     print(
         f"  Signals: zone={zone_signals}, outdoor={outdoor_signal}, "
-        f"solar={solar_signal}, u={u_val_names}, system_u={system_u_val_names}",
+        f"solar={solar_signal}, u={u_val_names}, system_u={system_u_val_names}, "
+        f"p_heat={power_heat_names}, p_ele={power_ele_names}",
         flush=True,
     )
 
@@ -317,12 +337,30 @@ def run_mpc_episode(
         mapping_warnings.append("missing_outdoor_temp_signal")
     if solar_signal is None:
         mapping_warnings.append("missing_solar_signal")
+    
+    # Check for multi-zone control without proper vectorization
+    if len(u_val_names) > 1 or len(system_u_val_names) > 1:
+        mapping_warnings.append(
+            f"multi_zone_control_uses_scalar_setpoint: {len(u_val_names)} zone(s) + "
+            f"{len(system_u_val_names)} system control signal(s) use the same scalar MPC output. "
+            f"For independent per-zone optimization, solver vectorization required."
+        )
 
     forecast_points = []
-    if outdoor_signal:
+    forecast_available: set[str] = set()
+    try:
+        forecast_available = client.get_forecast_points()
+    except Exception as exc:
+        mapping_warnings.append(f"forecast_points_unavailable:{type(exc).__name__}")
+
+    if outdoor_signal and (not forecast_available or outdoor_signal in forecast_available):
         forecast_points.append(outdoor_signal)
-    if solar_signal:
+    elif outdoor_signal:
+        mapping_warnings.append(f"outdoor_not_in_forecast_points:{outdoor_signal}")
+    if solar_signal and (not forecast_available or solar_signal in forecast_available):
         forecast_points.append(solar_signal)
+    elif solar_signal:
+        mapping_warnings.append(f"solar_not_in_forecast_points:{solar_signal}")
 
     horizon_s = int(solver.horizon * solver.dt_s)
 
@@ -348,6 +386,15 @@ def run_mpc_episode(
         return sum(values) / len(values)
 
     def _read_power_components(payload: dict[str, Any]) -> dict[str, float]:
+        if power_heat_names or power_ele_names:
+            p_heat = sum(max(0.0, float(payload.get(name, 0.0) or 0.0)) for name in power_heat_names)
+            p_ele = sum(max(0.0, float(payload.get(name, 0.0) or 0.0)) for name in power_ele_names)
+            return {
+                "power_total_w": p_heat + p_ele,
+                "power_heating_w": p_heat,
+                "power_electric_w": p_ele,
+            }
+
         p_heat = 0.0
         p_ele = 0.0
         p_other = 0.0
@@ -358,7 +405,7 @@ def run_mpc_episode(
             if not (value == value):
                 continue
             key_l = key.lower()
-            if any(token in key_l for token in ("reaqhea", "qhea", "district", "dh_")):
+            if any(token in key_l for token in ("reaqhea", "qhea", "reahea", "district", "dh_")):
                 p_heat += max(0.0, value)
             elif any(token in key_l for token in ("reap", "pele", "pel", "power", "ele")):
                 p_ele += max(0.0, value)
@@ -408,9 +455,14 @@ def run_mpc_episode(
         )
 
         control_cmd: dict[str, float] = {}
+        # Apply the scalar MPC setpoint to all zone control value signals.
+        # Note: For truly independent per-zone control, the solver would need to be
+        # vectorized (multi-input optimization). Currently, we use the average zone
+        # temperature and apply the resulting setpoint uniformly across all zones.
         for u_val_name in u_val_names:
             u_cmd = u_opt + 273.15 if _control_uses_kelvin(u_val_name) else u_opt
             control_cmd[u_val_name] = u_cmd
+        # Apply same setpoint to system-level controls (e.g., supply temperature setpoint)
         for system_u_val_name in system_u_val_names:
             u_cmd = u_opt + 273.15 if _control_uses_kelvin(system_u_val_name) else u_opt
             control_cmd[system_u_val_name] = u_cmd
@@ -425,8 +477,8 @@ def run_mpc_episode(
 
         # Record KPIs using current-step T_zone and power from the advance response.
         pwr = _read_power_components(next_payload)
-        t_lo, t_hi = comfort_bounds(t_s)
-        occupied = is_occupied(t_s)
+        t_lo, t_hi = comfort_bounds(t_s, schedule=occupancy_schedule)
+        occupied = is_occupied(t_s, occupancy_schedule)
 
         kpi.record(
             time_s=t_s,
@@ -486,6 +538,8 @@ def run_mpc_episode(
             "control_activate_signals": u_act_names,
             "system_control_value_signals": system_u_val_names,
             "system_control_activate_signals": system_u_act_names,
+            "power_heating_signals": power_heat_names,
+            "power_electric_signals": power_ele_names,
             "fixed_control_commands": fixed_control_cmd,
             "has_forecast_signals": bool(forecast_points),
         },
@@ -604,6 +658,10 @@ def main() -> None:
     comfort_occ = tuple(mpc.get("comfort_bounds_degC", {}).get("occupied", [21.0, 24.0]))
     comfort_unocc = tuple(mpc.get("comfort_bounds_degC", {}).get("unoccupied", [15.0, 30.0]))
     weights = mpc.get("objective_weights", {})
+    
+    # Extract occupancy schedule from case mappings (optional)
+    occ_cfg = case_mappings.get("occupancy_schedule", {}) or {}
+    occupancy_schedule_local = OccupancySchedule.from_dict(occ_cfg) if occ_cfg else None
 
     solver = MPCSolver(
         predictor=predictor,
@@ -618,6 +676,7 @@ def main() -> None:
         ftol=float(mpc.get("solver_ftol", 1e-4)),
         occupied_bounds=comfort_occ,
         unoccupied_bounds=comfort_unocc,
+        occupancy_schedule=occupancy_schedule_local,
     )
 
     # ------------------------------------------------------------------ connect
@@ -679,6 +738,7 @@ def main() -> None:
                     defaults=defaults,
                     solver=solver,
                     predictor_name=predictor_label,
+                    occupancy_schedule=occupancy_schedule_local,
                 )
                 result["mpc_config"] = {
                     "horizon_s": horizon_s,

@@ -176,6 +176,57 @@ def _build_loader(dataset: Dataset[dict[str, torch.Tensor]], batch_size: int, sh
     return DataLoader(dataset, batch_size=batch_size, shuffle=shuffle, drop_last=False)
 
 
+class RolloutWindowDataset(Dataset[dict[str, torch.Tensor]]):
+    """Fixed-horizon windows for trajectory-consistent multi-step training."""
+
+    def __init__(self, windows: list[list[Sample]]) -> None:
+        if not windows:
+            raise ValueError("RolloutWindowDataset requires at least one window.")
+        self.windows = windows
+
+    def __len__(self) -> int:
+        return len(self.windows)
+
+    def __getitem__(self, index: int) -> dict[str, torch.Tensor]:
+        window = self.windows[index]
+        first = window[0]
+        t_outdoor_seq = [sample.t_outdoor for sample in window]
+        h_global_seq = [sample.h_global for sample in window]
+        u_heating_seq = [sample.u_heating for sample in window]
+        dt_s_seq = [sample.dt_s for sample in window]
+        cyc_seq = [sample.features[-4:] for sample in window]
+        target_seq = [sample.target_next_t_zone for sample in window]
+        return {
+            "init_t_zone": torch.tensor(first.t_zone, dtype=torch.float32),
+            "init_prev_u": torch.tensor(first.u_heating, dtype=torch.float32),
+            "t_outdoor_seq": torch.tensor(t_outdoor_seq, dtype=torch.float32),
+            "h_global_seq": torch.tensor(h_global_seq, dtype=torch.float32),
+            "u_heating_seq": torch.tensor(u_heating_seq, dtype=torch.float32),
+            "dt_s_seq": torch.tensor(dt_s_seq, dtype=torch.float32),
+            "cyc_seq": torch.tensor(cyc_seq, dtype=torch.float32),
+            "target_seq": torch.tensor(target_seq, dtype=torch.float32),
+        }
+
+
+def _build_rollout_windows(
+    episodes: dict[str, list[Sample]],
+    horizon_steps: int,
+    max_windows_per_episode: int,
+) -> list[list[Sample]]:
+    windows: list[list[Sample]] = []
+    for samples in episodes.values():
+        ordered = sorted(samples, key=lambda sample: sample.time_s)
+        if len(ordered) < horizon_steps:
+            continue
+        max_start = len(ordered) - horizon_steps
+        starts = list(range(max_start + 1))
+        if max_windows_per_episode > 0 and len(starts) > max_windows_per_episode:
+            starts = np.linspace(0, max_start, num=max_windows_per_episode, dtype=int).tolist()
+        for start in starts:
+            windows.append(ordered[start : start + horizon_steps])
+    return windows
+
+
 def _run_epoch(
     model: SingleZonePINN,
     loader: DataLoader,
@@ -230,6 +281,117 @@ def _run_epoch(
         errors.extend(float(value) for value in batch_errors)
 
         batch_size = target.shape[0]
+        total_count += batch_size
+        total_loss += float(loss.detach().cpu()) * batch_size
+        total_data_loss += float(data_loss.detach().cpu()) * batch_size
+        total_physics_loss += float(physics_loss.detach().cpu()) * batch_size
+
+    return {
+        "loss": total_loss / max(total_count, 1),
+        "data_loss": total_data_loss / max(total_count, 1),
+        "physics_loss": total_physics_loss / max(total_count, 1),
+        "rmse_degC": _rmse(errors),
+        "mae_degC": _mae(errors),
+    }
+
+
+def _run_rollout_epoch(
+    model: SingleZonePINN,
+    loader: DataLoader,
+    optimizer: torch.optim.Optimizer | None,
+    stats: NormalizationStats,
+    device: torch.device,
+    loss_weighter: LossWeighter,
+) -> dict[str, float]:
+    mse_loss = nn.MSELoss()
+    training = optimizer is not None
+    if training:
+        model.train()
+    else:
+        model.eval()
+
+    feature_mean = torch.tensor(stats.feature_mean, dtype=torch.float32, device=device)
+    feature_std = torch.tensor(stats.feature_std, dtype=torch.float32, device=device)
+    target_mean = torch.tensor(stats.target_mean, dtype=torch.float32, device=device)
+    target_std = torch.tensor(stats.target_std, dtype=torch.float32, device=device)
+
+    total_loss = 0.0
+    total_data_loss = 0.0
+    total_physics_loss = 0.0
+    total_count = 0
+    errors: list[float] = []
+
+    for batch in loader:
+        init_t_zone = batch["init_t_zone"].to(device)
+        init_prev_u = batch["init_prev_u"].to(device)
+        t_outdoor_seq = batch["t_outdoor_seq"].to(device)
+        h_global_seq = batch["h_global_seq"].to(device)
+        u_heating_seq = batch["u_heating_seq"].to(device)
+        dt_s_seq = batch["dt_s_seq"].to(device)
+        cyc_seq = batch["cyc_seq"].to(device)
+        target_seq = batch["target_seq"].to(device)
+
+        context = torch.enable_grad() if training else torch.no_grad()
+        with context:
+            current_temp = init_t_zone
+            prev_u = init_prev_u
+            predicted_steps: list[torch.Tensor] = []
+            correction_steps: list[torch.Tensor] = []
+            horizon_steps = target_seq.shape[1]
+            for step in range(horizon_steps):
+                t_outdoor = t_outdoor_seq[:, step]
+                h_global = h_global_seq[:, step]
+                u_heating = u_heating_seq[:, step]
+                dt_s = dt_s_seq[:, step]
+                cyc = cyc_seq[:, step, :]
+                delta_u = u_heating - prev_u
+
+                features = torch.stack(
+                    [
+                        current_temp,
+                        t_outdoor,
+                        h_global,
+                        u_heating,
+                        delta_u,
+                        cyc[:, 0],
+                        cyc[:, 1],
+                        cyc[:, 2],
+                        cyc[:, 3],
+                    ],
+                    dim=1,
+                )
+                normalized_features = (features - feature_mean) / feature_std
+                outputs = model(normalized_features, current_temp, t_outdoor, h_global, u_heating, dt_s)
+                predicted_next = outputs["predicted_next"]
+
+                predicted_steps.append(predicted_next)
+                correction_steps.append(outputs["correction"])
+                current_temp = predicted_next
+                prev_u = u_heating
+
+            predicted_seq = torch.stack(predicted_steps, dim=1)
+            correction_seq = torch.stack(correction_steps, dim=1)
+
+            predicted_norm = (predicted_seq - target_mean) / target_std
+            target_norm = (target_seq - target_mean) / target_std
+            data_loss = mse_loss(predicted_norm, target_norm)
+            physics_loss = torch.mean(correction_seq**2)
+            loss = loss_weighter.combine(
+                data_loss=data_loss,
+                physics_loss=physics_loss,
+                model=model,
+                training=training,
+            )
+
+            if training:
+                optimizer.zero_grad(set_to_none=True)
+                loss.backward()
+                optimizer.step()
+
+        batch_errors = (predicted_seq.detach().cpu() - target_seq.detach().cpu()).reshape(-1).tolist()
+        errors.extend(float(value) for value in batch_errors)
+
+        batch_size = target_seq.shape[0]
         total_count += batch_size
         total_loss += float(loss.detach().cpu()) * batch_size
         total_data_loss += float(data_loss.detach().cpu()) * batch_size
@@ -368,6 +530,49 @@ def train_model(
         shuffle=False,
     )
 
+    rollout_cfg = train_cfg.get("rollout_training", {}) or {}
+    rollout_enabled = bool(rollout_cfg.get("enabled", False))
+    rollout_weight = float(rollout_cfg.get("weight", 1.0))
+    rollout_horizon_steps = int(rollout_cfg.get("horizon_steps", 24))
+    rollout_batch_size = int(rollout_cfg.get("batch_size", train_cfg["batch_size"]))
+    rollout_max_windows_per_episode = int(rollout_cfg.get("max_windows_per_episode", 0))
+    train_rollout_loader: DataLoader | None = None
+    val_rollout_loader: DataLoader | None = None
+    if rollout_enabled:
+        train_rollout_windows = _build_rollout_windows(
+            datasets["train_episodes"],
+            horizon_steps=rollout_horizon_steps,
+            max_windows_per_episode=rollout_max_windows_per_episode,
+        )
+        val_rollout_windows = _build_rollout_windows(
+            datasets["val_episodes"],
+            horizon_steps=rollout_horizon_steps,
+            max_windows_per_episode=rollout_max_windows_per_episode,
+        )
+        if not train_rollout_windows or not val_rollout_windows:
+            rollout_enabled = False
+            print(
+                "Rollout training requested but no valid windows were found; "
+                "continuing with one-step training only."
+            )
+        else:
+            train_rollout_loader = _build_loader(
+                RolloutWindowDataset(train_rollout_windows),
+                batch_size=rollout_batch_size,
+                shuffle=True,
+            )
+            val_rollout_loader = _build_loader(
+                RolloutWindowDataset(val_rollout_windows),
+                batch_size=rollout_batch_size,
+                shuffle=False,
+            )
+            print(
+                f"Rollout training enabled: horizon={rollout_horizon_steps} steps, "
+                f"weight={rollout_weight:.3f}, "
+                f"train_windows={len(train_rollout_windows)}, "
+                f"val_windows={len(val_rollout_windows)}."
+            )
+
     best_state: dict[str, torch.Tensor] | None = None
     best_val_loss = float("inf")
     best_epoch = -1
@@ -421,30 +626,67 @@ def train_model(
             device=device,
             loss_weighter=loss_weighter,
         )
+        train_rollout_metrics: dict[str, float] | None = None
+        val_rollout_metrics: dict[str, float] | None = None
+        if rollout_enabled and train_rollout_loader is not None and val_rollout_loader is not None:
+            train_rollout_metrics = _run_rollout_epoch(
+                model,
+                train_rollout_loader,
+                optimizer=optimizer,
+                stats=stats,
+                device=device,
+                loss_weighter=loss_weighter,
+            )
+            val_rollout_metrics = _run_rollout_epoch(
+                model,
+                val_rollout_loader,
+                optimizer=None,
+                stats=stats,
+                device=device,
+                loss_weighter=loss_weighter,
+            )
+
+        train_objective = train_metrics["loss"]
+        val_objective = val_metrics["loss"]
+        if train_rollout_metrics is not None:
+            train_objective += rollout_weight * train_rollout_metrics["loss"]
+        if val_rollout_metrics is not None:
+            val_objective += rollout_weight * val_rollout_metrics["loss"]
 
         epoch_metrics = {
             "epoch": float(epoch),
-            "train_loss": train_metrics["loss"],
+            "train_loss": train_objective,
+            "train_step_loss": train_metrics["loss"],
             "train_rmse_degC": train_metrics["rmse_degC"],
-            "val_loss": val_metrics["loss"],
+            "val_loss": val_objective,
+            "val_step_loss": val_metrics["loss"],
             "val_rmse_degC": val_metrics["rmse_degC"],
         }
+        if train_rollout_metrics is not None and val_rollout_metrics is not None:
+            epoch_metrics["train_rollout_loss"] = train_rollout_metrics["loss"]
+            epoch_metrics["train_rollout_rmse_degC"] = train_rollout_metrics["rmse_degC"]
+            epoch_metrics["val_rollout_loss"] = val_rollout_metrics["loss"]
+            epoch_metrics["val_rollout_rmse_degC"] = val_rollout_metrics["rmse_degC"]
         epoch_metrics.update(loss_weighter.metrics())
         history.append(epoch_metrics)
 
-        if val_metrics["loss"] < best_val_loss:
-            best_val_loss = val_metrics["loss"]
+        if val_objective < best_val_loss:
+            best_val_loss = val_objective
             best_epoch = epoch
             best_state = {key: value.detach().cpu().clone() for key, value in model.state_dict().items()}
             epochs_without_improvement = 0
         else:
             epochs_without_improvement += 1
 
-        print(
-            f"Epoch {epoch:03d} | train_loss={train_metrics['loss']:.4f} | "
-            f"val_loss={val_metrics['loss']:.4f} | val_rmse={val_metrics['rmse_degC']:.4f} degC | "
-            f"weight_mode={loss_weighter.mode}"
+        summary = (
+            f"Epoch {epoch:03d} | train_loss={train_objective:.4f} "
+            f"(step={train_metrics['loss']:.4f}) | val_loss={val_objective:.4f} "
+            f"(step={val_metrics['loss']:.4f}) | val_rmse={val_metrics['rmse_degC']:.4f} degC"
         )
+        if val_rollout_metrics is not None:
+            summary += f" | val_rollout_rmse={val_rollout_metrics['rmse_degC']:.4f} degC"
+        summary += f" | weight_mode={loss_weighter.mode}"
+        print(summary)
 
         if checkpoint_every_epochs > 0 and (epoch % checkpoint_every_epochs == 0):
             _save_training_checkpoint(
@@ -473,12 +715,20 @@ def train_model(
     model.load_state_dict(best_state)
     final_metrics = evaluate_model(model, datasets, config, device)
 
+    physics_parameters = {
+        "ua": float(torch.nn.functional.softplus(model.log_ua).detach().cpu()),
+        "solar_gain": float(torch.nn.functional.softplus(model.log_solar_gain).detach().cpu()),
+        "hvac_gain": float(torch.nn.functional.softplus(model.log_hvac_gain).detach().cpu()),
+        "capacity": float(torch.nn.functional.softplus(model.log_capacity).detach().cpu()),
+    }
+
     torch.save(
         {
             "model_state_dict": model.state_dict(),
             "normalization": stats.to_dict(),
             "feature_names": datasets["feature_names"],
             "config": config,
+            "physics_parameters": physics_parameters,
         },
         artifact_dir / "best_model.pt",
     )
@@ -493,12 +743,19 @@ def train_model(
                 "test": final_metrics["test"],
                 "normalization": stats.to_dict(),
                 "physics_parameters": {
-                    "ua": float(torch.nn.functional.softplus(model.log_ua).detach().cpu()),
-                    "solar_gain": float(torch.nn.functional.softplus(model.log_solar_gain).detach().cpu()),
-                    "hvac_gain": float(torch.nn.functional.softplus(model.log_hvac_gain).detach().cpu()),
-                    "capacity": float(torch.nn.functional.softplus(model.log_capacity).detach().cpu()),
+                    "ua": physics_parameters["ua"],
+                    "solar_gain": physics_parameters["solar_gain"],
+                    "hvac_gain": physics_parameters["hvac_gain"],
+                    "capacity": physics_parameters["capacity"],
                 },
                 "loss_weighting": loss_weighter.metrics(),
+                    "rollout_training": {
+                        "enabled": rollout_enabled,
+                        "weight": rollout_weight,
+                        "horizon_steps": rollout_horizon_steps,
+                        "batch_size": rollout_batch_size,
+                        "max_windows_per_episode": rollout_max_windows_per_episode,
+                    },
             },
             handle,
             indent=2,

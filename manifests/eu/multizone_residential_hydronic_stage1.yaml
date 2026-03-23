@@ -42,6 +42,15 @@ case_mappings:
     fixed_control_commands:
       oveEmiPum_activate: 1.0
       oveEmiPum_u: 1.0
+    power_heating_signals:
+    - reaHeaLiv_y
+    - reaHeaHal_y
+    - reaHeaRo1_y
+    - reaHeaRo2_y
+    - reaHeaRo3_y
+    - reaHeaBth_y
+    power_electric_signals:
+    - boi_reaPpum_y
     zone_temp_candidates:
     - conHeaLiv_reaTZon_y
     - conHeaRo1_reaTZon_y
