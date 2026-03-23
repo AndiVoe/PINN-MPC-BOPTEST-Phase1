@@ -20,13 +20,21 @@ This repository contains the Phase 1-3 workflow for training a Physics-Informed 
 	- `python scripts/validate_dataset_files.py`
 4. Train PINN:
 	- `python scripts/train_pinn.py --config configs/pinn_phase1.yaml`
+	- Default config now enables trajectory-consistent rollout training (`training.rollout_training`) with 24-step horizon.
 5. Run MPC benchmarks:
 	- `python scripts/run_mpc_episode.py --predictor rc --episode all-test`
 	- `python scripts/run_mpc_episode.py --predictor pinn --episode all-test --checkpoint artifacts/pinn_phase1/best_model.pt`
+
+Latest completed 7-day all-test logs and outputs are available at:
+	- `logs/run_alltest_rc_7d.log`
+	- `logs/run_alltest_pinn_7d.log`
+	- `results/mpc_phase1/rc/`
+	- `results/mpc_phase1/pinn/`
 
 ## Additional Documentation
 
 - `README_WP1.md`: data and contract-related workflow notes.
 - `README_WP2.md`: PINN modeling and training workflow notes.
 - `README_WP3.md`: MPC benchmark and campaign workflow notes.
+- `RESULTS_COVERAGE_STATUS.md`: testcase-wise RC/PINN result availability and training completeness status.
 - `execution_plan_pinn_vs_eplus.md`: detailed execution plan.

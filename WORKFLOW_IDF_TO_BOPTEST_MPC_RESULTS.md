@@ -109,9 +109,24 @@ Executed test-set properties (from result metadata; identical structure for PINN
 | te_ext_02 | test | extreme | 0 | 0 | 900 | 672 | 7 days |
 
 - PINN avg cost_tot: 0.133102
-- RC avg cost_tot: 0.181557
-- Relative cost reduction (PINN vs RC): about 26.7%
+- RC avg cost_tot: 0.180410
+- Relative cost reduction (PINN vs RC): about 26.2%
 - Challenge tdis_tot: 0.0 for both
+
+Per-episode compact comparison (7-day all-test, singlezone_commercial_hydronic):
+
+| Episode | RC cost_tot | PINN cost_tot | RC comfort_Kh | PINN comfort_Kh | RC mean solve ms | PINN mean solve ms |
+|---|---:|---:|---:|---:|---:|---:|
+| te_std_01 | 0.101620 | 0.075954 | 0.0000 | 0.0000 | 3.259 | 31.087 |
+| te_std_02 | 0.195887 | 0.141854 | 8.4943 | 0.0000 | 3.429 | 31.767 |
+| te_ext_01 | 0.212026 | 0.157263 | 9.6348 | 0.0000 | 3.331 | 31.810 |
+| te_ext_02 | 0.212106 | 0.157336 | 9.6348 | 0.0000 | 3.320 | 30.632 |
+| Mean | 0.180410 | 0.133102 | 6.9410 | 0.0000 | 3.335 | 31.324 |
+
+Run artifacts:
+
+- Live execution logs: `logs/run_alltest_rc_7d.log`, `logs/run_alltest_pinn_7d.log`.
+- Episode outputs: `results/mpc_phase1/rc/*.json`, `results/mpc_phase1/pinn/*.json`.
 
 ### Future test set (te_win_01, te_win_02, te_long_01, te_long_02, te_long_03)
 
@@ -132,8 +147,8 @@ Executed test-set properties (from result metadata; identical structure for PINN
 
 ### Computation time trend
 
-- RC solves are faster (around 2 to 3 ms mean per MPC solve).
-- PINN solves are slower (around 24 to 28 ms mean), but still practical for 900 s control intervals.
+- RC solves are faster (around 3.3 ms mean per MPC solve on this 7-day all-test).
+- PINN solves are slower (around 31.3 ms mean), but still practical for 900 s control intervals.
 
 ## 9) Practical Conclusion
 
