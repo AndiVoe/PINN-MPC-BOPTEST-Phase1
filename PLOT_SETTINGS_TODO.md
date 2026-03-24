@@ -1,4 +1,4 @@
-# Plot Findings and Fix To-Do
+﻿# Plot Findings and Fix To-Do
 
 Status legend: `[done]`, `[in progress]`, `[pending]`
 
@@ -8,7 +8,6 @@ Status legend: `[done]`, `[in progress]`, `[pending]`
 - [done] Signal resolution was based on first-match candidate selection, which is fragile for multi-zone cases and heat-pump cases.
 - [done] The existing result JSONs do not expose enough signal-resolution metadata, so QC can mark problematic runs as `PASS` even when forecast channels are missing.
 - [done] `twozone_apartment_hydronic` was controlling a single day-zone channel only and had no resolved outdoor/solar forecast signals.
-- [done] `multizone_residential_hydronic` is a multi-zone case but was not configured with explicit grouped zone/control mappings.
 - [done] `bestest_hydronic_heat_pump` showed unstable PINN behavior consistent with overly loose setpoint bounds and too little smoothing/energy regularization.
 
 ## Fix Tasks
@@ -24,7 +23,6 @@ Status legend: `[done]`, `[in progress]`, `[pending]`
 
 - [done] Re-run `bestest_hydronic_heat_pump` (`te_std_01`) with RC and PINN.
 - [done] Re-run `twozone_apartment_hydronic` (`te_std_01`) with grouped thermostat control and explicit weather mapping.
-- [done] Re-run `multizone_residential_hydronic` (`te_std_01`) with grouped zone/control mappings.
 
 ## Validation Outcomes (Fixcheck)
 

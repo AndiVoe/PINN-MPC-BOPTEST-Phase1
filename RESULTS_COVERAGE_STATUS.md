@@ -1,4 +1,4 @@
-# Results Coverage and Training Status
+﻿# Results Coverage and Training Status
 
 Snapshot date: 2026-03-23 (refreshed from current filesystem state)
 
@@ -10,7 +10,6 @@ Training artifacts are complete for all five EU cases (`best_model.pt`, `metrics
 - bestest_hydronic_heat_pump: complete
 - singlezone_commercial_hydronic: complete
 - twozone_apartment_hydronic: complete
-- multizone_residential_hydronic: complete
 
 ## Result State (available episode JSONs)
 
@@ -43,7 +42,6 @@ Source roots checked:
 - PINN: `te_std_01`, `te_std_02`, `te_std_03`
 - Status: partial (heating-season episodes not present)
 
-### multizone_residential_hydronic
 
 - RC: none currently available in checked result roots
 - PINN: none currently available in checked result roots

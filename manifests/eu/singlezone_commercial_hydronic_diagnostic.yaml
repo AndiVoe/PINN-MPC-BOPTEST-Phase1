@@ -1,0 +1,45 @@
+version: 1
+study_id: pinn_vs_whitebox_mpc
+phase: phase1_diagnostic
+
+defaults:
+  control_interval_s: 600
+  episode_length_days: 0.25  # 6 hours for quick diagnostic
+  warmup_period_s: 0
+  start_time_s: 0
+  control_policy:
+    mode: random_heating_setpoint
+    seed_base: 20260311
+    setpoint_min_degC: 19.0
+    setpoint_max_degC: 24.0
+
+case_mappings:
+  singlezone_commercial_hydronic:
+    zone_temp_candidates:
+      - reaTZon_y
+      - TRooAir_y
+      - zon_reaTRooAir_y
+    outdoor_temp_candidates:
+      - weaSta_reaWeaTDryBul_y
+      - TDryBul_y
+      - TDryBul
+    solar_candidates:
+      - weaSta_reaWeaHGloHor_y
+      - HGloHor_y
+      - HGloHor
+    control_value_candidates:
+      - oveTZonSet_u
+      - dh_oveTSupSetHea_u
+      - oveValRad_u
+      - oveTSupSetAir_u
+    control_activate_candidates:
+      - oveTZonSet_activate
+      - dh_oveTSupSetHea_activate
+      - oveValRad_activate
+      - oveTSupSetAir_activate
+
+episodes:
+  - id: te_std_01
+    split: test
+    weather_class: standard
+    start_time_s: 0

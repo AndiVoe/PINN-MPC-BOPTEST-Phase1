@@ -194,6 +194,7 @@ class RolloutWindowDataset(Dataset[dict[str, torch.Tensor]]):
         h_global_seq = [sample.h_global for sample in window]
         u_heating_seq = [sample.u_heating for sample in window]
         dt_s_seq = [sample.dt_s for sample in window]
+        occupied_seq = [sample.occupied for sample in window]
         cyc_seq = [sample.features[-4:] for sample in window]
         target_seq = [sample.target_next_t_zone for sample in window]
         return {
@@ -203,6 +204,7 @@ class RolloutWindowDataset(Dataset[dict[str, torch.Tensor]]):
             "h_global_seq": torch.tensor(h_global_seq, dtype=torch.float32),
             "u_heating_seq": torch.tensor(u_heating_seq, dtype=torch.float32),
             "dt_s_seq": torch.tensor(dt_s_seq, dtype=torch.float32),
+            "occupied_seq": torch.tensor(occupied_seq, dtype=torch.float32),
             "cyc_seq": torch.tensor(cyc_seq, dtype=torch.float32),
             "target_seq": torch.tensor(target_seq, dtype=torch.float32),
         }
@@ -328,6 +330,7 @@ def _run_rollout_epoch(
         h_global_seq = batch["h_global_seq"].to(device)
         u_heating_seq = batch["u_heating_seq"].to(device)
         dt_s_seq = batch["dt_s_seq"].to(device)
+        occupied_seq = batch["occupied_seq"].to(device)
         cyc_seq = batch["cyc_seq"].to(device)
         target_seq = batch["target_seq"].to(device)
 
@@ -343,6 +346,7 @@ def _run_rollout_epoch(
                 h_global = h_global_seq[:, step]
                 u_heating = u_heating_seq[:, step]
                 dt_s = dt_s_seq[:, step]
+                occupied = occupied_seq[:, step]
                 cyc = cyc_seq[:, step, :]
                 delta_u = u_heating - prev_u
 
@@ -353,6 +357,7 @@ def _run_rollout_epoch(
                         h_global,
                         u_heating,
                         delta_u,
+                        occupied,
                         cyc[:, 0],
                         cyc[:, 1],
                         cyc[:, 2],
@@ -430,6 +435,7 @@ def evaluate_rollout(
                         sample.h_global,
                         sample.u_heating,
                         sample.u_heating - prev_u,
+                        sample.occupied,
                         *cyc,
                     ],
                     dtype=np.float32,
@@ -576,7 +582,10 @@ def train_model(
     best_state: dict[str, torch.Tensor] | None = None
     best_val_loss = float("inf")
     best_epoch = -1
-    patience = int(train_cfg["patience"])
+    early_stopping_cfg = train_cfg.get("early_stopping", {}) or {}
+    patience = int(early_stopping_cfg.get("patience", train_cfg.get("patience", 20)))
+    min_delta = float(early_stopping_cfg.get("min_delta", 0.0))
+    min_epochs = int(early_stopping_cfg.get("min_epochs", 1))
     epochs_without_improvement = 0
     history: list[dict[str, float]] = []
     start_epoch = 1
@@ -670,7 +679,7 @@ def train_model(
         epoch_metrics.update(loss_weighter.metrics())
         history.append(epoch_metrics)
 
-        if val_objective < best_val_loss:
+        if (best_val_loss - val_objective) > min_delta:
             best_val_loss = val_objective
             best_epoch = epoch
             best_state = {key: value.detach().cpu().clone() for key, value in model.state_dict().items()}
@@ -705,7 +714,7 @@ def train_model(
                 },
             )
 
-        if epochs_without_improvement >= patience:
+        if epoch >= min_epochs and epochs_without_improvement >= patience:
             print(f"Early stopping at epoch {epoch} (best epoch: {best_epoch}).")
             break
 
@@ -749,6 +758,11 @@ def train_model(
                     "capacity": physics_parameters["capacity"],
                 },
                 "loss_weighting": loss_weighter.metrics(),
+                "early_stopping": {
+                    "patience": patience,
+                    "min_delta": min_delta,
+                    "min_epochs": min_epochs,
+                },
                     "rollout_training": {
                         "enabled": rollout_enabled,
                         "weight": rollout_weight,

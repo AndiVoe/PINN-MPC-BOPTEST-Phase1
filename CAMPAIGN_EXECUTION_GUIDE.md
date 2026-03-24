@@ -1,7 +1,7 @@
-# Phase 1 Full Campaign Execution Guide
+﻿# Phase 1 Full Campaign Execution Guide
 
 ## Campaign Overview
-- **Total episodes**: 30 (5 cases × 2 predictors × 3 episodes)
+- **Total episodes**: 30 (5 cases Ã— 2 predictors Ã— 3 episodes)
 - **Estimated runtime**: 18-24 hours
 - **Start time**: 2026-03-18 (auto-populated)
 - **Expected completion**: ~2026-03-19 (18:00-00:00 UTC)
@@ -88,30 +88,29 @@ docker exec $redis redis-cli EVAL "for _,k in ipairs(redis.call('keys','tests:*'
 After completion, you'll have:
 ```
 results/eu_rc_vs_pinn/
-├── raw/                                    # Raw MPC episode outputs
-│   ├── singlezone_commercial_hydronic/
-│   │   ├── rc/         (te_std_01.json, te_std_02.json, te_std_03.json)
-│   │   └── pinn/
-│   ├── bestest_hydronic/
-│   │   ├── rc/
-│   │   └── pinn/
-│   ├── bestest_hydronic_heat_pump/
-│   │   ├── rc/
-│   │   └── pinn/
-│   ├── multizone_residential_hydronic/
-│   │   ├── rc/
-│   │   └── pinn/
-│   └── twozone_apartment_hydronic/
-│       ├── rc/
-│       └── pinn/
-├── qc/                                   # Quality assurance reports
-│   ├── plausibility_summary.csv           # Status per run (PASS/WARN)
-│   ├── plausibility_report.json           # Detailed issues
-│   ├── kpi_table.csv                      # Performance metrics
-│   ├── overview/                          # Summary plots
-│   └── timeseries/                        # Per-episode time-series plots
-└── runtime_discovery/
-    └── campaign_live_status.json          # Current progress (live)
+â”œâ”€â”€ raw/                                    # Raw MPC episode outputs
+â”‚   â”œâ”€â”€ singlezone_commercial_hydronic/
+â”‚   â”‚   â”œâ”€â”€ rc/         (te_std_01.json, te_std_02.json, te_std_03.json)
+â”‚   â”‚   â””â”€â”€ pinn/
+â”‚   â”œâ”€â”€ bestest_hydronic/
+â”‚   â”‚   â”œâ”€â”€ rc/
+â”‚   â”‚   â””â”€â”€ pinn/
+â”‚   â”œâ”€â”€ bestest_hydronic_heat_pump/
+â”‚   â”‚   â”œâ”€â”€ rc/
+â”‚   â”‚   â””â”€â”€ pinn/
+â”‚   â”‚   â”œâ”€â”€ rc/
+â”‚   â”‚   â””â”€â”€ pinn/
+â”‚   â””â”€â”€ twozone_apartment_hydronic/
+â”‚       â”œâ”€â”€ rc/
+â”‚       â””â”€â”€ pinn/
+â”œâ”€â”€ qc/                                   # Quality assurance reports
+â”‚   â”œâ”€â”€ plausibility_summary.csv           # Status per run (PASS/WARN)
+â”‚   â”œâ”€â”€ plausibility_report.json           # Detailed issues
+â”‚   â”œâ”€â”€ kpi_table.csv                      # Performance metrics
+â”‚   â”œâ”€â”€ overview/                          # Summary plots
+â”‚   â””â”€â”€ timeseries/                        # Per-episode time-series plots
+â””â”€â”€ runtime_discovery/
+    â””â”€â”€ campaign_live_status.json          # Current progress (live)
 ```
 
 ## Post-Completion Steps

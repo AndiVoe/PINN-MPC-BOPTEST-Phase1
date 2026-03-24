@@ -1,8 +1,8 @@
-"""Probe BOPTEST for actual measurement/input signal names for EU cases 4 and 5."""
+"""Probe BOPTEST for actual measurement/input signal names for active EU cases."""
 import requests, json, pathlib
 
 BASE = "http://127.0.0.1:8000"
-CASES = ["twozone_apartment_hydronic", "multizone_residential_hydronic"]
+CASES = ["twozone_apartment_hydronic"]
 OUT = pathlib.Path("probe_signals_out.json")
 
 results = {}

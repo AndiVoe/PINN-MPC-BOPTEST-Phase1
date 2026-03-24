@@ -2,12 +2,11 @@
 """
 Retrain all EU stage-1 PINN models with manual loss weighting.
 
-This script sequentially trains all 5 case-specific PINN models:
+This script sequentially trains all 4 active case-specific PINN models:
 1. singlezone_commercial_hydronic
 2. bestest_hydronic
 3. bestest_hydronic_heat_pump
-4. multizone_residential_hydronic
-5. twozone_apartment_hydronic
+4. twozone_apartment_hydronic
 
 Uses manual weighting mode (empirically best from smoke test).
 """
@@ -25,7 +24,6 @@ CASES = [
     ("singlezone_commercial_hydronic", "configs/eu/pinn_singlezone_commercial_hydronic.yaml"),
     ("bestest_hydronic", "configs/eu/pinn_bestest_hydronic.yaml"),
     ("bestest_hydronic_heat_pump", "configs/eu/pinn_bestest_hydronic_heat_pump.yaml"),
-    ("multizone_residential_hydronic", "configs/eu/pinn_multizone_residential_hydronic.yaml"),
     ("twozone_apartment_hydronic", "configs/eu/pinn_twozone_apartment_hydronic.yaml"),
 ]
 

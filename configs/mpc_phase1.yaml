@@ -8,7 +8,7 @@ mpc:
   # Heating setpoint bounds sent to oveTZonSet_u (values in degrees C;
   # script converts to Kelvin before sending to BOPTEST).
   u_min_degC: 18.0
-  u_max_degC: 26.0
+  u_max_degC: 24.0
 
   # Comfort temperature bounds (degrees C)
   comfort_bounds_degC:
@@ -18,7 +18,7 @@ mpc:
   # Objective weights (must be identical for both predictors to ensure fair comparison)
   objective_weights:
     comfort: 100.0             # (penalty per K┬▓┬Àstep outside bounds)
-    energy: 0.0001             # (penalty per degC of setpoint, proxy for heating demand)
+    energy: 0.001              # (penalty per degC of setpoint, proxy for heating demand) [TUNED: 10x increase]
     control_smoothness: 0.1   # (penalty per |╬öu| between consecutive steps)
 
   # SLSQP solver settings

@@ -1,4 +1,4 @@
-# Manuscript Skeleton (Phase 1)
+﻿# Manuscript Skeleton (Phase 1)
 
 ## Title
 
@@ -133,7 +133,6 @@ Table 3 highlights computational overhead and completion status.
 | singlezone_commercial_hydronic | 50.20 | 195.39 | 3.172 | 225.505 | 3/3 each |
 | twozone_apartment_hydronic | 72.43 | 421.13 | 3.269 | 506.062 | 3/3 each |
 
-Deferred complex case status: `multizone_residential_hydronic` remains incomplete and is excluded from the phase-1 headline claims.
 
 ## 6. Discussion
 

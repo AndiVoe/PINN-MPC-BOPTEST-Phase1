@@ -108,7 +108,6 @@ $trainedModels = @(
     "artifacts/eu/singlezone_commercial_hydronic/best_model.pt",
     "artifacts/eu/bestest_hydronic/best_model.pt",
     "artifacts/eu/bestest_hydronic_heat_pump/best_model.pt",
-    "artifacts/eu/multizone_residential_hydronic/best_model.pt",
     "artifacts/eu/twozone_apartment_hydronic/best_model.pt"
 )
 

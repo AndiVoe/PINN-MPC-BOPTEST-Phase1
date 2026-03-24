@@ -15,6 +15,7 @@ Usage examples:
 from __future__ import annotations
 
 import argparse
+from concurrent.futures import ThreadPoolExecutor, TimeoutError as FuturesTimeout
 import json
 import re
 import sys
@@ -36,6 +37,19 @@ from mpc.kpi import KPILogger
 from mpc.occupancy import comfort_bounds, is_occupied, OccupancySchedule
 from mpc.predictors import PINNPredictor, RCPredictor
 from mpc.solver import MPCSolver
+
+
+class _RBCSolverAdapter:
+    """Minimal solver-like adapter for rule-based control mode."""
+
+    def __init__(self, *, horizon_steps: int, dt_s: float, u_min: float, u_max: float) -> None:
+        self.horizon = int(horizon_steps)
+        self.dt_s = float(dt_s)
+        self.u_min = float(u_min)
+        self.u_max = float(u_max)
+
+    def reset(self) -> None:
+        return
 
 
 # ---------------------------------------------------------------------------
@@ -175,6 +189,13 @@ def _ensure_dir(path: Path) -> None:
     path.mkdir(parents=True, exist_ok=True)
 
 
+def _write_json_atomic(path: Path, payload: dict[str, Any]) -> None:
+    tmp = path.with_suffix(path.suffix + ".tmp")
+    with tmp.open("w", encoding="utf-8") as f:
+        json.dump(payload, f, indent=2)
+    tmp.replace(path)
+
+
 def _has_valid_existing_output(path: Path, episode_id: str, predictor_label: str) -> bool:
     if not path.exists():
         return False
@@ -207,6 +228,31 @@ def _control_uses_kelvin(signal_name: str) -> bool:
     return any(token in signal_name_l for token in ("set", "tset", "zonset"))
 
 
+class AdvanceExecutionError(RuntimeError):
+    """Raised when a BOPTEST /advance call fails during an MPC step."""
+
+    def __init__(self, *, step_index: int, waited_s: int, cause: Exception) -> None:
+        self.step_index = int(step_index)
+        self.waited_s = int(waited_s)
+        self.cause = cause
+        super().__init__(f"Advance failed at step {self.step_index}: {cause}")
+
+
+def _is_retriable_first_advance_failure(exc: Exception) -> bool:
+    if not isinstance(exc, AdvanceExecutionError):
+        return False
+    if exc.step_index != 1:
+        return False
+    text = str(exc.cause)
+    text_l = text.lower()
+    return (
+        "http 500" in text_l
+        or "internal server error" in text_l
+        or "timed out" in text_l
+        or "timeout" in text_l
+    )
+
+
 # ---------------------------------------------------------------------------
 # Core episode runner
 # ---------------------------------------------------------------------------
@@ -218,9 +264,14 @@ def run_mpc_episode(
     case_mappings: dict[str, Any],
     episode: dict[str, Any],
     defaults: dict[str, Any],
-    solver: MPCSolver,
+    solver: MPCSolver | _RBCSolverAdapter,
     predictor_name: str,
+    predictor_base: str,
     occupancy_schedule: OccupancySchedule | None = None,
+    advance_heartbeat_s: int = 60,
+    live_snapshot_path: Path | None = None,
+    attempt_index: int = 1,
+    max_attempts: int = 1,
 ) -> dict[str, Any]:
     """
     Run one full MPC episode against the BOPTEST plant.
@@ -332,6 +383,28 @@ def run_mpc_episode(
         flush=True,
     )
 
+    def _write_live_snapshot(snapshot: dict[str, Any]) -> None:
+        if live_snapshot_path is None:
+            return
+        try:
+            base = {
+                "episode_id": episode["id"],
+                "predictor_label": predictor_name,
+                "case_name": case_name,
+                "attempt_index": int(attempt_index),
+                "max_attempts": int(max_attempts),
+                "start_time_s": start_time_s,
+                "warmup_period_s": warmup_s,
+                "control_interval_s": step_s,
+                "n_steps": n_steps,
+                "updated_at_unix_s": time.time(),
+            }
+            base.update(snapshot)
+            _write_json_atomic(live_snapshot_path, base)
+        except Exception:
+            # Snapshot writing is best-effort and must not interrupt MPC execution.
+            pass
+
     mapping_warnings: list[str] = []
     if outdoor_signal is None:
         mapping_warnings.append("missing_outdoor_temp_signal")
@@ -418,6 +491,33 @@ def run_mpc_episode(
             "power_electric_w": p_ele,
         }
 
+    try:
+        init_t_zone = _read_zone_temp(current)
+    except Exception:
+        init_t_zone = None
+
+    _write_live_snapshot(
+        {
+            "state": "initialized",
+            "step_index": 0,
+            "sim_time_s": t_s,
+            "t_zone_degC": init_t_zone,
+            "resolved_signals": {
+                "zone_temp_signals": zone_signals,
+                "outdoor_temp_signal": outdoor_signal,
+                "solar_signal": solar_signal,
+                "control_value_signals": u_val_names,
+                "system_control_value_signals": system_u_val_names,
+                "control_activate_signals": u_act_names,
+                "system_control_activate_signals": system_u_act_names,
+                "power_heating_signals": power_heat_names,
+                "power_electric_signals": power_ele_names,
+            },
+            "initialize_payload": current,
+            "mapping_warnings": mapping_warnings,
+        }
+    )
+
     def _get_weather_forecast(n_steps_fwd: int) -> list[dict[str, float]]:
         try:
             fc = client.get_forecast(forecast_points, horizon_s=n_steps_fwd * step_s, interval_s=step_s)
@@ -445,14 +545,50 @@ def run_mpc_episode(
     for step_idx in range(n_steps):
         t_zone = _read_zone_temp(current)
 
-        # --- MPC solve ---
-        weather_fc = _get_weather_forecast(solver.horizon)
-        u_opt, u_seq, solve_info = solver.solve(
-            t_zone=t_zone,
-            weather_forecast=weather_fc,
-            u_prev=u_prev,
-            time_s=t_s,
-        )
+        # --- Control step (MPC or RBC) ---
+        if predictor_base == "rbc":
+            # Occupancy-aware deadband thermostat with anti-chatter hysteresis.
+            t_lo, t_hi = comfort_bounds(t_s, schedule=occupancy_schedule)
+            occupied = is_occupied(t_s, occupancy_schedule)
+            deadband = 0.2
+            ramp_degC = 1.5
+
+            if occupied:
+                hold_setpoint = min(solver.u_max, max(solver.u_min, t_lo + 0.3))
+            else:
+                hold_setpoint = solver.u_min
+
+            if t_zone < (t_lo - deadband):
+                u_opt = min(solver.u_max, max(hold_setpoint, t_lo + 0.7))
+            elif t_zone > (t_hi + deadband):
+                u_opt = solver.u_min
+            else:
+                u_opt = max(solver.u_min, min(solver.u_max, u_prev))
+
+            u_opt = float(max(solver.u_min, min(solver.u_max, u_opt)))
+            if abs(u_opt - u_prev) > ramp_degC:
+                u_opt = u_prev + (ramp_degC if u_opt > u_prev else -ramp_degC)
+                u_opt = float(max(solver.u_min, min(solver.u_max, u_opt)))
+
+            u_seq = [u_opt for _ in range(solver.horizon)]
+            solve_info = {
+                "solve_time_ms": 0.0,
+                "n_iter": 0,
+                "success": True,
+                "obj_val": 0.0,
+                "controller_mode": "rbc_deadband",
+                "occupied": bool(occupied),
+                "t_lower": float(t_lo),
+                "t_upper": float(t_hi),
+            }
+        else:
+            weather_fc = _get_weather_forecast(solver.horizon)
+            u_opt, u_seq, solve_info = solver.solve(
+                t_zone=t_zone,
+                weather_forecast=weather_fc,
+                u_prev=u_prev,
+                time_s=t_s,
+            )
 
         control_cmd: dict[str, float] = {}
         # Apply the scalar MPC setpoint to all zone control value signals.
@@ -473,7 +609,90 @@ def run_mpc_episode(
         for signal_name, signal_value in fixed_control_cmd.items():
             control_cmd[signal_name] = signal_value
 
-        next_payload = client.advance(control_cmd)
+        _write_live_snapshot(
+            {
+                "state": "waiting_advance",
+                "step_index": step_idx + 1,
+                "sim_time_s": t_s,
+                "waited_on_advance_s": 0,
+                "t_zone_degC": t_zone,
+                "u_opt_degC": u_opt,
+                "solve_info": solve_info,
+                "control_cmd": control_cmd,
+            }
+        )
+
+        advance_wall_start = time.perf_counter()
+        heartbeat_s = max(0, int(advance_heartbeat_s))
+        if heartbeat_s == 0:
+            try:
+                next_payload = client.advance(control_cmd)
+            except Exception as exc:
+                _write_live_snapshot(
+                    {
+                        "state": "advance_failed",
+                        "step_index": step_idx + 1,
+                        "sim_time_s": t_s,
+                        "waited_on_advance_s": 0,
+                        "t_zone_degC": t_zone,
+                        "u_opt_degC": u_opt,
+                        "solve_info": solve_info,
+                        "control_cmd": control_cmd,
+                        "error": str(exc),
+                    }
+                )
+                raise AdvanceExecutionError(
+                    step_index=step_idx + 1,
+                    waited_s=0,
+                    cause=exc,
+                ) from exc
+        else:
+            with ThreadPoolExecutor(max_workers=1) as executor:
+                future = executor.submit(client.advance, control_cmd)
+                waited_s = 0
+                while True:
+                    try:
+                        next_payload = future.result(timeout=heartbeat_s)
+                        break
+                    except FuturesTimeout:
+                        waited_s += heartbeat_s
+                        print(
+                            f"  step {step_idx + 1:4d}/{n_steps} waiting on BOPTEST /advance ... "
+                            f"{waited_s}s elapsed",
+                            flush=True,
+                        )
+                        _write_live_snapshot(
+                            {
+                                "state": "waiting_advance",
+                                "step_index": step_idx + 1,
+                                "sim_time_s": t_s,
+                                "waited_on_advance_s": waited_s,
+                                "t_zone_degC": t_zone,
+                                "u_opt_degC": u_opt,
+                                "solve_info": solve_info,
+                                "control_cmd": control_cmd,
+                            }
+                        )
+                    except Exception as exc:
+                        _write_live_snapshot(
+                            {
+                                "state": "advance_failed",
+                                "step_index": step_idx + 1,
+                                "sim_time_s": t_s,
+                                "waited_on_advance_s": waited_s,
+                                "t_zone_degC": t_zone,
+                                "u_opt_degC": u_opt,
+                                "solve_info": solve_info,
+                                "control_cmd": control_cmd,
+                                "error": str(exc),
+                            }
+                        )
+                        raise AdvanceExecutionError(
+                            step_index=step_idx + 1,
+                            waited_s=waited_s,
+                            cause=exc,
+                        ) from exc
+        advance_wall_s = time.perf_counter() - advance_wall_start
 
         # Record KPIs using current-step T_zone and power from the advance response.
         pwr = _read_power_components(next_payload)
@@ -493,14 +712,29 @@ def run_mpc_episode(
             occupied=occupied,
         )
 
-        if (step_idx + 1) % 96 == 0 or step_idx == n_steps - 1:
+        if (step_idx == 0) or ((step_idx + 1) % 12 == 0) or (step_idx == n_steps - 1):
             print(
                 f"  step {step_idx + 1:4d}/{n_steps}  t_s={t_s:8d}  "
                 f"T_zone={t_zone:.2f} degC  u={u_opt:.2f} degC  "
                 f"solve={solve_info['solve_time_ms']:.1f}ms  "
+                f"advance={advance_wall_s:.1f}s  "
                 f"{'OK' if solve_info['success'] else 'WARN:infeasible'}",
                 flush=True,
             )
+
+        _write_live_snapshot(
+            {
+                "state": "step_completed",
+                "step_index": step_idx + 1,
+                "sim_time_s": t_s,
+                "waited_on_advance_s": 0,
+                "t_zone_degC": t_zone,
+                "u_opt_degC": u_opt,
+                "solve_info": solve_info,
+                "advance_wall_s": advance_wall_s,
+                "latest_payload": next_payload,
+            }
+        )
 
         current = next_payload
         u_prev = u_opt
@@ -520,6 +754,16 @@ def run_mpc_episode(
     challenge_kpis = payload["challenge_kpis"]
     diagnostic_kpis = payload["diagnostic_kpis"]
     diagnostic_kpis["episode_wall_time_s"] = round(episode_wall_s, 2)
+
+    _write_live_snapshot(
+        {
+            "state": "episode_completed",
+            "step_index": n_steps,
+            "episode_wall_time_s": round(episode_wall_s, 2),
+            "challenge_kpis": challenge_kpis,
+            "diagnostic_kpis": diagnostic_kpis,
+        }
+    )
 
     return {
         "episode_id": episode["id"],
@@ -559,8 +803,8 @@ def run_mpc_episode(
 def main() -> None:
     parser = argparse.ArgumentParser(description="WP4 MPC episode runner.")
     parser.add_argument(
-        "--predictor", choices=["rc", "pinn"], required=True,
-        help="Interior model: 'rc' (whitebox RC) or 'pinn' (surrogate).",
+        "--predictor", choices=["rc", "pinn", "rbc"], required=True,
+        help="Controller mode: 'rc' (whitebox RC-MPC), 'pinn' (surrogate-MPC), or 'rbc' (rule-based baseline).",
     )
     parser.add_argument(
         "--predictor-label",
@@ -581,6 +825,18 @@ def main() -> None:
                         help="Attach to an already-Running BOPTEST testid.")
     parser.add_argument("--startup-timeout-s", type=int, default=900)
     parser.add_argument(
+        "--advance-timeout-s",
+        type=int,
+        default=300,
+        help="Timeout in seconds for each /advance request to BOPTEST.",
+    )
+    parser.add_argument(
+        "--advance-heartbeat-s",
+        type=int,
+        default=60,
+        help="Emit a heartbeat log line every N seconds while waiting on /advance (0 disables).",
+    )
+    parser.add_argument(
         "--recover-from-queued",
         action="store_true",
         help="If startup stays Queued, stop the stuck test and retry selection once.",
@@ -593,6 +849,24 @@ def main() -> None:
         "--resume-existing",
         action="store_true",
         help="Skip episodes that already have a valid output JSON file.",
+    )
+    parser.add_argument(
+        "--live-snapshot",
+        action=argparse.BooleanOptionalAction,
+        default=True,
+        help=(
+            "Write a sidecar .live.json snapshot for each episode with latest initialization/step state "
+            "(use --no-live-snapshot to disable)."
+        ),
+    )
+    parser.add_argument(
+        "--retry-first-advance-failures",
+        type=int,
+        default=1,
+        help=(
+            "Automatically retry an episode after first-step /advance server failures/timeouts. "
+            "Set to 0 to disable."
+        ),
     )
     args = parser.parse_args()
 
@@ -617,7 +891,7 @@ def main() -> None:
         print("Loading PINN predictor ...", flush=True)
         predictor = PINNPredictor(ckpt_path)
         predictor_name = "pinn"
-    else:
+    elif args.predictor == "rc":
         print("Loading RC predictor from checkpoint ...", flush=True)
         rc_base = RCPredictor.from_checkpoint(ckpt_path)
         predictor = RCPredictor(
@@ -634,6 +908,10 @@ def main() -> None:
             f"{args.rc_scale_hvac_gain:.3f},{args.rc_scale_capacity:.3f})",
             flush=True,
         )
+    else:
+        print("Using RBC controller mode (no interior predictor load).", flush=True)
+        predictor = None
+        predictor_name = "rbc"
 
     predictor_label = args.predictor_label.strip() or predictor_name
 
@@ -663,36 +941,40 @@ def main() -> None:
     occ_cfg = case_mappings.get("occupancy_schedule", {}) or {}
     occupancy_schedule_local = OccupancySchedule.from_dict(occ_cfg) if occ_cfg else None
 
-    solver = MPCSolver(
-        predictor=predictor,
-        horizon_steps=horizon_steps,
-        dt_s=float(dt_s),
-        u_min=float(mpc.get("u_min_degC", 18.0)),
-        u_max=float(mpc.get("u_max_degC", 26.0)),
-        w_comfort=float(weights.get("comfort", 100.0)),
-        w_energy=float(weights.get("energy", 0.0001)),
-        w_smooth=float(weights.get("control_smoothness", 0.1)),
-        maxiter=int(mpc.get("solver_maxiter", 100)),
-        ftol=float(mpc.get("solver_ftol", 1e-4)),
-        occupied_bounds=comfort_occ,
-        unoccupied_bounds=comfort_unocc,
-        occupancy_schedule=occupancy_schedule_local,
-    )
+    if predictor_name == "rbc":
+        solver = _RBCSolverAdapter(
+            horizon_steps=horizon_steps,
+            dt_s=float(dt_s),
+            u_min=float(mpc.get("u_min_degC", 18.0)),
+            u_max=float(mpc.get("u_max_degC", 26.0)),
+        )
+    else:
+        assert predictor is not None
+        solver = MPCSolver(
+            predictor=predictor,
+            horizon_steps=horizon_steps,
+            dt_s=float(dt_s),
+            u_min=float(mpc.get("u_min_degC", 18.0)),
+            u_max=float(mpc.get("u_max_degC", 26.0)),
+            w_comfort=float(weights.get("comfort", 100.0)),
+            w_energy=float(weights.get("energy", 0.0001)),
+            w_smooth=float(weights.get("control_smoothness", 0.1)),
+            maxiter=int(mpc.get("solver_maxiter", 100)),
+            ftol=float(mpc.get("solver_ftol", 1e-4)),
+            occupied_bounds=comfort_occ,
+            unoccupied_bounds=comfort_unocc,
+            occupancy_schedule=occupancy_schedule_local,
+        )
 
     # ------------------------------------------------------------------ connect
     boptest_url = _resolve_boptest_url(args.url)
     print(f"Connecting to BOPTEST at {boptest_url} ...", flush=True)
-    client = BoptestClient(boptest_url)
+    client = BoptestClient(boptest_url, advance_timeout_s=args.advance_timeout_s)
 
-    if args.reuse_testid:
-        print(f"Attaching to testid {args.reuse_testid} ...", flush=True)
-        client.attach_testid(args.reuse_testid)
-        owns_test_session = False
-    else:
-        owns_test_session = True
-        print(f"Selecting test case '{args.case}' ...", flush=True)
-        testid = client.select_test_case(args.case)
-        print(f"  testid={testid}", flush=True)
+    def _select_case_and_wait(stage_label: str) -> str:
+        print(f"Selecting test case '{args.case}' ({stage_label}) ...", flush=True)
+        selected_testid = client.select_test_case(args.case)
+        print(f"  testid={selected_testid}", flush=True)
         print("Waiting for Running state ...", flush=True)
         try:
             client.wait_running(timeout_s=args.startup_timeout_s)
@@ -702,15 +984,25 @@ def main() -> None:
             print("Startup timeout in Queued state. Attempting one-time recovery ...", flush=True)
             try:
                 stopped = client.stop()
-                print(f"  stop({testid}) -> {stopped}", flush=True)
+                print(f"  stop({selected_testid}) -> {stopped}", flush=True)
             except Exception as exc:
                 print(f"  Warning: stop failed: {exc}", flush=True)
 
             print(f"Re-selecting test case '{args.case}' after cleanup ...", flush=True)
-            testid = client.select_test_case(args.case)
-            print(f"  retry testid={testid}", flush=True)
+            selected_testid = client.select_test_case(args.case)
+            print(f"  retry testid={selected_testid}", flush=True)
             print("Waiting for Running state (retry) ...", flush=True)
             client.wait_running(timeout_s=args.startup_timeout_s)
+
+        return selected_testid
+
+    if args.reuse_testid:
+        print(f"Attaching to testid {args.reuse_testid} ...", flush=True)
+        client.attach_testid(args.reuse_testid)
+        owns_test_session = False
+    else:
+        owns_test_session = True
+        _select_case_and_wait("initial")
 
     # ------------------------------------------------------------------ run
     output_dir = ROOT / args.output_dir / predictor_label
@@ -720,6 +1012,7 @@ def main() -> None:
         for episode in target_episodes:
             ep_id = episode["id"]
             out_path = output_dir / f"{ep_id}.json"
+            live_snapshot_path = out_path.with_suffix(".live.json") if args.live_snapshot else None
 
             if args.resume_existing and _has_valid_existing_output(out_path, ep_id, predictor_label):
                 print(f"Skipping episode {ep_id}: existing output found at {out_path}", flush=True)
@@ -728,18 +1021,76 @@ def main() -> None:
             print(f"\n{'='*60}", flush=True)
             print(f"Episode {ep_id} | predictor={predictor_label}", flush=True)
             print(f"{'='*60}", flush=True)
+            if live_snapshot_path is not None:
+                print(f"  Live snapshot -> {live_snapshot_path}", flush=True)
+
+            max_attempts = 1 + max(0, int(args.retry_first_advance_failures))
+            result: dict[str, Any] | None = None
+            run_error: Exception | None = None
+
+            for attempt_index in range(1, max_attempts + 1):
+                try:
+                    result = run_mpc_episode(
+                        client=client,
+                        case_name=args.case,
+                        case_mappings=case_mappings,
+                        episode=episode,
+                        defaults=defaults,
+                        solver=solver,
+                        predictor_name=predictor_label,
+                        predictor_base=predictor_name,
+                        occupancy_schedule=occupancy_schedule_local,
+                        advance_heartbeat_s=args.advance_heartbeat_s,
+                        live_snapshot_path=live_snapshot_path,
+                        attempt_index=attempt_index,
+                        max_attempts=max_attempts,
+                    )
+                    run_error = None
+                    break
+                except Exception as exc:
+                    run_error = exc
+                    can_retry = (
+                        attempt_index < max_attempts
+                        and owns_test_session
+                        and _is_retriable_first_advance_failure(exc)
+                    )
+                    if not can_retry:
+                        break
+
+                    print(
+                        f"  First-step /advance failed on attempt {attempt_index}/{max_attempts} "
+                        f"({exc}). Recovering BOPTEST session and retrying once ...",
+                        flush=True,
+                    )
+                    if live_snapshot_path is not None:
+                        _write_json_atomic(
+                            live_snapshot_path,
+                            {
+                                "episode_id": ep_id,
+                                "predictor_label": predictor_label,
+                                "case_name": args.case,
+                                "state": "retry_scheduled",
+                                "attempt_index": attempt_index,
+                                "next_attempt_index": attempt_index + 1,
+                                "max_attempts": max_attempts,
+                                "error": str(exc),
+                                "updated_at_unix_s": time.time(),
+                            },
+                        )
+
+                    try:
+                        stopped = client.stop()
+                        print(f"  stop(current_testid) -> {stopped}", flush=True)
+                    except Exception as stop_exc:
+                        print(f"  Warning: stop before retry failed: {stop_exc}", flush=True)
+
+                    _select_case_and_wait(f"retry-{attempt_index + 1}")
 
             try:
-                result = run_mpc_episode(
-                    client=client,
-                    case_name=args.case,
-                    case_mappings=case_mappings,
-                    episode=episode,
-                    defaults=defaults,
-                    solver=solver,
-                    predictor_name=predictor_label,
-                    occupancy_schedule=occupancy_schedule_local,
-                )
+                if result is None:
+                    assert run_error is not None
+                    raise run_error
+
                 result["mpc_config"] = {
                     "horizon_s": horizon_s,
                     "u_min_degC": float(mpc.get("u_min_degC", 18.0)),
@@ -761,6 +1112,13 @@ def main() -> None:
                         "solar_gain": predictor.solar_gain,
                         "hvac_gain": predictor.hvac_gain,
                         "capacity": predictor.capacity,
+                    }
+                elif predictor_name == "rbc":
+                    result["rbc_variant"] = {
+                        "type": "deadband_thermostat",
+                        "horizon_steps": int(horizon_steps),
+                        "u_min_degC": float(mpc.get("u_min_degC", 18.0)),
+                        "u_max_degC": float(mpc.get("u_max_degC", 26.0)),
                     }
                 with out_path.open("w", encoding="utf-8") as f:
                     json.dump(result, f, indent=2)

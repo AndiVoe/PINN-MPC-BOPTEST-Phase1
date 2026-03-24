@@ -29,6 +29,7 @@ import torch
 # Reuse cyclical feature encoder from data module.
 from pinn_model.data import _cyclical_features
 from pinn_model.model import SingleZonePINN
+from mpc.occupancy import is_occupied
 
 
 # ---------------------------------------------------------------------------
@@ -262,6 +263,7 @@ class PINNPredictor(PredictorBase):
     ) -> torch.Tensor:
         """Single differentiable prediction step; returns T_next as scalar tensor."""
         delta_u = u_i - u_prv
+        occupied = 1.0 if is_occupied(step_time_s) else 0.0
         tod_sin, tod_cos, year_sin, year_cos = _cyclical_features(step_time_s)
         raw_feat = torch.stack([
             T,
@@ -269,6 +271,7 @@ class PINNPredictor(PredictorBase):
             torch.tensor(h_glo_f, dtype=torch.float32),
             u_i,
             delta_u,
+            torch.tensor(occupied, dtype=torch.float32),
             torch.tensor(tod_sin, dtype=torch.float32),
             torch.tensor(tod_cos, dtype=torch.float32),
             torch.tensor(year_sin, dtype=torch.float32),

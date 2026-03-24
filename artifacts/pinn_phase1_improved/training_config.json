@@ -1,0 +1,34 @@
+{
+  "study_id": "pinn_phase1_singlezone_improved",
+  "data": {
+    "dataset_root": "datasets/phase1_singlezone"
+  },
+  "model": {
+    "hidden_dim": 64,
+    "depth": 3,
+    "dropout": 0.0
+  },
+  "training": {
+    "seed": 42,
+    "device": "cpu",
+    "batch_size": 64,
+    "epochs": 80,
+    "patience": 20,
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "lambda_physics": 0.1,
+    "loss_weighting": {
+      "mode": "manual",
+      "gradient_balance": {
+        "ema_beta": 0.9,
+        "lambda_min": 1e-06,
+        "lambda_max": "1.0e3",
+        "target_ratio": 1.0
+      },
+      "uncertainty": {
+        "init_log_sigma_data": 0.0,
+        "init_log_sigma_physics": 0.0
+      }
+    }
+  }
+}

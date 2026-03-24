@@ -37,10 +37,6 @@ EU_CASES_BY_LABEL = {
         "expected_api_id": "twozone_apartment_hydronic",
         "location": "Milan, Italy",
     },
-    "Multizone Residential Hydronic": {
-        "expected_api_id": "multizone_residential_hydronic",
-        "location": "Copenhagen, Denmark",
-    },
 }
 
 

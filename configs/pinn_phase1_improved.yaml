@@ -1,19 +1,22 @@
-study_id: pinn_eu_stage1
+study_id: pinn_phase1_singlezone_improved
+
 data:
-  dataset_root: datasets/eu/multizone_residential_hydronic
+  dataset_root: datasets/phase1_singlezone
+
 model:
   hidden_dim: 64
   depth: 3
   dropout: 0.0
+
 training:
   seed: 42
   device: cpu
-  batch_size: 256
-  epochs: 150
+  batch_size: 64  # Reduced from 256 for more stable gradients
+  epochs: 80  # Reduced from 150 to prevent overfitting
   patience: 20
   learning_rate: 0.001
-  weight_decay: 1.0e-05
-  lambda_physics: 0.01
+  weight_decay: 0.0001  # Increased from 1e-5 for stronger regularization
+  lambda_physics: 0.1  # Increased from 0.01 for stronger physics constraint
   loss_weighting:
     mode: manual
     gradient_balance:

@@ -1,0 +1,17 @@
+[
+  {
+    "epoch": 1.0,
+    "train_loss": 0.17490155022813436,
+    "train_step_loss": 0.020624199183310776,
+    "train_rmse_degC": 0.15224424627163427,
+    "val_loss": 0.1665332843954543,
+    "val_step_loss": 0.005896857284542434,
+    "val_rmse_degC": 0.08143284826104927,
+    "train_rollout_loss": 0.1542773510448236,
+    "train_rollout_rmse_degC": 0.4186145456701182,
+    "val_rollout_loss": 0.1606364271109119,
+    "val_rollout_rmse_degC": 0.4272876447910836,
+    "loss_weight_mode": "manual",
+    "lambda_physics_eff": 0.01
+  }
+]

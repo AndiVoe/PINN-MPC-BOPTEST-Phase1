@@ -1,0 +1,58 @@
+version: 1
+study_id: eu_stage1_multizone_residential_hydronic_reduced_step
+phase: eu_stage1
+defaults:
+  control_interval_s: 300        # REDUCED from 900s to 300s - tests if smaller steps avoid solver hang
+  episode_length_days: 1
+  warmup_period_s: 86400
+  start_time_s: 0
+  control_policy:
+    mode: random_heating_setpoint
+    seed_base: 20260316
+    setpoint_min_degC: 19.0
+    setpoint_max_degC: 24.0
+case_mappings:
+  multizone_residential_hydronic:
+    zone_temp_signals:
+    - conHeaLiv_reaTZon_y
+    - conHeaRo1_reaTZon_y
+    - conHeaRo2_reaTZon_y
+    - conHeaRo3_reaTZon_y
+    - conHeaBth_reaTZon_y
+    outdoor_temp_signal: weatherStation_reaWeaTDryBul_y
+    solar_signal: weatherStation_reaWeaHGloHor_y
+    control_value_signals:
+    - conHeaLiv_oveTSetHea_u
+    - conHeaRo1_oveTSetHea_u
+    - conHeaRo2_oveTSetHea_u
+    - conHeaRo3_oveTSetHea_u
+    - conHeaBth_oveTSetHea_u
+    control_activate_signals:
+    - conHeaLiv_oveTSetHea_activate
+    - conHeaRo1_oveTSetHea_activate
+    - conHeaRo2_oveTSetHea_activate
+    - conHeaRo3_oveTSetHea_activate
+    - conHeaBth_oveTSetHea_activate
+    system_control_value_signals:
+    - oveTSetSup_u
+    - oveTSetPumBoi_u
+    system_control_activate_signals:
+    - oveTSetSup_activate
+    - oveTSetPumBoi_activate
+    fixed_control_commands:
+      oveEmiPum_activate: 1.0
+      oveEmiPum_u: 1.0
+    power_heating_signals:
+    - reaHeaLiv_y
+    - reaHeaHal_y
+    - reaHeaRo1_y
+    - reaHeaRo2_y
+    - reaHeaRo3_y
+    - reaHeaBth_y
+    power_electric_signals:
+    - boi_reaPpum_y
+episodes:
+- id: te_std_01
+  split: test
+  weather_class: standard
+  start_time_s: 9676800

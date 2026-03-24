@@ -1,52 +1,51 @@
-# FMU/Model Diagnostics for Heat-Pump and Multizone Cases
+﻿# FMU/Model Diagnostics for Heat-Pump and Multizone Cases
 
 ## Heat-Pump FMU (`bestest_hydronic_heat_pump`)
 
 ### Control Signal
 - **Channel**: `oveTSet_u` (zone setpoint override)
 - **Units**: Kelvin
-- **Bounds**: 278.15 K (5°C) to 308.15 K (35°C)
-- **Status**: ✓ Valid and correctly mapped in manifest
+- **Bounds**: 278.15 K (5Â°C) to 308.15 K (35Â°C)
+- **Status**: âœ“ Valid and correctly mapped in manifest
 
 ### Dynamic Response (Sanity Check)
-Probe: Two runs with low (19.66°C mean) vs high (22.53°C mean) setpoints
+Probe: Two runs with low (19.66Â°C mean) vs high (22.53Â°C mean) setpoints
 
 | Metric | Low | High | Delta |
 |--------|-----|------|-------|
-| Zone T (end) | 19.66°C | 23.74°C | +4.08°C |
-| Zone T (mean) | 20.34°C | 22.53°C | +2.19°C |
+| Zone T (end) | 19.66Â°C | 23.74Â°C | +4.08Â°C |
+| Zone T (mean) | 20.34Â°C | 22.53Â°C | +2.19Â°C |
 | HP Power (mean) | 0 W | 3347.8 W | +3347.8 W |
-| Pump Power | 0 W | 0 W | — |
+| Pump Power | 0 W | 0 W | â€” |
 
-**Conclusion**: FMU signal is **physically correct**. Higher setpoint → higher zone T → heat pump activates with meaningful power output.
+**Conclusion**: FMU signal is **physically correct**. Higher setpoint â†’ higher zone T â†’ heat pump activates with meaningful power output.
 
 ### Current MPC Issues
-- **Problem**: PINN controller locks to `u_min` (19°C) in fixcheck, causing QC warning.
-- **Root cause**: NOT signal/FMU bug. Likely model-side: PINN predictor confidence loss (very high solve times, solver struggle) → optimizer defaults to safe lower bound.
+- **Problem**: PINN controller locks to `u_min` (19Â°C) in fixcheck, causing QC warning.
+- **Root cause**: NOT signal/FMU bug. Likely model-side: PINN predictor confidence loss (very high solve times, solver struggle) â†’ optimizer defaults to safe lower bound.
 - **Recommended action**: Tune PINN-specific weights or add anti-saturation term, not signal fixes.
 
 ---
 
-## Multizone FMU (`multizone_residential_hydronic`)
 
 ### Available Control Channels
 
 #### Setpoint-Based (Currently Used)
 - **Channels**: `conHeaLiv_oveTSetHea_u`, `conHeaRo1_oveTSetHea_u`, etc. (5 zones)
 - **Units**: Kelvin
-- **Bounds**: 283.15 K (10°C) to 368.15 K (95°C)
+- **Bounds**: 283.15 K (10Â°C) to 368.15 K (95Â°C)
 - **Activation**: 5 corresponding `_activate` channels
 
 #### Direct Actuation (Available but Not Used)
 - **Channels**: `conHeaLiv_oveActHea_u`, `conHeaRo1_oveActHea_u`, etc. (5 zones)
-- **Units**: 0–1 (fraction)
+- **Units**: 0â€“1 (fraction)
 - **Activation**: 5 corresponding `_activate` channels
 
 #### System-Level Controls
-- `oveEmiPum_u`: Emission pump (0–1)
-- `oveMixValSup_u`: Mixing valve (0–1)
-- `oveTSetPumBoi_u`: Boiler pump setpoint (283.15–368.15 K)
-- `oveTSetSup_u`: Supply temperature (283.15–368.15 K)
+- `oveEmiPum_u`: Emission pump (0â€“1)
+- `oveMixValSup_u`: Mixing valve (0â€“1)
+- `oveTSetPumBoi_u`: Boiler pump setpoint (283.15â€“368.15 K)
+- `oveTSetSup_u`: Supply temperature (283.15â€“368.15 K)
 
 ### Coupling Probes (Results)
 
@@ -84,7 +83,7 @@ Total power: delta_mean = 0 W
 
 3. **Why Multizone RC Saturates at u_max**
    - With decoupled zones, each zone tries to maximize its own comfort independently.
-   - All zones converge to high setpoints (u_max ≈ 368 K / 95°C) trying to heat simultaneously.
+   - All zones converge to high setpoints (u_max â‰ˆ 368 K / 95Â°C) trying to heat simultaneously.
    - No cooperative control strategy; no system-level balancing.
 
 ### Current MPC Limitation
@@ -99,7 +98,7 @@ Total power: delta_mean = 0 W
 ### Heat-Pump (`bestest_hydronic_heat_pump`)
 1. **Keep current signal mapping** (it's correct).
 2. **Diagnose PINN solver strain**:
-   - Why does PINN take 800–5000 ms per step vs RC at 2–3 ms?
+   - Why does PINN take 800â€“5000 ms per step vs RC at 2â€“3 ms?
    - Is it due to PINN prediction uncertainty or objective stiffness?
 3. **Consider**:
    - Increase regularization/smoothing weight in PINN-specific MPC config.
@@ -126,11 +125,10 @@ Interim conclusion:
 - Keep manual as default for production retraining.
 - Gradient/uncertainty modes remain available for later use if dataset noise profile changes.
 
-### Multizone (`multizone_residential_hydronic`)
 1. **Acknowledge architectural limitation**: Zones are thermally independent in FMU.
 2. **Current MPC approach is not optimal** for a lack of true multizone coupling.
 3. **Options**:
-   - **A (Easy, Risky)**: Treat each zone independently; apply PINN predictor per zone → 5 separate PINN models (or extend single PINN).
+   - **A (Easy, Risky)**: Treat each zone independently; apply PINN predictor per zone â†’ 5 separate PINN models (or extend single PINN).
    - **B (Rigorous)**: Extend MPC to include system-level controls (`oveTSetSup_u`, `oveTSetPumBoi_u`); define objective that avoids simultaneous all-zones-high-demand saturation.
    - **C (Current Status)**: Accept that multizone control is not meaningful for inter-zone optimization; focus on within-zone comfort trade-offs (energy vs comfort per zone).
 4. **Next action**: If pursuing **B**, redesign MPC 
@@ -144,11 +142,11 @@ Interim conclusion:
 
 | Aspect | Heat-Pump | Multizone |
 |--------|-----------|-----------|
-| **Signal Validity** | ✓ Correct | ✓ Correct |
-| **FMU Dynamics** | ✓ Responsive | ⚠ Decoupled zones |
+| **Signal Validity** | âœ“ Correct | âœ“ Correct |
+| **FMU Dynamics** | âœ“ Responsive | âš  Decoupled zones |
 | **Coupling Strength** | N/A | None (zones independent) |
 | **Current MPC Fit** | Reasonable | Poor (no inter-zone optimization) |
-| **Saturation Root Cause** | PINN solver/model uncertainty | Decoupled zone control → simultaneous high demand |
+| **Saturation Root Cause** | PINN solver/model uncertainty | Decoupled zone control â†’ simultaneous high demand |
 | **Recommended Action** | Tune PINN regularization | Extend MPC to system controls or accept zone-independent control |
 
 ## BOPTEST/Docker Error Handling Guide
@@ -193,7 +191,7 @@ docker compose -f path/to/docker-compose.yml up -d web worker provision
 
 **Validation:**
 ```powershell
-# Probe API recovery (repeat 5–10 times with 3s delay)
+# Probe API recovery (repeat 5â€“10 times with 3s delay)
 for($i=0; $i -lt 10; $i++) {
   Start-Sleep -Seconds 3
   $code = curl.exe -s -o NUL -w "%{http_code}" http://127.0.0.1:8000/version
@@ -333,7 +331,7 @@ powershell -Command "Get-CimInstance Win32_OperatingSystem | Select-Object FreeP
 ```powershell
 docker restart project1-boptest-worker-1
 
-# Wait for worker to re-initialize (30–60s)
+# Wait for worker to re-initialize (30â€“60s)
 Start-Sleep -Seconds 60
 
 # Re-probe API to confirm readiness
@@ -387,7 +385,7 @@ table.sort(out)
 return out
 "@ 0
 
-# Expected: Should only see 1–2 recent tests, not 10+ from prior runs
+# Expected: Should only see 1â€“2 recent tests, not 10+ from prior runs
 ```
 
 **Recovery:**
@@ -411,13 +409,65 @@ docker restart project1-boptest-web-1
 
 ---
 
+### Failure Mode 5: Long first `advance()` looks stalled (Multizone)
+
+**Symptoms:**
+- Episode reaches `Running` and prints initialization, then appears frozen.
+- No step-completion output for several minutes.
+- Worker container stays near 100% CPU.
+- Redis queue is usually 0 or 1 (not overloaded).
+
+**Observed root cause (2026-03-24):**
+- The first multizone `advance()` is very expensive and can run far longer than typical single-zone calls.
+- Without heartbeat logging, this looks like a dead process.
+- Web-side message timeout can kill long worker requests if set too low.
+
+**Diagnosis:**
+```powershell
+# 1) Confirm active test is still Running
+Invoke-RestMethod -Method Get -Uri "http://127.0.0.1:8000/status/<testid>" -TimeoutSec 30
+
+# 2) Confirm worker is busy (not idle)
+docker stats --no-stream project1-boptest-worker-1 project1-boptest-web-1
+
+# 3) Check whether current testid appears in timeout lines
+docker logs project1-boptest-web-1 2>&1 | Select-String -Pattern '<testid>|Timeout for request' | Select-Object -Last 20
+```
+
+**Recovery and hardening:**
+```powershell
+# Stop stale test and restart worker if queue consumer is stuck
+Invoke-RestMethod -Method Put -Uri "http://127.0.0.1:8000/stop/<testid>" -TimeoutSec 60 | Out-Null
+docker restart project1-boptest-worker-1
+
+# Run with long timeout and heartbeat output
+& ".venv/Scripts/python.exe" scripts/run_mpc_episode.py \
+  --predictor pinn \
+  --episode all-test \
+  --mpc-config configs/mpc_phase1.yaml \
+  --url http://127.0.0.1:8000 \
+  --startup-timeout-s 1200 \
+  --advance-timeout-s 7200 \
+  --advance-heartbeat-s 30
+```
+
+**Persistent setting (recommended):**
+- Set `BOPTEST_MESSAGE_TIMEOUT=7200000` for the web service and recreate the container.
+- Keep runner heartbeat enabled for operations.
+
+**Interpretation rule:**
+- Heartbeat continues + worker CPU near 100%: active long compute.
+- No heartbeat >5 minutes + no new worker/web line for active test ID: likely true stall.
+
+---
+
 ### Composite Recovery Procedure
 
 When one or more failure modes are suspected, follow this checklist in order:
 
 1. **Stop all active tests** (handle Queued/Running cleanup)
 2. **Wait 5s**
-3. **Check queue depth** → if not 0, flush manually
+3. **Check queue depth** â†’ if not 0, flush manually
 4. **Check API health** (HTTP 200 on /version, /testcases)
 5. **If API down**: `docker restart project1-boptest-web-1` + wait 30s
 6. **Check Redis state** (no stale test*: entries)

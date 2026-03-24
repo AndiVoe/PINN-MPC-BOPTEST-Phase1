@@ -58,6 +58,7 @@ class Sample:
     h_global: float
     u_heating: float
     delta_u: float
+    occupied: float
     power_w: float
     features: list[float]
     target_next_t_zone: float
@@ -137,6 +138,7 @@ def _build_samples(dataset_root: Path, index_entries: list[dict[str, Any]]) -> l
             u_heat = _decode_u_heating(float(current_record["u_heating"]))
             next_u_heat = _decode_u_heating(float(next_record["u_heating"]))
             power_w = float(current_record.get("power_W", 0.0))
+            occupied = float(current_record.get("occupied", False))
             cyc = _cyclical_features(time_s)
             features = [
                 float(current_record["T_zone_degC"]),
@@ -144,6 +146,7 @@ def _build_samples(dataset_root: Path, index_entries: list[dict[str, Any]]) -> l
                 float(current_record["H_global_Wm2"]),
                 u_heat,
                 next_u_heat - u_heat,
+                occupied,
                 *cyc,
             ]
             samples.append(
@@ -158,6 +161,7 @@ def _build_samples(dataset_root: Path, index_entries: list[dict[str, Any]]) -> l
                     h_global=float(current_record["H_global_Wm2"]),
                     u_heating=u_heat,
                     delta_u=next_u_heat - u_heat,
+                    occupied=occupied,
                     power_w=power_w,
                     features=features,
                     target_next_t_zone=float(next_record["T_zone_degC"]),
@@ -204,6 +208,7 @@ def build_datasets(config: dict[str, Any], root: Path) -> dict[str, Any]:
             "H_global_Wm2",
             "u_heating_degC",
             "delta_u_heating_degC",
+            "occupied",
             "tod_sin",
             "tod_cos",
             "year_sin",

@@ -33,12 +33,6 @@ testcases:
     category: hydronic_heavy
     rc_candidates: [R3C2, R4C3, R5C3]
 
-  - display_name: Multizone Residential Hydronic
-    expected_api_id: multizone_residential_hydronic
-    location: Copenhagen, Denmark
-    category: hydronic_heavy
-    rc_candidates: [R3C2, R4C3, R5C3]
-
 models:
   pinn:
     per_testcase_model: true

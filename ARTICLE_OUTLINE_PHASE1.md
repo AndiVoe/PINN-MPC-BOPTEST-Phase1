@@ -1,4 +1,4 @@
-# Phase-1 Paper Outline: RC-MPC vs PINN-MPC
+﻿# Phase-1 Paper Outline: RC-MPC vs PINN-MPC
 
 ## 1) Proposed Scope
 
@@ -9,7 +9,6 @@
 
 ### Cases to postpone for later work
 1. `twozone_apartment_hydronic`
-2. `multizone_residential_hydronic`
 
 Reason: multizone and apartment setups add pipeline complexity and runtime risk before the baseline comparison is fully stabilized.
 

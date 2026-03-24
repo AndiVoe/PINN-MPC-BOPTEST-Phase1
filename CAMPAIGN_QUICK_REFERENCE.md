@@ -1,4 +1,4 @@
-# Campaign Monitoring & Control - Quick Reference
+﻿# Campaign Monitoring & Control - Quick Reference
 
 **Status**: Campaign running (launched 2026-03-18 14:05)  
 **Est. Completion**: 2026-03-19 08:00-12:00 UTC  
@@ -6,7 +6,7 @@
 
 ---
 
-## 🟢 Real-Time Monitoring
+## ðŸŸ¢ Real-Time Monitoring
 
 ### Live Progress Monitor (Recommended)
 ```powershell
@@ -36,7 +36,7 @@ Get-Content results/eu_rc_vs_pinn/runtime_discovery/campaign_live_status.json -R
 
 ---
 
-## ⏸ Pausing the Campaign
+## â¸ Pausing the Campaign
 
 ### Graceful Stop
 1. **Find runner window** and press **Ctrl+C** (recommended)
@@ -55,7 +55,7 @@ cd "c:\Users\AVoelser\OneDrive - Scientific Network South Tyrol\3_PhD\Simulation
 
 ---
 
-## 🔴 Force Stop (Emergency Only)
+## ðŸ”´ Force Stop (Emergency Only)
 
 ```powershell
 # Kill all Python runners
@@ -69,7 +69,7 @@ docker exec $redis redis-cli EVAL "for _,k in ipairs(redis.call('keys','tests:*'
 
 ---
 
-## 📊 Per-Case Log Files
+## ðŸ“Š Per-Case Log Files
 
 Check detailed logs for any specific case:
 ```powershell
@@ -77,13 +77,12 @@ Check detailed logs for any specific case:
 tail -f logs/eu_campaign_stage1/singlezone_commercial_hydronic.log
 tail -f logs/eu_campaign_stage1/bestest_hydronic.log
 tail -f logs/eu_campaign_stage1/bestest_hydronic_heat_pump.log
-tail -f logs/eu_campaign_stage1/multizone_residential_hydronic.log
 tail -f logs/eu_campaign_stage1/twozone_apartment_hydronic.log
 ```
 
 ---
 
-## 📈 Timeline
+## ðŸ“ˆ Timeline
 
 | Case                 | Est. Duration | Est. Window       |
 |----------------------------|---------|-------------------|
@@ -95,27 +94,27 @@ tail -f logs/eu_campaign_stage1/twozone_apartment_hydronic.log
 
 ---
 
-## 📂 Results After Completion
+## ðŸ“‚ Results After Completion
 
 ```
 results/eu_rc_vs_pinn/
-├── raw/                           # 30 episode outputs (JSON)
-│   ├── [case_name]/
-│   │   ├── rc/     (te_std_01.json, te_std_02.json, te_std_03.json)
-│   │   └── pinn/
-│   └── ...
-├── qc/                            # Quality assurance reports
-│   ├── plausibility_summary.csv    # PASS/WARN per run
-│   ├── kpi_table.csv              # Performance metrics
-│   ├── overview/                  # Summary plots
-│   └── timeseries/                # Episode plots
-└── runtime_discovery/
-    └── campaign_live_status.json   # Live progress (updated during run)
+â”œâ”€â”€ raw/                           # 30 episode outputs (JSON)
+â”‚   â”œâ”€â”€ [case_name]/
+â”‚   â”‚   â”œâ”€â”€ rc/     (te_std_01.json, te_std_02.json, te_std_03.json)
+â”‚   â”‚   â””â”€â”€ pinn/
+â”‚   â””â”€â”€ ...
+â”œâ”€â”€ qc/                            # Quality assurance reports
+â”‚   â”œâ”€â”€ plausibility_summary.csv    # PASS/WARN per run
+â”‚   â”œâ”€â”€ kpi_table.csv              # Performance metrics
+â”‚   â”œâ”€â”€ overview/                  # Summary plots
+â”‚   â””â”€â”€ timeseries/                # Episode plots
+â””â”€â”€ runtime_discovery/
+    â””â”€â”€ campaign_live_status.json   # Live progress (updated during run)
 ```
 
 ---
 
-## 🔧 Troubleshooting
+## ðŸ”§ Troubleshooting
 
 ### Startup Reliability (Updated)
 
@@ -181,7 +180,7 @@ docker exec project1-boptest-redis-1 redis-cli --raw EVAL "local q=0; local r=0;
 
 ---
 
-## 📝 See Also
+## ðŸ“ See Also
 
 - **Full documentation**: [CAMPAIGN_EXECUTION_GUIDE.md](CAMPAIGN_EXECUTION_GUIDE.md)
 - **Campaign runner**: [scripts/run_eu_campaign_stage1.py](scripts/run_eu_campaign_stage1.py)

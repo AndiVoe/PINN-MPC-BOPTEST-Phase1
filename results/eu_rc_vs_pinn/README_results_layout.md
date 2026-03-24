@@ -50,4 +50,3 @@ The following values are derived from `results/eu_rc_vs_pinn/raw/*/*/*.json` and
 ### Completion note
 
 - Completed in article set: `bestest_hydronic`, `bestest_hydronic_heat_pump`, `singlezone_commercial_hydronic`, `twozone_apartment_hydronic` (all 3 RC + 3 PINN episodes each).
-- Deferred complex case: `multizone_residential_hydronic` remains outside headline article tables.

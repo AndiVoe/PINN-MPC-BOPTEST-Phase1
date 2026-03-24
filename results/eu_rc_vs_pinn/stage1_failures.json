@@ -1,8 +1,5 @@
-{
-  "failures": [
-    {
-      "case_id": "multizone_residential_hydronic",
-      "error": "Command failed (1): C:\\Users\\AVoelser\\OneDrive - Scientific Network South Tyrol\\3_PhD\\Simulation\\PINN\\.venv\\Scripts\\python.exe -u scripts/run_mpc_episode.py --predictor pinn --episode all-test --manifest manifests/eu/multizone_residential_hydronic_stage1.yaml --mpc-config configs/mpc_phase1.yaml --checkpoint artifacts/eu/multizone_residential_hydronic/best_model.pt --output-dir results/eu_rc_vs_pinn/raw/multizone_residential_hydronic --url http://127.0.0.1:8000 --case multizone_residential_hydronic --startup-timeout-s 420 --recover-from-queued --resume-existing"
-    }
-  ]
+﻿{
+    "failures":  [
+
+                 ]
 }

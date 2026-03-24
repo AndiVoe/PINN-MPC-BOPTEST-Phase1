@@ -1,49 +1,41 @@
-{
-  "created_utc": "2026-03-18T13:16:13.929435+00:00",
-  "base_url": "http://127.0.0.1:8000",
-  "all_resolved": true,
-  "cases": [
-    {
-      "display_name": "BESTEST Hydronic",
-      "location": "Brussels, Belgium",
-      "expected_api_id": "bestest_hydronic",
-      "resolved_api_id": "bestest_hydronic",
-      "match_score": 2.4,
-      "resolved": true
-    },
-    {
-      "display_name": "BESTEST Hydronic Heat Pump",
-      "location": "Brussels, Belgium",
-      "expected_api_id": "bestest_hydronic_heat_pump",
-      "resolved_api_id": "bestest_hydronic_heat_pump",
-      "match_score": 2.4,
-      "resolved": true
-    },
-    {
-      "display_name": "Single Zone Commercial Hydronic",
-      "location": "Copenhagen, Denmark",
-      "expected_api_id": "singlezone_commercial_hydronic",
-      "resolved_api_id": "singlezone_commercial_hydronic",
-      "match_score": 1.9,
-      "resolved": true
-    },
-    {
-      "display_name": "Two Zone Apartment Hydronic",
-      "location": "Milan, Italy",
-      "expected_api_id": "twozone_apartment_hydronic",
-      "resolved_api_id": "twozone_apartment_hydronic",
-      "match_score": 1.9,
-      "resolved": true
-    },
-    {
-      "display_name": "Multizone Residential Hydronic",
-      "location": "Copenhagen, Denmark",
-      "expected_api_id": "multizone_residential_hydronic",
-      "resolved_api_id": "multizone_residential_hydronic",
-      "match_score": 2.4,
-      "resolved": true
-    }
-  ],
-  "snapshot": "results/eu_rc_vs_pinn/runtime_discovery/testcases_runtime_snapshot.json",
-  "table_csv": "results/eu_rc_vs_pinn/runtime_discovery/testcases_runtime_table.csv"
+﻿{
+    "created_utc":  "2026-03-18T13:16:13.929435+00:00",
+    "base_url":  "http://127.0.0.1:8000",
+    "all_resolved":  true,
+    "cases":  [
+                  {
+                      "display_name":  "BESTEST Hydronic",
+                      "location":  "Brussels, Belgium",
+                      "expected_api_id":  "bestest_hydronic",
+                      "resolved_api_id":  "bestest_hydronic",
+                      "match_score":  2.4,
+                      "resolved":  true
+                  },
+                  {
+                      "display_name":  "BESTEST Hydronic Heat Pump",
+                      "location":  "Brussels, Belgium",
+                      "expected_api_id":  "bestest_hydronic_heat_pump",
+                      "resolved_api_id":  "bestest_hydronic_heat_pump",
+                      "match_score":  2.4,
+                      "resolved":  true
+                  },
+                  {
+                      "display_name":  "Single Zone Commercial Hydronic",
+                      "location":  "Copenhagen, Denmark",
+                      "expected_api_id":  "singlezone_commercial_hydronic",
+                      "resolved_api_id":  "singlezone_commercial_hydronic",
+                      "match_score":  1.9,
+                      "resolved":  true
+                  },
+                  {
+                      "display_name":  "Two Zone Apartment Hydronic",
+                      "location":  "Milan, Italy",
+                      "expected_api_id":  "twozone_apartment_hydronic",
+                      "resolved_api_id":  "twozone_apartment_hydronic",
+                      "match_score":  1.9,
+                      "resolved":  true
+                  }
+              ],
+    "snapshot":  "results/eu_rc_vs_pinn/runtime_discovery/testcases_runtime_snapshot.json",
+    "table_csv":  "results/eu_rc_vs_pinn/runtime_discovery/testcases_runtime_table.csv"
 }

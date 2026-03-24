@@ -1,4 +1,4 @@
-# Article Outline: European BOPTEST RC vs PINN Benchmark
+﻿# Article Outline: European BOPTEST RC vs PINN Benchmark
 
 ## Working Title
 
@@ -44,7 +44,7 @@ Model properties:
 2. Inputs/disturbances: outdoor temperature, global irradiance, heating setpoint/action.
 3. Nonlinearity: piecewise heating drive term $\max(u_k-T_k,0)$.
 4. Numerical integration: explicit forward Euler at control step $\Delta t$.
-5. Safety clamp in rollout: predicted $T$ bounded to [-20, 60] °C in the predictor.
+5. Safety clamp in rollout: predicted $T$ bounded to [-20, 60] Â°C in the predictor.
 6. Gradient handling in MPC: objective gradient is not analytical; the solver uses finite differences for RC.
 
 Parameterization detail for fair comparison:
@@ -202,7 +202,6 @@ Interpretation to report in the manuscript:
 | RC | 4 | 73.37 | 105.06 | 1677987.60 | 0.097347 | 32787.62 | 46.33 |
 | PINN | 4 | 66.76 | 89.70 | 888679.60 | 0.077169 | 30192.75 | 388.18 |
 
-Note: `multizone_residential_hydronic` is still excluded from these headline values pending separate recovery/debug completion.
 
 ### Phase-1 singlezone 7-day all-test (executed)
 

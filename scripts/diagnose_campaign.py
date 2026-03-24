@@ -185,8 +185,7 @@ def main() -> int:
         print("  ⚠ Campaign did not complete successfully")
         print("  Recommendations:")
         print("    1. Check the last error above")
-        print("    2. Review the PINN model for multizone_residential_hydronic")
-        print("    3. May need to retrain or investigate BOPTEST compatibility")
+        print("    2. Retrain the affected PINN model or investigate BOPTEST compatibility")
     elif status.get("state") == "finished":
         print("  ✓ Campaign completed successfully")
         completed = status.get("completed_cases", 0)

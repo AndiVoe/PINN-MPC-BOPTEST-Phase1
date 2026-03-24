@@ -1,17 +1,16 @@
-# Phase 1 PINN Retraining & Validation - Progress Summary
+﻿# Phase 1 PINN Retraining & Validation - Progress Summary
 **Date**: 2026-03-18 | **Status**: In Progress (Episode Validation Running)
 
-## ✓ Completed Tasks
+## âœ“ Completed Tasks
 
 ### 1. Full PINN Retraining with Manual Weighting (ALL 5 CASES)
 - **Script**: `scripts/retrain_all_eu_pinn_manual.py` 
-- **Status**: ✓ All models successfully trained
+- **Status**: âœ“ All models successfully trained
 - **Cases trained**:
-  - ✓ singlezone_commercial_hydronic (34 epochs, val_loss=0.0400)
-  - ✓ bestest_hydronic  
-  - ✓ bestest_hydronic_heat_pump  
-  - ✓ multizone_residential_hydronic  
-  - ✓ twozone_apartment_hydronic
+  - âœ“ singlezone_commercial_hydronic (34 epochs, val_loss=0.0400)
+  - âœ“ bestest_hydronic  
+  - âœ“ bestest_hydronic_heat_pump  
+  - âœ“ twozone_apartment_hydronic
 
 ### 2. Updated PINN Training Configs with Loss Weighting
 - **Files updated**: `configs/eu/pinn_*.yaml` (all 5 case-specific)
@@ -25,20 +24,19 @@
 - **Expected duration**: 2-4 hours
 - **Episodes**:
   - Heat-pump PINN (bestest_hydronic_heat_pump) + all-test
-  - Multizone RC (multizone_residential_hydronic) + all-test
 
 ### 4. Campaign Runner Enhanced with --short-episode Flag
 - **File modified**: `scripts/run_eu_campaign_stage1.py`
 - **New capability**: `python scripts/run_eu_campaign_stage1.py --short-episode`
 - **Behavior**:
-  - Reduces startup timeout from 180s → 120s (prevents excessive queue wait)
+  - Reduces startup timeout from 180s â†’ 120s (prevents excessive queue wait)
   - Uses all-test episodes (1-day validation, not full 7-day)
   - Useful for quick infrastructure/control validation before full campaigns
 - **Status tracking**: Saves campaign mode ("short_validation" vs "full_campaign") in live_status.json
 
 ---
 
-## 📊 Key Metrics from Retraining
+## ðŸ“Š Key Metrics from Retraining
 
 ### singlezone_commercial_hydronic (Sample)
 ```
@@ -53,20 +51,19 @@ Validation metrics:
 
 ---
 
-## ⏳ In Progress
+## â³ In Progress
 
 ### Short Episode Validation (Terminal: c77bcb23-ee58-42fc-9b1e-767e58680dd9)
 - **Status**: Running
 - **Tests**:
   1. `run_mpc_episode.py --predictor pinn --case bestest_hydronic_heat_pump --episode all-test`
-  2. `run_mpc_episode.py --predictor rc --case multizone_residential_hydronic --episode all-test`
 - **Timeout per case**: 3600s (1 hour)
 - **Purpose**: Validate control logic, MPC solver robustness, and FMU responsiveness before multi-day runs
 - **Expected completion**: Check logs/validate_short_episodes.log for status
 
 ---
 
-## 🚀 Next Steps (After Validation Completes)
+## ðŸš€ Next Steps (After Validation Completes)
 
 1. **If short episodes succeed** (recommended):
    - Run full 7-day campaigns for all cases
@@ -86,33 +83,32 @@ Validation metrics:
 
 ---
 
-## 📝 Configuration Summary
+## ðŸ“ Configuration Summary
 
 ### Loss Weighting Modes Available (in training)
 | Mode | Config | Use Case |
 |------|--------|----------|
-| **manual** | λ_physics=0.01 (default) | Empirically strongest on this dataset |
-| gradient_balance | EMA smoothing λ over epochs | For datasets with variable loss scales |
+| **manual** | Î»_physics=0.01 (default) | Empirically strongest on this dataset |
+| gradient_balance | EMA smoothing Î» over epochs | For datasets with variable loss scales |
 | uncertainty | Learnable log_sigma per task | For heteroscedastic noise modeling |
 
 ### MPC Overrides (Heat-Pump Tuning)
 - **File**: `manifests/eu/bestest_hydronic_heat_pump_stage1.yaml`
 - **Goal**: Reduce lower-bound saturation (was >25% of steps at u_min)
 - **Changes**:
-  - Energy penalty: 0.01 → 0.002 (less penalizing heating)
-  - Comfort penalty: 80 → 140 (stronger pull upward)
-  - Smoothness penalty: 0.5 → 4.0 (encourage gradual changes)
-  - Setpoint bounds: tighter (18.5–24.5°C safe band)
+  - Energy penalty: 0.01 â†’ 0.002 (less penalizing heating)
+  - Comfort penalty: 80 â†’ 140 (stronger pull upward)
+  - Smoothness penalty: 0.5 â†’ 4.0 (encourage gradual changes)
+  - Setpoint bounds: tighter (18.5â€“24.5Â°C safe band)
 
 ### System Control Extensions (Multizone)
-- **File**: `manifests/eu/multizone_residential_hydronic_stage1.yaml`
 - **New signals**:
   - `system_control_value_signals`: [oveTSetSup_u, oveTSetPumBoi_u] (boiler/pump setpoints)
   - `fixed_control_commands`: oveEmiPum_u: 1.0 (force emission pump on)
 
 ---
 
-## 📄 Documentation Updates
+## ðŸ“„ Documentation Updates
 
 ### [FMU_DIAGNOSTICS.md](./FMU_DIAGNOSTICS.md)
 - **New section**: "BOPTEST/Docker Error Handling Guide"
@@ -128,7 +124,7 @@ Validation metrics:
 
 ---
 
-## 🔄 Reproducibility
+## ðŸ”„ Reproducibility
 
 To reproduce this workflow later:
 
@@ -151,7 +147,7 @@ python scripts/run_eu_campaign_stage1.py --short-episode --max-cases 2 --url htt
 
 ---
 
-## 📌 Current Blockers
+## ðŸ“Œ Current Blockers
 
 **BOPTEST Infrastructure Stability**
 - Observed issues: Queued state persistence, web container dropout, slow advance() on heavy cases

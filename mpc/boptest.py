@@ -15,9 +15,10 @@ class BoptestConnectionError(RuntimeError):
 class BoptestClient:
     """Thin wrapper over the BOPTEST REST API."""
 
-    def __init__(self, base_url: str) -> None:
+    def __init__(self, base_url: str, advance_timeout_s: int = 300) -> None:
         self.base_url = base_url.rstrip("/")
         self.testid: str | None = None
+        self.advance_timeout_s = int(advance_timeout_s)
         self._assert_reachable()
 
     # ------------------------------------------------------------------
@@ -152,12 +153,28 @@ class BoptestClient:
         return resp.json().get("payload", {})
 
     def advance(self, u_dict: dict[str, float]) -> dict[str, Any]:
-        resp = requests.post(
-            f"{self.base_url}/advance/{self._testid()}",
-            json=u_dict,
-            timeout=300,
-        )
-        resp.raise_for_status()
+        url = f"{self.base_url}/advance/{self._testid()}"
+        try:
+            resp = requests.post(
+                url,
+                json=u_dict,
+                timeout=self.advance_timeout_s,
+            )
+        except requests.Timeout as exc:
+            raise TimeoutError(
+                f"BOPTEST /advance timed out after {self.advance_timeout_s}s for {url}"
+            ) from exc
+        except requests.RequestException as exc:
+            raise RuntimeError(f"BOPTEST /advance request failed for {url}: {exc}") from exc
+
+        if not resp.ok:
+            body = (resp.text or "").strip()
+            body_snippet = body[:1200]
+            raise RuntimeError(
+                f"BOPTEST /advance failed (HTTP {resp.status_code}) for {url}. "
+                f"Response body: {body_snippet}"
+            )
+
         return resp.json().get("payload", {})
 
     def kpi(self) -> dict[str, Any]:

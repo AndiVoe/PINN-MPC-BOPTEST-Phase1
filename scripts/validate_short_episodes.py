@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """
-Run short (1-day) episode tests for heat-pump PINN and multizone RC to validate
+Run short (1-day) episode tests for heat-pump PINN and twozone RC to validate
 control logic before embarking on 7-day runs. This helps avoid worker lockups from
 very long simulations.
 
 Tests:
 1. bestest_hydronic_heat_pump (PINN), episode: all-test (1 day)
-2. multizone_residential_hydronic (RC), episode: all-test (1 day)
+2. twozone_apartment_hydronic (RC), episode: all-test (1 day)
 """
 
 import subprocess
@@ -28,10 +28,10 @@ EPISODES = [
     },
     {
         "predictor": "rc",
-        "case": "multizone_residential_hydronic",
-        "manifest": "manifests/eu/multizone_residential_hydronic_stage1.yaml",
-        "checkpoint": "artifacts/eu/multizone_residential_hydronic/best_model.pt",
-        "output_dir": "results/eu_rc_vs_pinn_stage2/validation/multizone_residential_hydronic",
+        "case": "twozone_apartment_hydronic",
+        "manifest": "manifests/eu/twozone_apartment_hydronic_stage1.yaml",
+        "checkpoint": "artifacts/eu/twozone_apartment_hydronic/best_model.pt",
+        "output_dir": "results/eu_rc_vs_pinn_stage2/validation/twozone_apartment_hydronic",
         "episode": "all-test",
     },
 ]
@@ -110,7 +110,7 @@ def run_episode(episode_config: dict) -> dict:
 
 def main() -> None:
     log_msg("=" * 70)
-    log_msg("SHORT EPISODE VALIDATION: 1-day episodes (heat-pump PINN + multizone RC)")
+    log_msg("SHORT EPISODE VALIDATION: 1-day episodes (heat-pump PINN + twozone RC)")
     log_msg("=" * 70)
     
     results = []

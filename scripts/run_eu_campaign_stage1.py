@@ -502,7 +502,7 @@ def enforce_queue_guard(
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Run EU stage-1 baseline campaign (1 RC + 1 PINN per case).")
+    parser = argparse.ArgumentParser(description="Run EU stage-1 baseline campaign (1 RC + 1 PINN + 1 RBC per case).")
     parser.add_argument("--mapping", default="results/eu_rc_vs_pinn/runtime_discovery/eu_testcases_resolved_mapping.json")
     parser.add_argument("--url", default="http://127.0.0.1:8000")
     parser.add_argument(
@@ -855,6 +855,26 @@ def main() -> int:
                     "-u",
                     "scripts/run_mpc_episode.py",
                     "--predictor", "pinn",
+                    "--episode", "all-test",
+                    "--manifest", str(manifest_rel).replace('\\', '/'),
+                    "--mpc-config", "configs/mpc_phase1.yaml",
+                    "--checkpoint", str((artifact_rel / "best_model.pt").as_posix()),
+                    "--output-dir", str(result_rel).replace('\\', '/'),
+                    "--url", args.url,
+                    "--case", case_id,
+                    "--startup-timeout-s", startup_timeout_s,
+                    "--recover-from-queued",
+                    "--resume-existing",
+                ], require_queue_capacity=True)
+
+            # RBC (rule-based control) benchmark
+            rbc_out = ROOT / result_rel / "rbc"
+            if not args.resume or not has_all_episode_outputs(rbc_out, test_episode_ids):
+                run_step("benchmark_rbc", [
+                    py,
+                    "-u",
+                    "scripts/run_mpc_episode.py",
+                    "--predictor", "rbc",
                     "--episode", "all-test",
                     "--manifest", str(manifest_rel).replace('\\', '/'),
                     "--mpc-config", "configs/mpc_phase1.yaml",

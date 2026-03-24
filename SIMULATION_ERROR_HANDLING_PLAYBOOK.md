@@ -1,4 +1,4 @@
-# Simulation Error-Handling Playbook (BOPTEST + Campaign Runner)
+﻿# Simulation Error-Handling Playbook (BOPTEST + Campaign Runner)
 
 This playbook captures recurring failure modes and proven recovery steps observed during EU RC vs PINN campaign execution.
 
@@ -151,3 +151,49 @@ Get-Content results/eu_rc_vs_pinn_heating/runtime_discovery/campaign_live_status
 ```powershell
 & ".venv/Scripts/python.exe" -m py_compile scripts/run_eu_campaign_stage1.py
 ```
+
+## 8) 2026-03-24 Incident Update (Multizone Long-Advance)
+
+### What failed
+1. Multizone quickcheck repeatedly appeared stalled after episode initialization.
+2. BOPTEST test state remained `Running`, Redis queue stayed near empty, worker CPU stayed near 100%.
+3. Web logs repeatedly showed `Timeout for request ... method:'advance'` for previous multizone test IDs.
+
+### Root cause
+2. Web-to-worker messaging timeout can expire before worker completes the call.
+3. Runner output looked frozen because no heartbeat was printed while waiting on `/advance`.
+
+### Validated fix sequence
+1. Stop stale test IDs and clear queue:
+```powershell
+$id = '<stale_test_id>'
+Invoke-RestMethod -Method Put -Uri "http://127.0.0.1:8000/stop/$id" -TimeoutSec 60 | Out-Null
+docker exec project1-boptest-redis-1 redis-cli LLEN jobs
+```
+2. Ensure exactly one active worker consumer (restart worker if needed):
+```powershell
+docker restart project1-boptest-worker-1
+Start-Sleep -Seconds 35
+```
+3. Run with long client timeout and progress heartbeat:
+```powershell
+& ".venv/Scripts/python.exe" scripts/run_mpc_episode.py \
+  --predictor pinn \
+  --episode all-test \
+  --mpc-config configs/mpc_phase1.yaml \
+  --url http://127.0.0.1:8000 \
+  --recover-from-queued \
+  --startup-timeout-s 1200 \
+  --advance-timeout-s 7200 \
+  --advance-heartbeat-s 30
+```
+
+### Persistent hardening
+1. Set BOPTEST web message timeout (milliseconds) to exceed worst-case multizone advance:
+- Recommended baseline: `BOPTEST_MESSAGE_TIMEOUT=7200000` (2 hours).
+2. If using docker compose, recreate web with this environment variable.
+3. Keep runner heartbeat enabled (`--advance-heartbeat-s 30`) so long calls are visible and not mistaken for deadlocks.
+
+### Fast decision rule for operations
+1. If heartbeat lines continue every 30s and worker CPU is near 100%, treat as active compute, not a stall.
+2. If heartbeat stops for >5 minutes and no new worker/web log line appears for the active test ID, treat as stalled and recover.
