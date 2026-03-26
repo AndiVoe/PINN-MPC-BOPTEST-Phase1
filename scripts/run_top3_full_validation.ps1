@@ -72,10 +72,18 @@ try {
             throw "Command failed with exit code $LASTEXITCODE"
         }
     }
+
+    Write-Host ""
+    Write-Host "Full validation batch finished."
+    Write-Host ""
+    Write-Host "== Post-execution analysis =="
+    $analyseCmd = "`"$py`" scripts/compare_top3_validation.py --plan `"$planPath`""
+    Write-Host $analyseCmd
+    Invoke-Expression $analyseCmd
+    if ($LASTEXITCODE -ne 0) {
+        Write-Warning "Comparison script exited with code $LASTEXITCODE (non-fatal)."
+    }
 }
 finally {
     Pop-Location
 }
-
-Write-Host ""
-Write-Host "Full validation batch finished."
