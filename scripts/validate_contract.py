@@ -11,7 +11,7 @@ from pathlib import Path
 
 
 def _read_json(path: Path) -> dict:
-    with path.open("r", encoding="utf-8") as f:
+    with path.open("r", encoding="utf-8-sig") as f:
         return json.load(f)
 
 
@@ -23,7 +23,7 @@ def _read_yaml(path: Path) -> dict:
             "Missing dependency 'pyyaml'. Install with: pip install pyyaml"
         ) from exc
 
-    with path.open("r", encoding="utf-8") as f:
+    with path.open("r", encoding="utf-8-sig") as f:
         data = yaml.safe_load(f)
     if not isinstance(data, dict):
         raise ValueError(f"YAML root must be a mapping: {path}")
