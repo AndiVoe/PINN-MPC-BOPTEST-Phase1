@@ -17,6 +17,11 @@ import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.patches import Patch
 
+import generate_rc_pinn_rbc_plots as three_way
+
+
+CANONICAL_OUT_DIR = Path("results/mpc_phase1/plots_3way_refresh")
+
 
 def _to_float(value: Any) -> float | None:
     try:
@@ -388,44 +393,35 @@ def plot_enhanced_pareto_frontier(results: dict, out_dir: Path) -> None:
 
 def main() -> int:
     parser = argparse.ArgumentParser(
-        description="Generate publication-quality plots for PINN-MPC vs RC comparison."
+        description="Generate publication-quality plots (delegates to standardized 3-way style)."
     )
-    parser.add_argument("--raw-root", default="results/eu_rc_vs_pinn/raw",
-                       help="Path to raw results directory")
-    parser.add_argument("--out-dir", default="results/publication_plots",
-                       help="Output directory for plots")
+    parser.add_argument("--raw-root", default="results/eu_rc_vs_pinn/raw", help="Path to raw results directory")
+    parser.add_argument("--out-dir", default=str(three_way.CANONICAL_OUT_DIR), help="Output directory for plots")
     args = parser.parse_args()
-    
+
     raw_root = Path(args.raw_root).resolve()
-    out_dir = Path(args.out_dir).resolve()
-    
+    out_dir = three_way.CANONICAL_OUT_DIR.resolve()
+    requested_out_dir = Path(args.out_dir).resolve()
+    if requested_out_dir != out_dir:
+        print(f"Note: enforcing canonical output directory: {out_dir.as_posix()}")
+
     if not raw_root.exists():
         print(f"Error: Raw results directory not found: {raw_root}")
         return 1
-    
+
     print(f"Loading results from: {raw_root}")
-    results = load_results(raw_root)
-    
+    results = three_way.load_results(raw_root, ["rc", "pinn", "rbc"])
     if not results:
         print(f"Error: No results found in {raw_root}")
         return 1
-    
+
     print(f"Found {len(results)} episode results")
-    print(f"\nGenerating publication-quality plots...")
-    
-    plot_kpi_bars_per_case(results, out_dir)
-    print("[OK] KPI bar charts per case")
-    
-    plot_relative_improvements(results, out_dir)
-    print("[OK] Relative improvement plots")
-    
-    plot_aggregated_kpi_boxplots(results, out_dir)
-    print("[OK] Aggregated KPI boxplots")
-    
-    plot_enhanced_pareto_frontier(results, out_dir)
-    print("[OK] Enhanced Pareto frontier")
-    
-    print(f"\n[OK] All plots saved to: {out_dir.as_posix()}")
+    print("Generating standardized 3-way publication plots...")
+    three_way.plot_three_way_bars(results, out_dir)
+    three_way.plot_aggregated_boxplots(results, out_dir)
+    three_way.plot_timeseries_per_case_episode(results, out_dir)
+    three_way.plot_refreshed_episode_bars(Path("results/mpc_phase1"), out_dir)
+    print(f"[OK] All plots saved to: {out_dir.as_posix()}")
     return 0
 
 
