@@ -39,7 +39,7 @@ def validate(workspace: Path) -> int:
     
     schema_path = Path("data_contract/dataset_schema.json")
     with schema_path.open("r", encoding="utf-8-sig") as f:
-    schema = json.load(f)
+        schema = json.load(f)
 
     missing = [
         str(p) for p in [contract_path, schema_path, manifest_path, metrics_path] if not p.exists()
