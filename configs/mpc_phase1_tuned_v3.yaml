@@ -1,0 +1,22 @@
+# MPC tuning candidate v3 (comfort-recovery with stable solve times)
+# Goal: recover PINN comfort on te_ext_01 while keeping tuned_v2 compute gains.
+
+mpc:
+  horizon_s: 21600
+
+  u_min_degC: 18.0
+  u_max_degC: 24.0
+
+  comfort_bounds_degC:
+    occupied: [21.0, 24.0]
+    unoccupied: [15.0, 30.0]
+
+  objective_weights:
+    comfort: 100.0
+    energy: 0.0012
+    control_smoothness: 0.2
+
+  solver_maxiter: 90
+  solver_ftol: 1.0e-4
+
+  repeat_runs: 3

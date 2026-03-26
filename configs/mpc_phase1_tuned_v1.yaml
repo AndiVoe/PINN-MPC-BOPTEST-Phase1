@@ -1,0 +1,22 @@
+# MPC tuning candidate v1 (lag-aware, anti-overshoot)
+# Based on configs/mpc_phase1.yaml with stronger smoothness and modestly higher energy penalty.
+
+mpc:
+  horizon_s: 21600
+
+  u_min_degC: 18.0
+  u_max_degC: 24.0
+
+  comfort_bounds_degC:
+    occupied: [21.0, 24.0]
+    unoccupied: [15.0, 30.0]
+
+  objective_weights:
+    comfort: 85.0
+    energy: 0.003
+    control_smoothness: 2.0
+
+  solver_maxiter: 120
+  solver_ftol: 1.0e-4
+
+  repeat_runs: 3

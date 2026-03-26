@@ -1,0 +1,22 @@
+# MPC tuning candidate v2 (compute-stable, moderate smoothing)
+# Goal: preserve baseline performance while avoiding the solve-time explosion seen in tuned_v1.
+
+mpc:
+  horizon_s: 21600
+
+  u_min_degC: 18.0
+  u_max_degC: 24.0
+
+  comfort_bounds_degC:
+    occupied: [21.0, 24.0]
+    unoccupied: [15.0, 30.0]
+
+  objective_weights:
+    comfort: 95.0
+    energy: 0.0015
+    control_smoothness: 0.3
+
+  solver_maxiter: 90
+  solver_ftol: 1.0e-4
+
+  repeat_runs: 3
