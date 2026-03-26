@@ -1,0 +1,18 @@
+mpc:
+  horizon_s: 21600
+  u_min_degC: 18.0
+  u_max_degC: 24.0
+  comfort_bounds_degC:
+    occupied:
+    - 21.0
+    - 24.0
+    unoccupied:
+    - 15.0
+    - 30.0
+  objective_weights:
+    comfort: 104.026499
+    energy: 0.001303
+    control_smoothness: 0.212302
+  solver_maxiter: 88
+  solver_ftol: 0.0001
+  repeat_runs: 3
