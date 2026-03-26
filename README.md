@@ -34,7 +34,14 @@ Latest completed 7-day all-test logs and outputs are available at:
 ## Additional Documentation
 
 - `README_WP1.md`: data and contract-related workflow notes.
-- `README_WP2.md`: PINN modeling and training workflow notes.
-- `README_WP3.md`: MPC benchmark and campaign workflow notes.
+- `README_WP2.md`: dataset generation workflow notes.
+- `README_WP3.md`: MPC benchmark and tuning workflow notes.
 - `RESULTS_COVERAGE_STATUS.md`: testcase-wise RC/PINN result availability and training completeness status.
 - `execution_plan_pinn_vs_eplus.md`: detailed execution plan.
+
+## Recent MPC Tuning Artifacts
+
+- `results/mpc_tuning_eval/autotune_v1_10cand/autotune_summary.md`: 10-candidate autotune ranking summary.
+- `results/mpc_tuning_eval/autotune_v1_10cand/pareto_front.csv`: Pareto candidates for comfort-energy-time tradeoff.
+- `configs/autotune_top3_full_validation.yaml`: setup-only plan for top-3 expanded validation.
+- `scripts/run_top3_full_validation.ps1`: top-3 batch launcher (dry-run by default).
