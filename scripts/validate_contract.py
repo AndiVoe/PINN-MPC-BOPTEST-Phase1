@@ -15,6 +15,8 @@ def _read_json(path: Path) -> dict:
         return json.load(f)
 
 
+
+
 def _read_yaml(path: Path) -> dict:
     try:
         import yaml  # type: ignore
@@ -32,9 +34,12 @@ def _read_yaml(path: Path) -> dict:
 
 def validate(workspace: Path) -> int:
     contract_path = workspace / "data_contract" / "signal_contract.yaml"
-    schema_path = workspace / "data_contract" / "dataset_schema.json"
     manifest_path = workspace / "manifests" / "phase1_singlezone.yaml"
     metrics_path = workspace / "configs" / "metrics_catalog.yaml"
+    
+    schema_path = Path("data_contract/dataset_schema.json")
+    with schema_path.open("r", encoding="utf-8-sig") as f:
+    schema = json.load(f)
 
     missing = [
         str(p) for p in [contract_path, schema_path, manifest_path, metrics_path] if not p.exists()
