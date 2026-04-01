@@ -1,7 +1,7 @@
 {
   "url": "http://127.0.0.1:8000",
-  "requested_case": "bestest_hydronic",
-  "max_wait_s": 120,
+  "requested_case": "bestest_air",
+  "max_wait_s": 90,
   "poll_s": 2,
   "version": {
     "status": 200,
@@ -13,16 +13,16 @@
   "testcases": {
     "count": null
   },
-  "selected_probe_case": "bestest_hydronic",
+  "selected_probe_case": "bestest_air",
   "docker": {
     "available": true,
     "queue_len_jobs": 0,
-    "tests_total": 0,
+    "tests_total": 5,
     "tests_queued": 0,
-    "tests_running": 0,
+    "tests_running": 5,
     "note": ""
   },
-  "probe_testid": "06925a5d-15bb-4a9f-904e-54426fdaeb18",
+  "probe_testid": "4d9b11ca-1393-4643-8d04-aebf5d1f91cb",
   "probe_status_log": [
     {
       "elapsed_s": 0,

@@ -1,0 +1,15 @@
+episode,comparable,missing_pair,diff_fields,split,weather_class,n_steps,dt_s,pinn_boptest_tdis_tot,rc_boptest_tdis_tot,pinn_local_discomfort_kh,rc_local_discomfort_kh,definition_mismatch_risk
+te_ext_01,True,False,,test,extreme,672,900,0.690449,0.0,0.583889,4.188684,False
+te_ext_01.live,True,False,,,,672,900,nan,nan,0.0,0.0,False
+te_ext_02,True,False,,test,extreme,672,900,0.690449,0.0,0.583889,4.188684,False
+te_ext_02.live,True,False,,,,672,900,nan,nan,0.0,0.0,False
+te_long_01,True,False,,future_test,standard_long,2880,900,0.0,0.0,0.0,52.410722,True
+te_long_02,True,False,,future_test,winter_long,2880,900,0.0,0.0,0.0,52.410722,True
+te_long_03,True,False,,future_test,winter_long,2880,900,0.0,0.0,0.0,52.410722,True
+te_std_01,True,False,,test,standard,672,900,0.207024,0.0,0.201808,9.131629,False
+te_std_01.live,True,False,,,,672,900,nan,nan,0.0,0.0,False
+te_std_02,True,False,,test,standard,672,900,1.373679,0.0,1.225852,4.592996,False
+te_std_02.live,True,False,,,,672,900,nan,nan,0.0,0.0,False
+te_std_03,True,False,,test,standard,672,900,430.942856,663.918271,221.583053,315.994469,False
+te_win_01,True,False,,future_test,winter,672,900,0.0,0.0,0.0,10.568162,True
+te_win_02,True,False,,future_test,winter,672,900,0.0,0.0,0.0,7.685743,True

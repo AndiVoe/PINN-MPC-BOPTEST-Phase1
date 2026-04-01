@@ -1,0 +1,4 @@
+candidate,controller,cost_tot_mean,tdis_tot_mean,mpc_solve_time_mean_ms_mean,episode_wall_time_s_mean,control_smoothness_mean
+cand_001,pinn,0.118402605443,0,102.375,116.63,0.530075
+cand_005,pinn,0.11820227163,0,104.97,117.475,0.532875
+cand_008,pinn,0.118246054906,0,112.14025,123.6825,0.5267

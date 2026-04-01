@@ -1,0 +1,20 @@
+# Full validation setup generated from autotune_v1_10cand summary.
+# Nothing in this file executes by itself.
+
+meta:
+  source_run: results/mpc_tuning_eval/autotune_v1_10cand
+  selection_rule: top_3_by_norm_score
+  selected_candidates: [5, 8, 1]
+
+validation:
+  episodes: [te_std_01, te_std_02, te_ext_01, te_ext_02]
+  output_root: results/mpc_tuning_eval/autotune_v1_10cand/full_validation
+  predictors: [pinn, rc, rbc]
+
+candidates:
+  - id: cand_005
+    mpc_config: results/mpc_tuning_eval/autotune_v1_10cand/configs/cand_005.yaml
+  - id: cand_008
+    mpc_config: results/mpc_tuning_eval/autotune_v1_10cand/configs/cand_008.yaml
+  - id: cand_001
+    mpc_config: results/mpc_tuning_eval/autotune_v1_10cand/configs/cand_001.yaml
