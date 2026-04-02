@@ -1,53 +1,59 @@
-﻿# Results Coverage and Training Status
+﻿# Results Coverage Status
 
-Snapshot date: 2026-03-23 (refreshed from current filesystem state)
+Snapshot date: 2026-04-02
 
-## Training State (EU cases)
+## Scope of this status file
 
-Training artifacts are complete for all five EU cases (`best_model.pt`, `metrics.json`, `training_config.json` found):
+This status tracks the publication-facing full-validation package under:
 
-- bestest_hydronic: complete
-- bestest_hydronic_heat_pump: complete
-- singlezone_commercial_hydronic: complete
-- twozone_apartment_hydronic: complete
+- `results/mpc_tuning_eval/autotune_v1_10cand/full_validation`
+- `results/mpc_tuning_eval/baseline`
+- `artifacts/audit`
 
-## Result State (available episode JSONs)
+## Baseline coverage (singlezone_commercial_hydronic)
 
-Source roots checked:
+Required baseline episodes for fairness checks are present for all three controllers in top-level baseline folders:
 
-- `results/eu_rc_vs_pinn/raw`
-- `results/mpc_phase1`
+- `te_ext_01`
+- `te_ext_02`
+- `te_std_01`
+- `te_std_02`
 
-### bestest_hydronic
+Controllers verified:
 
-- RC: `te_std_01`, `te_std_02`, `te_std_03`
-- PINN: `te_std_01`, `te_std_02`, `te_std_03`
-- Status: partial (heating/probe episodes not present)
+- `results/mpc_tuning_eval/baseline/rc`
+- `results/mpc_tuning_eval/baseline/pinn`
+- `results/mpc_tuning_eval/baseline/rbc`
 
-### bestest_hydronic_heat_pump
+## Candidate coverage (full validation)
 
-- RC: `te_std_01`, `te_std_02`, `te_std_03`
-- PINN: `te_std_01`, `te_std_02`, `te_std_03`
-- Status: partial (heating-season episodes not present)
+Candidates in scope:
 
-### singlezone_commercial_hydronic
+- `cand_001`
+- `cand_005`
+- `cand_008`
 
-- RC: `te_std_01`, `te_std_02`, `te_std_03`, `te_ext_01`, `te_ext_02`, `te_long_01`, `te_long_02`, `te_long_03`, `te_win_01`, `te_win_02`
-- PINN: `te_std_01`, `te_std_02`, `te_std_03`, `te_ext_01`, `te_ext_02`, `te_long_01`, `te_long_02`, `te_long_03`, `te_win_01`, `te_win_02`
-- Status: up to date for executed standard/extreme/long/winter sets; heating-season IDs not present
+Episodes included in the refreshed full-validation summary:
 
-### twozone_apartment_hydronic
+- `te_ext_01`
+- `te_ext_02`
+- `te_std_01`
+- `te_std_02`
 
-- RC: `te_std_01`, `te_std_02`, `te_std_03`
-- PINN: `te_std_01`, `te_std_02`, `te_std_03`
-- Status: partial (heating-season episodes not present)
+## Audit result
 
+Latest end-to-end audit reports complete pass:
 
-- RC: none currently available in checked result roots
-- PINN: none currently available in checked result roots
-- Status: not up to date (result files missing)
+- total checks: 697
+- failed checks: 0
+- failed errors: 0
+- failed warnings: 0
 
-## Bottom Line
+Reference files:
 
-- Training state: updated/completed for all EU cases.
-- Result state: not fully updated across all testcases; coverage is currently complete only for the singlezone campaign families listed above.
+- `artifacts/audit/end_to_end_validity_checks.csv`
+- `artifacts/audit/end_to_end_validity_report.md`
+
+## Status
+
+Publication-facing full-validation coverage is complete and consistent as of 2026-04-02.

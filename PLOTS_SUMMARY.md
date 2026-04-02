@@ -1,5 +1,33 @@
 # Publication-Ready Plots Summary
 
+## Full Validation Refresh (2026-04-02)
+
+### Primary publication plots (current)
+
+Location:
+
+- `results/mpc_tuning_eval/autotune_v1_10cand/full_validation/plots`
+
+Files:
+
+- `comparison_all_controllers_combined.png`
+- `comparison_all_controllers_cost.png`
+- `comparison_all_controllers_tdis.png`
+- `comparison_all_controllers_solve_time.png`
+
+### Supporting publication tables/reports
+
+- `results/mpc_tuning_eval/autotune_v1_10cand/full_validation/summary_full_validation.json`
+- `results/mpc_tuning_eval/autotune_v1_10cand/full_validation/execution_report_fixed.md`
+- `artifacts/full_validation_all_controllers_aggregated.csv`
+- `artifacts/audit/end_to_end_validity_checks.csv`
+- `artifacts/audit/end_to_end_validity_report.md`
+
+### Coverage and validation status
+
+- Baseline fairness episodes required for full validation are present across `rc`, `pinn`, and `rbc` baselines.
+- End-to-end audit status: 697 checks, 0 failures.
+
 ## Current Status
 
 **✅ 6 Publication-Quality Plots Ready**

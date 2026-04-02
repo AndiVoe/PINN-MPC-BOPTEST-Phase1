@@ -4,6 +4,36 @@
 
 ## Overview
 
+## Full Validation Publication Set (2026-04-02)
+
+For the current manuscript cycle, use the refreshed full-validation artifacts under:
+
+- `results/mpc_tuning_eval/autotune_v1_10cand/full_validation/plots`
+
+Primary figure set:
+
+1. `comparison_all_controllers_combined.png`
+2. `comparison_all_controllers_cost.png`
+3. `comparison_all_controllers_tdis.png`
+4. `comparison_all_controllers_solve_time.png`
+
+Data sources to cite with this figure set:
+
+- `results/mpc_tuning_eval/autotune_v1_10cand/full_validation/summary_full_validation.json`
+- `results/mpc_tuning_eval/autotune_v1_10cand/full_validation/execution_report_fixed.md`
+- `artifacts/full_validation_all_controllers_aggregated.csv`
+
+Caption guidance for this set:
+
+- `comparison_all_controllers_cost.png`: Candidate-wise operating cost comparison for RC, PINN, and RBC against refreshed baselines.
+- `comparison_all_controllers_tdis.png`: Candidate-wise thermal discomfort (`tdis_tot`) comparison across controllers.
+- `comparison_all_controllers_solve_time.png`: MPC solve-time comparison (RBC at 0 ms by design).
+- `comparison_all_controllers_combined.png`: Joint view of cost, comfort, and solve-time tradeoffs.
+
+Notes:
+
+- The `cost_comparison_pinn.png`, `tdis_comparison_pinn.png`, and `solve_time_comparison_pinn.png` plots are legacy PINN-only views; keep them as supplementary material unless explicitly needed.
+
 Two complementary plot generation scripts are available:
 
 1. **`qc_eu_results.py`** ─ Quality control and validation
@@ -237,7 +267,7 @@ results/
 - ✓ 6 publication plots generated
 
 **Heating Campaign:**
-- ⏳ 4 of 5 cases complete (multizone PINN still running)
+- ⏳ 4 of 4 cases complete (multizone excluded from study)
 - ⏳ Will have seasonal subset for robustness comparison
 - ⏳ Estimated completion: 3-5 hours from now
 

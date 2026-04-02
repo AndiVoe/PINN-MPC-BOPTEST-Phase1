@@ -2,8 +2,8 @@
 
 ## Summary
 - Total checks: 697
-- Failed checks: 9
-- Failed errors: 9
+- Failed checks: 0
+- Failed errors: 0
 - Failed warnings: 0
 
 ## Enforced Relations
@@ -18,21 +18,13 @@
 - Baseline relation: baseline controller folders must contain result JSON
 
 ## Failures
-- [error] candidate_baseline_episode_coverage :: candidate_eval/pinn/cand_001 :: candidate episodes must all exist in baseline for fair delta computation; missing baseline episodes: te_ext_02, te_std_02
-- [error] candidate_baseline_episode_coverage :: candidate_eval/rbc/cand_001 :: candidate episodes must all exist in baseline for fair delta computation; missing baseline episodes: te_ext_02, te_std_02
-- [error] candidate_baseline_episode_coverage :: candidate_eval/rc/cand_001 :: candidate episodes must all exist in baseline for fair delta computation; missing baseline episodes: te_ext_02, te_std_02
-- [error] candidate_baseline_episode_coverage :: candidate_eval/pinn/cand_005 :: candidate episodes must all exist in baseline for fair delta computation; missing baseline episodes: te_ext_02, te_std_02
-- [error] candidate_baseline_episode_coverage :: candidate_eval/rbc/cand_005 :: candidate episodes must all exist in baseline for fair delta computation; missing baseline episodes: te_ext_02, te_std_02
-- [error] candidate_baseline_episode_coverage :: candidate_eval/rc/cand_005 :: candidate episodes must all exist in baseline for fair delta computation; missing baseline episodes: te_ext_02, te_std_02
-- [error] candidate_baseline_episode_coverage :: candidate_eval/pinn/cand_008 :: candidate episodes must all exist in baseline for fair delta computation; missing baseline episodes: te_ext_02, te_std_02
-- [error] candidate_baseline_episode_coverage :: candidate_eval/rbc/cand_008 :: candidate episodes must all exist in baseline for fair delta computation; missing baseline episodes: te_ext_02, te_std_02
-- [error] candidate_baseline_episode_coverage :: candidate_eval/rc/cand_008 :: candidate episodes must all exist in baseline for fair delta computation; missing baseline episodes: te_ext_02, te_std_02
+- No failed checks.
 
 ## Check-Wise Pass Rates
 | Check | Total | Pass | Fail |
 |---|---:|---:|---:|
 | baseline_controller_nonempty | 3 | 3 | 0 |
-| candidate_baseline_episode_coverage | 9 | 0 | 9 |
+| candidate_baseline_episode_coverage | 9 | 9 | 0 |
 | candidate_controller_nonempty | 9 | 9 | 0 |
 | challenge_equals_boptest_cost_tot | 59 | 59 | 0 |
 | challenge_equals_boptest_idis_tot | 59 | 59 | 0 |
