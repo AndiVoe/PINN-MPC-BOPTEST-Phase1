@@ -1,0 +1,48 @@
+{
+  "stage": "Stage 2: RC Variant Selection & PINN Comparison",
+  "date": "2026-04-03",
+  "episode": "te_std_01",
+  "files": {
+    "summary_json": {
+      "path": "results/eu_rc_vs_pinn_stage2/best_rc_vs_pinn_summary.json",
+      "description": "Best RC variant per case + PINN comparison metrics",
+      "exists": true
+    },
+    "validation_report": {
+      "path": "results/eu_rc_vs_pinn_stage2/VALIDATION_REPORT.md",
+      "description": "Data integrity and completeness report",
+      "exists": true
+    },
+    "summary_report": {
+      "path": "results/eu_rc_vs_pinn_stage2/STAGE2_SUMMARY_REPORT.md",
+      "description": "Case-by-case analysis with deltas and metrics",
+      "exists": true
+    },
+    "plots": {
+      "directory": "results/eu_rc_vs_pinn_stage2/publication_plots",
+      "description": "Publication-quality PNG plots (5 figures)",
+      "files": [
+        "01_stage2_energy_comparison.png",
+        "02_stage2_comfort_comparison.png",
+        "03_stage2_solve_time_comparison.png",
+        "04_stage2_relative_energy_improvement.png",
+        "05_stage2_cost_comparison.png"
+      ]
+    },
+    "raw_data": {
+      "rc_results": "results/eu_rc_vs_pinn_stage2/raw",
+      "description": "30-day episode results for best RC variant per case (te_std_01.json)"
+    }
+  },
+  "intended_use": {
+    "article_figures": [
+      "01_stage2_energy_comparison.png (main energy figure)",
+      "02_stage2_comfort_comparison.png (comfort robustness)",
+      "04_stage2_relative_energy_improvement.png (relative gains)"
+    ],
+    "supplementary": [
+      "03_stage2_solve_time_comparison.png (computational cost)",
+      "05_stage2_cost_comparison.png (operating cost)"
+    ]
+  }
+}

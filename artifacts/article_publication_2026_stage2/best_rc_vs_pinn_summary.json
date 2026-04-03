@@ -1,0 +1,114 @@
+{
+  "episode": "te_std_01",
+  "n_cases": 4,
+  "cases": [
+    {
+      "case": "bestest_hydronic",
+      "episode": "te_std_01",
+      "best_rc_variant": "rc",
+      "best_rc_metrics": {
+        "comfort_Kh": 29.8825,
+        "total_energy_Wh": 215505.4,
+        "solve_ms": 2.767,
+        "cost_tot": 0.23277918115737786,
+        "tdis_tot": 5.729419465604054
+      },
+      "best_rc_score": 64.24784581157378,
+      "pinn_metrics": {
+        "comfort_Kh": 18.9088,
+        "total_energy_Wh": 185284.06,
+        "solve_ms": 294.596,
+        "cost_tot": 0.20312820530518683,
+        "tdis_tot": 9.806441223960855
+      },
+      "pinn_score": 41.70172265305187,
+      "delta_cost_tot_pinn_minus_best_rc": -0.029650975852191036,
+      "delta_comfort_Kh_pinn_minus_best_rc": -10.973700000000001,
+      "delta_energy_Wh_pinn_minus_best_rc": -30221.339999999997,
+      "delta_solve_ms_pinn_minus_best_rc": 291.829
+    },
+    {
+      "case": "bestest_hydronic_heat_pump",
+      "episode": "te_std_01",
+      "best_rc_variant": "rc_base",
+      "best_rc_metrics": {
+        "comfort_Kh": 38.9073,
+        "total_energy_Wh": 1746931.62,
+        "solve_ms": 2.773,
+        "cost_tot": 0.4272946297265747,
+        "tdis_tot": 7.974642076805438
+      },
+      "best_rc_score": 99.55686249726574,
+      "pinn_metrics": {
+        "comfort_Kh": 80.3559,
+        "total_energy_Wh": 906680.24,
+        "solve_ms": 1217.492,
+        "cost_tot": 0.18853353547762491,
+        "tdis_tot": 130.7911999853781
+      },
+      "pinn_score": 171.66393775477627,
+      "delta_cost_tot_pinn_minus_best_rc": -0.2387610942489498,
+      "delta_comfort_Kh_pinn_minus_best_rc": 41.448600000000006,
+      "delta_energy_Wh_pinn_minus_best_rc": -840251.3800000001,
+      "delta_solve_ms_pinn_minus_best_rc": 1214.719
+    },
+    {
+      "case": "singlezone_commercial_hydronic",
+      "episode": "te_std_01",
+      "best_rc_variant": "rc_mass_plus",
+      "best_rc_metrics": {
+        "comfort_Kh": 7.7821,
+        "total_energy_Wh": 14808180.82,
+        "solve_ms": 2.974,
+        "cost_tot": 0.1412563712427895,
+        "tdis_tot": 0.0
+      },
+      "best_rc_score": 165.0585719124279,
+      "pinn_metrics": {
+        "comfort_Kh": 0.0,
+        "total_energy_Wh": 7475019.53,
+        "solve_ms": 60.071,
+        "cost_tot": 0.06995510052135026,
+        "tdis_tot": 0.0
+      },
+      "pinn_score": 75.44974630521351,
+      "delta_cost_tot_pinn_minus_best_rc": -0.07130127072143924,
+      "delta_comfort_Kh_pinn_minus_best_rc": -7.7821,
+      "delta_energy_Wh_pinn_minus_best_rc": -7333161.29,
+      "delta_solve_ms_pinn_minus_best_rc": 57.096999999999994
+    },
+    {
+      "case": "twozone_apartment_hydronic",
+      "episode": "te_std_01",
+      "best_rc_variant": "rc_base",
+      "best_rc_metrics": {
+        "comfort_Kh": 214.868,
+        "total_energy_Wh": 258366.34,
+        "solve_ms": 2.893,
+        "cost_tot": 0.15476146017080256,
+        "tdis_tot": 294.0014047520075
+      },
+      "best_rc_score": 433.867278001708,
+      "pinn_metrics": {
+        "comfort_Kh": 30.8765,
+        "total_energy_Wh": 104803.02,
+        "solve_ms": 394.729,
+        "cost_tot": 0.08019585169546699,
+        "tdis_tot": 52.433812867005415
+      },
+      "pinn_score": 63.60298871695467,
+      "delta_cost_tot_pinn_minus_best_rc": -0.07456560847533557,
+      "delta_comfort_Kh_pinn_minus_best_rc": -183.9915,
+      "delta_energy_Wh_pinn_minus_best_rc": -153563.32,
+      "delta_solve_ms_pinn_minus_best_rc": 391.836
+    }
+  ],
+  "aggregate": {
+    "mean_delta_cost_tot": -0.10356973732447891,
+    "mean_delta_comfort_Kh": -40.324675,
+    "mean_delta_energy_Wh": -2089299.3325,
+    "mean_delta_solve_ms": 488.87025,
+    "pinn_better_cases_by_score": 3,
+    "best_rc_better_cases_by_score": 1
+  }
+}
