@@ -1,15 +1,15 @@
 # Physics-Informed Neural Surrogates versus Reduced-Order RC Models for European BOPTEST Building Control Benchmarks
 
 **Author(s)**: PhD Researcher  
-**Date**: April 3, 2026  
-**Status**: Draft after Stage 2 benchmarking  
+**Date**: April 7, 2026  
+**Status**: Draft after Stage 2 30-day validation  
 **Campaign ID**: eu_rc_vs_pinn (Stage 1: 7-day, Stage 2: 30-day)
 
 ---
 
 ## Abstract
 
-Building energy management systems rely on fast, accurate thermal predictive models. We present a comparative study of Physics-Informed Neural Networks (PINNs) versus pure Reduced-Order Capacity (RC) models on four European BOPTEST testcases using a staged benchmarking protocol. In Stage 1, we screened three RC candidates (R3C2, R4C3, R5C3) on 7-day episodes and selected the best per testcase. In Stage 2, we ran best-RC and PINN on 30-day episodes to assess robustness and long-horizon performance. Results show PINN achieves 14–59% energy reductions, 37–86% comfort improvements, and maintains cost advantages (12–56% savings) across diverse building types. The trade-off is computational: RC solves in ~2.8 ms while PINN requires 60–1220 ms depending on testcase complexity. We present guidance for practitioners on model selection based on building topology and climate sensitivity.
+Building energy management systems rely on fast and accurate thermal predictive models. We present a comparative study of Physics-Informed Neural Networks (PINNs) versus reduced-order Resistance-Capacitance (RC) models on four European BOPTEST testcases using a staged benchmarking protocol. In Stage 1, we screened three RC candidates (R3C2, R4C3, R5C3) on 7-day episodes and selected the best per testcase. In Stage 2, we ran best-RC and PINN on 30-day episodes to assess robustness and long-horizon performance. Results show PINN achieves 23–60% energy reductions, 27–83% comfort improvements, and cost advantages (18–62% savings) across diverse building types. The trade-off is computational: RC solves in ~2.7 ms while PINN requires ~194–552 ms, depending on testcase complexity. We provide practical guidance for model selection based on building topology and climate sensitivity.
 
 ---
 
@@ -230,11 +230,11 @@ All selected best-RC and PINN models were run on a 30-day episode ($\text{te\_st
 
 | Metric | RC (avg) | PINN (avg) | Delta (PINN - RC) | Unit | PINN Advantage |
 |--------|---------|-----------|-------------------|------|---|
-| Energy Consumption | 4,514 | 2,596 | **-1,918** | kWh | **−42.5%** ✓ |
-| Thermal Comfort | 71.3 | 31.0 | **-40.3** | K·h | **−56.5%** ✓ |
-| Operating Cost | 0.224 | 0.170 | **-0.054** | € | **−24.1%** ✓ |
-| Peak Power | 27.0 | 23.4 | **-3.6** | kW | **−13.3%** ✓ |
-| MPC Solve Time | 2.83 | 267 | **+264** | ms | RC faster ✗ |
+| Energy Consumption | 8,999.5 | 4,024.1 | **-4,975.4** | kWh | **−55.3%** ✓ |
+| Thermal Comfort | 489.0 | 200.0 | **-289.0** | K·h | **−59.1%** ✓ |
+| Operating Cost | 0.516 | 0.349 | **-0.167** | € | **−32.4%** ✓ |
+| Peak Power | 58.5 | 58.8 | **+0.2** | kW | mixed (no consistent gain) |
+| MPC Solve Time | 2.74 | 410.9 | **+408.2** | ms | RC faster ✗ |
 
 **Per-Case Detailed Results:**
 
@@ -242,12 +242,12 @@ All selected best-RC and PINN models were run on a 30-day episode ($\text{te\_st
 
 | Metric | RC | PINN | Delta | % Change | Winner |
 |--------|----|----|-------|----------|--------|
-| Energy [kWh] | 215.5 | 185.3 | -30.2 | **-14.0%** | PINN |
-| Comfort [K·h] | 29.9 | 18.9 | -11.0 | **-36.7%** | PINN |
-| Cost [€] | 0.233 | 0.203 | -0.030 | **-12.8%** | PINN |
-| Solve Time [ms] | 2.77 | 294.6 | +291.8 | +10,547% | RC |
+| Energy [kWh] | 504.7 | 362.9 | -141.7 | **-28.1%** | PINN |
+| Comfort [K·h] | 502.1 | 366.9 | -135.2 | **-26.9%** | PINN |
+| Cost [€] | 0.543 | 0.403 | -0.140 | **-25.9%** | PINN |
+| Solve Time [ms] | 3.08 | 551.8 | +548.7 | +17,845% | RC |
 
-**Interpretation**: Simple residential case. PINN learns subtle heating timing corrections that RC misses. Comfort gain (37%) > energy gain (14%), indicating PINN prioritizes thermal comfort.
+**Interpretation**: Simple residential case. PINN learns subtle heating timing corrections that RC misses. Improvements are balanced between energy (28%) and comfort (27%).
 
 ---
 
@@ -255,21 +255,21 @@ All selected best-RC and PINN models were run on a 30-day episode ($\text{te\_st
 
 | Metric | RC | PINN | Delta | % Change | Winner |
 |--------|----|----|-------|----------|--------|
-| Energy [kWh] | 1,746.9 | 906.7 | -840.2 | **-48.1%** | PINN |
-| Comfort [K·h] | 38.9 | 80.4 | **+41.5** | **+106.4%** | RC |
-| Cost [€] | 0.427 | 0.189 | -0.239 | **-55.9%** | PINN |
-| Solve Time [ms] | 2.77 | 1,217.5 | +1,214.7 | +43,805% | RC |
+| Energy [kWh] | 3,981.9 | 3,058.5 | -923.4 | **-23.2%** | PINN |
+| Comfort [K·h] | 287.7 | 123.6 | **-164.1** | **-57.0%** | PINN |
+| Cost [€] | 1.055 | 0.740 | -0.316 | **-29.9%** | PINN |
+| Solve Time [ms] | 2.68 | 456.7 | +454.0 | +16,959% | RC |
 
-**Interpretation — Critical Finding**: PINN achieves exceptional energy and cost savings (48–56%) but at a comfort trade-off. PINN comfort is **2× worse** than RC. Root cause analysis:
+**Interpretation — Updated Finding**: In the finalized Stage 2 run, PINN improves all three operational KPIs (energy, comfort, cost) for the heat-pump case, while RC retains a major solve-time advantage. The dynamics still show nonzero high-side excursions, but fewer than RC.
 
 1. Heat pump exhibits complex cycling behavior (on/off lag, defrost cycles, compressor hysteresis)
 2. 7-day training data insufficient to capture full diversity of edge cases
 3. MPC exploits PINN's learned prediction bias (optimistic about heating lag) → preemptive cooling → temperature deviations accumulate over 30 days
 
 **Recommendation for practitioners**: 
-- If **cost/energy** is critical: use PINN (55% savings justify setup overhead)
-- If **comfort** is hard constraint: use RC (maintains comfort, 44% cost reduction still significant)
-- If **both critical**: consider PINN + comfort constraint tightening in MPC objective
+- If **cost/energy** is critical: use PINN (clear operational gains)
+- If **comfort** is hard constraint: use PINN with tighter comfort penalties/constraints and verify violations on representative seasons
+- If **solve-time budget is very strict**: use RC (orders-of-magnitude faster)
 
 ---
 
@@ -278,11 +278,11 @@ All selected best-RC and PINN models were run on a 30-day episode ($\text{te\_st
 | Metric | RC | PINN | Delta | % Change | Winner |
 |--------|----|----|-------|----------|--------|
 | Energy [kWh] | 14,808 | 7,475 | -7,333 | **-49.5%** | PINN |
-| Comfort [K·h] | 7.8 | 0.0 | **-7.8** | **-100%** | PINN |
-| Cost [€] | 0.141 | 0.070 | -0.071 | **-50.5%** | PINN |
-| Solve Time [ms] | 2.97 | 60.1 | +57.1 | +1,920% | RC |
+| Comfort [K·h] | 154.2 | 26.7 | **-127.4** | **-82.7%** | PINN |
+| Cost [€] | 0.288 | 0.109 | -0.180 | **-62.3%** | PINN |
+| Solve Time [ms] | 2.59 | 194.2 | +191.6 | +7,411% | RC |
 
-**Interpretation**: PINN dominates large commercial. Complex occupancy + solar coupling benefits from learned residuals. Solve time remains practical (<100 ms) despite large building. PINN clean-sweep on all KPIs.
+**Interpretation**: PINN dominates large commercial. Complex occupancy + solar coupling benefits from learned residuals. Solve time is higher but still practical for 15-min control intervals.
 
 ---
 
@@ -290,41 +290,57 @@ All selected best-RC and PINN models were run on a 30-day episode ($\text{te\_st
 
 | Metric | RC | PINN | Delta | % Change | Winner |
 |--------|----|----|-------|----------|--------|
-| Energy [kWh] | 258.4 | 104.8 | -153.6 | **-59.4%** | PINN |
-| Comfort [K·h] | 214.9 | 30.9 | **-184.0** | **-85.6%** | PINN |
-| Cost [€] | 0.155 | 0.080 | -0.075 | **-48.1%** | PINN |
-| Solve Time [ms] | 2.89 | 394.7 | +391.8 | +13,544% | RC |
+| Energy [kWh] | 633.9 | 253.4 | -380.5 | **-60.0%** | PINN |
+| Comfort [K·h] | 1,011.8 | 282.8 | **-729.1** | **-72.1%** | PINN |
+| Cost [€] | 0.178 | 0.146 | -0.033 | **-18.3%** | PINN |
+| Solve Time [ms] | 2.61 | 441.0 | +438.4 | +16,816% | RC |
 
-**Interpretation**: Multi-zone case shows **largest PINN advantage** (59% energy, 86% comfort). RC struggles with inter-zone dynamics (single R3C2 base node misses coupling). PINN implicitly learns zone mixing through input correlation. **Future work**: explicit multi-zone PINN architecture could potentially improve further.
+**Interpretation**: Multi-zone case shows strong PINN advantage (60% energy, 72% comfort). RC struggles with inter-zone dynamics (single R3C2 base node misses coupling). PINN implicitly learns zone mixing through input correlation. **Future work**: explicit multi-zone PINN architecture could potentially improve further.
 
 ---
 
 ### 3.3 Summary: PINN vs RC Trade-off Surface
 
 **PINN Wins on (High Confidence)**:
-- ✓ Energy efficiency (14–59% reduction across cases)
-- ✓ Cost (12–56% savings)
-- ✓ Comfort in 3 of 4 cases (37–86% reduction in discomfort)
-- ✓ Peak power (up to 25% reduction in large commercial case)
+- ✓ Energy efficiency (23–60% reduction across cases)
+- ✓ Cost (18–62% savings)
+- ✓ Comfort in 4 of 4 cases (27–83% reduction in discomfort)
 
 **RC Wins on (Absolute)**:
 - ✓ Computational speed (~100× faster: 2.8 ms vs. 60–1200 ms)
-- ✓ Comfort in heat pump case (PINN comfort 2× worse)
 - ✓ No training/model-building overhead
 
 **Practical Decision Tree**:
 ```
-IF comfort is critical AND building is heat pump
-  → Use RC (accepted trade: lose 28% energy efficiency)
-ELSE IF solve time < 50 ms required
+IF solve time < 50 ms required
   → Use RC (hard constraint)
 ELSE IF energy/cost reduction is priority
   → Use PINN (typical gain: -45% energy, -30% cost)
 ELSE IF building is multi-zone OR large commercial
   → Use PINN (gains are largest here: -50% to -60% energy)
+ELSE IF building is heat pump
+  → Use PINN, but verify comfort with case-specific diagnostics (violations still nonzero)
 ELSE
   → Hybrid: use RC for fast baseline, PINN for offline/batch MPC
 ```
+
+### 3.4 Dynamic Evidence Beyond Endpoint Tables
+
+Endpoint tables and bar charts summarize final totals, but they do not explain *how* those outcomes form over time. To add interpretability and reduce redundancy, we include three dynamic figures:
+
+1. **PINN training convergence by case** ([results/eu_rc_vs_pinn_stage2/publication_plots/06_pinn_training_convergence_by_case.png](results/eu_rc_vs_pinn_stage2/publication_plots/06_pinn_training_convergence_by_case.png)):
+  - Shows train/validation loss and RMSE trajectories across epochs.
+  - Confirms stable convergence for all cases and highlights cases with larger validation volatility.
+
+2. **30-day cumulative trajectories** ([results/eu_rc_vs_pinn_stage2/publication_plots/07_stage2_cumulative_energy_discomfort_trajectories.png](results/eu_rc_vs_pinn_stage2/publication_plots/07_stage2_cumulative_energy_discomfort_trajectories.png)):
+  - Plots cumulative energy and cumulative discomfort (K.h) versus day for RC and PINN.
+  - Distinguishes steady improvements from late-episode drift and shows whether gains are persistent over the full horizon.
+
+3. **Heat pump dynamics detail** ([results/eu_rc_vs_pinn_stage2/publication_plots/08_heatpump_30day_temperature_control_dynamics.png](results/eu_rc_vs_pinn_stage2/publication_plots/08_heatpump_30day_temperature_control_dynamics.png)):
+  - Shows zone temperature versus comfort bounds together with control/power traces.
+  - Provides mechanism-level evidence for improved comfort and energy with PINN in the heat pump case, while revealing remaining high-side excursions.
+
+These figures add explanatory value by connecting aggregate KPIs to temporal behavior, controller actions, and model calibration quality.
 
 ---
 
@@ -341,28 +357,28 @@ RC models often use lumped single-zone abstraction or simple inter-zone assumpti
 
 PINN's residual network learns these nonlinear spatial patterns from rollout data. The learned correction is modest (~0.5–2.0 K per step) but consistent, leading to large cumulative gains over 30 days.
 
-**Heat Pump Case (Case 2 — Mixed for PINN)**
+**Heat Pump Case (Case 2 — PINN improves comfort and energy, but excursions remain)**
 
 Heat pumps exhibit:
 - Compressor cycling lag (5–30 min depending on State of Charge)
 - On/off hysteresis (thermal deadband effects)
 - Defrost cycles in cold weather (periodic loss of heating capacity)
 
-PINN's 7-day training window (March 19, 2026, standard season) did *not* capture winter-worst defrost behavior or full cycle diversity. When MPC exploits the biased learned model (assumes heating responds faster than it actually does), the controller becomes over-optimistic. Over 30 days, this accumulates into 2× larger temperature deviations (comfort metric).
+In the finalized Stage 2 run, PINN outperforms RC on both energy and comfort for the heat-pump case: comfort violations drop from 1122 to 413 steps (38.96% -> 14.34%), comfort_Kh drops from 287.75 to 123.61, and tdis_tot drops from 272.33 to 132.20. The dynamics plot shows that excursions are still present (mainly above the upper bound), but materially reduced versus RC.
 
 **Recommendation to practitioners**:
 - For heat pump systems, either:
-  - Use RC (conservative, no learning bias)
-  - Retrain PINN on winter data including defrost scenarios
-  - Add explicit comfort constraints in MPC to bound PINN aggressiveness
+  - Use PINN for efficiency/comfort gains when compute budget allows
+  - Retrain PINN on winter data including defrost scenarios to further reduce excursions
+  - Add explicit comfort constraints in MPC to bound residual overshoot
 
 ### 4.2 Metric Divergence: Why comfort_Kh ≠ tdis_tot Sometimes
 
 We observed cases where challenge KPI (tdis_tot from BOPTEST) and diagnostic KPI (comfort_Kh computed locally) diverge:
 
 **Example (Single-Zone Commercial, Case 3)**:
-- Challenge discomfort (tdis_tot): 0.0 (satisfactory per BOPTEST definition)
-- Local comfort (comfort_Kh): 7.8 for RC, 0.0 for PINN
+- Challenge discomfort (tdis_tot): 8.1 for RC, 0.0 for PINN
+- Local comfort (comfort_Kh): 154.2 for RC, 26.7 for PINN
 
 **Root cause**: BOPTEST uses **positive integral** over 2°C deadband; our local metric uses **different deadband** (e.g., 1.5°C). PINN's learned behavior may shift comfort baseline vs. RC's physics-constrained behavior.
 
@@ -399,13 +415,13 @@ We observed cases where challenge KPI (tdis_tot from BOPTEST) and diagnostic KPI
 
 ### 5.1 Main Findings
 
-1. **PINN provides consistent energy gains** (14–59%) and cost reductions (12–56%) across diverse European testcases.
+1. **PINN provides consistent energy gains** (23–60%) and cost reductions (18–62%) across diverse European testcases.
 
 2. **RC variant selection matters**: Simple buildings benefit from simple RC (R3C2); large/complex buildings need enhanced structure (R5C3). One-size-fits-all RC is suboptimal.
 
-3. **Comfort is case-dependent**: PINN excels in multi-zone and commercial cases (86% and 100% improvement) but struggles with heat pumps (2× worse) due to insufficient training diversity.
+3. **Comfort improves in all four Stage 2 cases**: largest gains are in multi-zone/commercial cases (up to 83%), and the heat-pump case also improves (about 57%) while still requiring targeted tuning to reduce residual excursions.
 
-4. **Computational trade-off is manageable**: PINN solve time (60–1200 ms) remains acceptable for offline or near-real-time MPC (most building control intervals are 15–60 min).
+4. **Computational trade-off is manageable**: PINN solve time (~194–552 ms) remains acceptable for offline or near-real-time MPC (most building control intervals are 15–60 min).
 
 ### 5.2 Practical Deployment Pathway
 
@@ -509,6 +525,6 @@ All PINNs trained per testcase on 7-day ($\text{te\_std\_01}$) training data:
 
 ---
 
-**Submitted**: April 3, 2026  
-**Campaign ID**: eu_rc_vs_pinn (Stage 1 completed March 19; Stage 2 completed April 2)  
+**Submitted**: April 7, 2026  
+**Campaign ID**: eu_rc_vs_pinn (Stage 1 completed March 19; Stage 2 completed April 7)  
 **Status**: Ready for peer review
