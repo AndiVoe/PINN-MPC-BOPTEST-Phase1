@@ -236,6 +236,14 @@ All selected best-RC and PINN models were run on a 30-day episode ($\text{te\_st
 | Peak Power | 58.5 | 58.8 | **+0.2** | kW | mixed (no consistent gain) |
 | MPC Solve Time | 2.74 | 410.9 | **+408.2** | ms | RC faster ✗ |
 
+**Suggested Figure Placement (after aggregate table):**
+
+**Figure 1**: Stage 2 aggregate KPI comparison (energy, comfort, solve time, cost)
+![Figure 1: Stage 2 aggregate KPI comparison](results/eu_rc_vs_pinn_stage2/publication_plots/01_stage2_energy_comparison.png)
+
+**Figure 2**: Relative energy improvement (PINN vs best RC) by testcase
+![Figure 2: Relative energy improvement by testcase](results/eu_rc_vs_pinn_stage2/publication_plots/04_stage2_relative_energy_improvement.png)
+
 **Per-Case Detailed Results:**
 
 #### Case 1: BESTEST Hydronic (45 m², Brussels heating)
@@ -297,6 +305,17 @@ All selected best-RC and PINN models were run on a 30-day episode ($\text{te\_st
 
 **Interpretation**: Multi-zone case shows strong PINN advantage (60% energy, 72% comfort). RC struggles with inter-zone dynamics (single R3C2 base node misses coupling). PINN implicitly learns zone mixing through input correlation. **Future work**: explicit multi-zone PINN architecture could potentially improve further.
 
+**Suggested Figure Placement (end of Section 3.2):**
+
+**Figure 3**: Comfort comparison across all testcases
+![Figure 3: Stage 2 comfort comparison](results/eu_rc_vs_pinn_stage2/publication_plots/02_stage2_comfort_comparison.png)
+
+**Figure 4**: Cost comparison across all testcases
+![Figure 4: Stage 2 cost comparison](results/eu_rc_vs_pinn_stage2/publication_plots/05_stage2_cost_comparison.png)
+
+**Figure 5**: Solve-time comparison (computational trade-off)
+![Figure 5: Stage 2 solve-time comparison](results/eu_rc_vs_pinn_stage2/publication_plots/03_stage2_solve_time_comparison.png)
+
 ---
 
 ### 3.3 Summary: PINN vs RC Trade-off Surface
@@ -341,6 +360,17 @@ Endpoint tables and bar charts summarize final totals, but they do not explain *
   - Provides mechanism-level evidence for improved comfort and energy with PINN in the heat pump case, while revealing remaining high-side excursions.
 
 These figures add explanatory value by connecting aggregate KPIs to temporal behavior, controller actions, and model calibration quality.
+
+**Suggested Figure Placement (within Section 3.4):**
+
+**Figure 6**: PINN training convergence by case
+![Figure 6: PINN training convergence](results/eu_rc_vs_pinn_stage2/publication_plots/06_pinn_training_convergence_by_case.png)
+
+**Figure 7**: 30-day cumulative energy/discomfort trajectories
+![Figure 7: Cumulative performance trajectories](results/eu_rc_vs_pinn_stage2/publication_plots/07_stage2_cumulative_energy_discomfort_trajectories.png)
+
+**Figure 8**: Heat pump temperature/control dynamics (mechanistic evidence)
+![Figure 8: Heat pump dynamics](results/eu_rc_vs_pinn_stage2/publication_plots/08_heatpump_30day_temperature_control_dynamics.png)
 
 ---
 
@@ -510,13 +540,13 @@ All PINNs trained per testcase on 7-day ($\text{te\_std\_01}$) training data:
 | File | Purpose | Checksum |
 |------|---------|----------|
 | `best_rc_vs_pinn_summary.json` | Structured results data | In PUBLICATION_MANIFEST.json |
-| `publication_plots/01–05.png` | Article-ready figures | MD5 in manifest |
-| `STAGE2_SUMMARY_REPORT.md` | Case-by-case narrative | Auto-generated 2026-04-03 |
-| `VALIDATION_REPORT.md` | Data integrity (12/12 files valid) | Auto-generated 2026-04-03 |
+| `publication_plots/01–08.png` | Article-ready figures | MD5 in manifest |
+| `STAGE2_SUMMARY_REPORT.md` | Case-by-case narrative | Auto-generated 2026-04-07 |
+| `VALIDATION_REPORT.md` | Data integrity (12/12 files valid) | Auto-generated 2026-04-07 |
 | `raw/[case]/[variant]/te_std_01.json` | Raw episode outputs | MD5 in validation report |
 
 **To Reproduce**:
-1. Clone repository and checkout commit `publication-freeze-2026-04-02`
+1. Clone repository and checkout commit `bbc7b57`
 2. Install Python environment: `pip install -r requirements.txt`
 3. Start BOPTEST: `docker-compose up` (must have Docker available)
 4. Run Stage 2 campaign: `.venv/Scripts/python.exe scripts/stage2/run_eu_rc_variant_campaign.py --episode te_std_01 --url http://127.0.0.1:8000`
