@@ -35,13 +35,14 @@ class LossWeighter:
     Modes:
     - manual: fixed lambda_physics
     - gradient_balance: adapts lambda_physics from gradient-norm ratio
+    - learning_rate_annealing: adapts lambda_physics from loss-ratio EMA
     - uncertainty: learns log-sigma terms (Kendall et al.-style multitask weighting)
     """
 
     def __init__(self, train_cfg: dict[str, Any], device: torch.device) -> None:
         lw_cfg = train_cfg.get("loss_weighting", {}) or {}
         self.mode = str(lw_cfg.get("mode", "manual")).strip().lower()
-        if self.mode not in {"manual", "gradient_balance", "uncertainty"}:
+        if self.mode not in {"manual", "gradient_balance", "learning_rate_annealing", "uncertainty"}:
             raise ValueError(f"Unsupported loss_weighting.mode: {self.mode}")
 
         self.lambda_physics = float(train_cfg.get("lambda_physics", 0.01))
@@ -52,6 +53,12 @@ class LossWeighter:
         self.gb_lambda_min = float(gb_cfg.get("lambda_min", 1.0e-6))
         self.gb_lambda_max = float(gb_cfg.get("lambda_max", 1.0e3))
         self.gb_target_ratio = float(gb_cfg.get("target_ratio", 1.0))
+
+        lra_cfg = lw_cfg.get("learning_rate_annealing", {}) or {}
+        self.lra_ema_beta = float(lra_cfg.get("ema_beta", 0.9))
+        self.lra_lambda_min = float(lra_cfg.get("lambda_min", 1.0e-6))
+        self.lra_lambda_max = float(lra_cfg.get("lambda_max", 1.0e3))
+        self.lra_target_ratio = float(lra_cfg.get("target_ratio", 1.0))
 
         un_cfg = lw_cfg.get("uncertainty", {}) or {}
         init_log_sigma_data = float(un_cfg.get("init_log_sigma_data", 0.0))
@@ -108,6 +115,17 @@ class LossWeighter:
             self._last_lambda = max(self.gb_lambda_min, min(self.gb_lambda_max, self._last_lambda))
             return data_loss + self._last_lambda * physics_loss
 
+        if self.mode == "learning_rate_annealing":
+            if training:
+                ratio = float((data_loss / (physics_loss + self._eps)).detach().cpu())
+                candidate = ratio * self.lra_target_ratio
+                candidate = max(self.lra_lambda_min, min(self.lra_lambda_max, candidate))
+                self._last_lambda = (
+                    self.lra_ema_beta * self._last_lambda + (1.0 - self.lra_ema_beta) * candidate
+                )
+            self._last_lambda = max(self.lra_lambda_min, min(self.lra_lambda_max, self._last_lambda))
+            return data_loss + self._last_lambda * physics_loss
+
         # uncertainty mode
         w_data = torch.exp(-2.0 * self.log_sigma_data)
         w_phys = torch.exp(-2.0 * self.log_sigma_physics)
@@ -115,7 +133,7 @@ class LossWeighter:
 
     def metrics(self) -> dict[str, float]:
         out: dict[str, float] = {"loss_weight_mode": self.mode}
-        if self.mode in {"manual", "gradient_balance"}:
+        if self.mode in {"manual", "gradient_balance", "learning_rate_annealing"}:
             out["lambda_physics_eff"] = float(self._last_lambda)
         if self.mode == "uncertainty":
             out["log_sigma_data"] = float(self.log_sigma_data.detach().cpu())
@@ -170,6 +188,25 @@ def _mae(errors: list[float]) -> float:
     if not errors:
         return 0.0
     return sum(abs(error) for error in errors) / len(errors)
+
+
+def _mape(predictions: list[float], targets: list[float]) -> float:
+    if not predictions or not targets:
+        return 0.0
+    eps = 1.0e-6
+    ratios = [abs(pred - true) / max(abs(true), eps) for pred, true in zip(predictions, targets)]
+    return 100.0 * sum(ratios) / len(ratios)
+
+
+def _r2_score(predictions: list[float], targets: list[float]) -> float:
+    if not predictions or not targets:
+        return 0.0
+    mean_target = sum(targets) / len(targets)
+    ss_res = sum((true - pred) ** 2 for pred, true in zip(predictions, targets))
+    ss_tot = sum((true - mean_target) ** 2 for true in targets)
+    if ss_tot <= 1.0e-12:
+        return 0.0
+    return 1.0 - (ss_res / ss_tot)
 
 
 def _build_loader(dataset: Dataset[dict[str, torch.Tensor]], batch_size: int, shuffle: bool) -> DataLoader:
@@ -249,6 +286,8 @@ def _run_epoch(
     total_physics_loss = 0.0
     total_count = 0
     errors: list[float] = []
+    predictions: list[float] = []
+    targets: list[float] = []
 
     for batch in loader:
         features = batch["features"].to(device)
@@ -279,8 +318,12 @@ def _run_epoch(
 
         predicted_raw = denormalize_target(predicted_normalized.detach().cpu(), stats)
         target_raw = denormalize_target(target.detach().cpu(), stats)
-        batch_errors = (predicted_raw - target_raw).tolist()
+        predicted_values = predicted_raw.reshape(-1).tolist()
+        target_values = target_raw.reshape(-1).tolist()
+        batch_errors = (predicted_raw - target_raw).reshape(-1).tolist()
         errors.extend(float(value) for value in batch_errors)
+        predictions.extend(float(value) for value in predicted_values)
+        targets.extend(float(value) for value in target_values)
 
         batch_size = target.shape[0]
         total_count += batch_size
@@ -294,6 +337,8 @@ def _run_epoch(
         "physics_loss": total_physics_loss / max(total_count, 1),
         "rmse_degC": _rmse(errors),
         "mae_degC": _mae(errors),
+        "mape_pct": _mape(predictions, targets),
+        "r2_score": _r2_score(predictions, targets),
     }
 
 
@@ -411,6 +456,178 @@ def _run_rollout_epoch(
     }
 
 
+def _run_lbfgs_epoch(
+    model: SingleZonePINN,
+    loader: DataLoader,
+    optimizer: torch.optim.LBFGS,
+    stats: NormalizationStats,
+    device: torch.device,
+    loss_weighter: LossWeighter,
+) -> dict[str, float]:
+    """Single epoch with L-BFGS mini-batch closure updates.
+
+    For gradient-balance mode, lambda updates are frozen inside the closure because
+    L-BFGS can call the closure multiple times per step.
+    """
+    mse_loss = nn.MSELoss()
+    model.train()
+
+    total_loss = 0.0
+    total_data_loss = 0.0
+    total_physics_loss = 0.0
+    total_count = 0
+    errors: list[float] = []
+    predictions: list[float] = []
+    targets: list[float] = []
+
+    for batch in loader:
+        features = batch["features"].to(device)
+        target = batch["target"].to(device)
+        t_zone = batch["t_zone"].to(device)
+        t_outdoor = batch["t_outdoor"].to(device)
+        h_global = batch["h_global"].to(device)
+        u_heating = batch["u_heating"].to(device)
+        dt_s = batch["dt_s"].to(device)
+
+        def closure() -> torch.Tensor:
+            optimizer.zero_grad(set_to_none=True)
+            outputs = model(features, t_zone, t_outdoor, h_global, u_heating, dt_s)
+            predicted_normalized = (outputs["predicted_next"] - stats.target_mean) / stats.target_std
+            data_loss = mse_loss(predicted_normalized, target)
+            physics_loss = torch.mean(outputs["correction"] ** 2)
+            loss = loss_weighter.combine(
+                data_loss=data_loss,
+                physics_loss=physics_loss,
+                model=model,
+                training=False,
+            )
+            loss.backward()
+            return loss
+
+        loss = optimizer.step(closure)
+
+        with torch.no_grad():
+            outputs = model(features, t_zone, t_outdoor, h_global, u_heating, dt_s)
+            predicted_normalized = (outputs["predicted_next"] - stats.target_mean) / stats.target_std
+            data_loss = mse_loss(predicted_normalized, target)
+            physics_loss = torch.mean(outputs["correction"] ** 2)
+
+        predicted_raw = denormalize_target(predicted_normalized.detach().cpu(), stats)
+        target_raw = denormalize_target(target.detach().cpu(), stats)
+        predicted_values = predicted_raw.reshape(-1).tolist()
+        target_values = target_raw.reshape(-1).tolist()
+        batch_errors = (predicted_raw - target_raw).reshape(-1).tolist()
+        errors.extend(float(value) for value in batch_errors)
+        predictions.extend(float(value) for value in predicted_values)
+        targets.extend(float(value) for value in target_values)
+
+        batch_size = target.shape[0]
+        total_count += batch_size
+        total_loss += float(loss.detach().cpu()) * batch_size
+        total_data_loss += float(data_loss.detach().cpu()) * batch_size
+        total_physics_loss += float(physics_loss.detach().cpu()) * batch_size
+
+    return {
+        "loss": total_loss / max(total_count, 1),
+        "data_loss": total_data_loss / max(total_count, 1),
+        "physics_loss": total_physics_loss / max(total_count, 1),
+        "rmse_degC": _rmse(errors),
+        "mae_degC": _mae(errors),
+        "mape_pct": _mape(predictions, targets),
+        "r2_score": _r2_score(predictions, targets),
+    }
+
+
+def evaluate_robustness(
+    model: SingleZonePINN,
+    dataset: Dataset[dict[str, torch.Tensor]],
+    stats: NormalizationStats,
+    device: torch.device,
+    batch_size: int,
+) -> dict[str, dict[str, float]]:
+    """Evaluate noise robustness on unseen data with 5% and 10% input perturbations."""
+    model.eval()
+    feature_mean = torch.tensor(stats.feature_mean, dtype=torch.float32, device=device)
+    feature_std = torch.tensor(stats.feature_std, dtype=torch.float32, device=device)
+    target_mean = torch.tensor(stats.target_mean, dtype=torch.float32, device=device)
+    target_std = torch.tensor(stats.target_std, dtype=torch.float32, device=device)
+
+    loader = _build_loader(dataset, batch_size=batch_size, shuffle=False)
+    noise_settings = {
+        "noise_5pct": 0.05,
+        "noise_10pct": 0.10,
+    }
+    out: dict[str, dict[str, float]] = {}
+
+    with torch.no_grad():
+        for noise_name, noise_level in noise_settings.items():
+            errors: list[float] = []
+            predictions: list[float] = []
+            targets: list[float] = []
+            physics_losses: list[float] = []
+
+            for batch in loader:
+                features_norm = batch["features"].to(device)
+                target_norm = batch["target"].to(device)
+                t_zone = batch["t_zone"].to(device)
+                t_outdoor = batch["t_outdoor"].to(device)
+                h_global = batch["h_global"].to(device)
+                u_heating = batch["u_heating"].to(device)
+                dt_s = batch["dt_s"].to(device)
+
+                features_raw = features_norm * feature_std + feature_mean
+
+                t_zone_noisy = t_zone + torch.randn_like(t_zone) * (noise_level * torch.clamp(torch.abs(t_zone), min=1.0))
+                t_outdoor_noisy = t_outdoor + torch.randn_like(t_outdoor) * (
+                    noise_level * torch.clamp(torch.abs(t_outdoor), min=1.0)
+                )
+                h_global_noisy = h_global + torch.randn_like(h_global) * (
+                    noise_level * torch.clamp(torch.abs(h_global), min=1.0)
+                )
+                u_heating_noisy = u_heating + torch.randn_like(u_heating) * (
+                    noise_level * torch.clamp(torch.abs(u_heating), min=1.0)
+                )
+
+                features_raw = features_raw.clone()
+                features_raw[:, 0] = t_zone_noisy
+                features_raw[:, 1] = t_outdoor_noisy
+                features_raw[:, 2] = h_global_noisy
+                features_raw[:, 3] = u_heating_noisy
+                features_noisy = (features_raw - feature_mean) / feature_std
+
+                outputs = model(
+                    features_noisy,
+                    t_zone_noisy,
+                    t_outdoor_noisy,
+                    h_global_noisy,
+                    u_heating_noisy,
+                    dt_s,
+                )
+
+                predicted_norm = (outputs["predicted_next"] - target_mean) / target_std
+                predicted_raw = denormalize_target(predicted_norm.detach().cpu(), stats)
+                target_raw = denormalize_target(target_norm.detach().cpu(), stats)
+
+                pred_values = predicted_raw.reshape(-1).tolist()
+                target_values = target_raw.reshape(-1).tolist()
+                batch_errors = (predicted_raw - target_raw).reshape(-1).tolist()
+                errors.extend(float(value) for value in batch_errors)
+                predictions.extend(float(value) for value in pred_values)
+                targets.extend(float(value) for value in target_values)
+                physics_losses.append(float(torch.mean(outputs["correction"] ** 2).detach().cpu()))
+
+            out[noise_name] = {
+                "noise_std_fraction": noise_level,
+                "rmse_degC": _rmse(errors),
+                "mae_degC": _mae(errors),
+                "mape_pct": _mape(predictions, targets),
+                "r2_score": _r2_score(predictions, targets),
+                "physics_loss": sum(physics_losses) / max(len(physics_losses), 1),
+            }
+
+    return out
+
+
 def evaluate_rollout(
     model: SingleZonePINN,
     episodes: dict[str, list[Sample]],
@@ -490,11 +707,19 @@ def evaluate_model(
         device=device,
         loss_weighter=LossWeighter(train_cfg, device),
     )
+    robustness_metrics = evaluate_robustness(
+        model,
+        datasets["test_dataset"],
+        stats,
+        device,
+        batch_size,
+    )
     val_metrics.update(evaluate_rollout(model, datasets["val_episodes"], stats, device))
     test_metrics.update(evaluate_rollout(model, datasets["test_episodes"], stats, device))
     return {
         "validation": val_metrics,
         "test": test_metrics,
+        "robustness_test": robustness_metrics,
     }
 
 
@@ -514,11 +739,25 @@ def train_model(
     model.to(device)
 
     loss_weighter = LossWeighter(train_cfg, device)
+    trainable_parameters = list(model.parameters()) + loss_weighter.extra_parameters()
     optimizer = torch.optim.Adam(
-        list(model.parameters()) + loss_weighter.extra_parameters(),
+        trainable_parameters,
         lr=float(train_cfg["learning_rate"]),
         weight_decay=float(train_cfg.get("weight_decay", 0.0)),
     )
+
+    lbfgs_cfg = train_cfg.get("lbfgs_finetune", {}) or {}
+    lbfgs_enabled = bool(lbfgs_cfg.get("enabled", False))
+    lbfgs_epochs = int(lbfgs_cfg.get("epochs", 0))
+    lbfgs_lr = float(lbfgs_cfg.get("lr", 0.5))
+    lbfgs_max_iter = int(lbfgs_cfg.get("max_iter", 20))
+    lbfgs_history_size = int(lbfgs_cfg.get("history_size", 100))
+    lbfgs_line_search_raw = str(lbfgs_cfg.get("line_search_fn", "strong_wolfe")).strip().lower()
+    lbfgs_line_search: str | None
+    if lbfgs_line_search_raw in {"", "none", "null"}:
+        lbfgs_line_search = None
+    else:
+        lbfgs_line_search = lbfgs_line_search_raw
 
     artifact_dir.mkdir(parents=True, exist_ok=True)
     latest_checkpoint_path = artifact_dir / "latest_checkpoint.pt"
@@ -667,9 +906,13 @@ def train_model(
             "train_loss": train_objective,
             "train_step_loss": train_metrics["loss"],
             "train_rmse_degC": train_metrics["rmse_degC"],
+            "train_mape_pct": train_metrics["mape_pct"],
+            "train_r2_score": train_metrics["r2_score"],
             "val_loss": val_objective,
             "val_step_loss": val_metrics["loss"],
             "val_rmse_degC": val_metrics["rmse_degC"],
+            "val_mape_pct": val_metrics["mape_pct"],
+            "val_r2_score": val_metrics["r2_score"],
         }
         if train_rollout_metrics is not None and val_rollout_metrics is not None:
             epoch_metrics["train_rollout_loss"] = train_rollout_metrics["loss"]
@@ -718,6 +961,72 @@ def train_model(
             print(f"Early stopping at epoch {epoch} (best epoch: {best_epoch}).")
             break
 
+    if lbfgs_enabled and lbfgs_epochs > 0:
+        lbfgs_optimizer = torch.optim.LBFGS(
+            trainable_parameters,
+            lr=lbfgs_lr,
+            max_iter=lbfgs_max_iter,
+            history_size=lbfgs_history_size,
+            line_search_fn=lbfgs_line_search,
+        )
+        print(
+            "Starting L-BFGS fine-tuning phase "
+            f"(epochs={lbfgs_epochs}, lr={lbfgs_lr}, max_iter={lbfgs_max_iter})."
+        )
+
+        next_epoch = int(history[-1]["epoch"]) + 1 if history else 1
+        for phase_epoch in range(lbfgs_epochs):
+            train_metrics = _run_lbfgs_epoch(
+                model,
+                train_loader,
+                optimizer=lbfgs_optimizer,
+                stats=stats,
+                device=device,
+                loss_weighter=loss_weighter,
+            )
+            val_metrics = _run_epoch(
+                model,
+                val_loader,
+                optimizer=None,
+                stats=stats,
+                device=device,
+                loss_weighter=loss_weighter,
+            )
+
+            train_objective = train_metrics["loss"]
+            val_objective = val_metrics["loss"]
+
+            epoch_index = next_epoch + phase_epoch
+            epoch_metrics = {
+                "epoch": float(epoch_index),
+                "train_loss": train_objective,
+                "train_step_loss": train_metrics["loss"],
+                "train_rmse_degC": train_metrics["rmse_degC"],
+                "train_mape_pct": train_metrics["mape_pct"],
+                "train_r2_score": train_metrics["r2_score"],
+                "val_loss": val_objective,
+                "val_step_loss": val_metrics["loss"],
+                "val_rmse_degC": val_metrics["rmse_degC"],
+                "val_mape_pct": val_metrics["mape_pct"],
+                "val_r2_score": val_metrics["r2_score"],
+                "optimizer_phase": "lbfgs",
+            }
+            epoch_metrics.update(loss_weighter.metrics())
+            history.append(epoch_metrics)
+
+            if (best_val_loss - val_objective) > min_delta:
+                best_val_loss = val_objective
+                best_epoch = epoch_index
+                best_state = {key: value.detach().cpu().clone() for key, value in model.state_dict().items()}
+
+            print(
+                f"LBFGS {phase_epoch + 1:03d}/{lbfgs_epochs:03d} | "
+                f"train_loss={train_objective:.4f} | "
+                f"val_loss={val_objective:.4f} | "
+                f"val_rmse={val_metrics['rmse_degC']:.4f} degC | "
+                f"weight_mode={loss_weighter.mode}"
+            )
+
     if best_state is None:
         raise RuntimeError("Training did not produce a valid checkpoint.")
 
@@ -750,6 +1059,7 @@ def train_model(
                 "best_val_loss": best_val_loss,
                 "validation": final_metrics["validation"],
                 "test": final_metrics["test"],
+                "robustness_test": final_metrics["robustness_test"],
                 "normalization": stats.to_dict(),
                 "physics_parameters": {
                     "ua": physics_parameters["ua"],
@@ -763,13 +1073,21 @@ def train_model(
                     "min_delta": min_delta,
                     "min_epochs": min_epochs,
                 },
-                    "rollout_training": {
-                        "enabled": rollout_enabled,
-                        "weight": rollout_weight,
-                        "horizon_steps": rollout_horizon_steps,
-                        "batch_size": rollout_batch_size,
-                        "max_windows_per_episode": rollout_max_windows_per_episode,
-                    },
+                "rollout_training": {
+                    "enabled": rollout_enabled,
+                    "weight": rollout_weight,
+                    "horizon_steps": rollout_horizon_steps,
+                    "batch_size": rollout_batch_size,
+                    "max_windows_per_episode": rollout_max_windows_per_episode,
+                },
+                "lbfgs_finetune": {
+                    "enabled": lbfgs_enabled,
+                    "epochs": lbfgs_epochs,
+                    "lr": lbfgs_lr,
+                    "max_iter": lbfgs_max_iter,
+                    "history_size": lbfgs_history_size,
+                    "line_search_fn": lbfgs_line_search,
+                },
             },
             handle,
             indent=2,

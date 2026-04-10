@@ -67,6 +67,23 @@ docker exec $redis redis-cli DEL jobs
 docker exec $redis redis-cli EVAL "for _,k in ipairs(redis.call('keys','tests:*')) do redis.call('del',k) end" 0
 ```
 
+### BOPTEST Reset Helper
+
+Use this when the API is alive but the queue or worker is stuck:
+
+```powershell
+# Soft reset: stop active tests, then restart web/worker/redis containers
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/reset_boptest.ps1
+
+# Hard reset: clean compose redeploy after stopping active tests
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/reset_boptest.ps1 -Hard -ComposeFile "path/to/docker-compose.yml"
+```
+
+Order of preference:
+1. Use the soft reset first.
+2. Use the hard reset if stale queue state survives the soft restart.
+3. Resume the campaign only after `/version` responds and `LLEN jobs` is back to 0.
+
 ---
 
 ## ðŸ“Š Per-Case Log Files

@@ -67,24 +67,24 @@ episodes:
 - id: tr_std_02
   split: train
   weather_class: standard
-  start_time_s: 2419200
+  start_time_s: 9676800
 - id: tr_std_03
   split: train
   weather_class: standard
-  start_time_s: 4838400
+  start_time_s: 19353600
 - id: val_std_01
   split: val
   weather_class: standard
-  start_time_s: 7257600
+  start_time_s: 4838400
 - id: te_std_01
   split: test
   weather_class: standard
-  start_time_s: 9676800
+  start_time_s: 12096000
 - id: te_std_02
   split: test
   weather_class: standard
-  start_time_s: 12096000
+  start_time_s: 24192000
 - id: te_std_03
   split: test
   weather_class: standard
-  start_time_s: 14515200
+  start_time_s: 29030400

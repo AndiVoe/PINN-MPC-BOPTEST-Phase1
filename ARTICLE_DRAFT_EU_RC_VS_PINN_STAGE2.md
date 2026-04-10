@@ -60,7 +60,7 @@ The BOPTEST initiative provides reproducible testcases and benchmarking infrastr
 ### 1.4 Contributions
 
 1. **First standardized multi-case PINN vs RC benchmark** on European BOPTEST using a staged protocol
-2. **Case-specific RC variant selection** showing that RC complexity should match building topology
+2. **Case-specific RC topology selection** showing that RC complexity should match building topology
 3. **Long-horizon (30-day) validation** beyond typical 7-day runs, revealing PINN robustness and heat-pump edge cases
 4. **Practical guidance** on model selection and solver time vs. accuracy trade-offs
 
@@ -207,24 +207,26 @@ $$S_{\text{RC}} = 10 \times \text{cost} + 2 \times \text{comfort} + 0.01 \times 
 
 ## 3. Results
 
-### 3.1 Stage 1: RC Variant Screening (7-day episodes)
+### 3.1 Stage 1: RC Topology Screening (7-day episodes)
 
-At the completion of Stage 1 (March 19, 2026), all 3 RC candidates were evaluated on 7-day episodes. The best variant per case was selected based on the weighted score.
+At the completion of Stage 1 (March 19, 2026), all 3 RC topology candidates were evaluated on 7-day episodes. The best topology per case was selected based on the weighted score.
 
 **Selection Summary:**
 
 | Case | Winner | Score | Runner-up (Score) | Notes |
 |------|--------|-------|-------------------|-------|
-| BESTEST Hydronic | R3C2 (rc) | 64.25 | R4C3 (71.2) | Simple 1R1C sufficient; no benefit from extra nodes |
-| Heat Pump | R3C2 (rc_base) | 99.56 | R5C3 (103.8) | HP dynamics remain challenging for all RC variants |
-| Commercial | R5C3 (rc_mass_plus) | 165.06 | R4C3 (178.3) | Thermal mass critical for large commercial; 8500 m² benefits from enhanced capacity |
-| Two-Zone Apartment | R3C2 (rc_base) | 433.87 | R5C3 (456.1) | Multi-zone structure preferred over single-zone mass enhancement |
+| BESTEST Hydronic | R3C2 | 64.25 | R4C3 (71.2) | Lower-order screened topology was sufficient; no benefit from extra nodes |
+| Heat Pump | R3C2 | 99.56 | R5C3 (103.8) | HP dynamics remain challenging for all screened topologies |
+| Commercial | R5C3 | 165.06 | R4C3 (178.3) | Thermal mass critical for large commercial; 8500 m² benefits from enhanced capacity |
+| Two-Zone Apartment | R3C2 | 433.87 | R5C3 (456.1) | Lower-order screened topology performed best in this campaign |
 
 **Interpretation**: RC model selection is not one-size-fits-all. Building complexity (floor area, number of zones, HVAC type) determines which RC structure achieves best balance of cost, comfort, and complexity.
 
 ### 3.2 Stage 2: 30-Day Robustness Protocol
 
 All selected best-RC and PINN models were run on a 30-day episode ($\text{te\_std\_01}$, continuous standard weather scenario) to assess long-term robustness beyond 7-day screens.
+
+For clarity, Stage 2 RC labels (`rc_base`, `rc_envelope_plus`, `rc_mass_plus`) denote parameter-scaling variants on a fixed RC topology unless `--rc-topology` is explicitly provided.
 
 **Aggregate Results (All 4 Cases)**:
 
@@ -235,14 +237,6 @@ All selected best-RC and PINN models were run on a 30-day episode ($\text{te\_st
 | Operating Cost | 0.516 | 0.349 | **-0.167** | € | **−32.4%** ✓ |
 | Peak Power | 58.5 | 58.8 | **+0.2** | kW | mixed (no consistent gain) |
 | MPC Solve Time | 2.74 | 410.9 | **+408.2** | ms | RC faster ✗ |
-
-**Suggested Figure Placement (after aggregate table):**
-
-**Figure 1**: Stage 2 aggregate KPI comparison (energy, comfort, solve time, cost)
-![Figure 1: Stage 2 aggregate KPI comparison](results/eu_rc_vs_pinn_stage2/publication_plots/01_stage2_energy_comparison.png)
-
-**Figure 2**: Relative energy improvement (PINN vs best RC) by testcase
-![Figure 2: Relative energy improvement by testcase](results/eu_rc_vs_pinn_stage2/publication_plots/04_stage2_relative_energy_improvement.png)
 
 **Per-Case Detailed Results:**
 
@@ -305,17 +299,6 @@ All selected best-RC and PINN models were run on a 30-day episode ($\text{te\_st
 
 **Interpretation**: Multi-zone case shows strong PINN advantage (60% energy, 72% comfort). RC struggles with inter-zone dynamics (single R3C2 base node misses coupling). PINN implicitly learns zone mixing through input correlation. **Future work**: explicit multi-zone PINN architecture could potentially improve further.
 
-**Suggested Figure Placement (end of Section 3.2):**
-
-**Figure 3**: Comfort comparison across all testcases
-![Figure 3: Stage 2 comfort comparison](results/eu_rc_vs_pinn_stage2/publication_plots/02_stage2_comfort_comparison.png)
-
-**Figure 4**: Cost comparison across all testcases
-![Figure 4: Stage 2 cost comparison](results/eu_rc_vs_pinn_stage2/publication_plots/05_stage2_cost_comparison.png)
-
-**Figure 5**: Solve-time comparison (computational trade-off)
-![Figure 5: Stage 2 solve-time comparison](results/eu_rc_vs_pinn_stage2/publication_plots/03_stage2_solve_time_comparison.png)
-
 ---
 
 ### 3.3 Summary: PINN vs RC Trade-off Surface
@@ -355,11 +338,13 @@ Endpoint tables and bar charts summarize final totals, but they do not explain *
   - Plots cumulative energy and cumulative discomfort (K.h) versus day for RC and PINN.
   - Distinguishes steady improvements from late-episode drift and shows whether gains are persistent over the full horizon.
 
-3. **Heat pump dynamics detail** ([results/eu_rc_vs_pinn_stage2/publication_plots/08_heatpump_30day_temperature_control_dynamics.png](results/eu_rc_vs_pinn_stage2/publication_plots/08_heatpump_30day_temperature_control_dynamics.png)):
-  - Shows zone temperature versus comfort bounds together with control/power traces.
-  - Provides mechanism-level evidence for improved comfort and energy with PINN in the heat pump case, while revealing remaining high-side excursions.
+3. **All-cases thermal dynamics detail** ([results/eu_rc_vs_pinn_stage2/publication_plots/08_all_cases_30day_temperature_dynamics.png](results/eu_rc_vs_pinn_stage2/publication_plots/08_all_cases_30day_temperature_dynamics.png)):
+  - Shows zone temperature trajectories versus comfort bounds for all four cases in one subplot figure.
+  - Enables direct visual comparison of long-horizon thermal behavior across building archetypes.
 
 These figures add explanatory value by connecting aggregate KPIs to temporal behavior, controller actions, and model calibration quality.
+
+**Additional diagnostic observation from Figure 8**: Across cases, comfort violations are dominated by high-side (overheating) excursions rather than low-side deficits. This pattern is not automatically evidence of PINN model error; in three cases, most overheating periods occur with negligible delivered heating power, consistent with thermal inertia and uncontrollable internal/solar gains under heat-only actuation. However, in the single-zone commercial case, overheating overlaps with active heating more frequently, suggesting controller tuning and/or actuator-limit settings are not yet fully optimal. A focused sensitivity study on horizon length, minimum setpoint bounds, and energy/comfort weights is therefore recommended before final deployment claims.
 
 **Suggested Figure Placement (within Section 3.4):**
 
@@ -369,8 +354,8 @@ These figures add explanatory value by connecting aggregate KPIs to temporal beh
 **Figure 7**: 30-day cumulative energy/discomfort trajectories
 ![Figure 7: Cumulative performance trajectories](results/eu_rc_vs_pinn_stage2/publication_plots/07_stage2_cumulative_energy_discomfort_trajectories.png)
 
-**Figure 8**: Heat pump temperature/control dynamics (mechanistic evidence)
-![Figure 8: Heat pump dynamics](results/eu_rc_vs_pinn_stage2/publication_plots/08_heatpump_30day_temperature_control_dynamics.png)
+**Figure 8**: All-cases 30-day thermal dynamics (cross-case mechanistic evidence)
+![Figure 8: All-cases thermal dynamics](results/eu_rc_vs_pinn_stage2/publication_plots/08_all_cases_30day_temperature_dynamics.png)
 
 ---
 
@@ -499,7 +484,7 @@ We observed cases where challenge KPI (tdis_tot from BOPTEST) and diagnostic KPI
 - **Stage 2 Raw Results**: `results/eu_rc_vs_pinn_stage2/raw/[case]/[variant]/te_std_01.json`
 - **Summary JSON**: `results/eu_rc_vs_pinn_stage2/best_rc_vs_pinn_summary.json`
 - **Config Snapshots**: `configs/eu/stage2/rc_variants.yaml`, `configs/pinn_phase1.yaml`
-- **Publication Figures**: `results/eu_rc_vs_pinn_stage2/publication_plots/[01–05].png`
+- **Publication Figures**: `results/eu_rc_vs_pinn_stage2/publication_plots/[06–08].png`
 
 ---
 
@@ -540,7 +525,7 @@ All PINNs trained per testcase on 7-day ($\text{te\_std\_01}$) training data:
 | File | Purpose | Checksum |
 |------|---------|----------|
 | `best_rc_vs_pinn_summary.json` | Structured results data | In PUBLICATION_MANIFEST.json |
-| `publication_plots/01–08.png` | Article-ready figures | MD5 in manifest |
+| `publication_plots/06–08.png` | Core article figures (tables cover aggregate comparisons) | MD5 in manifest |
 | `STAGE2_SUMMARY_REPORT.md` | Case-by-case narrative | Auto-generated 2026-04-07 |
 | `VALIDATION_REPORT.md` | Data integrity (12/12 files valid) | Auto-generated 2026-04-07 |
 | `raw/[case]/[variant]/te_std_01.json` | Raw episode outputs | MD5 in validation report |

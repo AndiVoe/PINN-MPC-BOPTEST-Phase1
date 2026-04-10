@@ -262,7 +262,7 @@ results/
 ## Current Status
 
 **Main Campaign (Standard Episodes):**
-- ✓ 4 of 5 cases complete
+- ✓ 4 of 4 cases complete
 - ✓ All 24 episodes (4 cases × 3 episodes × 2 predictors) processed
 - ✓ 6 publication plots generated
 

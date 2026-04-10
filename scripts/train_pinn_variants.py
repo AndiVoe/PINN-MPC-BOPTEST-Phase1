@@ -78,6 +78,17 @@ def train_variant(variant: str, config_path: Path, root: Path, artifact_dir: Pat
             resume_checkpoint=False,
         )
 
+        metrics_path = output_dir / "metrics.json"
+        metrics_payload: dict = {}
+        if metrics_path.exists():
+            metrics_payload = json.loads(metrics_path.read_text(encoding="utf-8"))
+
+        validation = metrics_payload.get("validation", {}) if isinstance(metrics_payload, dict) else {}
+        test = metrics_payload.get("test", {}) if isinstance(metrics_payload, dict) else {}
+        robustness = metrics_payload.get("robustness_test", {}) if isinstance(metrics_payload, dict) else {}
+        noise_5 = robustness.get("noise_5pct", {}) if isinstance(robustness, dict) else {}
+        noise_10 = robustness.get("noise_10pct", {}) if isinstance(robustness, dict) else {}
+
         # Save variant metadata
         metadata = {
             "variant": variant,
@@ -89,6 +100,9 @@ def train_variant(variant: str, config_path: Path, root: Path, artifact_dir: Pat
             "training_config": config["training"],
             "model_config": config["model"],
             "loss_weighting_mode": config["training"].get("loss_weighting", {}).get("mode", "manual"),
+            "validation": validation,
+            "test": test,
+            "robustness_test": robustness,
         }
 
         metadata_file = output_dir / "variant_metadata.json"
@@ -101,6 +115,15 @@ def train_variant(variant: str, config_path: Path, root: Path, artifact_dir: Pat
             "output_dir": str(output_dir),
             "best_epoch": result["best_epoch"],
             "best_val_loss": result["best_val_loss"],
+            "validation_rmse_degC": float(validation.get("rmse_degC", 0.0)),
+            "validation_mape_pct": float(validation.get("mape_pct", 0.0)),
+            "validation_r2_score": float(validation.get("r2_score", 0.0)),
+            "test_rmse_degC": float(test.get("rmse_degC", 0.0)),
+            "test_mape_pct": float(test.get("mape_pct", 0.0)),
+            "test_r2_score": float(test.get("r2_score", 0.0)),
+            "test_physics_loss": float(test.get("physics_loss", 0.0)),
+            "robust_noise_5pct_rmse_degC": float(noise_5.get("rmse_degC", 0.0)),
+            "robust_noise_10pct_rmse_degC": float(noise_10.get("rmse_degC", 0.0)),
         }
 
     except Exception as e:
@@ -171,6 +194,24 @@ def main() -> int:
             best_loss = result.get("best_val_loss", "?")
             print(f"Variant {variant}: OK {study_id}")
             print(f"  Best epoch: {best_epoch},  best val loss: {best_loss:.6f}")
+            print(
+                "  Validation: "
+                f"RMSE={result.get('validation_rmse_degC', 0.0):.4f} degC, "
+                f"MAPE={result.get('validation_mape_pct', 0.0):.2f}%, "
+                f"R2={result.get('validation_r2_score', 0.0):.4f}"
+            )
+            print(
+                "  Test: "
+                f"RMSE={result.get('test_rmse_degC', 0.0):.4f} degC, "
+                f"MAPE={result.get('test_mape_pct', 0.0):.2f}%, "
+                f"R2={result.get('test_r2_score', 0.0):.4f}, "
+                f"physics_loss={result.get('test_physics_loss', 0.0):.6f}"
+            )
+            print(
+                "  Robustness (test split): "
+                f"noise_5pct_RMSE={result.get('robust_noise_5pct_rmse_degC', 0.0):.4f} degC, "
+                f"noise_10pct_RMSE={result.get('robust_noise_10pct_rmse_degC', 0.0):.4f} degC"
+            )
         else:
             error = result.get("error", "Unknown error")
             print(f"Variant {variant}: FAILED")

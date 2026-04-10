@@ -123,6 +123,30 @@ def has_all_episode_outputs(output_dir: Path, episode_ids: list[str]) -> bool:
     return all((output_dir / f"{ep_id}.json").exists() for ep_id in episode_ids)
 
 
+def load_rc_topologies(config_path: Path) -> list[str]:
+    if not config_path.exists():
+        return ["1R1C"]
+    data = yaml.safe_load(config_path.read_text(encoding="utf-8")) or {}
+    entries = data.get("topologies", [])
+    if not isinstance(entries, list) or not entries:
+        raise ValueError(f"Invalid RC topology config: {config_path}")
+
+    out: list[str] = []
+    for item in entries:
+        if isinstance(item, str):
+            name = item.strip()
+        elif isinstance(item, dict):
+            name = str(item.get("name", "")).strip()
+        else:
+            name = ""
+        if name:
+            out.append(name)
+
+    if not out:
+        raise ValueError(f"No RC topologies configured in: {config_path}")
+    return out
+
+
 def build_manifest(case_id: str, season: str = "standard") -> dict[str, Any]:
     # Generic single-zone style mapping with broad candidates.
     # This can still fail for some multizone IDs if no compatible signals exist.
@@ -186,9 +210,9 @@ def build_manifest(case_id: str, season: str = "standard") -> dict[str, Any]:
         study_suffix = "heating_season"
     else:
         test_episodes = [
-            {"id": "te_std_01", "split": "test", "weather_class": "standard", "start_time_s": 9676800},
-            {"id": "te_std_02", "split": "test", "weather_class": "standard", "start_time_s": 12096000},
-            {"id": "te_std_03", "split": "test", "weather_class": "standard", "start_time_s": 14515200},
+            {"id": "te_std_01", "split": "test", "weather_class": "standard", "start_time_s": 12096000},
+            {"id": "te_std_02", "split": "test", "weather_class": "standard", "start_time_s": 24192000},
+            {"id": "te_std_03", "split": "test", "weather_class": "standard", "start_time_s": 29030400},
         ]
         study_suffix = "stage1"
 
@@ -211,9 +235,9 @@ def build_manifest(case_id: str, season: str = "standard") -> dict[str, Any]:
         "case_mappings": {case_id: case_mapping},
         "episodes": [
             {"id": "tr_std_01", "split": "train", "weather_class": "standard", "start_time_s": 0},
-            {"id": "tr_std_02", "split": "train", "weather_class": "standard", "start_time_s": 2419200},
-            {"id": "tr_std_03", "split": "train", "weather_class": "standard", "start_time_s": 4838400},
-            {"id": "val_std_01", "split": "val", "weather_class": "standard", "start_time_s": 7257600},
+            {"id": "tr_std_02", "split": "train", "weather_class": "standard", "start_time_s": 9676800},
+            {"id": "tr_std_03", "split": "train", "weather_class": "standard", "start_time_s": 19353600},
+            {"id": "val_std_01", "split": "val", "weather_class": "standard", "start_time_s": 4838400},
             *test_episodes,
         ]
     }
@@ -502,7 +526,7 @@ def enforce_queue_guard(
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Run EU stage-1 baseline campaign (1 RC + 1 PINN + 1 RBC per case).")
+    parser = argparse.ArgumentParser(description="Run EU stage-1 baseline campaign (RC topology candidates + PINN + RBC per case).")
     parser.add_argument("--mapping", default="results/eu_rc_vs_pinn/runtime_discovery/eu_testcases_resolved_mapping.json")
     parser.add_argument("--url", default="http://127.0.0.1:8000")
     parser.add_argument(
@@ -561,6 +585,11 @@ def main() -> int:
         action="store_true",
         help="Disable automatic web/worker restart during stale queue recovery.",
     )
+    parser.add_argument(
+        "--rc-topologies-config",
+        default="configs/eu/stage1/rc_topologies.yaml",
+        help="YAML file defining RC topology candidates for stage-1 runs.",
+    )
     args = parser.parse_args()
     
     # Adjust timeouts for short-episode mode
@@ -569,6 +598,8 @@ def main() -> int:
         episode_label = f"SHORT VALIDATION ({args.season})"
     else:
         episode_label = f"FULL CAMPAIGN ({args.season})"
+
+    rc_topologies = load_rc_topologies(ROOT / args.rc_topologies_config)
 
     results_root = Path("results/eu_rc_vs_pinn/raw") if args.season == "standard" else Path("results/eu_rc_vs_pinn_heating/raw")
     runtime_root = Path("results/eu_rc_vs_pinn/runtime_discovery") if args.season == "standard" else Path("results/eu_rc_vs_pinn_heating/runtime_discovery")
@@ -640,6 +671,7 @@ def main() -> int:
         "last_step_status": None,
         "last_error": None,
         "failure_summary": (str((results_root.parent / "stage1_failures.json").as_posix())),
+        "rc_topologies": rc_topologies,
     }
 
     print(f"\n{'='*72}")
@@ -654,6 +686,7 @@ def main() -> int:
         "Retries: "
         f"max_retries={args.step_max_retries}, backoff_s={args.step_retry_backoff_s}"
     )
+    print(f"RC topologies: {', '.join(rc_topologies)}")
     print(f"{'='*72}\n")
 
     def update_status(**changes: Any) -> None:
@@ -827,25 +860,33 @@ def main() -> int:
                     train_cmd.append("--resume-checkpoint")
                 run_step("train_pinn", train_cmd)
 
-            # RC benchmark (single implemented RC architecture)
-            rc_out = ROOT / result_rel / "rc"
-            if not args.resume or not has_all_episode_outputs(rc_out, test_episode_ids):
-                run_step("benchmark_rc", [
-                    py,
-                    "-u",
-                    "scripts/run_mpc_episode.py",
-                    "--predictor", "rc",
-                    "--episode", "all-test",
-                    "--manifest", str(manifest_rel).replace('\\', '/'),
-                    "--mpc-config", "configs/mpc_phase1.yaml",
-                    "--checkpoint", str((artifact_rel / "best_model.pt").as_posix()),
-                    "--output-dir", str(result_rel).replace('\\', '/'),
-                    "--url", args.url,
-                    "--case", case_id,
-                    "--startup-timeout-s", startup_timeout_s,
-                    "--recover-from-queued",
-                    "--resume-existing",
-                ], require_queue_capacity=True)
+            # RC benchmark (all configured RC topology candidates)
+            for rc_topology in rc_topologies:
+                rc_label = (
+                    "rc"
+                    if len(rc_topologies) == 1 and rc_topology.upper() == "1R1C"
+                    else f"rc_{rc_topology.lower()}"
+                )
+                rc_out = ROOT / result_rel / rc_label
+                if not args.resume or not has_all_episode_outputs(rc_out, test_episode_ids):
+                    run_step(f"benchmark_{rc_label}", [
+                        py,
+                        "-u",
+                        "scripts/run_mpc_episode.py",
+                        "--predictor", "rc",
+                        "--predictor-label", rc_label,
+                        "--rc-topology", rc_topology,
+                        "--episode", "all-test",
+                        "--manifest", str(manifest_rel).replace('\\', '/'),
+                        "--mpc-config", "configs/mpc_phase1.yaml",
+                        "--checkpoint", str((artifact_rel / "best_model.pt").as_posix()),
+                        "--output-dir", str(result_rel).replace('\\', '/'),
+                        "--url", args.url,
+                        "--case", case_id,
+                        "--startup-timeout-s", startup_timeout_s,
+                        "--recover-from-queued",
+                        "--resume-existing",
+                    ], require_queue_capacity=True)
 
             # PINN benchmark
             pinn_out = ROOT / result_rel / "pinn"

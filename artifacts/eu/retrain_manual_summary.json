@@ -1,0 +1,57 @@
+{
+  "timestamp": "2026-04-03T09:09:35.806559",
+  "cases": [
+    [
+      "singlezone_commercial_hydronic",
+      "configs/eu/pinn_singlezone_commercial_hydronic.yaml"
+    ],
+    [
+      "bestest_hydronic",
+      "configs/eu/pinn_bestest_hydronic.yaml"
+    ],
+    [
+      "bestest_hydronic_heat_pump",
+      "configs/eu/pinn_bestest_hydronic_heat_pump.yaml"
+    ],
+    [
+      "twozone_apartment_hydronic",
+      "configs/eu/pinn_twozone_apartment_hydronic.yaml"
+    ]
+  ],
+  "results": [
+    {
+      "case": "singlezone_commercial_hydronic",
+      "status": "warning",
+      "elapsed_s": 23.411811,
+      "error": "Invalid JSON output",
+      "stdout": "3004811984,\n    \"rollout_rmse_degC\": 0.9764347560046616,\n    \"rollout_mae_degC\": 0.8280934019164441\n  },\n  \"artifact_dir\": \"C:\\\\Users\\\\AVoelser\\\\OneDrive - Scientific Network South Tyrol\\\\3_PhD\\\\Simulation\\\\PINN\\\\artifacts\\\\eu\\\\singlezone_commercial_hydronic\",\n  \"device\": \"cpu\",\n  \"resumed_from_checkpoint\": false,\n  \"latest_checkpoint\": \"C:\\\\Users\\\\AVoelser\\\\OneDrive - Scientific Network South Tyrol\\\\3_PhD\\\\Simulation\\\\PINN\\\\artifacts\\\\eu\\\\singlezone_commercial_hydronic\\\\latest_checkpoint.pt\"\n}\n"
+    },
+    {
+      "case": "bestest_hydronic",
+      "status": "warning",
+      "elapsed_s": 21.890103,
+      "error": "Invalid JSON output",
+      "stdout": "778,\n    \"mae_degC\": 0.2711887899702956,\n    \"rollout_rmse_degC\": 8.941536448283484,\n    \"rollout_mae_degC\": 7.4569897246811205\n  },\n  \"artifact_dir\": \"C:\\\\Users\\\\AVoelser\\\\OneDrive - Scientific Network South Tyrol\\\\3_PhD\\\\Simulation\\\\PINN\\\\artifacts\\\\eu\\\\bestest_hydronic\",\n  \"device\": \"cpu\",\n  \"resumed_from_checkpoint\": false,\n  \"latest_checkpoint\": \"C:\\\\Users\\\\AVoelser\\\\OneDrive - Scientific Network South Tyrol\\\\3_PhD\\\\Simulation\\\\PINN\\\\artifacts\\\\eu\\\\bestest_hydronic\\\\latest_checkpoint.pt\"\n}\n"
+    },
+    {
+      "case": "bestest_hydronic_heat_pump",
+      "status": "warning",
+      "elapsed_s": 15.282839,
+      "error": "Invalid JSON output",
+      "stdout": "0.06568410393022744,\n    \"rollout_rmse_degC\": 4.096454212813395,\n    \"rollout_mae_degC\": 3.2990364343683325\n  },\n  \"artifact_dir\": \"C:\\\\Users\\\\AVoelser\\\\OneDrive - Scientific Network South Tyrol\\\\3_PhD\\\\Simulation\\\\PINN\\\\artifacts\\\\eu\\\\bestest_hydronic_heat_pump\",\n  \"device\": \"cpu\",\n  \"resumed_from_checkpoint\": false,\n  \"latest_checkpoint\": \"C:\\\\Users\\\\AVoelser\\\\OneDrive - Scientific Network South Tyrol\\\\3_PhD\\\\Simulation\\\\PINN\\\\artifacts\\\\eu\\\\bestest_hydronic_heat_pump\\\\latest_checkpoint.pt\"\n}\n"
+    },
+    {
+      "case": "twozone_apartment_hydronic",
+      "status": "warning",
+      "elapsed_s": 19.637633,
+      "error": "Invalid JSON output",
+      "stdout": "0.1373408725471326,\n    \"rollout_rmse_degC\": 14.072017282459994,\n    \"rollout_mae_degC\": 12.776826646868024\n  },\n  \"artifact_dir\": \"C:\\\\Users\\\\AVoelser\\\\OneDrive - Scientific Network South Tyrol\\\\3_PhD\\\\Simulation\\\\PINN\\\\artifacts\\\\eu\\\\twozone_apartment_hydronic\",\n  \"device\": \"cpu\",\n  \"resumed_from_checkpoint\": false,\n  \"latest_checkpoint\": \"C:\\\\Users\\\\AVoelser\\\\OneDrive - Scientific Network South Tyrol\\\\3_PhD\\\\Simulation\\\\PINN\\\\artifacts\\\\eu\\\\twozone_apartment_hydronic\\\\latest_checkpoint.pt\"\n}\n"
+    }
+  ],
+  "summary": {
+    "total": 4,
+    "success": 0,
+    "failed": 0,
+    "warning": 4
+  }
+}

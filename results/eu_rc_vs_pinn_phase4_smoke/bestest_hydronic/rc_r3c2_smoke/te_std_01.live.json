@@ -1,0 +1,28 @@
+{
+  "episode_id": "te_std_01",
+  "predictor_label": "rc_r3c2_smoke",
+  "case_name": "bestest_hydronic",
+  "attempt_index": 1,
+  "max_attempts": 1,
+  "start_time_s": 9676800,
+  "warmup_period_s": 604800,
+  "control_interval_s": 900,
+  "n_steps": 96,
+  "updated_at_unix_s": 1775113451.9549637,
+  "state": "waiting_advance",
+  "step_index": 17,
+  "sim_time_s": 9691200,
+  "waited_on_advance_s": 60,
+  "t_zone_degC": 24.000000001947228,
+  "u_opt_degC": 23.999999999999858,
+  "solve_info": {
+    "solve_time_ms": 3.9470000192523003,
+    "n_iter": 1,
+    "success": true,
+    "obj_val": 0.5760000000000295
+  },
+  "control_cmd": {
+    "oveTSetHea_u": 297.14999999999986,
+    "oveTSetHea_activate": 1.0
+  }
+}

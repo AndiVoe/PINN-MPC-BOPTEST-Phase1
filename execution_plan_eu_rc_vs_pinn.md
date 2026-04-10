@@ -16,7 +16,6 @@ Compare three pure RC candidates against one PINN model per testcase, using only
 2. BESTEST Hydronic Heat Pump (Brussels, Belgium)
 3. Single Zone Commercial Hydronic (Copenhagen, Denmark)
 4. Two Zone Apartment Hydronic (Milan, Italy)
-5. Multizone Residential Hydronic (Copenhagen, Denmark)
 
 ## Model Set Per Testcase
 
@@ -42,7 +41,10 @@ Compare three pure RC candidates against one PINN model per testcase, using only
 ## Comparability Controls
 
 - Same testcase, scenario family, start time, control interval, and horizon per paired run.
+- Treat `te_ext_02` as a distinct extreme-weather-plus-pricing scenario, not as a duplicate of `te_ext_01`.
+- Report RBC as a fixed baseline controller; identical candidate-level RBC KPIs are expected by design.
 - Run discomfort parity validator on outputs to detect metric definition mismatch risk.
+- Preserve the full episode set in candidate reporting, but state the scenario intent explicitly in plots and tables.
 
 ## Immediate Next Step
 

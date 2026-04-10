@@ -1,0 +1,64 @@
+{
+  "episode_id": "te_std_01",
+  "predictor_label": "pinn",
+  "case_name": "singlezone_commercial_hydronic",
+  "attempt_index": 1,
+  "max_attempts": 2,
+  "start_time_s": 9676800,
+  "warmup_period_s": 604800,
+  "control_interval_s": 900,
+  "n_steps": 672,
+  "updated_at_unix_s": 1775114963.6430192,
+  "state": "episode_completed",
+  "step_index": 672,
+  "episode_wall_time_s": 153.23,
+  "challenge_kpis": {
+    "cost_tot": {
+      "value": 0.06849881411833095,
+      "unit": "EUR/m2",
+      "description": "Operational HVAC cost (energy * price).",
+      "source": "boptest"
+    },
+    "idis_tot": {
+      "value": 0.0,
+      "unit": "ppm*h/zone",
+      "description": "IAQ discomfort from CO2 concentration above bounds.",
+      "source": "boptest"
+    },
+    "pdih_tot": {
+      "value": 0.022266472465926824,
+      "unit": "kW/m2",
+      "description": "Peak district heating demand (15 min).",
+      "source": "boptest"
+    },
+    "pele_tot": {
+      "value": 0.002287065800407056,
+      "unit": "kW/m2",
+      "description": "Peak electrical demand (15 min).",
+      "source": "boptest"
+    },
+    "tdis_tot": {
+      "value": 0.0,
+      "unit": "Kh/zone",
+      "description": "Thermal discomfort relative to comfort bounds.",
+      "source": "boptest"
+    }
+  },
+  "diagnostic_kpis": {
+    "n_steps": 672,
+    "comfort_Kh": 0.0,
+    "comfort_violation_steps": 0,
+    "total_energy_Wh": 7325768.79,
+    "heating_energy_Wh": 7028608.82,
+    "electric_energy_Wh": 297159.97,
+    "peak_power_W": 190746.94,
+    "peak_heating_power_W": 189706.28,
+    "peak_electric_power_W": 19734.99,
+    "control_smoothness": 2.4753,
+    "mpc_solve_time_mean_ms": 152.573,
+    "mpc_solve_time_p95_ms": 494.835,
+    "mpc_solve_time_max_ms": 3025.527,
+    "n_mpc_solves": 672,
+    "episode_wall_time_s": 153.23
+  }
+}

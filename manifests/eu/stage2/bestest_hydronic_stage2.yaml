@@ -1,0 +1,55 @@
+version: 1
+study_id: eu_stage2_bestest_hydronic
+phase: eu_stage2
+defaults:
+  control_interval_s: 900
+  episode_length_days: 30
+  warmup_period_s: 604800
+  start_time_s: 0
+  control_policy:
+    mode: random_heating_setpoint
+    seed_base: 20260316
+    setpoint_min_degC: 19.0
+    setpoint_max_degC: 24.0
+case_mappings:
+  bestest_hydronic:
+    zone_temp_signal: reaTRoo_y
+    outdoor_temp_signal: weaSta_reaWeaTDryBul_y
+    solar_signal: weaSta_reaWeaHGloHor_y
+    control_value_signal: oveTSetHea_u
+    control_activate_signal: oveTSetHea_activate
+    zone_temp_candidates:
+      - reaTZon_y
+      - reaTRoo_y
+      - TRooAir_y
+      - zon_reaTRooAir_y
+      - reaTZonNor_y
+      - reaTZonCor_y
+      - reaTZonSou_y
+    outdoor_temp_candidates:
+      - weaSta_reaWeaTDryBul_y
+      - TDryBul_y
+      - TDryBul
+    solar_candidates:
+      - weaSta_reaWeaHGloHor_y
+      - HGloHor_y
+      - HGloHor
+    control_value_candidates:
+      - oveTZonSet_u
+      - oveTSetHea_u
+      - oveTRooSetHea_u
+      - oveValRad_u
+      - dh_oveTSupSetHea_u
+      - oveTSupSetAir_u
+    control_activate_candidates:
+      - oveTZonSet_activate
+      - oveTSetHea_activate
+      - oveTRooSetHea_activate
+      - oveValRad_activate
+      - dh_oveTSupSetHea_activate
+      - oveTSupSetAir_activate
+episodes:
+  - id: te_std_01
+    split: test
+    weather_class: standard
+    start_time_s: 9676800

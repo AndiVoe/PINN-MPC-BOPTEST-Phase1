@@ -39,3 +39,23 @@ The publication-facing full-validation package has been refreshed and revalidate
 ## Status
 
 Validated and ready for publication-facing handoff as of 2026-04-02.
+
+## PINN Surrogate Validation Addendum (2026-04-10)
+
+PINN training outputs now include expanded validation and verification metrics to support model-quality claims beyond RMSE only.
+
+Validation axes:
+1. Data accuracy: `rmse_degC`, `mae_degC`, `mape_pct`, `r2_score`
+2. Physical consistency: `physics_loss` on unseen validation/test split
+3. Robustness testing: input-noise reevaluation with
+   - `robustness_test.noise_5pct.*`
+   - `robustness_test.noise_10pct.*`
+
+Primary output locations:
+1. `artifacts/pinn_phase1_variant_*/metrics.json`
+2. `artifacts/pinn_phase1_variant_*/history.json`
+3. `artifacts/variant_training_summary.json` (now includes validation/test/robustness summary fields)
+
+Reference documentation:
+1. `docs/pinn_variant_training.md`
+2. `docs/METRICS_AND_KPI_STANDARDS.md`

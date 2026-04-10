@@ -95,20 +95,44 @@ class RCPredictor(PredictorBase):
 
     provides_gradient = False  # uses scipy finite differences
 
+    SUPPORTED_TOPOLOGIES = ("1R1C", "R3C2", "R4C3", "R5C3")
+
     def __init__(
         self,
         ua: float,
         solar_gain: float,
         hvac_gain: float,
         capacity: float,
+        topology: str = "1R1C",
     ) -> None:
         self.ua = ua
         self.solar_gain = solar_gain
         self.hvac_gain = hvac_gain
         self.capacity = max(capacity, 1e-6)
+        self.topology = self.normalize_topology(topology)
 
     @classmethod
-    def from_checkpoint(cls, checkpoint_path: Path | str) -> "RCPredictor":
+    def normalize_topology(cls, topology: str) -> str:
+        norm = str(topology).strip().upper().replace("-", "")
+        if norm in ("1R1C", "R1C1"):
+            return "1R1C"
+        if norm in ("R3C2", "3R2C"):
+            return "R3C2"
+        if norm in ("R4C3", "4R3C"):
+            return "R4C3"
+        if norm in ("R5C3", "5R3C"):
+            return "R5C3"
+        raise ValueError(
+            f"Unsupported RC topology: {topology!r}. "
+            f"Supported: {', '.join(cls.SUPPORTED_TOPOLOGIES)}"
+        )
+
+    @classmethod
+    def from_checkpoint(
+        cls,
+        checkpoint_path: Path | str,
+        topology: str = "1R1C",
+    ) -> "RCPredictor":
         ckpt_path = Path(checkpoint_path)
         ckpt = torch.load(ckpt_path, map_location="cpu", weights_only=False)
         p = ckpt.get("physics_parameters", {})
@@ -152,11 +176,12 @@ class RCPredictor(PredictorBase):
             solar_gain=float(p.get("solar_gain", 0.347)),
             hvac_gain=float(p.get("hvac_gain", 0.767)),
             capacity=float(p.get("capacity", 10.7)),
+            topology=topology,
         )
 
     # ------------------------------------------------------------------
 
-    def _step(self, T: float, t_out: float, h_glo: float, u: float, dt_s: float) -> float:
+    def _step_1r1c(self, T: float, t_out: float, h_glo: float, u: float, dt_s: float) -> float:
         hvac_drive = max(0.0, u - T)
         heat_flow = (
             self.ua * (t_out - T)
@@ -164,6 +189,137 @@ class RCPredictor(PredictorBase):
             + self.hvac_gain * hvac_drive
         )
         return T + (dt_s / 3600.0) * heat_flow / self.capacity
+
+    def _step_r3c2(
+        self,
+        state: tuple[float, float],
+        t_out: float,
+        h_glo: float,
+        u: float,
+        dt_s: float,
+    ) -> tuple[float, float]:
+        t_air, t_mass = state
+        dt_h = dt_s / 3600.0
+
+        ua_env = 0.6 * self.ua
+        k_air_mass = 0.5 * self.ua
+        c_air = max(0.35 * self.capacity, 1e-6)
+        c_mass = max(0.65 * self.capacity, 1e-6)
+
+        hvac = self.hvac_gain * max(0.0, u - t_air)
+        solar_air = 0.4 * self.solar_gain * (h_glo / 1000.0)
+        solar_mass = 0.6 * self.solar_gain * (h_glo / 1000.0)
+
+        d_air = (ua_env * (t_out - t_air) + k_air_mass * (t_mass - t_air) + hvac + solar_air) / c_air
+        d_mass = (k_air_mass * (t_air - t_mass) + solar_mass) / c_mass
+
+        t_air_next = t_air + dt_h * d_air
+        t_mass_next = t_mass + dt_h * d_mass
+        return t_air_next, t_mass_next
+
+    def _step_r4c3(
+        self,
+        state: tuple[float, float, float],
+        t_out: float,
+        h_glo: float,
+        u: float,
+        dt_s: float,
+    ) -> tuple[float, float, float]:
+        t_air, t_wall, t_mass = state
+        dt_h = dt_s / 3600.0
+
+        g_oa = 0.35 * self.ua
+        g_ow = 0.25 * self.ua
+        g_aw = 0.30 * self.ua
+        g_am = 0.20 * self.ua
+        c_air = max(0.25 * self.capacity, 1e-6)
+        c_wall = max(0.40 * self.capacity, 1e-6)
+        c_mass = max(0.35 * self.capacity, 1e-6)
+
+        hvac = self.hvac_gain * max(0.0, u - t_air)
+        solar_air = 0.3 * self.solar_gain * (h_glo / 1000.0)
+        solar_wall = 0.4 * self.solar_gain * (h_glo / 1000.0)
+        solar_mass = 0.3 * self.solar_gain * (h_glo / 1000.0)
+
+        d_air = (g_oa * (t_out - t_air) + g_aw * (t_wall - t_air) + g_am * (t_mass - t_air) + hvac + solar_air) / c_air
+        d_wall = (g_ow * (t_out - t_wall) + g_aw * (t_air - t_wall) + solar_wall) / c_wall
+        d_mass = (g_am * (t_air - t_mass) + solar_mass) / c_mass
+
+        t_air_next = t_air + dt_h * d_air
+        t_wall_next = t_wall + dt_h * d_wall
+        t_mass_next = t_mass + dt_h * d_mass
+        return t_air_next, t_wall_next, t_mass_next
+
+    def _step_r5c3(
+        self,
+        state: tuple[float, float, float],
+        t_out: float,
+        h_glo: float,
+        u: float,
+        dt_s: float,
+    ) -> tuple[float, float, float]:
+        t_air, t_wall, t_mass = state
+        dt_h = dt_s / 3600.0
+
+        g_oa = 0.20 * self.ua
+        g_ow = 0.30 * self.ua
+        g_aw = 0.25 * self.ua
+        g_am = 0.20 * self.ua
+        g_wm = 0.15 * self.ua
+        c_air = max(0.20 * self.capacity, 1e-6)
+        c_wall = max(0.45 * self.capacity, 1e-6)
+        c_mass = max(0.35 * self.capacity, 1e-6)
+
+        hvac = self.hvac_gain * max(0.0, u - t_air)
+        solar_air = 0.2 * self.solar_gain * (h_glo / 1000.0)
+        solar_wall = 0.5 * self.solar_gain * (h_glo / 1000.0)
+        solar_mass = 0.3 * self.solar_gain * (h_glo / 1000.0)
+
+        d_air = (g_oa * (t_out - t_air) + g_aw * (t_wall - t_air) + g_am * (t_mass - t_air) + hvac + solar_air) / c_air
+        d_wall = (g_ow * (t_out - t_wall) + g_aw * (t_air - t_wall) + g_wm * (t_mass - t_wall) + solar_wall) / c_wall
+        d_mass = (g_am * (t_air - t_mass) + g_wm * (t_wall - t_mass) + solar_mass) / c_mass
+
+        t_air_next = t_air + dt_h * d_air
+        t_wall_next = t_wall + dt_h * d_wall
+        t_mass_next = t_mass + dt_h * d_mass
+        return t_air_next, t_wall_next, t_mass_next
+
+    @staticmethod
+    def _clip_temp(value: float) -> float:
+        return max(-20.0, min(60.0, value))
+
+    def _step_state(
+        self,
+        state: float | tuple[float, float] | tuple[float, float, float],
+        t_out: float,
+        h_glo: float,
+        u: float,
+        dt_s: float,
+    ) -> float | tuple[float, float] | tuple[float, float, float]:
+        if self.topology == "1R1C":
+            t_next = self._step_1r1c(float(state), t_out, h_glo, u, dt_s)
+            return self._clip_temp(t_next)
+        if self.topology == "R3C2":
+            t_air, t_mass = self._step_r3c2(state, t_out, h_glo, u, dt_s)
+            return self._clip_temp(t_air), self._clip_temp(t_mass)
+        if self.topology == "R4C3":
+            t_air, t_wall, t_mass = self._step_r4c3(state, t_out, h_glo, u, dt_s)
+            return self._clip_temp(t_air), self._clip_temp(t_wall), self._clip_temp(t_mass)
+        t_air, t_wall, t_mass = self._step_r5c3(state, t_out, h_glo, u, dt_s)
+        return self._clip_temp(t_air), self._clip_temp(t_wall), self._clip_temp(t_mass)
+
+    def _initial_state(self, t_zone_0: float) -> float | tuple[float, float] | tuple[float, float, float]:
+        if self.topology == "1R1C":
+            return t_zone_0
+        if self.topology == "R3C2":
+            return (t_zone_0, t_zone_0)
+        return (t_zone_0, t_zone_0, t_zone_0)
+
+    @staticmethod
+    def _zone_temp_from_state(state: float | tuple[float, float] | tuple[float, float, float]) -> float:
+        if isinstance(state, tuple):
+            return float(state[0])
+        return float(state)
 
     def predict_sequence(
         self,
@@ -174,12 +330,11 @@ class RCPredictor(PredictorBase):
         time_s: int,
         dt_s: float,
     ) -> list[float]:
-        T = t_zone_0
+        state = self._initial_state(t_zone_0)
         preds: list[float] = []
         for w, u in zip(weather_sequence, u_sequence):
-            T = self._step(T, w["t_outdoor"], w["h_global"], u, dt_s)
-            T = max(-20.0, min(60.0, T))
-            preds.append(T)
+            state = self._step_state(state, w["t_outdoor"], w["h_global"], u, dt_s)
+            preds.append(self._zone_temp_from_state(state))
         return preds
 
     def objective_and_grad(
@@ -196,12 +351,12 @@ class RCPredictor(PredictorBase):
         w_smooth: float,
     ) -> tuple[float, None]:
         """Numpy rollout; gradient computed by scipy finite differences."""
-        T = t_zone_0
+        state = self._initial_state(t_zone_0)
         cost = 0.0
         for i, (w, (T_lo, T_hi)) in enumerate(zip(weather_seq, comfort_bounds_seq)):
             u = float(u_np[i])
-            T = self._step(T, w["t_outdoor"], w["h_global"], u, dt_s)
-            T = max(-20.0, min(60.0, T))
+            state = self._step_state(state, w["t_outdoor"], w["h_global"], u, dt_s)
+            T = self._zone_temp_from_state(state)
             viol = max(0.0, T_lo - T) + max(0.0, T - T_hi)
             cost += w_comfort * viol**2
             cost += w_energy * u
@@ -232,6 +387,7 @@ class PINNPredictor(PredictorBase):
         # Config may be flat or nested under a "model" sub-key.
         model_cfg = config.get("model", config)
         feature_names = ckpt["feature_names"]
+        self._feature_names = tuple(feature_names)
         self._model = SingleZonePINN(
             input_dim=len(feature_names),
             hidden_dim=model_cfg["hidden_dim"],
@@ -265,18 +421,19 @@ class PINNPredictor(PredictorBase):
         delta_u = u_i - u_prv
         occupied = 1.0 if is_occupied(step_time_s) else 0.0
         tod_sin, tod_cos, year_sin, year_cos = _cyclical_features(step_time_s)
-        raw_feat = torch.stack([
-            T,
-            torch.tensor(t_out_f, dtype=torch.float32),
-            torch.tensor(h_glo_f, dtype=torch.float32),
-            u_i,
-            delta_u,
-            torch.tensor(occupied, dtype=torch.float32),
-            torch.tensor(tod_sin, dtype=torch.float32),
-            torch.tensor(tod_cos, dtype=torch.float32),
-            torch.tensor(year_sin, dtype=torch.float32),
-            torch.tensor(year_cos, dtype=torch.float32),
-        ])
+        feature_map = {
+            "T_zone_degC": T,
+            "T_outdoor_degC": torch.tensor(t_out_f, dtype=torch.float32),
+            "H_global_Wm2": torch.tensor(h_glo_f, dtype=torch.float32),
+            "u_heating_degC": u_i,
+            "delta_u_heating_degC": delta_u,
+            "occupied": torch.tensor(occupied, dtype=torch.float32),
+            "tod_sin": torch.tensor(tod_sin, dtype=torch.float32),
+            "tod_cos": torch.tensor(tod_cos, dtype=torch.float32),
+            "year_sin": torch.tensor(year_sin, dtype=torch.float32),
+            "year_cos": torch.tensor(year_cos, dtype=torch.float32),
+        }
+        raw_feat = torch.stack([feature_map[name] for name in self._feature_names])
         feat_norm = (raw_feat - self._feat_mean) / self._feat_std
         feat_batch = feat_norm.unsqueeze(0)
 

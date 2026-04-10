@@ -2,20 +2,25 @@ study_id: pinn_eu_stage1
 data:
   dataset_root: datasets/eu/bestest_hydronic
 model:
-  hidden_dim: 64
-  depth: 3
+  hidden_dim: 96
+  depth: 4
   dropout: 0.0
 training:
   seed: 42
   device: cpu
-  batch_size: 256
-  epochs: 80
-  patience: 20
-  learning_rate: 0.001
-  weight_decay: 1.0e-05
-  lambda_physics: 0.01
+  batch_size: 128
+  epochs: 120
+  patience: 18
+  early_stopping:
+    patience: 30
+    min_delta: 1.0e-5
+    min_epochs: 50
+  checkpoint_every_epochs: 0
+  learning_rate: 0.0003
+  weight_decay: 1.0e-06
+  lambda_physics: 0.02
   loss_weighting:
-    mode: manual
+    mode: gradient_balance
     gradient_balance:
       ema_beta: 0.9
       lambda_min: 1.0e-6
@@ -24,3 +29,9 @@ training:
     uncertainty:
       init_log_sigma_data: 0.0
       init_log_sigma_physics: 0.0
+  rollout_training:
+    enabled: true
+    weight: 0.5
+    horizon_steps: 24
+    batch_size: 128
+    max_windows_per_episode: 8

@@ -846,6 +846,12 @@ def main() -> None:
     parser.add_argument("--rc-scale-hvac-gain", type=float, default=1.0)
     parser.add_argument("--rc-scale-capacity", type=float, default=1.0)
     parser.add_argument(
+        "--rc-topology",
+        choices=list(RCPredictor.SUPPORTED_TOPOLOGIES),
+        default="1R1C",
+        help="RC network topology used when --predictor rc.",
+    )
+    parser.add_argument(
         "--resume-existing",
         action="store_true",
         help="Skip episodes that already have a valid output JSON file.",
@@ -893,17 +899,19 @@ def main() -> None:
         predictor_name = "pinn"
     elif args.predictor == "rc":
         print("Loading RC predictor from checkpoint ...", flush=True)
-        rc_base = RCPredictor.from_checkpoint(ckpt_path)
+        rc_base = RCPredictor.from_checkpoint(ckpt_path, topology=args.rc_topology)
         predictor = RCPredictor(
             ua=rc_base.ua * args.rc_scale_ua,
             solar_gain=rc_base.solar_gain * args.rc_scale_solar_gain,
             hvac_gain=rc_base.hvac_gain * args.rc_scale_hvac_gain,
             capacity=rc_base.capacity * args.rc_scale_capacity,
+            topology=args.rc_topology,
         )
         predictor_name = "rc"
         print(
             f"  RC params: ua={predictor.ua:.4f}, solar_gain={predictor.solar_gain:.4f}, "
             f"hvac_gain={predictor.hvac_gain:.4f}, capacity={predictor.capacity:.4f}"
+            f" | topology={predictor.topology}"
             f" | scales=({args.rc_scale_ua:.3f},{args.rc_scale_solar_gain:.3f},"
             f"{args.rc_scale_hvac_gain:.3f},{args.rc_scale_capacity:.3f})",
             flush=True,
@@ -1104,6 +1112,7 @@ def main() -> None:
                 result["predictor_label"] = predictor_label
                 if predictor_name == "rc":
                     result["rc_variant"] = {
+                        "topology": predictor.topology,
                         "scale_ua": args.rc_scale_ua,
                         "scale_solar_gain": args.rc_scale_solar_gain,
                         "scale_hvac_gain": args.rc_scale_hvac_gain,

@@ -26,7 +26,8 @@ def _load_yaml(path: Path) -> dict[str, Any]:
 
 
 def _load_case_ids(mapping_path: Path) -> list[str]:
-    data = json.loads(mapping_path.read_text(encoding="utf-8"))
+    # Some generated mapping files include a UTF-8 BOM on Windows.
+    data = json.loads(mapping_path.read_text(encoding="utf-8-sig"))
     out: list[str] = []
     for case in data.get("cases", []):
         if case.get("resolved") and case.get("resolved_api_id"):
@@ -48,6 +49,7 @@ def main() -> int:
     parser.add_argument("--mapping", default="results/eu_rc_vs_pinn/runtime_discovery/eu_testcases_resolved_mapping.json")
     parser.add_argument("--variants", default="configs/eu/stage2/rc_variants.yaml")
     parser.add_argument("--manifest-dir", default="manifests/eu")
+    parser.add_argument("--manifest-suffix", default="stage1")
     parser.add_argument("--artifact-dir", default="artifacts/eu")
     parser.add_argument("--output-root", default="results/eu_rc_vs_pinn_stage2/raw")
     parser.add_argument("--mpc-config", default="configs/mpc_phase1.yaml")
@@ -71,7 +73,7 @@ def main() -> int:
     failures: list[dict[str, str]] = []
 
     for case_id in case_ids:
-        manifest = Path(args.manifest_dir) / f"{case_id}_stage1.yaml"
+        manifest = Path(args.manifest_dir) / f"{case_id}_{args.manifest_suffix}.yaml"
         ckpt = Path(args.artifact_dir) / case_id / "best_model.pt"
         out_case = Path(args.output_root) / case_id
 

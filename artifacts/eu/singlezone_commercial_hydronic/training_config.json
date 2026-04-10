@@ -12,8 +12,14 @@
     "seed": 42,
     "device": "cpu",
     "batch_size": 256,
-    "epochs": 150,
-    "patience": 20,
+    "epochs": 80,
+    "patience": 12,
+    "early_stopping": {
+      "patience": 25,
+      "min_delta": 1e-05,
+      "min_epochs": 40
+    },
+    "checkpoint_every_epochs": 0,
     "learning_rate": 0.001,
     "weight_decay": 1e-05,
     "lambda_physics": 0.01,

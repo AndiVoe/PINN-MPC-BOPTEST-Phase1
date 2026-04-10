@@ -12,6 +12,23 @@ def _load_json(path: Path) -> dict[str, Any]:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def _find_episode_file(root: Path, episode: str) -> Path | None:
+    """Find an episode output file under a case directory.
+
+    The stage 2 runners sometimes write into nested directories such as
+    `pinn/pinn/te_std_01.json`, so we resolve files recursively instead of
+    assuming a single fixed layout.
+    """
+    direct = root / f"{episode}.json"
+    if direct.exists():
+        return direct
+
+    matches = sorted(root.rglob(f"{episode}.json"))
+    if matches:
+        return matches[0]
+    return None
+
+
 def _metric_payload(payload: dict[str, Any]) -> dict[str, float | None]:
     diag = payload.get("diagnostic_kpis", {})
     chall = payload.get("challenge_kpis", {})
@@ -37,7 +54,7 @@ def _score(metrics: dict[str, float | None]) -> float:
 def main() -> int:
     parser = argparse.ArgumentParser(description="Pick best RC variant and compare against PINN.")
     parser.add_argument("--rc-root", default="results/eu_rc_vs_pinn_stage2/raw")
-    parser.add_argument("--pinn-root", default="results/eu_rc_vs_pinn/raw")
+    parser.add_argument("--pinn-root", default="results/eu_rc_vs_pinn_stage2/raw")
     parser.add_argument("--episode", default="te_std_01")
     parser.add_argument("--out-json", default="results/eu_rc_vs_pinn_stage2/best_rc_vs_pinn_summary.json")
     args = parser.parse_args()
@@ -68,8 +85,9 @@ def main() -> int:
             continue
 
         best = sorted(variant_rows, key=lambda r: r["score"])[0]
-        pinn_file = pinn_root / case_dir.name / "pinn" / f"{args.episode}.json"
-        if not pinn_file.exists():
+        pinn_case_root = pinn_root / case_dir.name / "pinn"
+        pinn_file = _find_episode_file(pinn_case_root, args.episode)
+        if pinn_file is None:
             continue
         pinn_payload = _load_json(pinn_file)
         pinn_metrics = _metric_payload(pinn_payload)

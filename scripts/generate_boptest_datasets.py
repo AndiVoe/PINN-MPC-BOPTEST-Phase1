@@ -242,10 +242,21 @@ def run_episode(
 
     inputs = client.get_inputs()
     input_names = set(inputs.keys())
+    available_names = set(init_payload.keys()) | input_names
 
-    zone_signal = pick_first(mappings["zone_temp_candidates"], set(init_payload.keys()) | input_names)
-    outdoor_signal = pick_first(mappings["outdoor_temp_candidates"], set(mappings["outdoor_temp_candidates"]))
-    solar_signal = pick_first(mappings["solar_candidates"], set(mappings["solar_candidates"]))
+    zone_signal = pick_first(mappings["zone_temp_candidates"], available_names)
+    outdoor_signal = pick_configured_or_candidate(
+        mappings,
+        "outdoor_temp_signal",
+        "outdoor_temp_candidates",
+        available_names,
+    )
+    solar_signal = pick_configured_or_candidate(
+        mappings,
+        "solar_signal",
+        "solar_candidates",
+        available_names,
+    )
 
     u_val_name = pick_configured_or_candidate(
         mappings,

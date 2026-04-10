@@ -6,6 +6,28 @@ This document describes two PINN training variants designed to address **upper-b
 
 Rather than fighting physics, both variants use different loss weighting strategies to help the PINN gracefully accept and learn in infeasible regions.
 
+## Recommended Optimizer Schedule
+
+Training supports a two-stage optimizer schedule:
+- Stage 1: Adam for fast global navigation of the loss landscape
+- Stage 2: L-BFGS fine-tuning to reduce residual physics error on the final basin
+
+This is configured via `training.lbfgs_finetune` and is disabled by default.
+
+```yaml
+training:
+  learning_rate: 1.0e-3
+  lbfgs_finetune:
+    enabled: true
+    epochs: 10
+    lr: 0.5
+    max_iter: 20
+    history_size: 100
+    line_search_fn: strong_wolfe
+```
+
+When using L-BFGS, monitor loss-balance metrics (`lambda_physics_eff`, `physics_loss`, `mape_pct`, `r2_score`) to detect data-vs-physics gradient conflicts.
+
 ## Variant A: Gradient-Balanced Loss Weighting
 
 **Strategy:** Automatically balance the magnitude of data-fitting and physics gradients during training.
@@ -93,8 +115,13 @@ To interpret results:
 |--------|---------------|
 | `best_val_loss` | Overall fit quality (lower is better) |
 | `validation.rmse_degC` | Temperature prediction error |
+| `validation.mape_pct` | Relative prediction error in % |
+| `validation.r2_score` | Fraction of variance explained |
 | `validation.rollout_rmse_degC` | Multi-step rollout error (more realistic) |
 | `test.rmse_degC` | Generalization to unseen test data |
+| `test.physics_loss` | Physical consistency on unseen test set (lower is better) |
+| `robustness_test.noise_5pct.rmse_degC` | Stability under 5% sensor/input noise |
+| `robustness_test.noise_10pct.rmse_degC` | Stability under 10% sensor/input noise |
 | `discomfort_comparison.csv` | Comfort violations (upper/lower bound)  |
 
 **Expected outcome:**

@@ -15,6 +15,28 @@ from typing import Any
 import numpy as np
 
 
+def _is_rc_variant_dir(path: Path) -> bool:
+    if not path.is_dir():
+        return False
+    name = path.name.lower()
+    return name == "rc" or name.startswith("rc_")
+
+
+def _choose_best_rc_variant(rc_variants: dict[str, dict[str, Any]]) -> tuple[str, dict[str, Any]] | None:
+    candidates: list[tuple[str, float, dict[str, Any]]] = []
+    for label, payload in rc_variants.items():
+        if "error" in payload:
+            continue
+        comfort = payload.get("comfort_Kh_mean")
+        if comfort is None:
+            continue
+        candidates.append((label, float(comfort), payload))
+    if not candidates:
+        return None
+    best_label, _, best_payload = min(candidates, key=lambda item: item[1])
+    return best_label, best_payload
+
+
 def load_episode_results(episode_file: Path) -> dict[str, Any]:
     """Load a single episode result file."""
     if not episode_file.exists():
@@ -108,10 +130,25 @@ def analyze_all_results() -> dict[str, Any]:
         case_name = case_dir.name
         case_results = {}
         
-        # RC results
-        rc_dir = case_dir / "rc"
-        rc_agg = aggregate_case_results(rc_dir) if rc_dir.exists() else {"error": "RC dir not found"}
-        case_results["rc"] = rc_agg
+        # RC results (legacy single rc folder + topology-aware rc_* folders)
+        rc_variants: dict[str, dict[str, Any]] = {}
+        for predictor_dir in sorted(case_dir.iterdir()):
+            if not _is_rc_variant_dir(predictor_dir):
+                continue
+            rc_variants[predictor_dir.name] = aggregate_case_results(predictor_dir)
+
+        if not rc_variants:
+            rc_agg = {"error": "RC dir not found"}
+            case_results["rc"] = rc_agg
+        else:
+            case_results["rc_variants"] = rc_variants
+            best_rc = _choose_best_rc_variant(rc_variants)
+            if best_rc is None:
+                rc_agg = {"error": "No valid RC variant with comfort KPI"}
+            else:
+                best_label, rc_agg = best_rc
+                case_results["rc_best_variant"] = best_label
+            case_results["rc"] = rc_agg
         
         # PINN results
         pinn_dir = case_dir / "pinn"
@@ -163,13 +200,16 @@ def main() -> int:
         if rc_comfort and pinn_comfort:
             diff = pinn_comfort - rc_comfort
             better = "YES" if diff < 0 else "NO"
-            print(format_str.format(
+            row = format_str.format(
                 case_name[:35],
                 f"{rc_comfort:.1f} Kh",
                 f"{pinn_comfort:.1f} Kh",
                 f"{diff:+.1f} Kh",
                 better
-            ))
+            )
+            if case_data.get("rc_best_variant"):
+                row += f"  [best {case_data['rc_best_variant']}]"
+            print(row)
         else:
             status = ""
             if not rc_comfort:
@@ -201,6 +241,13 @@ def main() -> int:
                   if pred_data.get('energy_Wh_mean') else f"    Energy: -")
             print(f"    Violations: {pred_data.get('violation_steps_mean', '-'):.0f} steps/episode"
                   if pred_data.get('violation_steps_mean') is not None else f"    Violations: -")
+
+        rc_variants = case_data.get("rc_variants", {})
+        if rc_variants:
+            labels = ", ".join(sorted(rc_variants.keys()))
+            print(f"  RC variants: {labels}")
+            if case_data.get("rc_best_variant"):
+                print(f"  Best RC variant by comfort: {case_data['rc_best_variant']}")
         
         # Show comparison if available
         if "comparison" in case_data:
