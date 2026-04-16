@@ -25,7 +25,7 @@ class MPCSolver:
     predictor
         Interior model (RCPredictor or PINNPredictor).
     horizon_steps
-        Number of lookahead steps (default 24 ÔåÆ 6 h at 900 s interval).
+        Number of lookahead steps (default 24 -> 6 h at 900 s interval).
     dt_s
         Control interval in seconds.
     u_min, u_max
@@ -101,7 +101,7 @@ class MPCSolver:
             Current measured zone temperature (degC).
         weather_forecast
             List of dicts with keys ``t_outdoor`` (degC) and ``h_global`` (W/m┬▓),
-            one entry per horizon step.  Length ÔëÑ horizon_steps.
+            one entry per horizon step.  Length ≥ horizon_steps.
         u_prev
             The setpoint applied at the previous control step (degC).
         time_s
@@ -110,9 +110,9 @@ class MPCSolver:
         Returns
         -------
         (u_first, u_sequence, info)
-            u_first    ÔÇô optimal setpoint to apply now (degC)
-            u_sequence ÔÇô full optimal N-step sequence (degC)
-            info       ÔÇô dict with solve_time_ms, n_iter, success, obj_val
+            u_first    - optimal setpoint to apply now (degC)
+            u_sequence - full optimal N-step sequence (degC)
+            info       - dict with solve_time_ms, n_iter, success, obj_val
         """
         n = min(self.horizon, len(weather_forecast))
         wseq = weather_forecast[:n]

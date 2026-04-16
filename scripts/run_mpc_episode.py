@@ -272,6 +272,7 @@ def run_mpc_episode(
     live_snapshot_path: Path | None = None,
     attempt_index: int = 1,
     max_attempts: int = 1,
+    export_solver_trace: bool = True,
 ) -> dict[str, Any]:
     """
     Run one full MPC episode against the BOPTEST plant.
@@ -439,6 +440,7 @@ def run_mpc_episode(
 
     kpi = KPILogger(dt_s=float(step_s))
     solver.reset()
+    solver_trace: list[dict[str, Any]] = []
 
     # Initial measurements from init_payload.
     current = init_payload
@@ -588,6 +590,24 @@ def run_mpc_episode(
                 weather_forecast=weather_fc,
                 u_prev=u_prev,
                 time_s=t_s,
+            )
+
+        if export_solver_trace:
+            solver_trace.append(
+                {
+                    "step_index": int(step_idx + 1),
+                    "time_s": int(t_s),
+                    "t_zone_degC": float(t_zone),
+                    "u_prev_degC": float(u_prev),
+                    "u_opt_degC": float(u_opt),
+                    "u_sequence_degC": [float(u) for u in u_seq],
+                    "solve_info": {
+                        "solve_time_ms": float(solve_info.get("solve_time_ms", 0.0)),
+                        "n_iter": int(solve_info.get("n_iter", 0)),
+                        "success": bool(solve_info.get("success", False)),
+                        "obj_val": float(solve_info.get("obj_val", 0.0)),
+                    },
+                }
             )
 
         control_cmd: dict[str, float] = {}
@@ -793,6 +813,12 @@ def run_mpc_episode(
         "diagnostic_kpis": diagnostic_kpis,
         "boptest_kpis": boptest_kpis,
         "step_records": kpi.step_records(),
+        "solver_trace_summary": {
+            "enabled": bool(export_solver_trace),
+            "n_solver_records": len(solver_trace),
+            "final_solver_solution": solver_trace[-1] if solver_trace else None,
+        },
+        "solver_trace": solver_trace if export_solver_trace else [],
     }
 
 
@@ -872,6 +898,15 @@ def main() -> None:
         help=(
             "Automatically retry an episode after first-step /advance server failures/timeouts. "
             "Set to 0 to disable."
+        ),
+    )
+    parser.add_argument(
+        "--export-solver-trace",
+        action=argparse.BooleanOptionalAction,
+        default=True,
+        help=(
+            "Store per-step MPC solver sequences and solve metadata in output JSON "
+            "(use --no-export-solver-trace to reduce file size)."
         ),
     )
     args = parser.parse_args()
@@ -1052,6 +1087,7 @@ def main() -> None:
                         live_snapshot_path=live_snapshot_path,
                         attempt_index=attempt_index,
                         max_attempts=max_attempts,
+                        export_solver_trace=bool(args.export_solver_trace),
                     )
                     run_error = None
                     break
@@ -1132,6 +1168,16 @@ def main() -> None:
                 with out_path.open("w", encoding="utf-8") as f:
                     json.dump(result, f, indent=2)
                 print(f"  Saved -> {out_path}", flush=True)
+                summary = result.get("solver_trace_summary", {})
+                if summary.get("enabled"):
+                    final_sol = summary.get("final_solver_solution") or {}
+                    print(
+                        "  Solver trace: "
+                        f"records={summary.get('n_solver_records', 0)} "
+                        f"final_u_opt={final_sol.get('u_opt_degC')} "
+                        f"final_obj={((final_sol.get('solve_info') or {}).get('obj_val'))}",
+                        flush=True,
+                    )
                 print("  Challenge KPIs:", json.dumps(result["challenge_kpis"], indent=4), flush=True)
                 print("  Diagnostic KPIs:", json.dumps(result["diagnostic_kpis"], indent=4), flush=True)
             except Exception as exc:

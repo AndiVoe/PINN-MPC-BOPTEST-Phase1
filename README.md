@@ -25,6 +25,12 @@ This repository contains the Phase 1-3 workflow for training a Physics-Informed 
 	- `python scripts/run_mpc_episode.py --predictor rc --episode all-test`
 	- `python scripts/run_mpc_episode.py --predictor pinn --episode all-test --checkpoint artifacts/pinn_phase1/best_model.pt`
 
+For the conference-paper path, use the 30-day stage-2 workflow described in [paper/PAPER_WORKFLOW_30D_1R1C.md](paper/PAPER_WORKFLOW_30D_1R1C.md).
+
+The paper-focused checklist is in [paper/PAPER_RESULTS_CHECKLIST.md](paper/PAPER_RESULTS_CHECKLIST.md).
+
+The research-oriented index is in [research/README.md](research/README.md).
+
 Latest completed 7-day all-test logs and outputs are available at:
 	- `logs/run_alltest_rc_7d.log`
 	- `logs/run_alltest_pinn_7d.log`

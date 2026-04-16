@@ -1,0 +1,13 @@
+# Paper Article Assets
+
+This folder contains the paper-facing drafting and figure assets.
+
+Files:
+- ARTICLE_DRAFT_EU_RC_VS_PINN_STAGE2.md
+- ARTICLE_OUTLINE_EU_RC_VS_PINN.md
+- ARTICLE_OUTLINE_PHASE1.md
+- KPI_TABLE_TEMPLATE_PHASE1.md
+- MANUSCRIPT_SKELETON_PHASE1.md
+- PLOTTING_WORKFLOW.md
+- PLOTS_SUMMARY.md
+- PUBLICATION_PLOTS_GUIDE.md

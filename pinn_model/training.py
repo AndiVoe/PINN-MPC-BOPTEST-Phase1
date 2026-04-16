@@ -1101,6 +1101,8 @@ def train_model(
         "history": history,
         "validation": final_metrics["validation"],
         "test": final_metrics["test"],
+        "loss_weighting_final": loss_weighter.metrics(),
+        "physics_parameters": physics_parameters,
         "artifact_dir": str(artifact_dir),
         "device": str(device),
         "resumed_from_checkpoint": resumed_from_checkpoint,
