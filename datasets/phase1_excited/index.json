@@ -1,0 +1,79 @@
+[
+  {
+    "dataset_id": "tr_exc_win_rw",
+    "split": "train",
+    "weather_class": "winter_excited",
+    "path": "datasets/phase1_excited/json/tr_exc_win_rw.json",
+    "n_records": 2880
+  },
+  {
+    "dataset_id": "tr_exc_win_sw",
+    "split": "train",
+    "weather_class": "winter_excited",
+    "path": "datasets/phase1_excited/json/tr_exc_win_sw.json",
+    "n_records": 2880
+  },
+  {
+    "dataset_id": "tr_exc_spr_rw",
+    "split": "train",
+    "weather_class": "spring_excited",
+    "path": "datasets/phase1_excited/json/tr_exc_spr_rw.json",
+    "n_records": 2880
+  },
+  {
+    "dataset_id": "tr_exc_spr_sin",
+    "split": "train",
+    "weather_class": "spring_excited",
+    "path": "datasets/phase1_excited/json/tr_exc_spr_sin.json",
+    "n_records": 2880
+  },
+  {
+    "dataset_id": "tr_exc_sum_rw",
+    "split": "train",
+    "weather_class": "summer_excited",
+    "path": "datasets/phase1_excited/json/tr_exc_sum_rw.json",
+    "n_records": 2880
+  },
+  {
+    "dataset_id": "tr_exc_aut_sw",
+    "split": "train",
+    "weather_class": "autumn_excited",
+    "path": "datasets/phase1_excited/json/tr_exc_aut_sw.json",
+    "n_records": 2880
+  },
+  {
+    "dataset_id": "tr_exc_aut_rw",
+    "split": "train",
+    "weather_class": "autumn_excited",
+    "path": "datasets/phase1_excited/json/tr_exc_aut_rw.json",
+    "n_records": 2880
+  },
+  {
+    "dataset_id": "val_exc_win_rw",
+    "split": "val",
+    "weather_class": "winter_excited",
+    "path": "datasets/phase1_excited/json/val_exc_win_rw.json",
+    "n_records": 2880
+  },
+  {
+    "dataset_id": "val_exc_spr_sin",
+    "split": "val",
+    "weather_class": "spring_excited",
+    "path": "datasets/phase1_excited/json/val_exc_spr_sin.json",
+    "n_records": 2880
+  },
+  {
+    "dataset_id": "te_exc_win_sw",
+    "split": "test",
+    "weather_class": "winter_excited",
+    "path": "datasets/phase1_excited/json/te_exc_win_sw.json",
+    "n_records": 2880
+  },
+  {
+    "dataset_id": "te_exc_aut_rw",
+    "split": "test",
+    "weather_class": "autumn_excited",
+    "path": "datasets/phase1_excited/json/te_exc_aut_rw.json",
+    "n_records": 2880
+  }
+]

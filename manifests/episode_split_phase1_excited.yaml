@@ -1,0 +1,172 @@
+version: 1
+study_id: pinn_vs_whitebox_mpc
+phase: phase1_excited
+
+# ---------------------------------------------------------------------------
+# Persistently-Excited Dataset Manifest
+#
+# Problem solved: Previous training data used random i.i.d. setpoints per
+# step (white noise) over a narrow weather range. This caused:
+#   1. delta_u std ≈ 0 — the model never saw meaningful setpoint ramps
+#   2. No seasonal diversity — all episodes were mild-winter standard weather
+#   3. Rollout RMSE 10× worse than single-step RMSE — poor multi-step skill
+#
+# Solution: Three excitation modes over 30-day episodes across all 4 seasons.
+#
+# SEASON START TIMES (BOPTEST, seconds from Jan 1):
+#   Winter  (Jan)  :         0 s  (day 0  — cold, high heating demand)
+#   Spring  (Apr)  :  7_776_000 s  (day 90 — mild, transitional)
+#   Summer  (Jul)  : 15_552_000 s  (day 180 — warm, cooling / min heating)
+#   Autumn  (Oct)  : 23_328_000 s  (day 270 — cooling season start)
+#
+# CONTROL MODES:
+#   random_walk   – setpoint drifts ±step each interval, held for hold_steps
+#                   → trains response to slow ramps (realistic occupant behaviour)
+#   step_sweep    – periodic large step changes (e.g. 20→24→20°C every 6h)
+#                   → trains fast transient response, needed for HVAC switch-on
+#   sinusoidal    – sinusoidal setpoint modulation around a mean
+#                   → trains smooth gradient sensitivity across the full range
+# ---------------------------------------------------------------------------
+
+defaults:
+  control_interval_s: 900        # 15 min steps
+  episode_length_days: 30
+  warmup_period_s: 604800        # 7-day warmup
+  start_time_s: 0
+  control_policy:
+    seed_base: 20260515
+    setpoint_min_degC: 18.0      # wider range than before (was 19–24)
+    setpoint_max_degC: 26.0
+
+case_mappings:
+  singlezone_commercial_hydronic:
+    zone_temp_candidates:
+      - reaTZon_y
+      - TRooAir_y
+      - zon_reaTRooAir_y
+    outdoor_temp_candidates:
+      - TDryBul
+      - weaSta_reaWeaTDryBul_y
+      - TDryBul_y
+    solar_candidates:
+      - HGloHor
+      - weaSta_reaWeaHGloHor_y
+      - HGloHor_y
+    control_value_candidates:
+      - oveTZonSet_u
+      - dh_oveTSupSetHea_u
+      - oveValRad_u
+      - oveTSupSetAir_u
+    control_activate_candidates:
+      - oveTZonSet_activate
+      - dh_oveTSupSetHea_activate
+      - oveValRad_activate
+      - oveTSupSetAir_activate
+
+episodes:
+  # ── TRAINING ──────────────────────────────────────────────────────────────
+  # Winter: random-walk excitation
+  - id: tr_exc_win_rw
+    split: train
+    weather_class: winter_excited
+    start_time_s: 0               # Jan 1 — coldest period
+    excitation_mode: random_walk
+    hold_steps: 4                 # hold setpoint for 1 h before changing
+    walk_step_degC: 0.5
+
+  # Winter: step-sweep excitation
+  - id: tr_exc_win_sw
+    split: train
+    weather_class: winter_excited
+    start_time_s: 0
+    excitation_mode: step_sweep
+    sweep_period_steps: 24        # step change every 6 h
+    sweep_low_degC: 19.0
+    sweep_high_degC: 24.0
+
+  # Spring: random-walk excitation
+  - id: tr_exc_spr_rw
+    split: train
+    weather_class: spring_excited
+    start_time_s: 7776000         # Apr 1 (~day 90)
+    excitation_mode: random_walk
+    hold_steps: 6                 # hold 1.5 h
+    walk_step_degC: 0.75
+
+  # Spring: sinusoidal modulation
+  - id: tr_exc_spr_sin
+    split: train
+    weather_class: spring_excited
+    start_time_s: 7776000
+    excitation_mode: sinusoidal
+    sin_mean_degC: 21.5
+    sin_amplitude_degC: 2.5
+    sin_period_steps: 32          # 8-h period
+
+  # Summer: random-walk (heating rarely fires → tests model in near-zero regime)
+  - id: tr_exc_sum_rw
+    split: train
+    weather_class: summer_excited
+    start_time_s: 15552000        # Jul 1 (~day 180)
+    excitation_mode: random_walk
+    hold_steps: 4
+    walk_step_degC: 0.5
+
+  # Autumn: step-sweep (transitional season — most variable)
+  - id: tr_exc_aut_sw
+    split: train
+    weather_class: autumn_excited
+    start_time_s: 23328000        # Oct 1 (~day 270)
+    excitation_mode: step_sweep
+    sweep_period_steps: 16        # 4-h step changes
+    sweep_low_degC: 19.5
+    sweep_high_degC: 24.5
+
+  # Autumn: random-walk (second autumn episode for volume)
+  - id: tr_exc_aut_rw
+    split: train
+    weather_class: autumn_excited
+    start_time_s: 23328000
+    excitation_mode: random_walk
+    hold_steps: 8                 # 2-h hold
+    walk_step_degC: 1.0
+
+  # ── VALIDATION ────────────────────────────────────────────────────────────
+  # Mid-winter (Feb): random-walk
+  - id: val_exc_win_rw
+    split: val
+    weather_class: winter_excited
+    start_time_s: 2592000         # Feb 1 (~day 31)
+    excitation_mode: random_walk
+    hold_steps: 4
+    walk_step_degC: 0.5
+
+  # Late spring (May): sinusoidal
+  - id: val_exc_spr_sin
+    split: val
+    weather_class: spring_excited
+    start_time_s: 10368000        # May 1 (~day 120)
+    excitation_mode: sinusoidal
+    sin_mean_degC: 22.0
+    sin_amplitude_degC: 2.0
+    sin_period_steps: 24
+
+  # ── TEST ──────────────────────────────────────────────────────────────────
+  # Early winter (Dec): held out from training — step-sweep tests generalization
+  - id: te_exc_win_sw
+    split: test
+    weather_class: winter_excited
+    start_time_s: 28944000        # Dec 1 (~day 335)
+    excitation_mode: step_sweep
+    sweep_period_steps: 24
+    sweep_low_degC: 19.0
+    sweep_high_degC: 24.0
+
+  # Mid-autumn (Nov): random-walk, completely unseen season slice
+  - id: te_exc_aut_rw
+    split: test
+    weather_class: autumn_excited
+    start_time_s: 26352000        # Nov 1 (~day 305)
+    excitation_mode: random_walk
+    hold_steps: 6
+    walk_step_degC: 0.75
