@@ -9,10 +9,10 @@
     "n_samples": 5758
   },
   "physics_parameters": {
-    "ua": 6633.486328125,
-    "solar_gain": 329.9891662597656,
-    "hvac_power_max": 321515.0,
-    "capacity": 537.3630981445312
+    "ua": 0.1167740598320961,
+    "solar_gain": 6.106541633605957,
+    "hvac_gain": 2.5605521202087402,
+    "capacity": 9.734004020690918
   },
   "calibration": {
     "config": "C:\\Users\\AVoelser\\OneDrive - Scientific Network South Tyrol\\3_PhD\\Simulation\\PINN\\configs\\pinn_phase1_excited.yaml",
@@ -21,42 +21,42 @@
   },
   "results": {
     "validation": {
-      "loss": 0.0017103075283072785,
-      "data_loss": 0.0017103075283072785,
+      "loss": 0.0017371950167344968,
+      "data_loss": 0.0017371950167344968,
       "physics_loss": 0.0,
-      "rmse_degC": 0.07406236786855136,
-      "mae_degC": 0.055535186616527246,
-      "mape_pct": 0.23738630464356933,
-      "r2_score": 0.9950584620235811,
-      "rollout_rmse_degC": 0.7552120640538129,
-      "rollout_mae_degC": 0.6315990561973204
+      "rmse_degC": 0.07464225999666341,
+      "mae_degC": 0.055917250609058354,
+      "mape_pct": 0.23902777625533592,
+      "r2_score": 0.9949807767589635,
+      "rollout_rmse_degC": 0.8410018149434312,
+      "rollout_mae_degC": 0.7105336880586369
     },
     "test": {
-      "loss": 0.0024552249255276036,
-      "data_loss": 0.0024552249255276036,
+      "loss": 0.002112655465691032,
+      "data_loss": 0.002112655465691032,
       "physics_loss": 0.0,
-      "rmse_degC": 0.08873728457928336,
-      "mae_degC": 0.0629267786972719,
-      "mape_pct": 0.2900941413286755,
-      "r2_score": 0.9952764414986675,
-      "rollout_rmse_degC": 1.0024761878143646,
-      "rollout_mae_degC": 0.8427714623438178
+      "rmse_degC": 0.08231421280373845,
+      "mae_degC": 0.05944305776348956,
+      "mape_pct": 0.27353963335371895,
+      "r2_score": 0.995935504124265,
+      "rollout_rmse_degC": 0.9886630271461541,
+      "rollout_mae_degC": 0.8329191804685655
     },
     "robustness_test": {
       "noise_5pct": {
         "noise_std_fraction": 0.05,
-        "rmse_degC": 1.0740595783322127,
-        "mae_degC": 0.8563615508110998,
-        "mape_pct": 3.942193001805425,
-        "r2_score": 0.3079877640278653,
+        "rmse_degC": 1.0617495063561724,
+        "mae_degC": 0.8468862343430726,
+        "mape_pct": 3.899400304899694,
+        "r2_score": 0.3237595200559241,
         "physics_loss": 0.0
       },
       "noise_10pct": {
         "noise_std_fraction": 0.1,
-        "rmse_degC": 2.1378315601157905,
-        "mae_degC": 1.702327884788023,
-        "mape_pct": 7.835251121080822,
-        "r2_score": -1.7415994037484475,
+        "rmse_degC": 2.1039543695997924,
+        "mae_degC": 1.6770222702967124,
+        "mape_pct": 7.72115765417111,
+        "r2_score": -1.655398233375025,
         "physics_loss": 0.0
       }
     }

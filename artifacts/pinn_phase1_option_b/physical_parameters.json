@@ -1,0 +1,29 @@
+{
+  "unit_system": "kW-kWh-K-hr",
+  "equation": "dT[K] = (dt_s/3600)[hr] * heat_flow[kW] / capacity[kWh/K]",
+  "model_parameters": {
+    "ua": {
+      "value": 0.07068078219890594,
+      "unit": "kW/K"
+    },
+    "solar_gain": {
+      "value": 0.7517326474189758,
+      "unit": "m2 (effective solar aperture)"
+    },
+    "hvac_gain": {
+      "value": 1.907676100730896,
+      "unit": "kW/K"
+    },
+    "capacity": {
+      "value": 10.330065727233887,
+      "unit": "kWh/K"
+    }
+  },
+  "si_parameters": {
+    "ua_W_per_K": 70.6808,
+    "solar_aperture_m2": 0.7517,
+    "hvac_gain_W_per_K": 1907.6761,
+    "capacity_kJ_per_K": 37188.24
+  },
+  "rc_time_constant_hr": 146.151
+}

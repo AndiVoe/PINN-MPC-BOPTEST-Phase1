@@ -114,12 +114,12 @@ def main() -> None:
 	# Enable grad only for physics parameters
 	for name, param in model.named_parameters():
 		param.requires_grad = False
-	for pname in ("log_ua", "log_solar_gain", "log_hvac_power_max", "log_capacity"):
+	for pname in ("log_ua", "log_solar_gain", "log_hvac_gain", "log_capacity"):
 		getattr(model, pname).requires_grad_(True)
 
 	model.to(device)
 
-	params = [getattr(model, pname) for pname in ("log_ua", "log_solar_gain", "log_hvac_power_max", "log_capacity")]
+	params = [getattr(model, pname) for pname in ("log_ua", "log_solar_gain", "log_hvac_gain", "log_capacity")]
 	optimizer = torch.optim.Adam(params, lr=float(args.lr))
 	mse = torch.nn.MSELoss()
 
@@ -308,10 +308,10 @@ def main() -> None:
 	results = evaluate_model(model, datasets, config, device)
 
 	physics_parameters = {
-		"ua": float(torch.exp(model.log_ua).detach().cpu()),
-		"solar_gain": float(torch.exp(model.log_solar_gain).detach().cpu()),
-		"hvac_power_max": float(torch.exp(model.log_hvac_power_max).detach().cpu()),
-		"capacity": float(torch.exp(model.log_capacity).detach().cpu()),
+		"ua": float(torch.nn.functional.softplus(model.log_ua).detach().cpu()),
+		"solar_gain": float(torch.nn.functional.softplus(model.log_solar_gain).detach().cpu()),
+		"hvac_gain": float(torch.nn.functional.softplus(model.log_hvac_gain).detach().cpu()),
+		"capacity": float(torch.nn.functional.softplus(model.log_capacity).detach().cpu()),
 	}
 
 	torch.save(
@@ -342,6 +342,40 @@ def main() -> None:
 
 	with (artifact_dir / "metrics.json").open("w", encoding="utf-8") as handle:
 		json.dump({"validation": results["validation"], "test": results["test"], "physics_parameters": physics_parameters}, handle, indent=2)
+
+	# Write a human-readable file with SI-unit physical interpretations.
+	# Unit system: heat_flow in kW, capacity in kWh/K, time in hr.
+	# Equation: dT[K] = (dt_s/3600)[hr] * heat_flow[kW] / capacity[kWh/K]
+	ua_kW_K = physics_parameters["ua"]
+	sg_m2 = physics_parameters["solar_gain"]
+	hvac_kW_K = physics_parameters["hvac_gain"]
+	cap_kWh_K = physics_parameters["capacity"]
+	rc_tau_hr = cap_kWh_K / ua_kW_K if ua_kW_K > 0 else float("inf")
+	physical_params = {
+		"unit_system": "kW-kWh-K-hr",
+		"equation": "dT[K] = (dt_s/3600)[hr] * heat_flow[kW] / capacity[kWh/K]",
+		"model_parameters": {
+			"ua":         {"value": ua_kW_K, "unit": "kW/K"},
+			"solar_gain": {"value": sg_m2,   "unit": "m2 (effective solar aperture)"},
+			"hvac_gain":  {"value": hvac_kW_K, "unit": "kW/K"},
+			"capacity":   {"value": cap_kWh_K, "unit": "kWh/K"},
+		},
+		"si_parameters": {
+			"ua_W_per_K":        round(ua_kW_K * 1000.0, 4),
+			"solar_aperture_m2": round(sg_m2, 4),
+			"hvac_gain_W_per_K": round(hvac_kW_K * 1000.0, 4),
+			"capacity_kJ_per_K": round(cap_kWh_K * 3600.0, 2),
+		},
+		"rc_time_constant_hr": round(rc_tau_hr, 4),
+	}
+	with (artifact_dir / "physical_parameters.json").open("w", encoding="utf-8") as handle:
+		json.dump(physical_params, handle, indent=2)
+	print("Physical parameters (SI units):")
+	print(f"  UA                = {ua_kW_K * 1000.0:.2f} W/K")
+	print(f"  Solar aperture    = {sg_m2:.4f} m2")
+	print(f"  HVAC gain         = {hvac_kW_K * 1000.0:.2f} W/K")
+	print(f"  Thermal capacity  = {cap_kWh_K * 3600.0:.2f} kJ/K")
+	print(f"  RC time constant  = {rc_tau_hr:.2f} hr")
 
 	print("Calibration complete. Artifacts written to:", artifact_dir)
 

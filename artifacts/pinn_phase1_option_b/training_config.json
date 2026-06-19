@@ -1,0 +1,54 @@
+{
+  "study_id": "pinn_phase1_excited",
+  "data": {
+    "dataset_root": "datasets/phase1_excited"
+  },
+  "model": {
+    "hidden_dim": 128,
+    "depth": 4,
+    "dropout": 0.05
+  },
+  "training": {
+    "seed": 42,
+    "device": "cpu",
+    "batch_size": 256,
+    "epochs": 150,
+    "patience": 20,
+    "early_stopping": {
+      "patience": 20,
+      "min_delta": 0.0001,
+      "min_epochs": 30
+    },
+    "learning_rate": 0.001,
+    "weight_decay": 1e-05,
+    "lambda_physics": 1.0,
+    "rollout_training": {
+      "enabled": true,
+      "horizon_steps": 48,
+      "weight": 2.0,
+      "batch_size": 64,
+      "max_windows_per_episode": 0
+    },
+    "lbfgs_finetune": {
+      "enabled": false,
+      "epochs": 10,
+      "lr": 0.1,
+      "max_iter": 50,
+      "history_size": 100,
+      "line_search_fn": "strong_wolfe"
+    },
+    "loss_weighting": {
+      "mode": "manual",
+      "gradient_balance": {
+        "ema_beta": 0.9,
+        "lambda_min": 1e-06,
+        "lambda_max": "1.0e3",
+        "target_ratio": 1.0
+      },
+      "uncertainty": {
+        "init_log_sigma_data": 0.0,
+        "init_log_sigma_physics": 0.0
+      }
+    }
+  }
+}

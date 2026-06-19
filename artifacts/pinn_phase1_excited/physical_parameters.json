@@ -1,0 +1,41 @@
+{
+  "source": "artifacts/pinn_phase1_excited/best_model.pt",
+  "note": "Parameters extracted from PINN checkpoint trained with exp() activation. Values match exp(log_param).",
+  "unit_system": "W-kWh-K-hr",
+  "equation": "dT[K] = (dt_s/3600)[hr] * heat_flow[kW] / capacity[kWh/K], heat_flow[kW] = (ua/1000)*dT_env + solar_gain*(H_Wm2/1e6) + (hvac/1000)*max(u-T,0)",
+  "model_parameters": {
+    "ua": {
+      "value": 4014.126220703125,
+      "unit": "W/K"
+    },
+    "solar_gain": {
+      "value": 380.8923645019531,
+      "unit": "m2 (effective solar aperture)"
+    },
+    "hvac_gain": {
+      "value": 243424.046875,
+      "unit": "W/K"
+    },
+    "capacity": {
+      "value": 649.53662109375,
+      "unit": "kWh/K"
+    }
+  },
+  "si_parameters": {
+    "ua_W_per_K": 4014.13,
+    "solar_aperture_m2": 380.89,
+    "hvac_gain_W_per_K": 243424.05,
+    "capacity_kWh_per_K": 649.5366,
+    "capacity_kJ_per_K": 2338331.84
+  },
+  "rc_time_constant_hr": 161.813,
+  "rc_time_constant_days": 6.742,
+  "comparison_with_theoretical": {
+    "theoretical_ua_W_per_K": 4866.04,
+    "theoretical_capacity_kWh_per_K": 826.51,
+    "theoretical_tau_hr": 169.85,
+    "ratio_ua_model_over_theoretical": 0.825,
+    "ratio_C_model_over_theoretical": 0.786,
+    "ratio_tau_model_over_theoretical": 0.953
+  }
+}

@@ -25,6 +25,11 @@ def generate_validation_plots(csv_path, output_dir):
     df["res_rc"] = df["t_open_loop_rc"] - df["t_actual"]
     df["res_pinn"] = df["t_open_loop_pinn"] - df["t_actual"]
     
+    # Check if the new nocorr column exists (backwards compatibility)
+    has_nocorr = "t_open_loop_pinn_nocorr" in df.columns
+    if has_nocorr:
+        df["res_pinn_nc"] = df["t_open_loop_pinn_nocorr"] - df["t_actual"]
+    
     # Configure beautiful publication styling
     plt.rcParams.update({
         "font.family": "serif",
@@ -128,6 +133,73 @@ def generate_validation_plots(csv_path, output_dir):
     plt.savefig(plot3_path, dpi=300)
     plt.close()
     print(f"  Saved -> {plot3_path.name}")
+
+    # -------------------------------------------------------------------------
+    # PLOT 4: PGNN Corrector Effect — Correction ON vs OFF (same physics params)
+    # Only generated if nocorr column exists in CSV
+    # -------------------------------------------------------------------------
+    if has_nocorr:
+        fig, axes = plt.subplots(3, 1, figsize=(10, 8), sharex=True, gridspec_kw={"height_ratios": [1, 2, 1]})
+        
+        # Ambient Weather Context (Top Panel)
+        axes[0].plot(df["days"], df["t_outdoor"], label="Outdoor Temp", color="#7f8c8d", linewidth=1)
+        axes[0].set_ylabel("Outdoor (°C)")
+        axes[0].grid(True)
+        axes[0].legend(loc="upper right")
+        axes[0].set_title("PGNN Corrector Effect: Same Physics Params, Correction ON vs OFF")
+        
+        # Trajectories (Middle Panel) — Ground Truth, PGNN (corr ON), PGNN (corr OFF)
+        axes[1].plot(df["days"], df["t_actual"], label="Ground-Truth (BOPTEST)", color="#2c3e50", linewidth=1.8)
+        axes[1].plot(df["days"], df["t_open_loop_pinn"], label="PGNN (Corrector ON)", color="#27ae60", linewidth=1.2, linestyle="-")
+        axes[1].plot(df["days"], df["t_open_loop_pinn_nocorr"], label="PGNN (Corrector OFF — pure physics)", color="#e67e22", linewidth=1.2, linestyle="--")
+        axes[1].set_ylabel("Zone Temp (°C)")
+        axes[1].grid(True)
+        axes[1].legend(loc="lower left")
+        
+        # Correction signal (Bottom Panel)
+        axes[2].plot(df["days"], df["correction"], label="NN Correction Signal", color="#8e44ad", linewidth=0.8)
+        axes[2].axhline(0, color="black", linestyle=":", linewidth=1)
+        axes[2].set_ylabel("Correction ΔT (°C)")
+        axes[2].set_xlabel("Time (Days)")
+        axes[2].grid(True)
+        axes[2].legend(loc="upper right")
+        
+        plt.tight_layout()
+        plot4_path = output_dir / "open_loop_corrector_effect.png"
+        plt.savefig(plot4_path, dpi=300)
+        plt.close()
+        print(f"  Saved -> {plot4_path.name}")
+        
+        # -------------------------------------------------------------------------
+        # PLOT 5: Corrector Effect Zoom (Days 0-7)
+        # -------------------------------------------------------------------------
+        fig, axes = plt.subplots(3, 1, figsize=(10, 8), sharex=True, gridspec_kw={"height_ratios": [1, 2, 1]})
+        
+        axes[0].plot(zoom_df["days"], zoom_df["t_outdoor"], label="Outdoor Temp", color="#7f8c8d", linewidth=1.2)
+        axes[0].set_ylabel("Outdoor (°C)")
+        axes[0].grid(True)
+        axes[0].legend(loc="upper right")
+        axes[0].set_title("First 7 Days: PGNN Corrector Effect Zoom")
+        
+        axes[1].plot(zoom_df["days"], zoom_df["t_actual"], label="Ground-Truth (BOPTEST)", color="#2c3e50", linewidth=2.0)
+        axes[1].plot(zoom_df["days"], zoom_df["t_open_loop_pinn"], label="PGNN (Corrector ON)", color="#27ae60", linewidth=1.5, linestyle="-")
+        axes[1].plot(zoom_df["days"], zoom_df["t_open_loop_pinn_nocorr"], label="PGNN (Corrector OFF)", color="#e67e22", linewidth=1.5, linestyle="--")
+        axes[1].set_ylabel("Zone Temp (°C)")
+        axes[1].grid(True)
+        axes[1].legend(loc="lower left")
+        
+        axes[2].plot(zoom_df["days"], zoom_df["correction"], label="NN Correction Signal", color="#8e44ad", linewidth=1.0)
+        axes[2].axhline(0, color="black", linestyle=":", linewidth=1)
+        axes[2].set_ylabel("Correction ΔT (°C)")
+        axes[2].set_xlabel("Time (Days)")
+        axes[2].grid(True)
+        axes[2].legend(loc="upper right")
+        
+        plt.tight_layout()
+        plot5_path = output_dir / "open_loop_corrector_effect_7d_zoom.png"
+        plt.savefig(plot5_path, dpi=300)
+        plt.close()
+        print(f"  Saved -> {plot5_path.name}")
 
 if __name__ == "__main__":
     import argparse

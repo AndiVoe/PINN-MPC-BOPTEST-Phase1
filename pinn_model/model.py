@@ -34,6 +34,7 @@ class SingleZonePINN(nn.Module):
         u_heating: torch.Tensor,
         dt_s: torch.Tensor,
     ) -> torch.Tensor:
+        # Pass raw parameters through Softplus to mathematically guarantee they stay positive (> 0)
         ua = self._positive(self.log_ua)
         solar_gain = self._positive(self.log_solar_gain)
         hvac_gain = self._positive(self.log_hvac_gain)

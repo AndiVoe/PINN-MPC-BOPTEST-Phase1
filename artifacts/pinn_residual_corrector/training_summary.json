@@ -1,0 +1,19 @@
+{
+  "physics_parameters": {
+    "ua": 0.03046487644314766,
+    "solar_gain": 1.6440815925598145,
+    "hvac_gain": 0.8267963528633118,
+    "capacity": 2.724409818649292
+  },
+  "rc_physics": {
+    "ua": 0.1167740598320961,
+    "solar_gain": 6.106541633605957,
+    "hvac_gain": 2.5605521202087402,
+    "capacity": 9.734004020690918
+  },
+  "best_val_loss": 0.0015231099802999152,
+  "config": "C:\\Users\\AVoelser\\OneDrive - Scientific Network South Tyrol\\3_PhD\\Simulation\\PINN\\configs\\pinn_phase1_excited.yaml",
+  "epochs": 150,
+  "lr": 0.001,
+  "batch_size": 256
+}

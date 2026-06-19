@@ -1,4 +1,4 @@
-﻿from __future__ import annotations
+from __future__ import annotations
 
 import json
 import math
@@ -1094,6 +1094,40 @@ def train_model(
         )
     with (artifact_dir / "training_config.json").open("w", encoding="utf-8") as handle:
         json.dump(config, handle, indent=2)
+
+    # Write a human-readable file with SI-unit physical interpretations.
+    # Unit system: heat_flow in kW, capacity in kWh/K, time in hr.
+    # Equation: dT[K] = (dt_s/3600)[hr] * heat_flow[kW] / capacity[kWh/K]
+    _ua = physics_parameters["ua"]
+    _sg = physics_parameters["solar_gain"]
+    _hv = physics_parameters["hvac_gain"]
+    _cp = physics_parameters["capacity"]
+    _tau = _cp / _ua if _ua > 0 else float("inf")
+    physical_params: dict[str, Any] = {
+        "unit_system": "kW-kWh-K-hr",
+        "equation": "dT[K] = (dt_s/3600)[hr] * heat_flow[kW] / capacity[kWh/K]",
+        "model_parameters": {
+            "ua":         {"value": _ua, "unit": "kW/K"},
+            "solar_gain": {"value": _sg, "unit": "m2 (effective solar aperture)"},
+            "hvac_gain":  {"value": _hv, "unit": "kW/K"},
+            "capacity":   {"value": _cp, "unit": "kWh/K"},
+        },
+        "si_parameters": {
+            "ua_W_per_K":        round(_ua * 1000.0, 4),
+            "solar_aperture_m2": round(_sg, 4),
+            "hvac_gain_W_per_K": round(_hv * 1000.0, 4),
+            "capacity_kJ_per_K": round(_cp * 3600.0, 2),
+        },
+        "rc_time_constant_hr": round(_tau, 4),
+    }
+    with (artifact_dir / "physical_parameters.json").open("w", encoding="utf-8") as handle:
+        json.dump(physical_params, handle, indent=2)
+    print("Physical parameters (SI units):")
+    print(f"  UA               = {_ua * 1000.0:.2f} W/K")
+    print(f"  Solar aperture   = {_sg:.4f} m2")
+    print(f"  HVAC gain        = {_hv * 1000.0:.2f} W/K")
+    print(f"  Thermal capacity = {_cp * 3600.0:.2f} kJ/K")
+    print(f"  RC time constant = {_tau:.2f} hr")
 
     return {
         "best_epoch": best_epoch,
